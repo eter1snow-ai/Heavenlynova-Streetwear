@@ -38,7 +38,9 @@ export default function App() {
     <BrowserRouter>
       <div className="min-h-screen bg-black text-white hn-radius-0">
         <Navbar />
-        <AnimatedRoutes />
+        <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-12">
+          <AnimatedRoutes />
+        </div>
         <Footer />
       </div>
     </BrowserRouter>

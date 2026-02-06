@@ -13,7 +13,7 @@ export default function ProductDetail() {
   if (!product) {
     return (
       <main className="bg-black text-white">
-        <section className="mx-auto max-w-7xl px-6 py-24">
+        <section className="mx-auto w-full max-w-[1440px] py-24">
           <h1 className="text-2xl font-semibold">Produsul nu a fost găsit</h1>
           <p className="mt-2 text-neutral-400">Verifică linkul sau revino la Drops.</p>
         </section>
@@ -30,7 +30,7 @@ export default function ProductDetail() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.4 }}
-        className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12 py-10 sm:py-16 lg:py-24"
+        className="mx-auto w-full max-w-[1440px] py-10 sm:py-16 lg:py-24"
       >
         <div className="grid gap-10 lg:grid-cols-2">
           <div className="lg:sticky lg:top-24 self-start">
@@ -38,7 +38,7 @@ export default function ProductDetail() {
               <img
                 src={heroImage}
                 alt={product.name}
-                className="aspect-[4/5] w-full max-h-[80vh] object-cover border border-neutral-800"
+                className="aspect-[4/5] w-full max-h-[80vh] object-contain border border-neutral-800"
                 style={{ borderRadius: 0 }}
               />
             ) : (

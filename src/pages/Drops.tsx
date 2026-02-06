@@ -12,7 +12,7 @@ export default function Drops() {
   return (
     <main className="bg-black text-white">
       <section className="bg-neutral-950 py-10 sm:py-16 lg:py-24">
-        <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
+        <div className="mx-auto w-full max-w-[1440px]">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -28,7 +28,7 @@ export default function Drops() {
       </section>
 
       <section className="bg-neutral-950">
-        <div className="mx-auto max-w-7xl space-y-20 px-6 sm:px-8 lg:px-12 py-12 sm:py-16 lg:py-24">
+        <div className="mx-auto w-full max-w-[1440px] space-y-20 py-12 sm:py-16 lg:py-24">
           {sections.map((s) => {
             const items = products.filter((p) => p.category === s.key)
             return (
@@ -50,7 +50,7 @@ export default function Drops() {
                           className="border border-neutral-800 bg-neutral-900"
                         >
                           {img ? (
-                            <img src={img} alt={p.name} className="aspect-[4/4.5] w-full border-b border-neutral-800 object-cover" style={{ borderRadius: 0 }} />
+                            <img src={img} alt={p.name} loading="lazy" className="aspect-[4/4.5] w-full border-b border-neutral-800 object-contain p-2" style={{ borderRadius: 0 }} />
                           ) : (
                             <div className="aspect-[4/4.5] border-b border-neutral-800 bg-neutral-900" />
                           )}

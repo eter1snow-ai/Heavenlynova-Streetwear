@@ -36,6 +36,10 @@ export default function Footer() {
         </div>
       </div>
 
+        <p className="mt-8 text-xs uppercase tracking-widest text-white/50">
+          Born from Light & Shadow.
+        </p>
+
         <div className="mt-10 text-center text-white/70">
           <a href="mailto:support@heavenlynova.com" className="text-sm uppercase tracking-wide text-white/70 visited:text-white/70 hover:text-white">
             For support or inquiries: support@heavenlynova.com

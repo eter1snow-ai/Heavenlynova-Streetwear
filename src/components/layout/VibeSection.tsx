@@ -1,7 +1,7 @@
 export default function VibeSection() {
   return (
     <section className="relative bg-black text-white">
-      <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
+      <div className="mx-auto w-full">
         <div className="relative h-[60vh] md:h-[70vh]">
           <video
             src="/Assets/Images/Video1.mp4"
