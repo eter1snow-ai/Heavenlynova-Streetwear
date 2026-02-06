@@ -22,6 +22,14 @@
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
   }
+
+  .hn-radius-0, .hn-radius-0 * {
+    border-radius: 0 !important;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  a:visited { color: inherit; }
+  a:hover { text-decoration: none; }
 }
 
 @layer components {
@@ -29,5 +37,28 @@
     transition-property: color, background-color, border-color, box-shadow, transform;
     transition-duration: 200ms;
     transition-timing-function: ease-out;
+  }
+
+  .footer-columns {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    align-items: flex-start;
+  }
+
+  .footer-columns > div {
+    width: 100%;
+    text-align: left;
+  }
+
+  @media (min-width: 640px) {
+    .footer-columns {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    .footer-columns > div {
+      width: 33.333333%;
+    }
   }
 }

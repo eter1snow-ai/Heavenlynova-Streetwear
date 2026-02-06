@@ -1,16 +1,17 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-neutral-950/80 backdrop-blur">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-sm border-b border-neutral-800">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <a
-          href="#/"
-          className="font-display text-xs font-medium uppercase tracking-[0.28em] text-neutral-300 transition-soft hover:text-white"
+        <Link
+          to="/"
+          className="font-display text-xs font-medium uppercase tracking-widest text-white transition-soft hover:text-white/70"
         >
           HEAVENLYNOVA
-        </a>
+        </Link>
         <button
           aria-label="Toggle menu"
           onClick={() => setOpen(!open)}
@@ -18,26 +19,74 @@ export default function Navbar() {
         >
           <span>{open ? 'Close' : 'Menu'}</span>
         </button>
-        <ul className="hidden gap-8 md:flex">
+        <ul className="hidden gap-8 md:flex list-none">
           <li>
-            <a
-              className="text-xs font-medium uppercase tracking-[0.2em] text-neutral-300 transition-soft hover:text-white"
-              href="#/drops"
+            <Link
+              className="text-sm font-medium uppercase tracking-widest text-white visited:text-white no-underline transition-soft hover:text-white"
+              to="/drops"
             >
               Drops
+            </Link>
+          </li>
+          <li>
+            <a
+              className="text-sm font-medium uppercase tracking-widest text-white visited:text-white no-underline transition-soft hover:text-white"
+              href="#heritage"
+            >
+              T-Shirts
+            </a>
+          </li>
+          <li>
+            <a
+              className="text-sm font-medium uppercase tracking-widest text-white visited:text-white no-underline transition-soft hover:text-white"
+              href="#essentials"
+            >
+              Hoodies
+            </a>
+          </li>
+          <li>
+            <a
+              className="text-sm font-medium uppercase tracking-widest text-white visited:text-white no-underline transition-soft hover:text-white"
+              href="#gift-card"
+            >
+              Gift Card
             </a>
           </li>
         </ul>
       </nav>
       {open && (
         <div className="md:hidden">
-          <ul className="space-y-2 border-t border-neutral-800 px-6 py-4">
+          <ul className="space-y-2 border-t border-neutral-800 px-6 py-4 list-none">
             <li>
-              <a
-                className="block text-xs font-medium uppercase tracking-[0.18em] text-neutral-300 transition-soft hover:text-white"
-                href="#/drops"
+              <Link
+                className="block text-sm font-medium uppercase tracking-widest text-white visited:text-white no-underline transition-soft hover:text-white"
+                to="/drops"
               >
                 Drops
+              </Link>
+            </li>
+            <li>
+              <a
+                className="block text-sm font-medium uppercase tracking-widest text-white visited:text-white no-underline transition-soft hover:text-white"
+                href="#heritage"
+              >
+                T-Shirts
+              </a>
+            </li>
+            <li>
+              <a
+                className="block text-sm font-medium uppercase tracking-widest text-white visited:text-white no-underline transition-soft hover:text-white"
+                href="#essentials"
+              >
+                Hoodies
+              </a>
+            </li>
+            <li>
+              <a
+                className="block text-sm font-medium uppercase tracking-widest text-white visited:text-white no-underline transition-soft hover:text-white"
+                href="#gift-card"
+              >
+                Gift Card
               </a>
             </li>
           </ul>

@@ -1,145 +1,60 @@
+export type Category = 'flagship' | 'individuals' | 'essentials'
+
 export type Product = {
   id: string
+  category: Category
   name: string
-  price: string
+  tagline: string
   description: string
-  image?: string
+  price: string
+  images: string[]
 }
 
-export type Collection = {
-  key: 'heritage' | 'shadows' | 'angels' | 'angel-dragon'
-  title: string
-  description: string
-  heroImage?: string
-  products: Product[]
-}
+export const products: Product[] = [
+  {
+    id: 'seraphim-01',
+    category: 'flagship',
+    name: 'SERAPHIM // 001',
+    tagline: 'THE ONES WHO BURN',
+    description:
+      'Archive Entry 01. High-vibration silhouette. Heavyweight 240 GSM organic cotton. Engineered for those who seek the light within the void.',
+    price: '---',
+    images: ['/Assets/Images/Preview/Seraphim-01/ChatGPT Image Dec 5, 2025, 04_21_37 PM.png'],
+  },
+  {
+    id: 'shadow-01',
+    category: 'individuals',
+    name: 'EMBRACE YOUR SHADOW',
+    tagline: 'BORN FROM THE DARK',
+    description:
+      '240 GSM Heavyweight standard. Boxy fit. High-density screen print. A statement of acceptance and power.',
+    price: '---',
+    images: ['/Assets/Images/Preview/EmbraceYourShadow/Embrace Youre Shadow.png'],
+  },
+  {
+    id: 'core-hoodie',
+    category: 'essentials',
+    name: 'Core Hoodie',
+    tagline: '240 GSM fleece',
+    description: 'Heavyweight fleece hoodie, 240 GSM, clean hood profile.',
+    price: '---',
+    images: [],
+  },
+  {
+    id: 'core-pant',
+    category: 'essentials',
+    name: 'Core Pant',
+    tagline: '240 GSM twill',
+    description: 'Structured pant, 240 GSM twill, straight leg and minimal hardware.',
+    price: '---',
+    images: [],
+  },
+]
 
 export const featuredProducts: Product[] = [
-  {
-    id: 'fp-1',
-    name: 'Nova Hoodie',
-    price: '—',
-    description: 'Heavyweight fleece. Clean hood profile.',
-  },
-  {
-    id: 'fp-2',
-    name: 'Echelon Cargo',
-    price: '—',
-    description: 'Structured cargo with sharp pocket lines.',
-  },
-  {
-    id: 'fp-3',
-    name: 'Gravity Tee',
-    price: '—',
-    description: 'Dense cotton. Relaxed but controlled drape.',
-  },
-  {
-    id: 'fp-4',
-    name: 'Halo Jacket',
-    price: '—',
-    description: 'Matte shell with subtle reflective detail.',
-  },
+  products.find((p) => p.id === 'seraphim-01')!,
+  products.find((p) => p.id === 'core-hoodie')!,
+  products.find((p) => p.id === 'core-pant')!,
 ]
 
-export const collections: Collection[] = [
-  {
-    key: 'heritage',
-    title: 'Heritage',
-    description: 'Foundational cuts. Timeless black-on-black.',
-    products: [
-      {
-        id: 'heritage-1',
-        name: 'Heritage Crew',
-        price: '—',
-        description: 'Classic crew in dense brushed cotton.',
-      },
-      {
-        id: 'heritage-2',
-        name: 'Foundry Pant',
-        price: '—',
-        description: 'Straight leg, clean hardware, no branding.',
-      },
-      {
-        id: 'heritage-3',
-        name: 'Origin Hoodie',
-        price: '—',
-        description: 'Heavy hood, minimal drawcords.',
-      },
-    ],
-  },
-  {
-    key: 'shadows',
-    title: 'Shadows',
-    description: 'Matte textures. Soft edges. Night city rhythm.',
-    products: [
-      {
-        id: 'shadows-1',
-        name: 'Shadow Shell',
-        price: '—',
-        description: 'Light technical shell with muted hardware.',
-      },
-      {
-        id: 'shadows-2',
-        name: 'Noir Track',
-        price: '—',
-        description: 'Tapered track pant with tonal striping.',
-      },
-      {
-        id: 'shadows-3',
-        name: 'Lowlight Tee',
-        price: '—',
-        description: 'Soft jersey, washed black finish.',
-      },
-    ],
-  },
-  {
-    key: 'angels',
-    title: 'Angels',
-    description: 'Elevated minimalism. Serene presence.',
-    products: [
-      {
-        id: 'angels-1',
-        name: 'Halo Crew',
-        price: '—',
-        description: 'Soft grey crew with clean neckline.',
-      },
-      {
-        id: 'angels-2',
-        name: 'Cloud Pant',
-        price: '—',
-        description: 'Relaxed trouser, barely-there branding.',
-      },
-      {
-        id: 'angels-3',
-        name: 'Seraph Tee',
-        price: '—',
-        description: 'Off-black tee with subtle sheen.',
-      },
-    ],
-  },
-  {
-    key: 'angel-dragon',
-    title: 'Angel & Dragon',
-    description: 'The duality capsule. Power with grace.',
-    products: [
-      {
-        id: 'angel-dragon-1',
-        name: 'Duality Bomber',
-        price: '—',
-        description: 'Boxy bomber, neon lining detail.',
-      },
-      {
-        id: 'angel-dragon-2',
-        name: 'Spine Cargo',
-        price: '—',
-        description: 'Paneled cargo with articulated knees.',
-      },
-      {
-        id: 'angel-dragon-3',
-        name: 'Signal Tee',
-        price: '—',
-        description: 'High-density print, minimal front.',
-      },
-    ],
-  },
-]
+export const getProductById = (id: string) => products.find((p) => p.id === id)

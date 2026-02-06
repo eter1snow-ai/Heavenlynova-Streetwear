@@ -1,35 +1,46 @@
-import { useEffect, useState } from 'react'
 import Home from './pages/Home'
 import Drops from './pages/Drops'
+import ProductDetail from './pages/ProductDetail'
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { AnimatePresence, motion } from 'framer-motion'
+
+function MotionPage({ children }: { children: React.ReactNode }) {
+  return (
+    <motion.main
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.4 }}
+    >
+      {children}
+    </motion.main>
+  )
+}
+
+function AnimatedRoutes() {
+  const location = useLocation()
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<MotionPage><Home /></MotionPage>} />
+        <Route path="/drops" element={<MotionPage><Drops /></MotionPage>} />
+        <Route path="/product/:productId" element={<MotionPage><ProductDetail /></MotionPage>} />
+        <Route path="*" element={<MotionPage><Home /></MotionPage>} />
+      </Routes>
+    </AnimatePresence>
+  )
+}
 
 export default function App() {
-  const [route, setRoute] = useState<string>(window.location.hash || '#/')
-
-  useEffect(() => {
-    const onHashChange = () => {
-      setRoute(window.location.hash || '#/')
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-    }
-    window.addEventListener('hashchange', onHashChange)
-    return () => window.removeEventListener('hashchange', onHashChange)
-  }, [])
-
-  const Page = (() => {
-    switch (route) {
-      case '#/drops':
-        return Drops
-      default:
-        return Home
-    }
-  })()
-
   return (
-    <div className="min-h-screen bg-black text-white">
-      <Navbar />
-      <Page />
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <div className="min-h-screen bg-black text-white hn-radius-0">
+        <Navbar />
+        <AnimatedRoutes />
+        <Footer />
+      </div>
+    </BrowserRouter>
   )
 }
