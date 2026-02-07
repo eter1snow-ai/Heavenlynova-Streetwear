@@ -1,6 +1,12 @@
 import { motion } from 'framer-motion'
+import { useEffect } from 'react'
 
 export default function Story() {
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <main className="bg-black text-white">
       {/* Cinematic Header */}
@@ -38,8 +44,11 @@ export default function Story() {
         </div>
       </section>
 
+      {/* Hairline Separator */}
+      <div className="border-t border-white/10"></div>
+
       {/* Editorial Content */}
-      <section className="mx-auto max-w-[1300px] px-6 lg:px-12 py-20 sm:py-24">
+      <section className="mx-auto max-w-[1300px] px-6 lg:px-12 py-24 sm:py-32">
         <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:gap-24">
           <div className="hidden lg:block">
             <div className="sticky top-24">
@@ -50,17 +59,17 @@ export default function Story() {
           </div>
 
           <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 1, ease: "easeOut" }}
             className="max-w-[700px] space-y-8"
           >
             <p className="text-xl sm:text-2xl font-light leading-relaxed text-white">
               Our story began in the stars, with a love so immense it brought a wounded dragon and a luminous angel together.
             </p>
 
-            <div className="space-y-6 text-neutral-400 leading-relaxed text-base sm:text-lg">
+            <div className="space-y-6 text-white leading-relaxed text-base sm:text-lg">
               <p>
                 This wasn't a fight, but a beautiful, volatile dance of healing—a collision of light and shadow that birthed a new star: the <span className="text-white">HeavenlyNova</span>.
               </p>
@@ -84,7 +93,7 @@ export default function Story() {
                 }}
               />
               <p className="mt-4 text-xs uppercase tracking-widest text-neutral-600">
-                Designed in the Void
+                FORGED IN THE COLLISION OF LIGHT & SHADOW
               </p>
             </div>
           </motion.div>

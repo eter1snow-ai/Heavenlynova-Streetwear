@@ -89,27 +89,27 @@ export default function Footer() {
 
         {/* Zona 3 - Subscription */}
         <div className="max-w-md mx-auto mb-16">
-          <h3 className="text-xs font-black uppercase tracking-[0.15em] text-white/80 text-center mb-3">
-            JOIN THE VOID
+          <h3 className="text-xs font-black uppercase tracking-[0.15em] text-white text-center mb-3">
+            JOIN THE ASCENT
           </h3>
-          <p className="text-xs uppercase tracking-wide text-white/50 text-center mb-6">
-            Get early access to Chapter 01: Seraphim
+          <p className="text-xs uppercase tracking-wide text-white/70 text-center mb-6">
+            Enter your coordinates for early access to Chapter 01: Seraphim.
           </p>
           <div className="space-y-3">
             <input
               type="email"
               placeholder="ENTER YOUR EMAIL"
-              className="w-full bg-black border border-white/20 text-white text-xs tracking-wide px-4 py-3"
+              className="w-full bg-black/80 border border-white/40 text-white text-xs tracking-wide px-4 py-3"
               style={{ borderRadius: 0 }}
             />
             <button
               className="w-full bg-white text-black text-xs tracking-[0.2em] px-6 py-3 uppercase font-semibold"
               style={{ borderRadius: 0 }}
             >
-              JOIN THE VOID
+              INITIATE
             </button>
           </div>
-          <p className="text-[10px] uppercase tracking-widest text-white/40 mt-4 text-center">
+          <p className="text-[10px] uppercase tracking-widest text-white/60 mt-4 text-center">
             The store is currently closed while we prepare the Seraphim Collection.
           </p>
         </div>
