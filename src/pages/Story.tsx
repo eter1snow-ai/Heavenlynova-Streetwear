@@ -14,10 +14,14 @@ export default function Story() {
             className="h-full w-full object-cover object-center opacity-90"
             style={{ 
               borderRadius: 0,
-              maskImage: 'linear-gradient(to bottom, black 50%, transparent 100%)',
-              WebkitMaskImage: 'linear-gradient(to bottom, black 50%, transparent 100%)'
+              filter: 'contrast(1.2) saturate(0.8) brightness(0.9)',
+              maskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)',
+              WebkitMaskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)'
             }}
           />
+          {/* Mysterious overlay effect */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30 opacity-70"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/50 opacity-50"></div>
         </div>
         
         <div className="absolute bottom-0 left-0 w-full p-6 lg:p-12 z-10">
@@ -71,10 +75,13 @@ export default function Story() {
 
             <div className="pt-12">
               <img 
-                src="/Assets/Images/Hero 1.png" 
+                src="/Assets/Images/HeroNew.png" 
                 alt="Studio Atmosphere" 
                 className="w-full grayscale opacity-60 aspect-[16/9] object-cover"
-                style={{ borderRadius: 0 }}
+                style={{ 
+                  borderRadius: 0,
+                  filter: 'grayscale(100%) contrast(1.1) brightness(0.8)'
+                }}
               />
               <p className="mt-4 text-xs uppercase tracking-widest text-neutral-600">
                 Designed in the Void
