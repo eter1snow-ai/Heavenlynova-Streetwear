@@ -38,7 +38,7 @@ export const products: Product[] = [
     tagline: '240 GSM fleece',
     description: 'Heavyweight fleece hoodie, 240 GSM, clean hood profile.',
     price: '€59.90',
-    images: [],
+    images: ['/Assets/Images/HeroNew.png'],
   },
 ]
 
