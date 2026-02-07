@@ -92,7 +92,7 @@ export default function Footer() {
           <h3 className="text-xs font-black uppercase tracking-[0.15em] text-white text-center mb-3">
             JOIN THE ASCENT
           </h3>
-          <p className="text-xs uppercase tracking-wide text-white/70 text-center mb-6">
+          <p className="text-xs uppercase tracking-wide text-white text-center mb-6">
             Enter your coordinates for early access to Chapter 01: Seraphim.
           </p>
           <div className="space-y-3">
@@ -109,19 +109,19 @@ export default function Footer() {
               INITIATE
             </button>
           </div>
-          <p className="text-[10px] uppercase tracking-widest text-white/60 mt-4 text-center">
+          <p className="text-[10px] uppercase tracking-widest text-white mt-4 text-center">
             The store is currently closed while we prepare the Seraphim Collection.
           </p>
         </div>
 
         {/* Zona 4 - Legal */}
         <div className="border-t border-white/10 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center text-[10px] uppercase tracking-widest text-white/40">
+          <div className="flex flex-col md:flex-row justify-between items-center text-[10px] uppercase tracking-widest text-white">
             <div className="mb-4 md:mb-0">
-              © 2026 HEAVENLYNOVA — All Rights Reserved
+              2026 HEAVENLYNOVA — All Rights Reserved
             </div>
             <div>
-              For support or inquiries: <span className="text-white/60 hover:text-white transition-colors">support@heavenlynova.com</span>
+              For support or inquiries: support@heavenlynova.com
             </div>
           </div>
         </div>
