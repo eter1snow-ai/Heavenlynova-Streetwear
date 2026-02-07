@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 @layer base {
   *,
@@ -37,28 +35,5 @@
     transition-property: color, background-color, border-color, box-shadow, transform;
     transition-duration: 200ms;
     transition-timing-function: ease-out;
-  }
-
-  .footer-columns {
-    display: flex;
-    flex-direction: column;
-    gap: 2.5rem;
-    align-items: flex-start;
-  }
-
-  .footer-columns > div {
-    width: 100%;
-    text-align: left;
-  }
-
-  @media (min-width: 640px) {
-    .footer-columns {
-      flex-direction: row;
-      justify-content: space-between;
-    }
-
-    .footer-columns > div {
-      width: 33.333333%;
-    }
   }
 }

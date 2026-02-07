@@ -18,7 +18,7 @@ export const products: Product[] = [
     tagline: 'THE ONES WHO BURN',
     description:
       'Archive Entry 01. High-vibration silhouette. Heavyweight 240 GSM organic cotton. Engineered for those who seek the light within the void.',
-    price: '---',
+    price: '€89.90',
     images: ['/Assets/Images/Preview/Seraphim-01/ChatGPT Image Dec 5, 2025, 04_21_37 PM.png'],
   },
   {
@@ -28,8 +28,8 @@ export const products: Product[] = [
     tagline: 'BORN FROM THE DARK',
     description:
       '240 GSM Heavyweight standard. Boxy fit. High-density screen print. A statement of acceptance and power.',
-    price: '---',
-    images: ['/Assets/Images/Preview/EmbraceYourShadow/Embrace Youre Shadow.png'],
+    price: '€39.99',
+    images: ['/Assets/Images/Preview/EmbraceYourShadow/Embrace Youre Shadow - Copy.png'],
   },
   {
     id: 'core-hoodie',
@@ -37,16 +37,7 @@ export const products: Product[] = [
     name: 'Core Hoodie',
     tagline: '240 GSM fleece',
     description: 'Heavyweight fleece hoodie, 240 GSM, clean hood profile.',
-    price: '---',
-    images: [],
-  },
-  {
-    id: 'core-pant',
-    category: 'essentials',
-    name: 'Core Pant',
-    tagline: '240 GSM twill',
-    description: 'Structured pant, 240 GSM twill, straight leg and minimal hardware.',
-    price: '---',
+    price: '€59.90',
     images: [],
   },
 ]
@@ -54,7 +45,6 @@ export const products: Product[] = [
 export const featuredProducts: Product[] = [
   products.find((p) => p.id === 'seraphim-01')!,
   products.find((p) => p.id === 'core-hoodie')!,
-  products.find((p) => p.id === 'core-pant')!,
 ]
 
 export const getProductById = (id: string) => products.find((p) => p.id === id)

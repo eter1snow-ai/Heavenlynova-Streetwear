@@ -13,7 +13,7 @@ export default function ProductDetail() {
   if (!product) {
     return (
       <main className="bg-black text-white">
-        <section className="mx-auto w-full max-w-[1440px] py-24">
+        <section className="mx-auto w-full max-w-[1300px] px-6 lg:px-12 py-24">
           <h1 className="text-2xl font-semibold">Produsul nu a fost găsit</h1>
           <p className="mt-2 text-neutral-400">Verifică linkul sau revino la Drops.</p>
         </section>
@@ -30,20 +30,20 @@ export default function ProductDetail() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.4 }}
-        className="mx-auto w-full max-w-[1440px] py-10 sm:py-16 lg:py-24"
+        className="mx-auto w-full max-w-[1300px] px-6 lg:px-12 py-10 sm:py-16 lg:py-24"
       >
-        <div className="grid gap-10 lg:grid-cols-2">
+        <div className="grid gap-10 lg:grid-cols-[3fr_2fr]">
           <div className="lg:sticky lg:top-24 self-start">
             {heroImage ? (
               <img
                 src={heroImage}
                 alt={product.name}
-                className="aspect-[4/5] w-full max-h-[80vh] object-contain border border-neutral-800"
+                className="aspect-[3/4] w-full object-cover object-top border border-neutral-800"
                 style={{ borderRadius: 0 }}
               />
             ) : (
               <div
-                className="aspect-[4/5] w-full max-h-[80vh] border border-neutral-800 bg-neutral-900"
+                className="aspect-[3/4] w-full border border-neutral-800 bg-neutral-900"
                 style={{ borderRadius: 0 }}
               />
             )}
@@ -67,8 +67,6 @@ export default function ProductDetail() {
               )}
               <p className="mt-4 text-neutral-300 leading-relaxed">{product.tagline}</p>
             </div>
-
-            <p className="text-sm md:text-base text-neutral-300 leading-relaxed max-w-[90%] md:max-w-none">{product.description}</p>
 
             <div className="space-y-3">
               <p className="text-xs text-neutral-400">Price</p>
@@ -96,6 +94,15 @@ export default function ProductDetail() {
                 ))}
               </div>
             </div>
+
+            <button
+              className="w-full border border-white bg-transparent py-3 text-xs font-semibold uppercase tracking-[0.24em] text-white transition-soft hover:bg-white hover:text-black"
+              style={{ borderRadius: 0 }}
+            >
+              Add to Cart
+            </button>
+
+            <p className="text-sm md:text-base text-neutral-300 leading-relaxed max-w-[90%] md:max-w-none">{product.description}</p>
 
             <div className="pt-2 text-xs text-neutral-500">
               240 GSM — heavyweight comfort, minimal silhouette.

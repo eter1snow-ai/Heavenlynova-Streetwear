@@ -1,6 +1,7 @@
 import Home from './pages/Home'
 import Drops from './pages/Drops'
 import ProductDetail from './pages/ProductDetail'
+import Story from './pages/Story'
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
@@ -26,6 +27,7 @@ function AnimatedRoutes() {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<MotionPage><Home /></MotionPage>} />
         <Route path="/drops" element={<MotionPage><Drops /></MotionPage>} />
+        <Route path="/story" element={<MotionPage><Story /></MotionPage>} />
         <Route path="/product/:productId" element={<MotionPage><ProductDetail /></MotionPage>} />
         <Route path="*" element={<MotionPage><Home /></MotionPage>} />
       </Routes>
@@ -38,9 +40,7 @@ export default function App() {
     <BrowserRouter>
       <div className="min-h-screen bg-black text-white hn-radius-0">
         <Navbar />
-        <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-12">
-          <AnimatedRoutes />
-        </div>
+        <AnimatedRoutes />
         <Footer />
       </div>
     </BrowserRouter>

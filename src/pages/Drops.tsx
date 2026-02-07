@@ -12,7 +12,7 @@ export default function Drops() {
   return (
     <main className="bg-black text-white">
       <section className="bg-neutral-950 py-10 sm:py-16 lg:py-24">
-        <div className="mx-auto w-full max-w-[1440px]">
+        <div className="mx-auto w-full max-w-[1300px] px-6 lg:px-12">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -28,7 +28,7 @@ export default function Drops() {
       </section>
 
       <section className="bg-neutral-950">
-        <div className="mx-auto w-full max-w-[1440px] space-y-20 py-12 sm:py-16 lg:py-24">
+        <div className="mx-auto w-full max-w-[1300px] px-6 lg:px-12 space-y-20 py-12 sm:py-16 lg:py-24">
           {sections.map((s) => {
             const items = products.filter((p) => p.category === s.key)
             return (
@@ -37,11 +37,11 @@ export default function Drops() {
                   <h2 className={s.key === 'flagship' ? 'font-serif text-xl sm:text-2xl font-semibold leading-tight tracking-tight' : 'text-xl sm:text-2xl font-semibold leading-tight tracking-tight'}>{s.title}</h2>
                   <p className="mt-2 max-w-xl text-neutral-300 leading-relaxed">{s.description}</p>
                 </div>
-                <div className="grid gap-x-6 gap-y-10 sm:grid-cols-3 sm:gap-6">
+                <div className="flex flex-wrap justify-center gap-8">
                   {items.map((p) => {
                     const img = p.images?.[0]
                     return (
-                      <Link to={`/product/${p.id}`} key={p.id}>
+                      <Link to={`/product/${p.id}`} key={p.id} className="w-full max-w-[400px]">
                         <motion.article
                           initial={{ opacity: 0, y: 10 }}
                           whileInView={{ opacity: 1, y: 0 }}
@@ -50,9 +50,17 @@ export default function Drops() {
                           className="border border-neutral-800 bg-neutral-900"
                         >
                           {img ? (
-                            <img src={img} alt={p.name} loading="lazy" className="aspect-[4/4.5] w-full border-b border-neutral-800 object-contain p-2" style={{ borderRadius: 0 }} />
+                            <img
+                              src={img}
+                              srcSet={`${img} 1x, ${img} 2x`}
+                              sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
+                              alt={p.name}
+                              loading="lazy"
+                              className="aspect-[3/4] w-full border-b border-neutral-800 object-cover object-top"
+                              style={{ borderRadius: 0 }}
+                            />
                           ) : (
-                            <div className="aspect-[4/4.5] border-b border-neutral-800 bg-neutral-900" />
+                            <div className="aspect-[3/4] w-full border-b border-neutral-800 bg-neutral-900" />
                           )}
                           <div className="p-5">
                             <h3 className="text-sm font-medium leading-snug truncate">{p.name}</h3>

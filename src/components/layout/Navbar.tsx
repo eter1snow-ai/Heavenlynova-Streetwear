@@ -13,8 +13,14 @@ export default function Navbar() {
   }, [])
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 border-b border-neutral-800 ${scrolled ? 'bg-black/90 backdrop-blur-md' : 'bg-black/70 backdrop-blur-sm'}`}>
-      <nav className="mx-auto flex max-w-[1440px] items-center justify-between px-6 py-4 lg:px-12">
+    <>
+      {/* Announcement Bar */}
+      <div className="text-xs tracking-widest text-center py-2 bg-black text-white">
+        🌍 FREE WORLDWIDE SHIPPING
+      </div>
+      
+      <header className={`fixed top-0 left-0 right-0 z-50 border-b border-neutral-800 ${scrolled ? 'bg-black/90 backdrop-blur-md' : 'bg-black/70 backdrop-blur-sm'}`}>
+      <nav className="mx-auto flex max-w-[1300px] items-center justify-between px-6 py-4 lg:px-12">
         <Link
           to="/"
           className="font-display text-xs font-medium uppercase tracking-widest text-white transition-soft hover:text-white/70"
@@ -56,9 +62,9 @@ export default function Navbar() {
           <li>
             <a
               className="text-sm font-medium uppercase tracking-widest text-white visited:text-white no-underline transition-soft hover:text-white"
-              href="#gift-card"
+              href="#drops"
             >
-              Gift Card
+              Shirts
             </a>
           </li>
         </ul>
@@ -93,14 +99,15 @@ export default function Navbar() {
             <li>
               <a
                 className="block text-sm font-medium uppercase tracking-widest text-white visited:text-white no-underline transition-soft hover:text-white"
-                href="#gift-card"
+                href="#drops"
               >
-                Gift Card
+                Shirts
               </a>
             </li>
           </ul>
         </div>
       )}
     </header>
+    </>
   )
 }

@@ -1,24 +1,18 @@
-import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 
 export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex min-h-[60vh] md:min-h-[70vh] items-center justify-center bg-black text-white pt-24 sm:pt-28"
+      className="relative flex h-[50vh] lg:h-[60vh] w-full items-end bg-black text-white pb-40"
     >
       <img
-        src="/Assets/Images/Hero 1.png"
+        src="/Assets/Images/HeroNew.png"
         alt="Hero"
-        className="absolute inset-0 h-full w-full object-cover"
+        className="absolute inset-0 h-full w-full object-cover object-center"
       />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="mx-auto w-full text-center"
-      >
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
+      <div className="mx-auto w-full max-w-[1300px] px-6 lg:px-12">
         <p className="mb-4 text-xs uppercase tracking-[0.3em] text-neutral-400">
           Luxury Streetwear
         </p>
@@ -28,16 +22,16 @@ export default function Hero() {
         <div className="mt-6">
           <Link
             to="/drops"
-            className="inline-flex border border-white bg-transparent px-8 py-3 text-xs font-medium uppercase tracking-widest text-white transition-soft hover:bg-white hover:text-black"
+            className="inline-flex border border-white bg-transparent px-8 py-3 text-xs font-semibold uppercase tracking-widest text-white transition-soft hover:bg-white hover:text-black"
             style={{ borderRadius: 0 }}
           >
-            Explore Collection
+            EXPLORE COLLECTION
           </Link>
         </div>
-        <p className="mx-auto mt-8 max-w-[85%] sm:max-w-[70%] text-sm leading-relaxed text-neutral-300 md:text-base">
+        <p className="mt-8 max-w-[520px] text-sm leading-relaxed text-neutral-300 md:text-base">
           Luxury streetwear. Minimal silhouettes. Heavyweight feel.
         </p>
-      </motion.div>
+      </div>
     </section>
   )
 }
