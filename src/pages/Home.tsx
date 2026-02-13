@@ -1,6 +1,7 @@
 import Hero from '../components/home/Hero'
 import { products } from '../data/drops'
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 
 export default function Home() {
   const essentials = products.filter((p) => p.category === 'essentials').slice(0, 2)
@@ -116,6 +117,41 @@ export default function Home() {
                 </Link>
               )
             })}
+            <div className="w-full max-w-[400px]">
+              <motion.article
+                initial={{ scale: 1 }}
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.25, ease: 'easeOut' }}
+                className="border border-neutral-800 bg-neutral-900"
+              >
+                <motion.div
+                  initial="rest"
+                  animate="rest"
+                  whileHover="hover"
+                  transition={{ duration: 0.3, ease: 'easeOut' }}
+                  className="relative aspect-[3/4] border-b border-neutral-800 overflow-hidden bg-neutral-900"
+                >
+                  <motion.img
+                    src="/Assets/Images/Preview/Soulfull/Back.jpg"
+                    alt="Soulfull"
+                    className="absolute inset-0 w-full h-full object-cover object-top"
+                    variants={{ rest: { opacity: 1 }, hover: { opacity: 0 } }}
+                    transition={{ duration: 0.4, ease: 'easeOut' }}
+                  />
+                  <motion.img
+                    src="/Assets/Images/Preview/Soulfull/Front.jpg"
+                    alt="Soulfull"
+                    className="absolute inset-0 w-full h-full object-cover object-top"
+                    variants={{ rest: { opacity: 0 }, hover: { opacity: 1 } }}
+                    transition={{ duration: 0.4, ease: 'easeOut' }}
+                  />
+                </motion.div>
+                <div className="p-5">
+                  <h3 className="text-sm font-medium leading-snug truncate">Soulfull</h3>
+                  <p className="mt-2 text-xs text-neutral-400 leading-relaxed">Heritage Collection</p>
+                </div>
+              </motion.article>
+            </div>
           </div>
         </div>
       </section>
