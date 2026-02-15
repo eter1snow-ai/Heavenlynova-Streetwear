@@ -40,6 +40,30 @@ export const products: Product[] = [
     price: '€59.90',
     images: ['/Assets/Images/HeroNew.png'],
   },
+  {
+    id: 'essentials-black',
+    category: 'essentials',
+    name: 'Essentials — Black',
+    tagline: '240 GSM fleece',
+    description: 'Heavyweight fleece, monochrome black. Minimal silhouette, everyday comfort.',
+    price: '€39.99',
+    images: [
+      '/Assets/Images/Preview/Esentials_Black/Front.png',
+      '/Assets/Images/Preview/Esentials_Black/Neck 300ppi.png',
+    ],
+  },
+  {
+    id: 'essentials-crem',
+    category: 'essentials',
+    name: 'Essentials — Crem',
+    tagline: '240 GSM cotton',
+    description: 'Heavyweight cotton, warm crem tone. Clean lines, soft handfeel.',
+    price: '€39.99',
+    images: [
+      '/Assets/Images/Preview/Esential_Crem/Front.png',
+      '/Assets/Images/Preview/Esential_Crem/Neck Creme 300ppi.png',
+    ],
+  },
 ]
 
 export const featuredProducts: Product[] = [

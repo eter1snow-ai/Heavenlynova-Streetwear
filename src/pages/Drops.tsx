@@ -1,6 +1,6 @@
 import { products } from '../data/drops'
 import { motion } from 'framer-motion'
-import { Link } from 'react-router-dom'
+import ProductCard from '../components/shared/ProductCard'
 
 const sections = [
   { key: 'flagship' as const, title: 'Seraphim', description: 'Piesa centrală. Editorial presence. 240 GSM heavyweight.' },
@@ -38,38 +38,9 @@ export default function Drops() {
                   <p className="mt-2 max-w-xl text-neutral-300 leading-relaxed">{s.description}</p>
                 </div>
                 <div className="flex flex-wrap justify-center gap-8">
-                  {items.map((p) => {
-                    const img = p.images?.[0]
-                    return (
-                      <Link to={`/product/${p.id}`} key={p.id} className="w-full max-w-[400px]">
-                        <motion.article
-                          initial={{ opacity: 0, y: 10 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{ once: true, amount: 0.2 }}
-                          transition={{ duration: 0.3 }}
-                          className="border border-neutral-800 bg-neutral-900"
-                        >
-                          {img ? (
-                            <img
-                              src={img}
-                              srcSet={`${img} 1x, ${img} 2x`}
-                              sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
-                              alt={p.name}
-                              loading="lazy"
-                              className="aspect-[3/4] w-full border-b border-neutral-800 object-cover object-top"
-                              style={{ borderRadius: 0 }}
-                            />
-                          ) : (
-                            <div className="aspect-[3/4] w-full border-b border-neutral-800 bg-neutral-900" />
-                          )}
-                          <div className="p-5">
-                            <h3 className="text-sm font-medium leading-snug truncate">{p.name}</h3>
-                            <p className="mt-2 text-xs text-neutral-400 leading-relaxed">{p.tagline}</p>
-                          </div>
-                        </motion.article>
-                      </Link>
-                    )
-                  })}
+                  {items.map((p) => (
+                    <ProductCard key={p.id} product={p} />
+                  ))}
                 </div>
               </div>
             )

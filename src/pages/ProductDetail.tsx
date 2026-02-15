@@ -1,7 +1,8 @@
 import { useParams } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { getProductById } from '../data/drops'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import ZoomImage from '../components/shared/ZoomImage'
 
 const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'] as const
 
@@ -9,6 +10,9 @@ export default function ProductDetail() {
   const { productId } = useParams()
   const product = getProductById(productId || '')
   const [size, setSize] = useState<string>('')
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   if (!product) {
     return (
@@ -22,7 +26,8 @@ export default function ProductDetail() {
   }
 
   const isSeraphim = product.category === 'flagship'
-  const heroImage = product.images[0]
+  const heroImages = product.images.filter(Boolean)
+  const isNeck = (src: string) => /neck/i.test(src)
 
   return (
     <main className="bg-black text-white">
@@ -34,13 +39,33 @@ export default function ProductDetail() {
       >
         <div className="grid gap-10 lg:grid-cols-[3fr_2fr]">
           <div className="lg:sticky lg:top-24 self-start">
-            {heroImage ? (
-              <img
-                src={heroImage}
-                alt={product.name}
-                className="aspect-[3/4] w-full object-cover object-top border border-neutral-800"
-                style={{ borderRadius: 0 }}
-              />
+            {heroImages.length ? (
+              <div className="grid gap-4 md:grid-cols-2">
+                {heroImages.map((src, idx) => {
+                  if (isNeck(src)) {
+                    return (
+                      <ZoomImage
+                        key={idx}
+                        src={src}
+                        alt={product.name}
+                        className="border border-neutral-800"
+                        zoomFactor={2.5}
+                      />
+                    )
+                  }
+                  return (
+                    <img
+                      key={idx}
+                      src={src}
+                      alt={product.name}
+                      className="aspect-[3/4] w-full object-cover object-top border border-neutral-800"
+                      style={{ borderRadius: 0, backgroundColor: 'transparent', mixBlendMode: 'normal' }}
+                      loading="lazy"
+                      onError={(e) => (e.currentTarget.src = '/Assets/Images/placeholder.svg')}
+                    />
+                  )
+                })}
+              </div>
             ) : (
               <div
                 className="aspect-[3/4] w-full border border-neutral-800 bg-neutral-900"

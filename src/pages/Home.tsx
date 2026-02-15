@@ -1,7 +1,7 @@
 import Hero from '../components/home/Hero'
 import { products } from '../data/drops'
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import ProductCard from '../components/shared/ProductCard'
 
 export default function Home() {
   const essentials = products.filter((p) => p.category === 'essentials').slice(0, 2)
@@ -15,25 +15,7 @@ export default function Home() {
         <div className="mx-auto w-full max-w-[1300px] px-6 lg:px-12">
           <div className="flex flex-wrap justify-center gap-6">
             {featured.map((p) => (
-              <Link to={`/product/${p!.id}`} key={p!.id} className="w-full max-w-[400px]">
-                <article className="border border-neutral-800 bg-neutral-950">
-                  {p!.images?.[0] ? (
-                    <img
-                      src={p!.images[0]}
-                      alt={p!.name}
-                      loading="lazy"
-                      className="aspect-[3/4] w-full border-b border-neutral-800 object-cover object-top"
-                      style={{ borderRadius: 0 }}
-                    />
-                  ) : (
-                    <div className="aspect-[3/4] w-full border-b border-neutral-800 bg-neutral-900" />
-                  )}
-                  <div className="p-5">
-                    <h3 className="text-sm font-medium uppercase tracking-widest">{p!.name}</h3>
-                    <p className="mt-2 text-xs text-neutral-400">{p!.price}</p>
-                  </div>
-                </article>
-              </Link>
+              <ProductCard key={p!.id} product={p!} showPrice />
             ))}
           </div>
         </div>
@@ -60,30 +42,9 @@ export default function Home() {
           <h2 className="text-xl sm:text-2xl font-semibold leading-tight tracking-tight uppercase">The Essentials</h2>
           <p className="mt-2 max-w-xl text-neutral-300 leading-relaxed">Daily wear. Minimal. Heavyweight comfort.</p>
           <div className="mt-8 flex flex-wrap justify-center gap-8">
-            {products.filter((p) => p.category === 'essentials').map((p) => {
-              const img = p.images?.[0]
-              return (
-                <Link to={`/product/${p.id}`} key={p.id} className="w-full max-w-[400px]">
-                  <article className="border border-neutral-800 bg-neutral-900">
-                    {img ? (
-                      <img
-                        src={img}
-                        alt={p.name}
-                        loading="lazy"
-                        className="aspect-[3/4] w-full border-b border-neutral-800 object-cover object-top bg-neutral-900"
-                        style={{ borderRadius: 0 }}
-                      />
-                    ) : (
-                      <div className="aspect-[3/4] border-b border-neutral-800 bg-neutral-900" />
-                    )}
-                    <div className="p-5">
-                      <h3 className="text-sm font-medium leading-snug truncate">{p.name}</h3>
-                      <p className="mt-2 text-xs text-neutral-400 leading-relaxed">{p.tagline}</p>
-                    </div>
-                  </article>
-                </Link>
-              )
-            })}
+            {products.filter((p) => p.category === 'essentials').map((p) => (
+              <ProductCard key={p.id} product={p} />
+            ))}
           </div>
         </div>
       </section>
@@ -93,65 +54,9 @@ export default function Home() {
           <h2 className="text-xl sm:text-2xl font-semibold leading-tight tracking-tight uppercase">Heritage Collection</h2>
           <p className="mt-2 max-w-xl text-neutral-300 leading-relaxed">Archive tees. Editorial minimalism. 240 GSM.</p>
           <div className="mt-8 flex flex-wrap justify-center gap-6">
-            {products.filter((p) => p.category === 'individuals').map((p) => {
-              const img = p.images?.[0]
-              return (
-                <Link to={`/product/${p.id}`} key={p.id} className="w-full max-w-[400px]">
-                  <article className="border border-neutral-800 bg-neutral-900">
-                    {img ? (
-                      <img
-                        src={img}
-                        alt={p.name}
-                        loading="lazy"
-                        className="aspect-[3/4] w-full border-b border-neutral-800 object-cover object-top bg-neutral-900"
-                        style={{ borderRadius: 0 }}
-                      />
-                    ) : (
-                      <div className="aspect-[3/4] border-b border-neutral-800 bg-neutral-900" />
-                    )}
-                    <div className="p-5">
-                      <h3 className="text-sm font-medium leading-snug truncate">{p.name}</h3>
-                      <p className="mt-2 text-xs text-neutral-400 leading-relaxed">{p.tagline}</p>
-                    </div>
-                  </article>
-                </Link>
-              )
-            })}
-            <div className="w-full max-w-[400px]">
-              <motion.article
-                initial={{ scale: 1 }}
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.25, ease: 'easeOut' }}
-                className="border border-neutral-800 bg-neutral-900"
-              >
-                <motion.div
-                  initial="rest"
-                  animate="rest"
-                  whileHover="hover"
-                  transition={{ duration: 0.3, ease: 'easeOut' }}
-                  className="relative aspect-[3/4] border-b border-neutral-800 overflow-hidden bg-neutral-900"
-                >
-                  <motion.img
-                    src="/Assets/Images/Preview/Soulfull/Back.jpg"
-                    alt="Soulfull"
-                    className="absolute inset-0 w-full h-full object-cover object-top"
-                    variants={{ rest: { opacity: 1 }, hover: { opacity: 0 } }}
-                    transition={{ duration: 0.4, ease: 'easeOut' }}
-                  />
-                  <motion.img
-                    src="/Assets/Images/Preview/Soulfull/Front.jpg"
-                    alt="Soulfull"
-                    className="absolute inset-0 w-full h-full object-cover object-top"
-                    variants={{ rest: { opacity: 0 }, hover: { opacity: 1 } }}
-                    transition={{ duration: 0.4, ease: 'easeOut' }}
-                  />
-                </motion.div>
-                <div className="p-5">
-                  <h3 className="text-sm font-medium leading-snug truncate">Soulfull</h3>
-                  <p className="mt-2 text-xs text-neutral-400 leading-relaxed">Heritage Collection</p>
-                </div>
-              </motion.article>
-            </div>
+            {products.filter((p) => p.category === 'individuals').map((p) => (
+              <ProductCard key={p.id} product={p} />
+            ))}
           </div>
         </div>
       </section>
@@ -175,30 +80,9 @@ export default function Home() {
           <h2 className="text-xl sm:text-2xl font-semibold leading-tight tracking-tight uppercase">Limited Drops</h2>
           <p className="mt-2 max-w-xl text-neutral-300 leading-relaxed">Exclusive pieces. Controlled release.</p>
           <div className="mt-8 flex flex-wrap justify-center gap-6">
-            {products.filter((p) => p.category === 'flagship').map((p) => {
-              const img = p.images?.[0]
-              return (
-                <Link to={`/product/${p.id}`} key={p.id} className="w-full max-w-[400px]">
-                  <article className="border border-neutral-800 bg-neutral-900">
-                    {img ? (
-                      <img
-                        src={img}
-                        alt={p.name}
-                        loading="lazy"
-                        className="aspect-[3/4] w-full border-b border-neutral-800 object-cover object-top bg-neutral-900"
-                        style={{ borderRadius: 0 }}
-                      />
-                    ) : (
-                      <div className="aspect-[3/4] border-b border-neutral-800 bg-neutral-900" />
-                    )}
-                    <div className="p-5">
-                      <h3 className="text-sm font-medium leading-snug truncate">{p.name}</h3>
-                      <p className="mt-2 text-xs text-neutral-400 leading-relaxed">{p.tagline}</p>
-                    </div>
-                  </article>
-                </Link>
-              )
-            })}
+            {products.filter((p) => p.category === 'flagship').map((p) => (
+              <ProductCard key={p.id} product={p} />
+            ))}
           </div>
         </div>
       </section>
