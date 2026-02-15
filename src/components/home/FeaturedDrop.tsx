@@ -12,7 +12,7 @@ export default function FeaturedDrop() {
         </div>
         <div className="mt-8 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 sm:gap-8">
           {featuredProducts.map((p) => (
-            <ProductCard key={p.id} product={p} showPrice className="w-full" />
+            <ProductCard key={p.id} product={p} className="w-full" />
           ))}
         </div>
       </div>

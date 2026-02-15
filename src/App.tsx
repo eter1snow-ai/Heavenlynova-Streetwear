@@ -4,7 +4,8 @@ import ProductDetail from './pages/ProductDetail'
 import Story from './pages/Story'
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useLocation, useNavigationType } from 'react-router-dom'
+import { useEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 
 function MotionPage({ children }: { children: React.ReactNode }) {
@@ -22,6 +23,21 @@ function MotionPage({ children }: { children: React.ReactNode }) {
 
 function AnimatedRoutes() {
   const location = useLocation()
+  const navType = useNavigationType()
+  // Scroll to top on route changes
+  // Use a layout-level effect to avoid landing at footer when navigating back
+  useEffect(() => {
+    const hero = document.getElementById('hero')
+    if (navType === 'POP') {
+      if (hero) {
+        hero.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      }
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }, [location.pathname, navType])
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>

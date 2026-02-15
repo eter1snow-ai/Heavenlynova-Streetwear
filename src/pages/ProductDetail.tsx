@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { getProductById } from '../data/drops'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import ZoomImage from '../components/shared/ZoomImage'
 
 const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'] as const
@@ -13,6 +13,24 @@ export default function ProductDetail() {
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
+
+  const isNeck = (src: string) => /neck/i.test(src)
+  const images = useMemo(() => (product?.images || []).filter(Boolean), [product])
+  const variantImages = useMemo(() => images.filter((s) => !isNeck(s)).slice(0, 2), [images])
+  const neckImages = useMemo(() => images.filter((s) => isNeck(s)), [images])
+  const [variantIndex, setVariantIndex] = useState<number>(0)
+  const mainFront = variantImages[variantIndex] || variantImages[0]
+  const swatches = useMemo(() => {
+    const mapColor = (p: string) => {
+      const file = (p.split('/').pop() || '').toLowerCase()
+      if (/green/.test(file)) return { label: 'green', hex: '#1f3a28', text: '#ffffff' }
+      if (/white/.test(file)) return { label: 'white', hex: '#ffffff', text: '#000000', border: '#e5e5e5' }
+      if (/creme|cream/.test(file)) return { label: 'creme', hex: '#e8dfcf', text: '#000000', border: '#cfc7b4' }
+      if (/black/.test(file)) return { label: 'black', hex: '#0b0b0b', text: '#ffffff' }
+      return { label: 'var', hex: '#888888', text: '#ffffff' }
+    }
+    return variantImages.map((p, i) => ({ index: i, src: p, ...mapColor(p) }))
+  }, [variantImages])
 
   if (!product) {
     return (
@@ -26,8 +44,6 @@ export default function ProductDetail() {
   }
 
   const isSeraphim = product.category === 'flagship'
-  const heroImages = product.images.filter(Boolean)
-  const isNeck = (src: string) => /neck/i.test(src)
 
   return (
     <main className="bg-black text-white">
@@ -39,36 +55,38 @@ export default function ProductDetail() {
       >
         <div className="grid gap-10 lg:grid-cols-[3fr_2fr]">
           <div className="lg:sticky lg:top-24 self-start">
-            {heroImages.length ? (
+            {images.length ? (
               <div className="grid gap-4 md:grid-cols-2">
-                {heroImages.map((src, idx) => {
-                  if (isNeck(src)) {
-                    return (
-                      <ZoomImage
-                        key={idx}
-                        src={src}
-                        alt={product.name}
-                        className="border border-neutral-800"
-                        zoomFactor={2.5}
-                      />
-                    )
-                  }
-                  return (
-                    <img
-                      key={idx}
-                      src={src}
+                {mainFront && (
+                  <div className="md:col-span-2">
+                    <motion.img
+                      src={mainFront}
                       alt={product.name}
-                      className="aspect-[3/4] w-full object-cover object-top border border-neutral-800"
+                      className="aspect-[3/4] w-full object-contain object-center"
                       style={{ borderRadius: 0, backgroundColor: 'transparent', mixBlendMode: 'normal' }}
                       loading="lazy"
+                      onLoad={() => console.log('✅ Front loaded', mainFront)}
                       onError={(e) => (e.currentTarget.src = '/Assets/Images/placeholder.svg')}
+                      initial={{ scale: 1 }}
+                      whileHover={{ scale: 1.02 }}
+                      transition={{ duration: 0.4, ease: 'easeInOut' }}
                     />
-                  )
-                })}
+                  </div>
+                )}
+                {neckImages[0] && (
+                  <div>
+                    <ZoomImage
+                      src={neckImages[0]}
+                      alt={`${product.name} neck`}
+                      className=""
+                      zoomFactor={2.2}
+                    />
+                  </div>
+                )}
               </div>
             ) : (
               <div
-                className="aspect-[3/4] w-full border border-neutral-800 bg-neutral-900"
+                className="aspect-[3/4] w-full bg-neutral-900"
                 style={{ borderRadius: 0 }}
               />
             )}
@@ -97,6 +115,55 @@ export default function ProductDetail() {
               <p className="text-xs text-neutral-400">Price</p>
               <p className="text-sm">{product.price}</p>
             </div>
+
+            {swatches.length ? (
+              <div className="space-y-2">
+                <p className="text-xs text-neutral-400">Color</p>
+                <div className="flex items-center gap-2">
+                  {swatches.map((v) => (
+                    <button
+                      key={v.index}
+                      aria-label={v.label}
+                      aria-pressed={variantIndex === v.index}
+                      onClick={() => {
+                        setVariantIndex(v.index)
+                        console.log('✅ Variant selected', v.label)
+                        try {
+                          const raw = localStorage.getItem('draftFormData')
+                          const data = raw ? JSON.parse(raw) : {}
+                          const next = { ...data, productId: product.id, color: v.label }
+                          localStorage.setItem('draftFormData', JSON.stringify(next))
+                          console.log('✅ Draft saved', next)
+                        } catch (err) {
+                          console.warn('Draft save failed', err)
+                        }
+                      }}
+                      className="border transition-transform"
+                      style={{
+                        borderRadius: '9999px',
+                        backgroundColor: v.hex,
+                        color: v.text,
+                        borderColor:
+                          (variantIndex === v.index ? '#ffffff' : (v.border || 'rgba(255,255,255,0.6)')),
+                        transform: variantIndex === v.index ? 'scale(1.02)' : 'scale(1)',
+                        fontWeight: 500,
+                        letterSpacing: '0.02em',
+                        minWidth: '84px',
+                        height: '28px',
+                        padding: '0 12px',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        textTransform: 'none',
+                        lineHeight: 1,
+                      }}
+                    >
+                      {v.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            ) : null}
 
             <div className="space-y-3">
               <p className="text-xs text-neutral-400">Size</p>

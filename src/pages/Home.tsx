@@ -15,7 +15,7 @@ export default function Home() {
         <div className="mx-auto w-full max-w-[1300px] px-6 lg:px-12">
           <div className="flex flex-wrap justify-center gap-6">
             {featured.map((p) => (
-              <ProductCard key={p!.id} product={p!} showPrice />
+              <ProductCard key={p!.id} product={p!} />
             ))}
           </div>
         </div>

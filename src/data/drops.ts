@@ -38,7 +38,7 @@ export const products: Product[] = [
     tagline: '240 GSM fleece',
     description: 'Heavyweight fleece hoodie, 240 GSM, clean hood profile.',
     price: '€59.90',
-    images: ['/Assets/Images/HeroNew.png'],
+    images: ['/Assets/Images/Preview/Esential Hoodie/HVN_Black_Hoodie_Original.png'],
   },
   {
     id: 'essentials-black',
@@ -48,19 +48,21 @@ export const products: Product[] = [
     description: 'Heavyweight fleece, monochrome black. Minimal silhouette, everyday comfort.',
     price: '€39.99',
     images: [
-      '/Assets/Images/Preview/Esentials_Black/Front.png',
+      '/Assets/Images/Preview/Esentials_Black/HVN_Black_Front.png',
+      '/Assets/Images/Preview/Esentials_Black/HVN_Green_Front.png',
       '/Assets/Images/Preview/Esentials_Black/Neck 300ppi.png',
     ],
   },
   {
     id: 'essentials-crem',
     category: 'essentials',
-    name: 'Essentials — Crem',
+    name: 'Essentials — Creme',
     tagline: '240 GSM cotton',
     description: 'Heavyweight cotton, warm crem tone. Clean lines, soft handfeel.',
     price: '€39.99',
     images: [
-      '/Assets/Images/Preview/Esential_Crem/Front.png',
+      '/Assets/Images/Preview/Esential_Crem/HVN_Creme_Front.png',
+      '/Assets/Images/Preview/Esential_Crem/HVN_WhIte_Front.png',
       '/Assets/Images/Preview/Esential_Crem/Neck Creme 300ppi.png',
     ],
   },
