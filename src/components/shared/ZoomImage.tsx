@@ -90,7 +90,7 @@ export default function ZoomImage({ src, alt, className, zoomFactor = 1.6 }: Pro
           transition: 'transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1)',
           backgroundColor: 'transparent',
           mixBlendMode: 'normal',
-          imageRendering: 'high-quality',
+          imageRendering: 'auto',
         }}
       />
     </div>
