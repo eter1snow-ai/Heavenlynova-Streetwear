@@ -17,6 +17,8 @@ export default function ZoomImage({ src, alt, className, zoomFactor = 1.6 }: Pro
   const rafRef = useRef<number | null>(null)
   const isDesktop =
     typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(pointer:fine)').matches
+  const isTouch =
+    typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(pointer:coarse)').matches
   const getHiResSrc = (s: string) => {
     let r = s
     r = r.replace(/_(small|compact|thumb|medium|large|grande)/gi, '')
@@ -65,19 +67,62 @@ export default function ZoomImage({ src, alt, className, zoomFactor = 1.6 }: Pro
     targetRef.current = { x: -(cx * k), y: -(cy * k) }
   }
 
+  const onTouchStart = () => {
+    if (!isTouch) return
+    console.log('✅ Mobile Zoom Events Fixed')
+    setHoverActive(true)
+    setScale(zoomFactor)
+    targetRef.current = { x: 0, y: 0 }
+  }
+  // removed inline onTouchMove; handled via native listener with passive:false
+  const onTouchEnd = () => {
+    if (!isTouch) return
+    setScale(1)
+    setHoverActive(false)
+    targetRef.current = { x: 0, y: 0 }
+    setTx(0)
+    setTy(0)
+  }
+
+  useEffect(() => {
+    const el = containerRef.current
+    if (!el || !isTouch) return
+    const handle = (e: TouchEvent) => {
+      if (!hoverActive) return
+      e.preventDefault()
+      const rect = el.getBoundingClientRect()
+      const t = e.touches[0]
+      if (!t) return
+      const x = t.clientX - rect.left
+      const y = t.clientY - rect.top
+      const cx = x - rect.width / 2
+      const cy = y - rect.height / 2
+      const k = zoomFactor - 1
+      targetRef.current = { x: -(cx * k), y: -(cy * k) }
+    }
+    el.addEventListener('touchmove', handle, { passive: false })
+    return () => {
+      el.removeEventListener('touchmove', handle)
+    }
+  }, [hoverActive, isTouch, zoomFactor])
+
   return (
     <div
       ref={containerRef}
       onMouseEnter={onEnter}
       onMouseLeave={onLeave}
       onMouseMove={onMove}
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
       className={`aspect-[3/4] w-full ${className ? className : ''}`}
-      style={{ overflow: 'hidden' }}
+      style={{ overflow: 'hidden', touchAction: hoverActive ? 'none' : 'auto' }}
     >
       <img
         src={getHiResSrc(src)}
         alt={alt}
         loading="lazy"
+        decoding="async"
+        fetchPriority="low"
         onLoad={() => console.log('✅ Neck loaded', src)}
         onError={(e) => (e.currentTarget.src = '/Assets/Images/placeholder.svg')}
         style={{
@@ -91,6 +136,8 @@ export default function ZoomImage({ src, alt, className, zoomFactor = 1.6 }: Pro
           backgroundColor: 'transparent',
           mixBlendMode: 'normal',
           imageRendering: 'auto',
+          zIndex: 20,
+          willChange: 'transform',
         }}
       />
     </div>
