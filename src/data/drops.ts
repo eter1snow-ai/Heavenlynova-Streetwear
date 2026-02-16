@@ -50,9 +50,9 @@ export const products: Product[] = [
     description: 'Heavyweight fleece, monochrome black. Minimal silhouette, everyday comfort.',
     price: '€39.99',
     images: [
-      '/Assets/Images/Preview/Esentials_Black/HVN_Black_Front.png',
-      '/Assets/Images/Preview/Esentials_Black/HVN_Green_Front.png',
-      '/Assets/Images/Preview/Esentials_Black/Neck black.png',
+      '/Assets/Images/Preview/Esentials_Black/HVN_Black_Front.webp',
+      '/Assets/Images/Preview/Esentials_Black/HVN_Green_Front.webp',
+      '/Assets/Images/Preview/Esentials_Black/Neck black.webp',
     ],
   },
   {
@@ -63,9 +63,9 @@ export const products: Product[] = [
     description: 'Heavyweight cotton, warm crem tone. Clean lines, soft handfeel.',
     price: '€39.99',
     images: [
-      '/Assets/Images/Preview/Esential_Crem/HVN_Creme_Front.png',
-      '/Assets/Images/Preview/Esential_Crem/HVN_WhIte_Front.png',
-      '/Assets/Images/Preview/Esential_Crem/Neck Creme 300ppi.png',
+      '/Assets/Images/Preview/Esential_Creme/HVN_Creme_Front.webp',
+      '/Assets/Images/Preview/Esential_Creme/HVN_WhIte_Front.webp',
+      '/Assets/Images/Preview/Esential_Creme/Neck Creme 300ppi.webp',
     ],
   },
 ]

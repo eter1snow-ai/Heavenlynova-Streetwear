@@ -121,7 +121,7 @@ export default function ProductDetail() {
                       className="aspect-[3/4] w-full object-contain object-center"
                       style={{ borderRadius: 0, backgroundColor: 'transparent', mixBlendMode: 'normal' }}
                       loading="lazy"
-                      onLoad={() => console.log('✅ Front loaded', mainFront)}
+                      onLoad={() => {}}
                       onError={(e) => (e.currentTarget.src = '/Assets/Images/placeholder.svg')}
                       initial={{ scale: 1 }}
                       whileHover={{ scale: 1.02 }}

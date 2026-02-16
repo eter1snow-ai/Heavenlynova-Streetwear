@@ -31,7 +31,7 @@ export default function ProductCard({ product, showPrice = false, className }: P
         initial={{ scale: 1 }}
         whileHover={{ scale: 1.02 }}
         transition={{ duration: 0.35, ease: 'easeInOut' }}
-        className="border border-neutral-800 bg-transparent"
+        className="border border-neutral-800 bg-transparent group"
       >
         <div className="relative aspect-[3/4] border-b border-neutral-800 overflow-hidden bg-transparent">
           {(front || alt) ? (
@@ -46,21 +46,38 @@ export default function ProductCard({ product, showPrice = false, className }: P
                   filter: product.id === 'core-hoodie' ? 'contrast(1.08) brightness(1.02)' : undefined
                 }}
                 loading="lazy"
-                onLoad={() => console.log('✅ Front loaded', variants[variantIndex]?.src || front)}
-                onError={(e) => (e.currentTarget.src = '/Assets/Images/placeholder.svg')}
+                onLoad={() => {}}
+                onError={(e) => {
+                  const src = e.currentTarget.src
+                  if (/\.webp($|\?)/i.test(src)) {
+                    e.currentTarget.src = src.replace(/\.webp($|\?)/i, '.png$1')
+                  } else {
+                    e.currentTarget.src = '/Assets/Images/placeholder.svg'
+                  }
+                }}
               />
               {neck && (
                 <motion.img
                   src={neck}
                   alt={`${product.name} neck`}
-                  className="absolute inset-0 w-full h-full object-cover object-center"
-                  style={{ backgroundColor: 'transparent', mixBlendMode: 'normal' }}
-                  initial={{ opacity: 0, scale: 1.02 }}
-                  whileHover={{ opacity: 1, scale: 1.03 }}
+                  className="absolute inset-0 w-full h-full object-cover object-top"
+                  style={{
+                    backgroundColor: 'transparent',
+                    mixBlendMode: 'normal',
+                  }}
+                  initial={{ opacity: 0, scale: 1 }}
+                  whileHover={{ opacity: 1, scale: 1.52, y: -32 }}
                   transition={{ duration: 0.5, ease: 'easeInOut' }}
                   loading="lazy"
-                  onLoad={() => console.log('✅ Neck overlay loaded', neck)}
-                  onError={(e) => (e.currentTarget.src = '/Assets/Images/placeholder.svg')}
+                  onLoad={() => {}}
+                onError={(e) => {
+                  const src = e.currentTarget.src
+                  if (/\.webp($|\?)/i.test(src)) {
+                    e.currentTarget.src = src.replace(/\.webp($|\?)/i, '.png$1')
+                  } else {
+                    e.currentTarget.src = '/Assets/Images/placeholder.svg'
+                  }
+                }}
                 />
               )}
             </>

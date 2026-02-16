@@ -123,8 +123,15 @@ export default function ZoomImage({ src, alt, className, zoomFactor = 1.6 }: Pro
         loading="lazy"
         decoding="async"
         fetchPriority="low"
-        onLoad={() => console.log('✅ Neck loaded', src)}
-        onError={(e) => (e.currentTarget.src = '/Assets/Images/placeholder.svg')}
+        onLoad={() => {}}
+        onError={(e) => {
+          const current = e.currentTarget.src
+          if (/\.webp($|\?)/i.test(current)) {
+            e.currentTarget.src = current.replace(/\.webp($|\?)/i, '.png$1')
+          } else {
+            e.currentTarget.src = '/Assets/Images/placeholder.svg'
+          }
+        }}
         style={{
           width: '100%',
           height: '100%',
