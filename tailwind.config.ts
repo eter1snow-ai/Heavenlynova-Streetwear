@@ -27,6 +27,9 @@ const config = {
         glowPurple: '0 0 20px rgba(168, 85, 247, 0.6)',
         glowCyan: '0 0 20px rgba(34, 211, 238, 0.6)',
       },
+      letterSpacing: {
+        'custom': '0.02em',
+      },
     },
   },
   plugins: [],

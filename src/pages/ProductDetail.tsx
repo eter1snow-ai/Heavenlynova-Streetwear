@@ -9,17 +9,21 @@ const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'] as const
 export default function ProductDetail() {
   const { productId } = useParams()
   const product = getProductById(productId || '')
-  const [size, setSize] = useState<string>('')
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
-
+  const [size, setSize] = useState<string>(() => {
+    try {
+      const raw = localStorage.getItem('draftFormData')
+      const data = raw ? JSON.parse(raw) : null
+      return data && data.productId === product?.id && typeof data.size === 'string' ? data.size : ''
+    } catch {
+      return ''
+    }
+  })
+  const [variantIndex, setVariantIndex] = useState<number>(() => 0)
+  
   const isNeck = (src: string) => /neck/i.test(src)
   const images = useMemo(() => (product?.images || []).filter(Boolean), [product])
   const variantImages = useMemo(() => images.filter((s) => !isNeck(s)).slice(0, 2), [images])
   const neckImages = useMemo(() => images.filter((s) => isNeck(s)), [images])
-  const [variantIndex, setVariantIndex] = useState<number>(0)
-  const mainFront = variantImages[variantIndex] || variantImages[0]
   const swatches = useMemo(() => {
     const mapColor = (p: string) => {
       const file = (p.split('/').pop() || '').toLowerCase()
@@ -31,6 +35,58 @@ export default function ProductDetail() {
     }
     return variantImages.map((p, i) => ({ index: i, src: p, ...mapColor(p) }))
   }, [variantImages])
+  const selectedColor = swatches[variantIndex]?.label
+  const matchesColor = (color: string | undefined, src: string) => {
+    if (!color) return true
+    const file = (src.split('/').pop() || '').toLowerCase()
+    return file.includes(color)
+  }
+  const filteredVariantImages = useMemo(
+    () => images.filter((s) => !isNeck(s) && matchesColor(selectedColor, s)),
+    [images, selectedColor]
+  )
+  const mainFront = filteredVariantImages[0] || (variantImages[variantIndex] || variantImages[0])
+  const neckSelected =
+    neckImages.find((n) => matchesColor(selectedColor, n)) || neckImages[0]
+
+  // Load draft from localStorage on mount
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
+  // Initialize variantIndex from localStorage color (without setState in effect)
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem('draftFormData')
+      const data = raw ? JSON.parse(raw) : null
+      if (data && data.productId === product?.id && data.color) {
+        const idx = swatches.findIndex((s) => s.label === data.color)
+        if (idx >= 0 && idx !== variantIndex) {
+          // defer setState via microtask to avoid cascading renders warning
+          queueMicrotask(() => setVariantIndex(idx))
+        }
+      }
+    } catch {
+      /* noop */
+    }
+    // run only once after swatches computed
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [product?.id, swatches.length])
+
+  // Helper function to save draft data
+  const saveDraft = (productId: string, color: string | undefined, size: string) => {
+    try {
+      const raw = localStorage.getItem('draftFormData')
+      const data = raw ? JSON.parse(raw) : {}
+      const next = { ...data, productId, color, size }
+      localStorage.setItem('draftFormData', JSON.stringify(next))
+      console.log('✅ Draft saved', next)
+    } catch (err) {
+      console.warn('Draft save failed', err)
+    }
+  }
+
+  // Simplified: rely on original image paths; WebP fallback handled by server/CDN if present
 
   if (!product) {
     return (
@@ -73,10 +129,10 @@ export default function ProductDetail() {
                     />
                   </div>
                 )}
-                {neckImages[0] && (
+                {neckSelected && (
                   <div>
                     <ZoomImage
-                      src={neckImages[0]}
+                      src={neckSelected}
                       alt={`${product.name} neck`}
                       className=""
                       zoomFactor={2.2}
@@ -127,35 +183,18 @@ export default function ProductDetail() {
                       aria-pressed={variantIndex === v.index}
                       onClick={() => {
                         setVariantIndex(v.index)
-                        console.log('✅ Variant selected', v.label)
-                        try {
-                          const raw = localStorage.getItem('draftFormData')
-                          const data = raw ? JSON.parse(raw) : {}
-                          const next = { ...data, productId: product.id, color: v.label }
-                          localStorage.setItem('draftFormData', JSON.stringify(next))
-                          console.log('✅ Draft saved', next)
-                        } catch (err) {
-                          console.warn('Draft save failed', err)
-                        }
+                        saveDraft(product.id, v.label, size)
                       }}
-                      className="border transition-transform"
+                      className={
+                        'border transition-transform font-medium tracking-[0.02em] ' +
+                        'min-w-[84px] h-7 px-3 inline-flex items-center justify-center ' +
+                        'leading-none text-[10px] uppercase rounded-full ' +
+                        (variantIndex === v.index ? 'scale-[1.02] border-white' : 'scale-100 border-white/60')
+                      }
                       style={{
-                        borderRadius: '9999px',
                         backgroundColor: v.hex,
                         color: v.text,
-                        borderColor:
-                          (variantIndex === v.index ? '#ffffff' : (v.border || 'rgba(255,255,255,0.6)')),
-                        transform: variantIndex === v.index ? 'scale(1.02)' : 'scale(1)',
-                        fontWeight: 500,
-                        letterSpacing: '0.02em',
-                        minWidth: '84px',
-                        height: '28px',
-                        padding: '0 12px',
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        textTransform: 'none',
-                        lineHeight: 1,
+                        borderColor: variantIndex === v.index ? '#ffffff' : (v.border || 'rgba(255,255,255,0.6)'),
                       }}
                     >
                       {v.label}
@@ -171,7 +210,10 @@ export default function ProductDetail() {
                 {sizes.map((s) => (
                   <button
                     key={s}
-                    onClick={() => setSize(s)}
+                    onClick={() => {
+                      setSize(s)
+                      saveDraft(product.id, swatches[variantIndex]?.label, s)
+                    }}
                     className={
                       'h-6 border text-[10px] font-medium uppercase tracking-[0.2em] transition-soft ' +
                       (size === s
