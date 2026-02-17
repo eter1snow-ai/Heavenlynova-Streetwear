@@ -33,19 +33,25 @@ export default function ProductDetail() {
       if (/black/.test(file)) return { label: 'black', hex: '#0b0b0b', text: '#ffffff' }
       return { label: 'var', hex: '#888888', text: '#ffffff' }
     }
-    return variantImages.map((p, i) => ({ index: i, src: p, ...mapColor(p) }))
+    const byLabel: Record<string, { index: number; src: string; label: string; hex: string; text: string; border?: string }> = {}
+    variantImages.forEach((p, i) => {
+      const c = mapColor(p)
+      if (!byLabel[c.label]) byLabel[c.label] = { index: i, src: p, ...c }
+    })
+    return Object.values(byLabel)
   }, [variantImages])
   const selectedColor = swatches[variantIndex]?.label
   const matchesColor = (color: string | undefined, src: string) => {
-    if (!color) return true
+    if (!color || color === 'var') return true
     const file = (src.split('/').pop() || '').toLowerCase()
     return file.includes(color)
   }
-  const filteredVariantImages = useMemo(
-    () => images.filter((s) => !isNeck(s) && matchesColor(selectedColor, s)),
-    [images, selectedColor]
-  )
-  const mainFront = filteredVariantImages[0] || (variantImages[variantIndex] || variantImages[0])
+  const filteredVariantImages = useMemo(() => {
+    if (!selectedColor || selectedColor === 'var') {
+      return images.filter((s) => !isNeck(s))
+    }
+    return images.filter((s) => !isNeck(s) && matchesColor(selectedColor, s))
+  }, [images, selectedColor])
   const neckSelected =
     neckImages.find((n) => matchesColor(selectedColor, n)) || neckImages[0]
 
@@ -113,22 +119,24 @@ export default function ProductDetail() {
           <div className="lg:sticky lg:top-24 self-start">
             {images.length ? (
               <div className="grid gap-4 md:grid-cols-2">
-                {mainFront && (
-                  <div className="md:col-span-2">
-                    <motion.img
-                      src={mainFront}
-                      alt={product.name}
-                      className="aspect-[3/4] w-full object-contain object-center"
-                      style={{ borderRadius: 0, backgroundColor: 'transparent', mixBlendMode: 'normal' }}
-                      loading="lazy"
-                      onLoad={() => {}}
-                      onError={(e) => (e.currentTarget.src = '/Assets/Images/placeholder.svg')}
-                      initial={{ scale: 1 }}
-                      whileHover={{ scale: 1.02 }}
-                      transition={{ duration: 0.4, ease: 'easeInOut' }}
-                    />
-                  </div>
-                )}
+                {filteredVariantImages.slice(0, 2).map((img, i) => (
+                  <motion.img
+                    key={i}
+                    src={img}
+                    alt={product.name}
+                    className={`aspect-[3/4] w-full object-contain ${i === 1 ? 'object-top' : 'object-center'}`}
+                    style={{ borderRadius: 0, backgroundColor: 'transparent', mixBlendMode: 'normal' }}
+                    loading="lazy"
+                    onLoad={() => console.log('✅ Variant loaded', img)}
+                    onError={(e) => {
+                      console.log('❌ Variant fallback', img)
+                      e.currentTarget.src = '/Assets/Images/placeholder.svg'
+                    }}
+                    initial={{ scale: i === 1 ? 1.18 : 1 }}
+                    whileHover={{ scale: i === 1 ? 1.24 : 1 }}
+                    transition={{ duration: 0.5, ease: 'easeInOut' }}
+                  />
+                ))}
                 {neckSelected && (
                   <div>
                     <ZoomImage
@@ -172,7 +180,7 @@ export default function ProductDetail() {
               <p className="text-sm">{product.price}</p>
             </div>
 
-            {swatches.length ? (
+            {swatches.length > 1 ? (
               <div className="space-y-2">
                 <p className="text-xs text-neutral-400">Color</p>
                 <div className="flex items-center gap-2">

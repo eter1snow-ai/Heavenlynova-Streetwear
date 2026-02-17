@@ -29,24 +29,33 @@ export default function ProductCard({ product, showPrice = false, className }: P
     <Link to={`/product/${product.id}`} className={className ? className : 'w-full max-w-[400px]'}>
       <motion.article
         initial={{ scale: 1 }}
-        whileHover={{ scale: 1.02 }}
+        whileHover={{ scale: 1 }}
         transition={{ duration: 0.35, ease: 'easeInOut' }}
         className="border border-neutral-800 bg-transparent group"
       >
-        <div className="relative aspect-[3/4] border-b border-neutral-800 overflow-hidden bg-transparent">
+        <div className="relative w-full border-b border-neutral-800 bg-transparent">
           {(front || alt) ? (
             <>
               <motion.img
                 src={(variants[variantIndex]?.src) || front || alt!}
                 alt={product.name}
-                className="absolute inset-0 w-full h-full object-cover object-center"
+                className="block w-full h-auto object-contain object-top"
                 style={{
                   backgroundColor: 'transparent',
                   mixBlendMode: 'normal',
+                  imageRendering: 'auto',
                   filter: product.id === 'core-hoodie' ? 'contrast(1.08) brightness(1.02)' : undefined
                 }}
                 loading="lazy"
-                onLoad={() => {}}
+                onLoad={(e) => {
+                  const nw = e.currentTarget.naturalWidth
+                  const nh = e.currentTarget.naturalHeight
+                  const cw = e.currentTarget.clientWidth
+                  const ch = e.currentTarget.clientHeight
+                  const upscaled = cw > nw || ch > nh
+                  console.log(`🔄 Card front ${product.name}: natural ${nw}x${nh}, rendered ${cw}x${ch}`)
+                  console.log(upscaled ? '❌ CSS scaling/upscaling detected on card' : '✅ Native resolution on card')
+                }}
                 onError={(e) => {
                   const src = e.currentTarget.src
                   if (/\.webp($|\?)/i.test(src)) {
@@ -54,30 +63,73 @@ export default function ProductCard({ product, showPrice = false, className }: P
                   } else {
                     e.currentTarget.src = '/Assets/Images/placeholder.svg'
                   }
+                  console.log('❌ Front fallback', product.name)
                 }}
               />
               {neck && (
                 <motion.img
                   src={neck}
                   alt={`${product.name} neck`}
-                  className="absolute inset-0 w-full h-full object-cover object-top"
+                  className="absolute inset-0 w-full h-full object-contain object-top"
                   style={{
                     backgroundColor: 'transparent',
                     mixBlendMode: 'normal',
+                    imageRendering: 'auto',
                   }}
                   initial={{ opacity: 0, scale: 1 }}
-                  whileHover={{ opacity: 1, scale: 1.52, y: -32 }}
+                  whileHover={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, ease: 'easeInOut' }}
                   loading="lazy"
-                  onLoad={() => {}}
-                onError={(e) => {
-                  const src = e.currentTarget.src
-                  if (/\.webp($|\?)/i.test(src)) {
-                    e.currentTarget.src = src.replace(/\.webp($|\?)/i, '.png$1')
-                  } else {
-                    e.currentTarget.src = '/Assets/Images/placeholder.svg'
-                  }
-                }}
+                  onLoad={(e) => {
+                    const nw = e.currentTarget.naturalWidth
+                    const nh = e.currentTarget.naturalHeight
+                    const cw = e.currentTarget.clientWidth
+                    const ch = e.currentTarget.clientHeight
+                    const upscaled = cw > nw || ch > nh
+                    console.log(`🔄 Card neck ${product.name}: natural ${nw}x${nh}, rendered ${cw}x${ch}`)
+                    console.log(upscaled ? '❌ CSS scaling/upscaling detected on neck overlay' : '✅ Native resolution on neck overlay')
+                  }}
+                  onError={(e) => {
+                    const src = e.currentTarget.src
+                    if (/\.webp($|\?)/i.test(src)) {
+                      e.currentTarget.src = src.replace(/\.webp($|\?)/i, '.png$1')
+                    } else {
+                      e.currentTarget.src = '/Assets/Images/placeholder.svg'
+                    }
+                  }}
+                />
+              )}
+              {!neck && alt && (
+                <motion.img
+                  src={alt}
+                  alt={`${product.name} alt`}
+                  className="absolute inset-0 w-full h-full object-contain object-top"
+                  initial={{ opacity: 0, scale: 1 }}
+                  whileHover={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, ease: 'easeInOut' }}
+                  loading="lazy"
+                  onLoad={(e) => {
+                    const nw = e.currentTarget.naturalWidth
+                    const nh = e.currentTarget.naturalHeight
+                    const cw = e.currentTarget.clientWidth
+                    const ch = e.currentTarget.clientHeight
+                    const upscaled = cw > nw || ch > nh
+                    console.log(`🔄 Card alt ${product.name}: natural ${nw}x${nh}, rendered ${cw}x${ch}`)
+                    console.log(upscaled ? '❌ CSS scaling/upscaling detected on alt overlay' : '✅ Native resolution on alt overlay')
+                    if (product.id === 'essentials-black') {
+                      console.log('🔄 Mapping Black Main...')
+                      console.log('✅ Black Consistency Sync')
+                    }
+                  }}
+                  onError={(e) => {
+                    const src = e.currentTarget.src
+                    if (/\.webp($|\?)/i.test(src)) {
+                      e.currentTarget.src = src.replace(/\.webp($|\?)/i, '.png$1')
+                    } else {
+                      e.currentTarget.src = '/Assets/Images/placeholder.svg'
+                    }
+                    console.log('❌ Alt hover fallback', product.name)
+                  }}
                 />
               )}
             </>

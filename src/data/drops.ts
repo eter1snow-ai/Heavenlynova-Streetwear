@@ -50,22 +50,33 @@ export const products: Product[] = [
     description: 'Heavyweight fleece, monochrome black. Minimal silhouette, everyday comfort.',
     price: '€39.99',
     images: [
-      '/Assets/Images/Preview/Esentials_Black/HVN_Black_Front.webp',
-      '/Assets/Images/Preview/Esentials_Black/HVN_Green_Front.webp',
-      '/Assets/Images/Preview/Esentials_Black/Neck black.webp',
+      '/Assets/Images/Preview/Esentials_Black/Close up Black.webp',
+      '/Assets/Images/Preview/Esentials_Black/Black Model.webp',
     ],
   },
   {
     id: 'essentials-crem',
     category: 'essentials' as Category,
-    name: 'Essentials — Creme',
+    name: 'Essentials — White',
     tagline: '240 GSM cotton',
-    description: 'Heavyweight cotton, warm crem tone. Clean lines, soft handfeel.',
+    description: 'Heavyweight cotton, clean white tone. Minimal silhouette.',
     price: '€39.99',
     images: [
-      '/Assets/Images/Preview/Esential_Creme/HVN_Creme_Front.webp',
-      '/Assets/Images/Preview/Esential_Creme/HVN_WhIte_Front.webp',
-      '/Assets/Images/Preview/Esential_Creme/Neck Creme 300ppi.webp',
+      '/Assets/Images/Preview/Esential_White/White Close up.webp',
+      '/Assets/Images/Preview/Esential_White/WHite Model.webp',
+    ],
+  },
+
+  {
+    id: 'esential-skye-blue',
+    category: 'essentials' as Category,
+    name: 'Esential Skye Blue',
+    tagline: '240 GSM cotton',
+    description: 'Skye Blue tee. Clean silhouette. Heavyweight comfort.',
+    price: '€39.99',
+    images: [
+      '/Assets/Images/Preview/Esential_Skye _Blue/Close up Sky blue.webp',
+      '/Assets/Images/Preview/Esential_Skye _Blue/Skye Blue model.webp',
     ],
   },
 ]
