@@ -2,9 +2,9 @@ import { motion } from 'framer-motion'
 import { useEffect } from 'react'
 
 export default function Story() {
-  // Scroll to top when component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
+    console.log('✅ THE ORIGIN PIECE section ready');
   }, []);
 
   return (
@@ -47,7 +47,6 @@ export default function Story() {
       {/* Hairline Separator */}
       <div className="border-t border-white/10"></div>
 
-      {/* Editorial Content */}
       <section className="mx-auto max-w-[1300px] px-6 lg:px-12 py-24 sm:py-32">
         <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:gap-24">
           <div className="hidden lg:block">
@@ -99,6 +98,50 @@ export default function Story() {
           </motion.div>
         </div>
       </section>
+      <motion.section
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.4 }}
+        transition={{ duration: 0.9, ease: 'easeOut' }}
+        className="border-t border-white/10 bg-black"
+      >
+        <div className="mx-auto max-w-[1300px] px-6 lg:px-12 py-16 sm:py-24">
+          <div className="mb-10">
+            <p className="text-xs sm:text-sm leading-relaxed text-neutral-400 opacity-50 tracking-widest">
+              Those who reach the end carry the first symbol.
+            </p>
+          </div>
+          <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] items-stretch">
+            <div className="relative overflow-hidden border border-neutral-800 bg-neutral-950">
+              <div className="h-64 sm:h-80 md:h-96 w-full bg-neutral-900" />
+            </div>
+            <div className="flex flex-col justify-between space-y-6">
+              <div className="space-y-4">
+                <p className="text-xs uppercase tracking-[0.3em] text-neutral-500">
+                  Exclusive Item
+                </p>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif tracking-tight uppercase text-white">
+                  THE ORIGIN PIECE
+                </h2>
+                <p className="text-xs uppercase tracking-[0.25em] text-neutral-400">
+                  Available only to those who seek.
+                </p>
+                <p className="mt-4 text-sm sm:text-base leading-relaxed text-neutral-300 max-w-md">
+                  Origin Tee - Chapter 00 is reserved for those who reach the end of the story. A quiet signal that you were here first.
+                </p>
+              </div>
+              <div>
+                <button
+                  className="inline-flex items-center border border-white/40 bg-transparent px-6 py-3 text-xs font-semibold uppercase tracking-[0.24em] text-white transition-soft hover:border-white hover:bg-white hover:text-black"
+                  style={{ borderRadius: 0 }}
+                >
+                  Claim Design
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </motion.section>
     </main>
   )
 }
