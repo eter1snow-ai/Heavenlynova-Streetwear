@@ -6,35 +6,12 @@ export default function Hero() {
       id="hero"
       className="relative flex h-[50vh] lg:h-[60vh] w-full items-end bg-black text-white pb-40 overflow-hidden"
     >
-      {/* Video Background */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
+      {/* Static Image Background */}
+      <img
+        src="/Assets/Images/Hero2.jpeg"
+        alt="HeavenlyNova Hero"
         className="absolute inset-0 h-full w-full object-cover object-center"
-        style={{ 
-          opacity: 0.35,
-          objectPosition: 'center 43%',
-          filter: 'contrast(1.05) saturate(0.9) brightness(0.9)'
-        }}
-      >
-        <source src="/Assets/Images/5818973-uhd_3840_2160_24fps.mp4" type="video/mp4" />
-      </video>
-      
-      {/* Vignette + Dark Overlay */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/40" />
-      <div className="pointer-events-none absolute inset-0" 
-        style={{
-          background: 'radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.7) 100%)'
-        }}
-      />
-      
-      {/* Chromatic Aberration Effect */}
-      <div className="pointer-events-none absolute inset-0 mix-blend-screen opacity-10"
-        style={{
-          background: 'radial-gradient(ellipse at center, transparent 70%, rgba(0,150,255,0.12) 85%, rgba(255,50,100,0.08) 100%)'
-        }}
+        style={{ objectPosition: 'center 60%', opacity: 0.7 }}
       />
       
       {/* Content */}
