@@ -37,10 +37,25 @@ export const products: Product[] = [
     id: 'core-hoodie',
     category: 'essentials' as Category,
     name: 'Core Hoodie',
-    tagline: '240 GSM fleece',
-    description: 'Heavyweight fleece hoodie, 240 GSM, clean hood profile.',
-    price: '€59.90',
-    images: ['/Assets/Images/Preview/Esential Hoodie/HVN_Black_Hoodie_Original.png'],
+    tagline: '350 GSM Heavyweight Organic Cotton',
+    description: 'Heavyweight organic cotton hoodie, 350 GSM, clean hood profile.',
+    price: '€79.99',
+    images: [
+      '/Assets/Images/Preview/Esential Hoodie/HVN_Black_Hoodie_Original.webp',
+      '/Assets/Images/Preview/Esential Hoodie/save.webp'
+    ],
+  },
+  {
+    id: 'core-hoodie-white',
+    category: 'essentials' as Category,
+    name: 'Core Hoodie',
+    tagline: '350 GSM Heavyweight Organic Cotton',
+    description: 'Heavyweight organic cotton hoodie, 350 GSM, clean hood profile.',
+    price: '€79.99',
+    images: [
+      '/Assets/Images/Preview/Esential Hoodie/spod-3358987-1-12943-null-2.webp',
+      '/Assets/Images/Preview/Esential Hoodie/save.webp'
+    ],
   },
   {
     id: 'essentials-black',

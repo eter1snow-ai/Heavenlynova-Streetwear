@@ -144,7 +144,7 @@ export default function ProductCard({ product, showPrice = false, className }: P
               <p className="text-sm font-semibold tracking-wide text-white mt-2">{product.price}</p>
               <p className="text-xs opacity-70 mt-1">Worldwide shipping included</p>
               <div className="mt-3 flex items-center gap-2">
-                {variants.map((v) => (
+                {variants.filter(v => v.label !== 'var').map((v) => (
                   <button
                     key={v.index}
                     aria-label={v.label}

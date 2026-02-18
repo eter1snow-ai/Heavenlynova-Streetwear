@@ -30,7 +30,7 @@ export default function ProductDetail() {
       if (/green/.test(file)) return { label: 'green', hex: '#1f3a28', text: '#ffffff' }
       if (/white/.test(file)) return { label: 'white', hex: '#ffffff', text: '#000000', border: '#e5e5e5' }
       if (/creme|cream/.test(file)) return { label: 'creme', hex: '#e8dfcf', text: '#000000', border: '#cfc7b4' }
-      if (/black/.test(file)) return { label: 'black', hex: '#0b0b0b', text: '#ffffff' }
+      if (/black|hoodie|save/i.test(file)) return { label: 'black', hex: '#0b0b0b', text: '#ffffff' }
       return { label: 'var', hex: '#888888', text: '#ffffff' }
     }
     const byLabel: Record<string, { index: number; src: string; label: string; hex: string; text: string; border?: string }> = {}
@@ -119,7 +119,7 @@ export default function ProductDetail() {
           <div className="lg:sticky lg:top-24 self-start">
             {images.length ? (
               <div className="grid gap-4 md:grid-cols-2">
-                {filteredVariantImages.slice(0, 2).map((img, i) => (
+                {filteredVariantImages.map((img, i) => (
                   <motion.img
                     key={i}
                     src={img}
@@ -180,11 +180,11 @@ export default function ProductDetail() {
               <p className="text-sm">{product.price}</p>
             </div>
 
-            {swatches.length > 1 ? (
+            {swatches.length > 1 && swatches.filter(s => s.label !== 'var').length > 1 ? (
               <div className="space-y-2">
                 <p className="text-xs text-neutral-400">Color</p>
                 <div className="flex items-center gap-2">
-                  {swatches.map((v) => (
+                  {swatches.filter(s => s.label !== 'var').map((v) => (
                     <button
                       key={v.index}
                       aria-label={v.label}

@@ -24,20 +24,14 @@ function MotionPage({ children }: { children: React.ReactNode }) {
 function AnimatedRoutes() {
   const location = useLocation()
   const navType = useNavigationType()
-  // Scroll to top on route changes
-  // Use a layout-level effect to avoid landing at footer when navigating back
+  
   useEffect(() => {
-    const hero = document.getElementById('hero')
-    if (navType === 'POP') {
-      if (hero) {
-        hero.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' })
-      }
-    } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-    }
-  }, [location.pathname, navType])
+    // Delay scroll to allow page render
+    const timer = setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'instant' })
+    }, 50)
+    return () => clearTimeout(timer)
+  }, [location.pathname])
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>

@@ -1,10 +1,31 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [isDesktop, setIsDesktop] = useState(false)
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, anchor: string) => {
+    e.preventDefault()
+    if (location.pathname !== '/') {
+      navigate('/')
+      setTimeout(() => {
+        document.getElementById(anchor)?.scrollIntoView({ behavior: 'smooth' })
+      }, 100)
+    } else {
+      document.getElementById(anchor)?.scrollIntoView({ behavior: 'smooth' })
+    }
+    setOpen(false)
+  }
+
+  const handleDropsClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault()
+    navigate('/drops')
+    setOpen(false)
+  }
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10)
@@ -49,74 +70,85 @@ export default function Navbar() {
             <span>{open ? 'Close' : 'Menu'}</span>
           </button>
         )}
-        <ul className="hidden gap-8 md:flex list-none">
-          <li>
-            <Link
-              className="text-sm font-medium uppercase tracking-widest text-white visited:text-white no-underline transition-soft hover:text-white"
-              to="/drops"
-            >
-              Drops
-            </Link>
-          </li>
-          <li>
-            <a
-              className="text-sm font-medium uppercase tracking-widest text-white visited:text-white no-underline transition-soft hover:text-white"
-              href="#heritage"
-            >
-              T-Shirts
-            </a>
-          </li>
-          <li>
-            <a
-              className="text-sm font-medium uppercase tracking-widest text-white visited:text-white no-underline transition-soft hover:text-white"
-              href="#essentials"
-            >
-              Hoodies
-            </a>
-          </li>
-          <li>
-            <a
-              className="text-sm font-medium uppercase tracking-widest text-white visited:text-white no-underline transition-soft hover:text-white"
-              href="#drops"
-            >
-              Shirts
-            </a>
-          </li>
-        </ul>
+        <div className="hidden md:flex items-center gap-8">
+          <ul className="flex gap-8 list-none">
+            <li>
+              <a
+                className="text-sm font-medium uppercase tracking-widest text-white visited:text-white no-underline transition-soft hover:text-white cursor-pointer"
+                onClick={handleDropsClick}
+              >
+                Drops
+              </a>
+            </li>
+            <li>
+              <a
+                className="text-sm font-medium uppercase tracking-widest text-white visited:text-white no-underline transition-soft hover:text-white cursor-pointer"
+                onClick={(e) => handleAnchorClick(e, 'heritage')}
+              >
+                Heritage
+              </a>
+            </li>
+            <li>
+              <a
+                className="text-sm font-medium uppercase tracking-widest text-white visited:text-white no-underline transition-soft hover:text-white cursor-pointer"
+                onClick={(e) => handleAnchorClick(e, 'limited-drops')}
+              >
+                Seraphim
+              </a>
+            </li>
+            <li>
+              <a
+                className="text-sm font-medium uppercase tracking-widest text-white visited:text-white no-underline transition-soft hover:text-white cursor-pointer"
+                onClick={(e) => handleAnchorClick(e, 'essentials')}
+              >
+                Essentials
+              </a>
+            </li>
+          </ul>
+          <span className="text-white/30">|</span>
+          <a className="text-xs font-medium uppercase tracking-widest text-white/60 visited:text-white/60 no-underline transition-soft hover:text-white cursor-pointer">
+            Gift Card
+          </a>
+        </div>
       </nav>
       {open && !isDesktop && (
         <div className="md:hidden">
           <ul className="space-y-2 border-t border-neutral-800 px-6 py-4 list-none">
             <li>
-              <Link
-                className="block text-sm font-medium uppercase tracking-widest text-white visited:text-white no-underline transition-soft hover:text-white"
-                to="/drops"
+              <a
+                className="block text-sm font-medium uppercase tracking-widest text-white visited:text-white no-underline transition-soft hover:text-white cursor-pointer"
+                onClick={handleDropsClick}
               >
                 Drops
-              </Link>
-            </li>
-            <li>
-              <a
-                className="block text-sm font-medium uppercase tracking-widest text-white visited:text-white no-underline transition-soft hover:text-white"
-                href="#heritage"
-              >
-                T-Shirts
               </a>
             </li>
             <li>
               <a
-                className="block text-sm font-medium uppercase tracking-widest text-white visited:text-white no-underline transition-soft hover:text-white"
-                href="#essentials"
+                className="block text-sm font-medium uppercase tracking-widest text-white visited:text-white no-underline transition-soft hover:text-white cursor-pointer"
+                onClick={(e) => handleAnchorClick(e, 'heritage')}
               >
-                Hoodies
+                Heritage
               </a>
             </li>
             <li>
               <a
-                className="block text-sm font-medium uppercase tracking-widest text-white visited:text-white no-underline transition-soft hover:text-white"
-                href="#drops"
+                className="block text-sm font-medium uppercase tracking-widest text-white visited:text-white no-underline transition-soft hover:text-white cursor-pointer"
+                onClick={(e) => handleAnchorClick(e, 'limited-drops')}
               >
-                Shirts
+                Seraphim
+              </a>
+            </li>
+            <li>
+              <a
+                className="block text-sm font-medium uppercase tracking-widest text-white visited:text-white no-underline transition-soft hover:text-white cursor-pointer"
+                onClick={(e) => handleAnchorClick(e, 'essentials')}
+              >
+                Essentials
+              </a>
+            </li>
+            <li className="pt-2 border-t border-neutral-800/50">
+              <a className="block text-xs font-medium uppercase tracking-widest text-white/60 visited:text-white/60 no-underline transition-soft hover:text-white cursor-pointer">
+                Gift Card
               </a>
             </li>
           </ul>

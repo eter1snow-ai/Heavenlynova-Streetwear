@@ -41,10 +41,16 @@ export default function Footer() {
                 Drops
               </div>
               <div className="text-xs uppercase tracking-wide text-white/60 hover:text-white transition-colors cursor-pointer">
-                T-Shirts
+                Heritage
               </div>
               <div className="text-xs uppercase tracking-wide text-white/60 hover:text-white transition-colors cursor-pointer">
-                Hoodies
+                Seraphim
+              </div>
+              <div className="text-xs uppercase tracking-wide text-white/60 hover:text-white transition-colors cursor-pointer">
+                Essentials
+              </div>
+              <div className="text-xs uppercase tracking-wide text-white/60 hover:text-white transition-colors cursor-pointer">
+                Gift Card
               </div>
             </nav>
           </div>
@@ -56,10 +62,16 @@ export default function Footer() {
             </h3>
             <nav className="space-y-3">
               <div className="text-xs uppercase tracking-wide text-white/60 hover:text-white transition-colors cursor-pointer">
-                Shipping Policy
+                Contact Us
+              </div>
+              <div className="text-xs uppercase tracking-wide text-white/60 hover:text-white transition-colors cursor-pointer">
+                Privacy Policy
               </div>
               <div className="text-xs uppercase tracking-wide text-white/60 hover:text-white transition-colors cursor-pointer">
                 Refund Policy
+              </div>
+              <div className="text-xs uppercase tracking-wide text-white/60 hover:text-white transition-colors cursor-pointer">
+                Shipping Policy
               </div>
               <div className="text-xs uppercase tracking-wide text-white/60 hover:text-white transition-colors cursor-pointer">
                 Terms of Service
@@ -78,6 +90,9 @@ export default function Footer() {
               </div>
               <div className="text-xs uppercase tracking-wide text-white/60 hover:text-white transition-colors cursor-pointer">
                 TikTok
+              </div>
+              <div className="text-xs uppercase tracking-wide text-white/60 hover:text-white transition-colors cursor-pointer">
+                Facebook
               </div>
             </nav>
           </div>

@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom'
 import ProductCard from '../components/shared/ProductCard'
 
 export default function Home() {
-  const essentials = products.filter((p) => p.category === 'essentials').slice(0, 2)
   const heritage = products.find((p) => p.category === 'individuals')
-  const featured = [...essentials, heritage].filter(Boolean)
+  const coreHoodie = products.find((p) => p.id === 'core-hoodie')
+  const featured = [heritage, coreHoodie].filter(Boolean)
 
   return (
     <main className="bg-black">
@@ -42,7 +42,7 @@ export default function Home() {
           <h2 className="text-xl sm:text-2xl font-semibold leading-tight tracking-tight uppercase">The Essentials</h2>
           <p className="mt-2 max-w-xl text-neutral-300 leading-relaxed">Daily wear. Minimal. Heavyweight comfort.</p>
           <div className="mt-8 flex flex-wrap justify-center gap-8">
-            {products.filter((p) => p.category === 'essentials').map((p) => (
+            {products.filter((p) => p.category === 'essentials' && p.id !== 'core-hoodie').map((p) => (
               <ProductCard key={p.id} product={p} />
             ))}
           </div>
@@ -77,7 +77,7 @@ export default function Home() {
 
       <section id="limited-drops" className="bg-neutral-950 text-white py-10 sm:py-16 lg:py-24">
         <div className="mx-auto w-full max-w-[1300px] px-6 lg:px-12">
-          <h2 className="text-xl sm:text-2xl font-semibold leading-tight tracking-tight uppercase">Limited Drops</h2>
+          <h2 className="text-xl sm:text-2xl font-semibold leading-tight tracking-tight uppercase">Seraphim</h2>
           <p className="mt-2 max-w-xl text-neutral-300 leading-relaxed">Exclusive pieces. Controlled release.</p>
           <div className="mt-8 flex flex-wrap justify-center gap-6">
             {products.filter((p) => p.category === 'flagship').map((p) => (
