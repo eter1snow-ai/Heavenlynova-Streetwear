@@ -4,7 +4,9 @@ import ProductDetail from './pages/ProductDetail'
 import Story from './pages/Story'
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
-import { BrowserRouter, Routes, Route, useLocation, useNavigationType } from 'react-router-dom'
+import EmailCapture from './components/shared/EmailCapture'
+import CookieBanner from './components/shared/CookieBanner'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 
@@ -23,7 +25,6 @@ function MotionPage({ children }: { children: React.ReactNode }) {
 
 function AnimatedRoutes() {
   const location = useLocation()
-  const navType = useNavigationType()
   
   useEffect(() => {
     // Delay scroll to allow page render
@@ -48,6 +49,8 @@ function AnimatedRoutes() {
 export default function App() {
   return (
     <BrowserRouter>
+      <EmailCapture />
+      <CookieBanner />
       <div className="min-h-screen bg-black text-white hn-radius-0">
         <Navbar />
         <AnimatedRoutes />

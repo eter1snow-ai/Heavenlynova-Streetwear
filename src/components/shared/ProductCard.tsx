@@ -29,9 +29,15 @@ export default function ProductCard({ product, showPrice = false, className }: P
     <Link to={`/product/${product.id}`} className={className ? className : 'w-full max-w-[400px]'}>
       <motion.article
         initial={{ scale: 1 }}
-        whileHover={{ scale: 1 }}
+        whileHover={{ 
+          scale: 1.02,
+          boxShadow: '0 0 30px rgba(255, 255, 255, 0.08), 0 8px 24px rgba(0, 0, 0, 0.4)'
+        }}
         transition={{ duration: 0.35, ease: 'easeInOut' }}
         className="border border-neutral-800 bg-transparent group"
+        style={{
+          boxShadow: '0 0 0 rgba(255, 255, 255, 0)'
+        }}
       >
         <div className="relative w-full border-b border-neutral-800 bg-transparent">
           {(front || alt) ? (

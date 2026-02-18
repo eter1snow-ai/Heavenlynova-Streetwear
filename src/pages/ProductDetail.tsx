@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { getProductById } from '../data/drops'
 import { useEffect, useState, useMemo } from 'react'
 import ZoomImage from '../components/shared/ZoomImage'
+import SizeGuideModal from '../components/shared/SizeGuideModal'
 
 const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'] as const
 
@@ -19,6 +20,7 @@ export default function ProductDetail() {
     }
   })
   const [variantIndex, setVariantIndex] = useState<number>(() => 0)
+  const [showSizeGuide, setShowSizeGuide] = useState(false)
   
   const isNeck = (src: string) => /neck/i.test(src)
   const images = useMemo(() => (product?.images || []).filter(Boolean), [product])
@@ -213,7 +215,15 @@ export default function ProductDetail() {
             ) : null}
 
             <div className="space-y-3">
-              <p className="text-xs text-neutral-400">Size</p>
+              <div className="flex items-center justify-between">
+                <p className="text-xs text-neutral-400">Size</p>
+                <button
+                  onClick={() => setShowSizeGuide(true)}
+                  className="text-xs text-neutral-400 hover:text-white transition-colors underline"
+                >
+                  Size Guide
+                </button>
+              </div>
               <div className="grid grid-cols-6 gap-2">
                 {sizes.map((s) => (
                   <button
@@ -237,6 +247,12 @@ export default function ProductDetail() {
               </div>
             </div>
 
+            <SizeGuideModal
+              isOpen={showSizeGuide}
+              onClose={() => setShowSizeGuide(false)}
+              productType={product.id.includes('hoodie') ? 'hoodie' : 'tshirt'}
+            />
+
             <button
               className="w-full border border-white bg-transparent py-3 text-xs font-semibold uppercase tracking-[0.24em] text-white transition-soft hover:bg-white hover:text-black"
               style={{ borderRadius: 0 }}
@@ -245,10 +261,6 @@ export default function ProductDetail() {
             </button>
 
             <p className="text-sm md:text-base text-neutral-300 leading-relaxed max-w-[90%] md:max-w-none">{product.description}</p>
-
-            <div className="pt-2 text-xs text-neutral-500">
-              240 GSM — heavyweight comfort, minimal silhouette.
-            </div>
           </div>
         </div>
       </motion.section>

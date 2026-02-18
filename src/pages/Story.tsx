@@ -15,14 +15,15 @@ export default function Story() {
           className="absolute inset-0 h-full w-full bg-black"
         >
           <img
-            src="/Assets/Images/Story1.jpg"
+            src="/Assets/Images/Heavenly story of Nova.webp"
             alt="HeavenlyNova Origin"
-            className="h-full w-full object-cover object-center opacity-90"
+            className="h-full w-full object-cover opacity-90"
             style={{ 
               borderRadius: 0,
+              objectPosition: 'center 43%',
               filter: 'contrast(1.2) saturate(0.8) brightness(0.9)',
-              maskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)',
-              WebkitMaskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)'
+              maskImage: 'linear-gradient(to bottom, black 40%, transparent 95%)',
+              WebkitMaskImage: 'linear-gradient(to bottom, black 40%, transparent 95%)'
             }}
           />
           {/* Mysterious overlay effect */}
