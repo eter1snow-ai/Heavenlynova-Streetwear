@@ -1,9 +1,19 @@
+import { Link } from 'react-router-dom'
+
 export default function Footer() {
+  const handleAnchorClick = (anchor: string) => {
+    if (window.location.pathname !== '/') {
+      window.location.href = '/#' + anchor
+    } else {
+      document.getElementById(anchor)?.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   return (
     <footer className="relative w-full bg-black text-white py-20 md:py-24 overflow-hidden">
       {/* Video Background */}
       <video
-        className="absolute inset-0 w-full h-full object-cover opacity-40"
+        className="absolute inset-0 w-full h-full object-cover opacity-20"
         src="/Assets/Images/Video1.mp4"
         autoPlay
         loop
@@ -11,14 +21,17 @@ export default function Footer() {
         playsInline
       />
       
+      {/* Dark overlay pentru contrast mai bun */}
+      <div className="absolute inset-0 bg-black/60 z-[1]"></div>
+      
       <div className="relative z-10 max-w-[1400px] mx-auto px-8">
         
-        {/* Zona 1 - Brand Statement */}
+        {/* Brand Statement */}
         <p className="text-center text-xs uppercase tracking-[0.2em] text-white/40 mb-12">
           Made for the ones who burn
         </p>
         
-        {/* Zona 2 - Grid-ul */}
+        {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-20">
           
           {/* Column 1 - Brand */}
@@ -37,21 +50,21 @@ export default function Footer() {
               Shop
             </h3>
             <nav className="space-y-3">
-              <div className="text-xs uppercase tracking-wide text-white/60 hover:text-white transition-colors cursor-pointer">
+              <Link to="/drops" className="block text-xs uppercase tracking-wide text-white/60 hover:text-white transition-colors">
                 Drops
-              </div>
-              <div className="text-xs uppercase tracking-wide text-white/60 hover:text-white transition-colors cursor-pointer">
+              </Link>
+              <button onClick={() => handleAnchorClick('heritage')} className="block text-xs uppercase tracking-wide text-white/60 hover:text-white transition-colors text-left">
                 Heritage
-              </div>
-              <div className="text-xs uppercase tracking-wide text-white/60 hover:text-white transition-colors cursor-pointer">
+              </button>
+              <button onClick={() => handleAnchorClick('limited-drops')} className="block text-xs uppercase tracking-wide text-white/60 hover:text-white transition-colors text-left">
                 Seraphim
-              </div>
-              <div className="text-xs uppercase tracking-wide text-white/60 hover:text-white transition-colors cursor-pointer">
+              </button>
+              <button onClick={() => handleAnchorClick('essentials')} className="block text-xs uppercase tracking-wide text-white/60 hover:text-white transition-colors text-left">
                 Essentials
-              </div>
-              <div className="text-xs uppercase tracking-wide text-white/60 hover:text-white transition-colors cursor-pointer">
+              </button>
+              <a href="#" className="block text-xs uppercase tracking-wide text-white/60 hover:text-white transition-colors">
                 Gift Card
-              </div>
+              </a>
             </nav>
           </div>
 
@@ -79,65 +92,41 @@ export default function Footer() {
             </nav>
           </div>
 
-          {/* Column 4 - Social */}
+          {/* Column 4 - Follow The Ascent */}
           <div className="space-y-4">
             <h3 className="text-xs font-black uppercase tracking-[0.15em] text-white/80">
-              Social
+              Follow The Ascent
             </h3>
             <nav className="space-y-3">
-              <div className="text-xs uppercase tracking-wide text-white/60 hover:text-white transition-colors cursor-pointer">
-                Instagram
-              </div>
-              <div className="text-xs uppercase tracking-wide text-white/60 hover:text-white transition-colors cursor-pointer">
-                TikTok
-              </div>
-              <div className="text-xs uppercase tracking-wide text-white/60 hover:text-white transition-colors cursor-pointer">
-                Facebook
-              </div>
+              <a href="#" className="block text-xs uppercase tracking-wide text-white/60 hover:text-white transition-colors">
+                Instagram →
+              </a>
+              <a href="#" className="block text-xs uppercase tracking-wide text-white/60 hover:text-white transition-colors">
+                TikTok →
+              </a>
+              <a href="#" className="block text-xs uppercase tracking-wide text-white/60 hover:text-white transition-colors">
+                Facebook →
+              </a>
             </nav>
+            <div className="pt-4">
+              <a href="/join" className="block text-xs uppercase tracking-wide text-white hover:text-white/60 transition-colors font-semibold">
+                Join The Ascent →
+              </a>
+            </div>
           </div>
 
         </div>
 
         {/* Hairline Divider */}
-        <div className="border-t border-white/10 mt-16 mb-12"></div>
+        <div className="border-t border-white/10 mt-16 mb-8"></div>
 
-        {/* Zona 3 - Subscription */}
-        <div className="max-w-md mx-auto mb-16">
-          <h3 className="text-xs font-black uppercase tracking-[0.15em] text-white text-center mb-3">
-            JOIN THE ASCENT
-          </h3>
-          <p className="text-xs uppercase tracking-wide text-white text-center mb-6">
-            Enter your coordinates for early access to Chapter 01: Seraphim.
-          </p>
-          <div className="space-y-3">
-            <input
-              type="email"
-              placeholder="ENTER YOUR EMAIL"
-              className="w-full bg-black/80 border border-white/40 text-white text-xs tracking-wide px-4 py-3"
-              style={{ borderRadius: 0 }}
-            />
-            <button
-              className="w-full bg-white text-black text-xs tracking-[0.2em] px-6 py-3 uppercase font-semibold"
-              style={{ borderRadius: 0 }}
-            >
-              INITIATE
-            </button>
+        {/* Legal */}
+        <div className="flex flex-col md:flex-row justify-between items-center text-[10px] uppercase tracking-widest text-white/60">
+          <div className="mb-4 md:mb-0">
+            2026 HEAVENLYNOVA — All Rights Reserved
           </div>
-          <p className="text-[10px] uppercase tracking-widest text-white mt-4 text-center">
-            The store is currently closed while we prepare the Seraphim Collection.
-          </p>
-        </div>
-
-        {/* Zona 4 - Legal */}
-        <div className="border-t border-white/10 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center text-[10px] uppercase tracking-widest text-white">
-            <div className="mb-4 md:mb-0">
-              2026 HEAVENLYNOVA — All Rights Reserved
-            </div>
-            <div>
-              For support or inquiries: support@heavenlynova.com
-            </div>
+          <div>
+            For support or inquiries: support@heavenlynova.com
           </div>
         </div>
 

@@ -85,7 +85,7 @@ export const products: Product[] = [
   {
     id: 'esential-skye-blue',
     category: 'essentials' as Category,
-    name: 'Esential Skye Blue',
+    name: 'Essential Sky Blue',
     tagline: '240 GSM cotton',
     description: 'Skye Blue tee. Clean silhouette. Heavyweight comfort.',
     price: '$39.99',
