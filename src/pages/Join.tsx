@@ -51,7 +51,7 @@ export default function Join() {
         </div>
 
         <p className="text-[10px] uppercase tracking-widest text-white/40 mt-6 text-center">
-          The store is currently closed while we prepare the Seraphim Collection.
+          Chapter 01: Seraphim is coming. Be first.
         </p>
       </motion.div>
     </main>

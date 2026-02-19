@@ -17,7 +17,7 @@ export default function Drops() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight tracking-tight"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold uppercase leading-tight tracking-tight"
           >
             Drops
           </motion.h1>
@@ -34,7 +34,7 @@ export default function Drops() {
             return (
               <div key={s.key} className="space-y-6">
                 <div>
-                  <h2 className={s.key === 'flagship' ? 'font-serif text-xl sm:text-2xl font-semibold leading-tight tracking-tight' : 'text-xl sm:text-2xl font-semibold leading-tight tracking-tight'}>{s.title}</h2>
+                  <h2 className={s.key === 'flagship' ? 'font-serif text-xl sm:text-2xl font-bold uppercase leading-tight tracking-tight' : 'text-xl sm:text-2xl font-bold uppercase leading-tight tracking-tight'}>{s.title}</h2>
                   <p className="mt-2 max-w-xl text-neutral-300 leading-relaxed">{s.description}</p>
                 </div>
                 <div className="flex flex-wrap justify-center gap-8">

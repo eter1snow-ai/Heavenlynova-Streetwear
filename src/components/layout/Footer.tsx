@@ -13,7 +13,7 @@ export default function Footer() {
     <footer className="relative w-full bg-black text-white py-20 md:py-24 overflow-hidden">
       {/* Video Background */}
       <video
-        className="absolute inset-0 w-full h-full object-cover opacity-20"
+        className="absolute inset-0 w-full h-full object-cover opacity-30"
         src="/Assets/Images/Video1.mp4"
         autoPlay
         loop
@@ -22,7 +22,7 @@ export default function Footer() {
       />
       
       {/* Dark overlay pentru contrast mai bun */}
-      <div className="absolute inset-0 bg-black/15 z-[1]"></div>
+      <div className="absolute inset-0 bg-transparent z-[1]"></div>
       
       <div className="relative z-10 max-w-[1400px] mx-auto px-8">
         
