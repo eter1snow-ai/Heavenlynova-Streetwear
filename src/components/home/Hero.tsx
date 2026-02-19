@@ -8,10 +8,10 @@ export default function Hero() {
     >
       {/* Static Image Background */}
       <img
-        src="/Assets/Images/Hero2.jpeg"
+        src="/Assets/Images/pexels-andrei-3583381-5363190.webp"
         alt="HeavenlyNova Hero"
         className="absolute inset-0 h-full w-full object-cover object-center"
-        style={{ objectPosition: 'center 60%', opacity: 0.7 }}
+        style={{ objectPosition: 'center 60%', opacity: 0.5 }}
       />
       
       {/* Content */}
