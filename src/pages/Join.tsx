@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { useEffect } from 'react'
+import './Join.css'
 
 export default function Join() {
   useEffect(() => {
@@ -10,13 +11,13 @@ export default function Join() {
     <main className="relative min-h-screen w-full bg-black text-white flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <img
-        className="absolute inset-0 w-full h-full object-cover opacity-40"
+        className="absolute inset-0 w-full h-full object-cover opacity-40 join-bg-image"
         src="/Assets/Images/The Ascent/pexels-zak-mogel-2158251013-35758424.webp"
         alt="The Ascent"
       />
       
       {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/50"></div>
+      <div className="absolute inset-0 bg-black/30 sm:bg-black/50"></div>
 
       {/* Content */}
       <motion.div

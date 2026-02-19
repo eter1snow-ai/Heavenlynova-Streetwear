@@ -10,21 +10,24 @@ export default function Navbar() {
 
   const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, anchor: string) => {
     e.preventDefault()
+    setOpen(false)
+    
     if (location.pathname !== '/') {
-      navigate('/')
-      setTimeout(() => {
-        document.getElementById(anchor)?.scrollIntoView({ behavior: 'smooth' })
-      }, 100)
+      navigate('/', { state: { scrollTo: anchor } })
     } else {
       document.getElementById(anchor)?.scrollIntoView({ behavior: 'smooth' })
     }
-    setOpen(false)
   }
 
   const handleDropsClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
-    navigate('/drops')
     setOpen(false)
+    
+    if (location.pathname !== '/drops') {
+      navigate('/drops')
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
   }
 
   useEffect(() => {

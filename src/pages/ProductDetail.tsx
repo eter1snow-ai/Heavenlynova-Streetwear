@@ -174,7 +174,9 @@ export default function ProductDetail() {
                   The ones who burn
                 </p>
               )}
-              <p className="mt-4 text-neutral-300 leading-relaxed">{product.tagline}</p>
+              {!isSeraphim && (
+                <p className="mt-4 text-neutral-300 leading-relaxed">{product.tagline}</p>
+              )}
             </div>
 
             <div className="space-y-3">

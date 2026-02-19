@@ -1,12 +1,22 @@
 import Hero from '../components/home/Hero'
 import { products } from '../data/drops'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import ProductCard from '../components/shared/ProductCard'
+import { useEffect } from 'react'
 
 export default function Home() {
+  const location = useLocation()
   const heritage = products.find((p) => p.category === 'individuals')
   const coreHoodie = products.find((p) => p.id === 'core-hoodie')
   const featured = [heritage, coreHoodie].filter(Boolean)
+
+  useEffect(() => {
+    if (location.state?.scrollTo) {
+      setTimeout(() => {
+        document.getElementById(location.state.scrollTo)?.scrollIntoView({ behavior: 'smooth' })
+      }, 100)
+    }
+  }, [location])
 
   return (
     <main className="bg-black">
