@@ -108,6 +108,11 @@ export default function Footer() {
                 Facebook →
               </a>
             </nav>
+            <div className="pt-3 mt-3 border-t border-white/10">
+              <Link to="/join" className="block text-xs uppercase tracking-wide text-white/80 hover:text-white transition-colors font-medium">
+                Join The Ascent →
+              </Link>
+            </div>
           </div>
 
         </div>
