@@ -22,7 +22,7 @@ export default function Footer() {
       />
       
       {/* Dark overlay pentru contrast mai bun */}
-      <div className="absolute inset-0 bg-black/60 z-[1]"></div>
+      <div className="absolute inset-0 bg-black/15 z-[1]"></div>
       
       <div className="relative z-10 max-w-[1400px] mx-auto px-8">
         
@@ -108,17 +108,28 @@ export default function Footer() {
                 Facebook →
               </a>
             </nav>
-            <div className="pt-4">
-              <a href="/join" className="block text-xs uppercase tracking-wide text-white hover:text-white/60 transition-colors font-semibold">
-                Join The Ascent →
-              </a>
-            </div>
           </div>
 
         </div>
 
+        {/* CTA Section - Centrat */}
+        <div className="border-t border-white/10 mt-16 pt-16 pb-12">
+          <div className="text-center space-y-6">
+            <h3 className="text-xl sm:text-2xl font-black uppercase tracking-[0.2em] text-white animate-pulse-glow">
+              JOIN THE ASCENT
+            </h3>
+            <Link 
+              to="/join" 
+              className="inline-block border border-white bg-transparent px-8 py-3 text-xs font-semibold uppercase tracking-[0.24em] text-white transition-all duration-300 hover:bg-white hover:text-black hover:tracking-[0.3em]"
+              style={{ borderRadius: 0 }}
+            >
+              CLAIM YOUR ACCESS →
+            </Link>
+          </div>
+        </div>
+
         {/* Hairline Divider */}
-        <div className="border-t border-white/10 mt-16 mb-8"></div>
+        <div className="border-t border-white/10 mb-8"></div>
 
         {/* Legal */}
         <div className="flex flex-col md:flex-row justify-between items-center text-[10px] uppercase tracking-widest text-white/60">

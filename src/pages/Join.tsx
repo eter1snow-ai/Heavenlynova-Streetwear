@@ -8,14 +8,11 @@ export default function Join() {
 
   return (
     <main className="relative min-h-screen w-full bg-black text-white flex items-center justify-center overflow-hidden">
-      {/* Background Video */}
-      <video
-        className="absolute inset-0 w-full h-full object-cover opacity-30"
-        src="/Assets/Images/Video1.mp4"
-        autoPlay
-        loop
-        muted
-        playsInline
+      {/* Background Image */}
+      <img
+        className="absolute inset-0 w-full h-full object-cover opacity-40"
+        src="/Assets/Images/The Ascent/pexels-zak-mogel-2158251013-35758424.webp"
+        alt="The Ascent"
       />
       
       {/* Dark overlay */}
