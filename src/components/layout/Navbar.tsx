@@ -7,6 +7,7 @@ export default function Navbar() {
   const [isDesktop, setIsDesktop] = useState(false)
   const navigate = useNavigate()
   const location = useLocation()
+  const isJoinPage = location.pathname === '/join'
 
   const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, anchor: string) => {
     e.preventDefault()
@@ -52,11 +53,13 @@ export default function Navbar() {
   return (
     <>
       {/* Announcement Bar */}
-      <div className="text-xs tracking-widest text-center py-2 bg-black text-white">
-        🌍 FREE WORLDWIDE SHIPPING
-      </div>
+      {!isJoinPage && (
+        <div className="text-xs tracking-widest text-center py-2 bg-black text-white">
+          🌍 FREE WORLDWIDE SHIPPING
+        </div>
+      )}
       
-      <header className={`fixed top-0 left-0 right-0 z-50 border-b border-neutral-800 ${scrolled ? 'bg-black/90 backdrop-blur-md' : 'bg-black/70 backdrop-blur-sm'}`}>
+      <header className={`fixed top-0 left-0 right-0 z-50 ${isJoinPage ? 'bg-transparent border-transparent' : `border-b border-neutral-800 ${scrolled ? 'bg-black/90 backdrop-blur-md' : 'bg-black/70 backdrop-blur-sm'}`}`}>
       <nav className="mx-auto flex max-w-[1300px] items-center justify-between px-6 py-4 lg:px-12">
         <Link
           to="/"
@@ -68,7 +71,7 @@ export default function Navbar() {
           <button
             aria-label="Toggle menu"
             onClick={() => setOpen(!open)}
-            className="inline-flex items-center justify-center border border-neutral-700 px-3 py-2 text-xs font-medium uppercase tracking-[0.16em] text-white transition-soft hover:bg-neutral-900"
+            className={`inline-flex items-center justify-center border px-3 py-2 text-xs font-medium uppercase tracking-[0.16em] text-white transition-soft ${isJoinPage ? 'border-white/20 hover:bg-white/10' : 'border-neutral-700 hover:bg-neutral-900'}`}
           >
             <span>{open ? 'Close' : 'Menu'}</span>
           </button>
@@ -77,7 +80,7 @@ export default function Navbar() {
           <ul className="flex gap-8 list-none">
             <li>
               <a
-                className="text-sm font-medium uppercase tracking-widest text-white visited:text-white no-underline transition-soft hover:text-white cursor-pointer"
+                className={`text-sm font-medium uppercase tracking-widest no-underline transition-soft cursor-pointer ${isJoinPage ? 'text-white/20 visited:text-white/20 hover:text-white/40' : 'text-white visited:text-white hover:text-white'}`}
                 onClick={handleDropsClick}
               >
                 Drops
@@ -85,7 +88,7 @@ export default function Navbar() {
             </li>
             <li>
               <a
-                className="text-sm font-medium uppercase tracking-widest text-white visited:text-white no-underline transition-soft hover:text-white cursor-pointer"
+                className={`text-sm font-medium uppercase tracking-widest no-underline transition-soft cursor-pointer ${isJoinPage ? 'text-white/20 visited:text-white/20 hover:text-white/40' : 'text-white visited:text-white hover:text-white'}`}
                 onClick={(e) => handleAnchorClick(e, 'heritage')}
               >
                 Heritage
@@ -93,7 +96,7 @@ export default function Navbar() {
             </li>
             <li>
               <a
-                className="text-sm font-medium uppercase tracking-widest text-white visited:text-white no-underline transition-soft hover:text-white cursor-pointer"
+                className={`text-sm font-medium uppercase tracking-widest no-underline transition-soft cursor-pointer ${isJoinPage ? 'text-white/20 visited:text-white/20 hover:text-white/40' : 'text-white visited:text-white hover:text-white'}`}
                 onClick={(e) => handleAnchorClick(e, 'limited-drops')}
               >
                 Seraphim
@@ -101,15 +104,15 @@ export default function Navbar() {
             </li>
             <li>
               <a
-                className="text-sm font-medium uppercase tracking-widest text-white visited:text-white no-underline transition-soft hover:text-white cursor-pointer"
+                className={`text-sm font-medium uppercase tracking-widest no-underline transition-soft cursor-pointer ${isJoinPage ? 'text-white/20 visited:text-white/20 hover:text-white/40' : 'text-white visited:text-white hover:text-white'}`}
                 onClick={(e) => handleAnchorClick(e, 'essentials')}
               >
                 Essentials
               </a>
             </li>
           </ul>
-          <span className="text-white/30">|</span>
-          <a className="text-xs font-medium uppercase tracking-widest text-white/60 visited:text-white/60 no-underline transition-soft hover:text-white cursor-pointer">
+          <span className={isJoinPage ? 'text-white/10' : 'text-white/30'}>|</span>
+          <a className={`text-xs font-medium uppercase tracking-widest no-underline transition-soft cursor-pointer ${isJoinPage ? 'text-white/20 visited:text-white/20 hover:text-white/40' : 'text-white/60 visited:text-white/60 hover:text-white'}`}>
             Gift Card
           </a>
         </div>
