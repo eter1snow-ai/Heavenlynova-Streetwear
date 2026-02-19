@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import ProductCard from '../components/shared/ProductCard'
 
 const sections = [
-  { key: 'flagship' as const, title: 'Seraphim', description: 'Piesa centrală. Editorial presence. 240 GSM heavyweight.' },
+  { key: 'flagship' as const, title: 'Seraphim', description: 'Exclusive drops. Editorial presence. 240 GSM heavyweight.' },
   { key: 'individuals' as const, title: 'Individuals', description: 'Archive tees. Minimal graphics. 240 GSM jersey.' },
   { key: 'essentials' as const, title: 'Essentials', description: 'Core essentials. Clean lines. 240 GSM comfort.' }
 ]
