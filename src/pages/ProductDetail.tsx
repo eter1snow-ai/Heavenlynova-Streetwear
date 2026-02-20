@@ -120,33 +120,40 @@ export default function ProductDetail() {
         <div className="grid gap-10 lg:grid-cols-[3fr_2fr]">
           <div className="lg:sticky lg:top-24 self-start">
             {images.length ? (
-              <div className="grid gap-4 md:grid-cols-2">
-                {filteredVariantImages.map((img, i) => (
-                  <motion.img
-                    key={i}
-                    src={img}
-                    alt={product.name}
-                    className={`aspect-[3/4] w-full object-contain ${i === 1 ? 'object-top' : 'object-center'}`}
-                    style={{ borderRadius: 0, backgroundColor: 'transparent', mixBlendMode: 'normal' }}
-                    loading="lazy"
-                    onLoad={() => console.log('✅ Variant loaded', img)}
-                    onError={(e) => {
-                      console.log('❌ Variant fallback', img)
-                      e.currentTarget.src = '/Assets/Images/placeholder.svg'
-                    }}
-                    initial={{ scale: i === 1 ? 1.18 : 1 }}
-                    whileHover={{ scale: i === 1 ? 1.24 : 1 }}
-                    transition={{ duration: 0.5, ease: 'easeInOut' }}
-                  />
-                ))}
-                {neckSelected && (
-                  <div>
-                    <ZoomImage
-                      src={neckSelected}
-                      alt={`${product.name} neck`}
-                      className=""
-                      zoomFactor={2.2}
+              <div className="space-y-4">
+                <div className="grid gap-4 md:grid-cols-2">
+                  {filteredVariantImages.map((img, i) => (
+                    <motion.img
+                      key={i}
+                      src={img}
+                      alt={product.name}
+                      className={`aspect-[3/4] w-full object-contain ${i === 1 ? 'object-top' : 'object-center'}`}
+                      style={{ borderRadius: 0, backgroundColor: 'transparent', mixBlendMode: 'normal' }}
+                      loading="lazy"
+                      onLoad={() => console.log('✅ Variant loaded', img)}
+                      onError={(e) => {
+                        console.log('❌ Variant fallback', img)
+                        e.currentTarget.src = '/Assets/Images/placeholder.svg'
+                      }}
+                      initial={{ scale: i === 1 ? 1.18 : 1 }}
+                      whileHover={{ scale: i === 1 ? 1.24 : 1 }}
+                      transition={{ duration: 0.5, ease: 'easeInOut' }}
                     />
+                  ))}
+                </div>
+                {neckSelected && (
+                  <div className="relative max-w-xs mx-auto mt-8">
+                    <div className="transform -rotate-2">
+                      <ZoomImage
+                        src={neckSelected}
+                        alt={`${product.name} neck label detail`}
+                        className=""
+                        zoomFactor={2.8}
+                      />
+                    </div>
+                    <p className="mt-3 text-[10px] uppercase tracking-widest text-neutral-500 text-center">
+                      Hover to zoom • Neck label detail
+                    </p>
                   </div>
                 )}
               </div>

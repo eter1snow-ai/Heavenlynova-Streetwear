@@ -34,18 +34,6 @@ export const products: Product[] = [
     images: ['/Assets/Images/Preview/EmbraceYourShadow/Embrace Youre Shadow - Copy.png'],
   },
   {
-    id: 'core-hoodie',
-    category: 'essentials' as Category,
-    name: 'Core Hoodie',
-    tagline: '350 GSM Heavyweight Organic Cotton',
-    description: 'Heavyweight organic cotton hoodie, 350 GSM, clean hood profile.',
-    price: '$79.99',
-    images: [
-      '/Assets/Images/Preview/Esential Hoodie/HVN_Black_Hoodie_Original.webp',
-      '/Assets/Images/Preview/Esential Hoodie/save.webp'
-    ],
-  },
-  {
     id: 'core-hoodie-white',
     category: 'essentials' as Category,
     name: 'Core Hoodie',
@@ -67,6 +55,7 @@ export const products: Product[] = [
     images: [
       '/Assets/Images/Preview/Esentials_Black/Close up Black.webp',
       '/Assets/Images/Preview/Esentials_Black/Black Model.webp',
+      '/Assets/Images/Preview/Esentials_Black/Neck Origin1.png',
     ],
   },
   {
@@ -97,7 +86,7 @@ export const products: Product[] = [
 ]
 
 export const featuredProducts: Product[] = products.filter((p) => 
-  p.id === 'seraphim-01' || p.id === 'core-hoodie'
+  p.id === 'seraphim-01' || p.id === 'core-hoodie-white'
 )
 
 export const getProductById = (id: string): Product | undefined => products.find((p) => p.id === id)
