@@ -142,12 +142,12 @@ export default function ProductDetail() {
                   ))}
                 </div>
                 {neckSelected && (
-                  <div className="relative max-w-xs mx-auto mt-8">
+                  <div className="relative max-w-md mx-auto mt-8">
                     <div className="transform -rotate-2">
                       <ZoomImage
                         src={neckSelected}
                         alt={`${product.name} neck label detail`}
-                        className=""
+                        className="aspect-square object-cover"
                         zoomFactor={2.8}
                       />
                     </div>

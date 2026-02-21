@@ -41,33 +41,34 @@ export const products: Product[] = [
     description: 'Heavyweight organic cotton hoodie, 350 GSM, clean hood profile.',
     price: '$79.99',
     images: [
-      '/Assets/Images/Preview/Esential Hoodie/spod-3358987-1-12943-null-2.webp',
+      '/Assets/Images/Preview/Esential Hoodie/Hoodie Origin 1.webp',
       '/Assets/Images/Preview/Esential Hoodie/save.webp'
     ],
   },
   {
     id: 'essentials-black',
     category: 'essentials' as Category,
-    name: 'Essentials — Black',
+    name: 'Essentials - Black',
     tagline: '240 GSM fleece',
     description: 'Heavyweight fleece, monochrome black. Minimal silhouette, everyday comfort.',
     price: '$39.99',
     images: [
+      '/Assets/Images/Preview/Esentials_Black/Insta Origin 1.webp',
       '/Assets/Images/Preview/Esentials_Black/Close up Black.webp',
-      '/Assets/Images/Preview/Esentials_Black/Black Model.webp',
-      '/Assets/Images/Preview/Esentials_Black/Neck Origin1.png',
+      '/Assets/Images/Preview/Esentials_Black/Neck Origin1.webp',
     ],
   },
   {
     id: 'essentials-crem',
     category: 'essentials' as Category,
-    name: 'Essentials — White',
+    name: 'Essentials - White',
     tagline: '240 GSM cotton',
     description: 'Heavyweight cotton, clean white tone. Minimal silhouette.',
     price: '$39.99',
     images: [
+      '/Assets/Images/Preview/Esential_White/White Front1.webp',
       '/Assets/Images/Preview/Esential_White/White Close up.webp',
-      '/Assets/Images/Preview/Esential_White/WHite Model.webp',
+      '/Assets/Images/Preview/Esential_White/Neck Design White 1 Esential.webp',
     ],
   },
 
@@ -79,8 +80,9 @@ export const products: Product[] = [
     description: 'Skye Blue tee. Clean silhouette. Heavyweight comfort.',
     price: '$39.99',
     images: [
+      '/Assets/Images/Preview/Esential_Skye _Blue/SkyBlue 2 Front.webp',
       '/Assets/Images/Preview/Esential_Skye _Blue/Close up Sky blue.webp',
-      '/Assets/Images/Preview/Esential_Skye _Blue/Skye Blue model.webp',
+      '/Assets/Images/Preview/Esential_Skye _Blue/Skye Blue Neck Origin1.webp',
     ],
   },
 ]
