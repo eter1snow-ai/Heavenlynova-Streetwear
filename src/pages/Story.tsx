@@ -84,7 +84,7 @@ export default function Story() {
 
             <div className="pt-12">
               <img 
-                src="/Assets/Images/HeroNew.png" 
+                src="/Assets/Images/HeroNew.webp" 
                 alt="Studio Atmosphere" 
                 className="w-full grayscale opacity-60 aspect-[16/9] object-cover"
                 style={{ 
