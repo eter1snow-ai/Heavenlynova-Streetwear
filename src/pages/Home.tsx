@@ -62,11 +62,22 @@ export default function Home() {
       <section id="heritage" className="bg-neutral-950 text-white py-10 sm:py-16 lg:py-24">
         <div className="mx-auto w-full max-w-[1300px] px-6 lg:px-12">
           <h2 className="text-xl sm:text-2xl font-semibold leading-tight tracking-tight uppercase">Heritage Collection</h2>
-          <p className="mt-2 max-w-xl text-neutral-300 leading-relaxed">Archive tees. Editorial minimalism. 240 GSM.</p>
+          <p className="mt-4 max-w-2xl text-neutral-200 leading-relaxed italic">
+            HeavenlyNova began long before the first product. Born from instinctive designs that appeared like sparks in chaos, 
+            these early creations carried meaning before the brand had a name. Heritage preserves those first constellations.
+          </p>
           <div className="mt-8 flex flex-wrap justify-center gap-6">
             {products.filter((p) => p.category === 'individuals').map((p) => (
               <ProductCard key={p.id} product={p} />
             ))}
+          </div>
+          <div className="mt-8 text-center">
+            <Link
+              to="/heritage"
+              className="inline-flex border-b border-white/40 pb-1 text-xs font-medium uppercase tracking-[0.24em] text-neutral-400 transition-colors hover:text-white hover:border-white"
+            >
+              → Read the full Heritage story
+            </Link>
           </div>
         </div>
       </section>

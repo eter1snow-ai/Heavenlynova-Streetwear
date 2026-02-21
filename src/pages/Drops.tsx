@@ -3,9 +3,22 @@ import { motion } from 'framer-motion'
 import ProductCard from '../components/shared/ProductCard'
 
 const sections = [
-  { key: 'flagship' as const, title: 'Seraphim', description: 'Exclusive drops. Editorial presence. 240 GSM heavyweight.' },
-  { key: 'individuals' as const, title: 'Individuals', description: 'Archive tees. Minimal graphics. 240 GSM jersey.' },
-  { key: 'essentials' as const, title: 'Essentials', description: 'Core essentials. Clean lines. 240 GSM comfort.' }
+  { 
+    key: 'flagship' as const, 
+    title: 'Seraphim', 
+    description: 'Exclusive drops. Editorial presence. 240 GSM heavyweight.' 
+  },
+  { 
+    key: 'individuals' as const, 
+    title: 'Heritage', 
+    description: 'HeavenlyNova began long before the first product. The first constellations of the brand.',
+    cosmic: true
+  },
+  { 
+    key: 'essentials' as const, 
+    title: 'Essentials', 
+    description: 'Core essentials. Clean lines. 240 GSM comfort.' 
+  }
 ]
 
 export default function Drops() {
@@ -35,7 +48,7 @@ export default function Drops() {
               <div key={s.key} className="space-y-6">
                 <div>
                   <h2 className={s.key === 'flagship' ? 'font-serif text-xl sm:text-2xl font-bold uppercase leading-tight tracking-tight' : 'text-xl sm:text-2xl font-bold uppercase leading-tight tracking-tight'}>{s.title}</h2>
-                  <p className="mt-2 max-w-xl text-neutral-300 leading-relaxed">{s.description}</p>
+                  <p className={`mt-2 max-w-xl leading-relaxed ${s.cosmic ? 'text-neutral-200 italic' : 'text-neutral-300'}`}>{s.description}</p>
                 </div>
                 <div className="flex flex-wrap justify-center gap-8">
                   {items.map((p) => (

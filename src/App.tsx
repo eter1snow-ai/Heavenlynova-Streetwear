@@ -2,6 +2,7 @@ import Home from './pages/Home'
 import Drops from './pages/Drops'
 import ProductDetail from './pages/ProductDetail'
 import Story from './pages/Story'
+import Heritage from './pages/Heritage'
 import Join from './pages/Join'
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
@@ -40,6 +41,7 @@ function AnimatedRoutes() {
         <Route path="/" element={<MotionPage><Home /></MotionPage>} />
         <Route path="/drops" element={<MotionPage><Drops /></MotionPage>} />
         <Route path="/story" element={<MotionPage><Story /></MotionPage>} />
+        <Route path="/heritage" element={<MotionPage><Heritage /></MotionPage>} />
         <Route path="/join" element={<MotionPage><Join /></MotionPage>} />
         <Route path="/product/:productId" element={<MotionPage><ProductDetail /></MotionPage>} />
         <Route path="*" element={<MotionPage><Home /></MotionPage>} />
