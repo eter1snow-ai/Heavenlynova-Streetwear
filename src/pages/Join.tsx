@@ -31,7 +31,7 @@ export default function Join() {
             JOIN THE ASCENT
           </h1>
           <p className="text-xs uppercase tracking-[0.2em] text-white/60">
-            Enter your coordinates for early access to Chapter 01: Seraphim.
+            Enter your coordinates for early access to Chapter /001: Seraphim.
           </p>
         </div>
 
@@ -51,7 +51,7 @@ export default function Join() {
         </div>
 
         <p className="text-[10px] uppercase tracking-widest text-white/40 mt-6 text-center">
-          Chapter 01: Seraphim is coming. Be first.
+          Chapter /001: Seraphim is coming. Be first.
         </p>
       </motion.div>
     </main>

@@ -134,7 +134,7 @@ export default function Footer() {
         {/* Legal */}
         <div className="flex flex-col md:flex-row justify-between items-center text-[10px] uppercase tracking-widest text-white/60">
           <div className="mb-4 md:mb-0">
-            2026 HEAVENLYNOVA — All Rights Reserved
+            2026 HEAVENLYNOVA - All Rights Reserved
           </div>
           <div>
             For support or inquiries: support@heavenlynova.com

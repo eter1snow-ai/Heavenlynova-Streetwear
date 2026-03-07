@@ -11,12 +11,17 @@ export default function EmailCapture() {
     const hasSubscribed = localStorage.getItem('hvn_email_captured')
     if (hasSubscribed) return
 
-    // Show popup after 10 seconds
-    const timer = setTimeout(() => {
-      setIsOpen(true)
-    }, 10000)
+    // Show popup when user scrolls to 50% of page
+    const handleScroll = () => {
+      const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100
+      if (scrollPercent >= 50) {
+        setIsOpen(true)
+        window.removeEventListener('scroll', handleScroll)
+      }
+    }
 
-    return () => clearTimeout(timer)
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -81,7 +86,7 @@ export default function EmailCapture() {
                     Join the Ascent
                   </h2>
                   <p className="text-sm text-neutral-400 leading-relaxed">
-                    Early access to Chapter 01: Seraphim.<br />
+                    Early access to Chapter /001: Seraphim.<br />
                     Exclusive drops. Limited releases.
                   </p>
                 </div>

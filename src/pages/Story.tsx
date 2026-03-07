@@ -78,7 +78,7 @@ export default function Story() {
                 We believe that true strength lies in the balance between the rough and the refined, the darkness and the light.
               </p>
               <p>
-                Each piece we create is an artifact of this union—forged for those who embrace their own shadows as much as their light.
+                Each piece we create is an artifact of this union-forged for those who embrace their own shadows as much as their light.
               </p>
             </div>
 
