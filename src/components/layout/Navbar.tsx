@@ -6,7 +6,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [isDesktop, setIsDesktop] = useState(false)
   const [collectionsOpen, setCollectionsOpen] = useState(false)
-  const collectionsRef = useRef<HTMLDivElement>(null)
+  const collectionsRef = useRef<HTMLLIElement>(null)
   const navigate = useNavigate()
   const location = useLocation()
   const isJoinPage = location.pathname === '/join'
