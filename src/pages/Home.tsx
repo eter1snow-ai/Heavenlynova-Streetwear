@@ -50,7 +50,7 @@ export default function Home() {
       <section id="essentials" className="bg-neutral-950 text-white py-10 sm:py-16 lg:py-24">
         <div className="mx-auto w-full max-w-[1300px] px-6 lg:px-12">
           <h2 className="text-xl sm:text-2xl font-semibold leading-tight tracking-tight uppercase">The Essentials</h2>
-          <p className="mt-2 max-w-xl text-neutral-300 leading-relaxed">Daily wear. Minimal. Heavyweight comfort.</p>
+          <p className="mt-2 max-w-xl text-neutral-300 leading-relaxed">Monochrome essentials forged for presence. Precise silhouettes, heavyweight comfort, and a calm intensity built for everyday rituals.</p>
           <div className="mt-8 flex flex-wrap justify-center gap-8">
             {products.filter((p) => p.category === 'essentials' && p.id !== 'core-hoodie').map((p) => (
               <ProductCard key={p.id} product={p} />
@@ -63,8 +63,7 @@ export default function Home() {
         <div className="mx-auto w-full max-w-[1300px] px-6 lg:px-12">
           <h2 className="text-xl sm:text-2xl font-semibold leading-tight tracking-tight uppercase">Heritage Collection</h2>
           <p className="mt-4 max-w-2xl text-neutral-200 leading-relaxed italic">
-            HeavenlyNova began long before the first product. Born from instinctive designs that appeared like sparks in chaos, 
-            these early creations carried meaning before the brand had a name. Heritage preserves those first constellations.
+            Born from instinctive designs that appeared like sparks in chaos. Heritage preserves those first constellations.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-6">
             {products.filter((p) => p.category === 'individuals').map((p) => (
@@ -82,24 +81,42 @@ export default function Home() {
         </div>
       </section>
       
-      <section className="bg-neutral-950 py-16 sm:py-24 border-t border-neutral-900">
-        <div className="mx-auto w-full max-w-[1300px] px-6 lg:px-12 text-center">
-          <p className="text-lg font-light tracking-widest text-neutral-400 uppercase">
-            Born from Light & Shadow
-          </p>
-          <Link
-            to="/story"
-            className="mt-6 inline-flex border-b border-white pb-1 text-xs font-semibold uppercase tracking-[0.24em] text-white transition-colors hover:text-neutral-400 hover:border-neutral-400"
+      <section className="bg-neutral-950 py-20 sm:py-32 border-t border-white/5">
+        <div className="mx-auto w-full max-w-[480px] px-6 flex flex-col items-center justify-center text-center">
+          <h2
+            className="text-3xl sm:text-4xl uppercase text-white mb-3"
+            style={{ fontFamily: '\'Glasgow Serial\', sans-serif', fontWeight: 700, letterSpacing: '0.15em' }}
           >
-            Read the Origin
-          </Link>
+            Join the Ascent
+          </h2>
+          <p className="text-[11px] uppercase tracking-[0.3em] text-white/30 mb-10">
+            Chapter /001: Seraphim — Exclusive drops. Limited releases.
+          </p>
+          <form onSubmit={(e) => e.preventDefault()} className="w-full flex flex-col items-center gap-4">
+            <input
+              type="email"
+              placeholder="your@email.com"
+              className="w-full bg-transparent border-b border-white/20 text-white text-xs tracking-widest px-0 py-3 placeholder:text-white/20 focus:border-white/60 focus:outline-none transition-colors text-center"
+              style={{ borderRadius: 0 }}
+            />
+            <button
+              type="submit"
+              className="mt-2 bg-transparent border border-white/30 text-white text-[10px] tracking-[0.3em] px-10 py-3 uppercase hover:bg-white hover:text-black transition-colors"
+              style={{ borderRadius: 0 }}
+            >
+              Initiate
+            </button>
+          </form>
+          <p className="text-[9px] text-white/15 mt-6 uppercase tracking-[0.3em]">
+            We respect your privacy. Unsubscribe anytime.
+          </p>
         </div>
       </section>
 
       <section id="limited-drops" className="bg-neutral-950 text-white py-10 sm:py-16 lg:py-24">
         <div className="mx-auto w-full max-w-[1300px] px-6 lg:px-12">
           <h2 className="text-xl sm:text-2xl font-semibold leading-tight tracking-tight uppercase">Seraphim</h2>
-          <p className="mt-2 max-w-xl text-neutral-300 leading-relaxed">Exclusive pieces. Controlled release.</p>
+          <p className="mt-2 max-w-xl text-neutral-300 leading-relaxed">SERAPHIM // 001. THE ONES WHO BURN. Exclusive pieces. Controlled release.</p>
           <div className="mt-8 flex flex-wrap justify-center gap-6">
             {products.filter((p) => p.category === 'flagship').map((p) => (
               <ProductCard key={p.id} product={p} />

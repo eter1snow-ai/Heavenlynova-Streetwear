@@ -1,147 +1,75 @@
 import { Link } from 'react-router-dom'
 
 export default function Footer() {
-  const handleAnchorClick = (anchor: string) => {
-    if (window.location.pathname !== '/') {
-      window.location.href = '/#' + anchor
-    } else {
-      document.getElementById(anchor)?.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
-
   return (
-    <footer className="relative w-full bg-black text-white py-20 md:py-24 overflow-hidden">
-      {/* Video Background */}
+    <footer className="relative w-full bg-black text-white py-14 overflow-hidden">
       <video
-        className="absolute inset-0 w-full h-full object-cover opacity-30"
+        className="absolute inset-0 w-full h-full object-cover opacity-20"
         src="/Assets/Images/Video1.mp4"
-        autoPlay
-        loop
-        muted
-        playsInline
+        autoPlay loop muted playsInline
       />
-      
-      {/* Dark overlay pentru contrast mai bun */}
-      <div className="absolute inset-0 bg-transparent z-[1]"></div>
-      
-      <div className="relative z-10 max-w-[1400px] mx-auto px-8">
-        
-        {/* Brand Statement */}
-        <p className="text-center text-xs uppercase tracking-[0.2em] text-white/40 mb-12">
-          Made for the ones who burn
-        </p>
-        
-        {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-20">
-          
-          {/* Column 1 - Brand */}
-          <div className="space-y-4">
-            <h2 className="text-lg font-black uppercase tracking-[0.2em] text-white">
-              HEAVENLYNOVA
-            </h2>
-            <p className="text-xs uppercase tracking-widest text-white/50 leading-relaxed">
+
+      <div className="relative z-10 max-w-[1300px] mx-auto px-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+
+          {/* Brand */}
+          <div className="col-span-2 md:col-span-1 space-y-3">
+            <h2 className="text-sm font-black uppercase tracking-[0.2em]">HEAVENLYNOVA</h2>
+            <p className="text-xs uppercase tracking-widest text-white/40 leading-relaxed">
               Born from Light & Shadow
             </p>
           </div>
 
-          {/* Column 2 - Shop */}
-          <div className="space-y-4">
-            <h3 className="text-xs font-black uppercase tracking-[0.15em] text-white/80">
-              Shop
-            </h3>
-            <nav className="space-y-3">
-              <Link to="/drops" className="block text-xs uppercase tracking-wide text-white/60 hover:text-white transition-colors">
-                Drops
-              </Link>
-              <button onClick={() => handleAnchorClick('heritage')} className="block text-xs uppercase tracking-wide text-white/60 hover:text-white transition-colors text-left">
-                Heritage
-              </button>
-              <button onClick={() => handleAnchorClick('limited-drops')} className="block text-xs uppercase tracking-wide text-white/60 hover:text-white transition-colors text-left">
-                Seraphim
-              </button>
-              <button onClick={() => handleAnchorClick('essentials')} className="block text-xs uppercase tracking-wide text-white/60 hover:text-white transition-colors text-left">
-                Essentials
-              </button>
-              <a href="#" className="block text-xs uppercase tracking-wide text-white/60 hover:text-white transition-colors">
-                Gift Card
-              </a>
+          {/* Support */}
+          <div className="space-y-3">
+            <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-white/60">Support</h3>
+            <nav className="space-y-2">
+              {['Contact Us', 'Privacy Policy', 'Refund Policy', 'Shipping Policy', 'Terms of Service'].map((item) => (
+                <div key={item} className="text-xs uppercase tracking-wide text-white/50 hover:text-white transition-colors cursor-pointer">
+                  {item}
+                </div>
+              ))}
             </nav>
           </div>
 
-          {/* Column 3 - Info */}
-          <div className="space-y-4">
-            <h3 className="text-xs font-black uppercase tracking-[0.15em] text-white/80">
-              Info
-            </h3>
-            <nav className="space-y-3">
-              <div className="text-xs uppercase tracking-wide text-white/60 hover:text-white transition-colors cursor-pointer">
-                Contact Us
-              </div>
-              <div className="text-xs uppercase tracking-wide text-white/60 hover:text-white transition-colors cursor-pointer">
-                Privacy Policy
-              </div>
-              <div className="text-xs uppercase tracking-wide text-white/60 hover:text-white transition-colors cursor-pointer">
-                Refund Policy
-              </div>
-              <div className="text-xs uppercase tracking-wide text-white/60 hover:text-white transition-colors cursor-pointer">
-                Shipping Policy
-              </div>
-              <div className="text-xs uppercase tracking-wide text-white/60 hover:text-white transition-colors cursor-pointer">
-                Terms of Service
-              </div>
+          {/* Brand Links */}
+          <div className="space-y-3">
+            <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-white/60">Brand</h3>
+            <nav className="space-y-2">
+              <Link to="/drops" className="block text-xs uppercase tracking-wide text-white/50 hover:text-white transition-colors">Drops</Link>
+              <Link to="/story" className="block text-xs uppercase tracking-wide text-white/50 hover:text-white transition-colors">Story</Link>
+              <Link to="/heritage" className="block text-xs uppercase tracking-wide text-white/50 hover:text-white transition-colors">Heritage</Link>
+              <Link to="/join" className="block text-xs uppercase tracking-wide text-white/50 hover:text-white transition-colors">Join</Link>
             </nav>
           </div>
 
-          {/* Column 4 - Follow The Ascent */}
-          <div className="space-y-4">
-            <h3 className="text-xs font-black uppercase tracking-[0.15em] text-white/80">
-              Follow The Ascent
-            </h3>
-            <nav className="space-y-3">
-              <a href="#" className="block text-xs uppercase tracking-wide text-white/60 hover:text-white transition-colors">
-                Instagram →
-              </a>
-              <a href="#" className="block text-xs uppercase tracking-wide text-white/60 hover:text-white transition-colors">
-                TikTok →
-              </a>
-              <a href="#" className="block text-xs uppercase tracking-wide text-white/60 hover:text-white transition-colors">
-                Facebook →
-              </a>
+          {/* Social */}
+          <div className="space-y-3">
+            <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-white/60">Social</h3>
+            <nav className="space-y-2">
+              <a href="#" className="block text-xs uppercase tracking-wide text-white/50 hover:text-white transition-colors">Instagram →</a>
+              <a href="#" className="block text-xs uppercase tracking-wide text-white/50 hover:text-white transition-colors">TikTok →</a>
+              <a href="#" className="block text-xs uppercase tracking-wide text-white/50 hover:text-white transition-colors">Facebook →</a>
             </nav>
           </div>
-
         </div>
 
-        {/* CTA Section - Centrat */}
-        <div className="border-t border-white/10 mt-16 pt-16 pb-12">
-          <div className="text-center space-y-6">
-            <h3 className="text-xl sm:text-2xl font-black uppercase tracking-[0.2em] text-white animate-pulse-glow">
-              JOIN THE ASCENT
-            </h3>
-            <Link 
-              to="/join" 
-              className="inline-block border border-white bg-transparent px-8 py-3 text-xs font-semibold uppercase tracking-[0.24em] text-white transition-all duration-300 hover:bg-white hover:text-black hover:tracking-[0.3em]"
-              style={{ borderRadius: 0 }}
-            >
-              CLAIM YOUR ACCESS →
-            </Link>
-          </div>
+        <div className="border-t border-white/10 mt-10 pt-10 pb-6 text-center">
+          <h3 className="text-sm font-black uppercase tracking-[0.3em] text-white mb-4">JOIN THE ASCENT</h3>
+          <Link
+            to="/join"
+            className="inline-block border border-white/30 px-8 py-3 text-[10px] uppercase tracking-[0.24em] text-white hover:bg-white hover:text-black transition-colors"
+            style={{ borderRadius: 0 }}
+          >
+            CLAIM YOUR ACCESS →
+          </Link>
         </div>
 
-        {/* Hairline Divider */}
-        <div className="border-t border-white/10 mb-8"></div>
-
-        {/* Legal */}
-        <div className="flex flex-col md:flex-row justify-between items-center text-[10px] uppercase tracking-widest text-white/60">
-          <div className="mb-4 md:mb-0">
-            2026 HEAVENLYNOVA - All Rights Reserved
-          </div>
-          <div>
-            For support or inquiries: support@heavenlynova.com
-          </div>
+        <div className="border-t border-white/10 mt-6 pt-6 flex flex-col md:flex-row justify-between items-center text-[10px] uppercase tracking-widest text-white/30">
+          <span>2026 HEAVENLYNOVA - All Rights Reserved</span>
+          <span>support@heavenlynova.com</span>
         </div>
-
       </div>
     </footer>
-  );
+  )
 }
