@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { products } from '../data/drops'
 import ProductCard from '../components/shared/ProductCard'
 
-const fade = { initial: { opacity: 0, y: 24 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 1, ease: 'easeOut' } }
+const fade = { initial: { opacity: 0, y: 24 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition: { duration: 1 } }
 
 export default function Seraphim() {
   useEffect(() => { window.scrollTo(0, 0) }, [])
