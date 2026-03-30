@@ -5,6 +5,7 @@ import Story from './pages/Story'
 import Heritage from './pages/Heritage'
 import Join from './pages/Join'
 import Contact from './pages/Contact'
+import Seraphim from './pages/Seraphim'
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
 import EmailCapture from './components/shared/EmailCapture'
@@ -45,6 +46,7 @@ function AnimatedRoutes() {
         <Route path="/heritage" element={<MotionPage><Heritage /></MotionPage>} />
         <Route path="/join" element={<MotionPage><Join /></MotionPage>} />
         <Route path="/contact" element={<MotionPage><Contact /></MotionPage>} />
+        <Route path="/seraphim" element={<MotionPage><Seraphim /></MotionPage>} />
         <Route path="/product/:productId" element={<MotionPage><ProductDetail /></MotionPage>} />
         <Route path="*" element={<MotionPage><Home /></MotionPage>} />
       </Routes>

@@ -10,7 +10,7 @@ export default function Home() {
 
   const soulfullBlack = products.find((p) => p.id === 'soulfull-black')
   const broken = products.find((p) => p.id === 'broken-001')
-  const essentials = products.filter((p) => p.id === 'essentials-black' || p.id === 'essentials-crem')
+  const essentials = products.filter((p) => p.id === 'essentials-black' || p.id === 'essentials-white')
 
   useEffect(() => {
     if (location.state?.scrollTo) {

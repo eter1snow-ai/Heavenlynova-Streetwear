@@ -89,12 +89,6 @@ export default function Navbar() {
                 <span className={linkClass} onClick={() => handleDropsFilter()}>Drops</span>
               </li>
               <li>
-                <span className={linkClass} onClick={() => handleAnchorClick('soulfull')}>Soulfull</span>
-              </li>
-              <li>
-                <span className={linkClass} onClick={() => handleAnchorClick('broken')}>Broken</span>
-              </li>
-              <li>
                 <span className={linkClass} onClick={() => handleAnchorClick('essentials')}>Essentials</span>
               </li>
 
@@ -118,7 +112,7 @@ export default function Navbar() {
                     ].map((item) => (
                       <button
                         key={item.collection}
-                        onClick={() => handleDropsFilter(undefined, item.collection)}
+                        onClick={() => item.collection === 'flagship' ? navigate('/seraphim') : handleDropsFilter(undefined, item.collection)}
                         className="block w-full text-left px-4 py-2 text-xs uppercase tracking-widest text-white/60 hover:text-white hover:bg-white/5 transition-colors"
                       >
                         {item.label}
@@ -137,10 +131,8 @@ export default function Navbar() {
             <ul className="space-y-2 px-6 py-4 list-none">
               {[
                 { label: 'Drops', action: () => handleDropsFilter() },
-                { label: 'Soulfull', action: () => handleAnchorClick('soulfull') },
-                { label: 'Broken', action: () => handleAnchorClick('broken') },
                 { label: 'Essentials', action: () => handleAnchorClick('essentials') },
-                { label: 'Seraphim', action: () => handleDropsFilter(undefined, 'flagship') },
+                { label: 'Seraphim', action: () => navigate('/seraphim') },
                 // { label: 'Heritage', action: () => handleDropsFilter(undefined, 'individuals') }, // hidden until launch
               ].map((item) => (
                 <li key={item.label}>

@@ -178,10 +178,19 @@ export default function ProductDetail() {
               </h1>
               {isSeraphim && (
                 <p className="mt-2 text-xs uppercase tracking-[0.25em] text-neutral-400">
-                  The ones who burn
+                  The ones who ascend
                 </p>
               )}
-              {!isSeraphim && (
+              {product.id.startsWith('soulfull') && (
+                <div className="mt-4 space-y-3">
+                  <p style={{ fontSize: '0.82rem', letterSpacing: '0.08em', lineHeight: 1.8, color: '#A8A8A8', fontStyle: 'italic' }}>
+                    Not everything needs to be loud to be felt.<br />
+                    Soulfull is a quiet statement —<br />
+                    for those who carry more than they show.
+                  </p>
+                </div>
+              )}
+              {!isSeraphim && !product.id.startsWith('soulfull') && (
                 <p className="mt-4 text-neutral-300 leading-relaxed">{product.tagline}</p>
               )}
             </div>
@@ -269,10 +278,49 @@ export default function ProductDetail() {
               Claim Your Piece
             </button>
 
+            {product.id.startsWith('soulfull') && (
+              <div className="space-y-4 pt-2">
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  {['Emotional identity piece', 'Part of the Heritage line', 'Designed for introspection, not attention'].map((b) => (
+                    <p key={b} style={{ fontSize: '0.72rem', letterSpacing: '0.15em', lineHeight: 1.6, color: '#555555' }} className="uppercase">· {b}</p>
+                  ))}
+                </div>
+                <p style={{ fontSize: '0.75rem', letterSpacing: '0.1em', lineHeight: 1.7, color: '#444444', fontStyle: 'italic' }}>
+                  Built for those who don't need to explain what they feel.
+                </p>
+              </div>
+            )}
+
+            <p style={{ fontSize: '0.62rem', letterSpacing: '0.3em', color: '#333333', lineHeight: 1.6 }} className="uppercase">
+              Part of the HeavenlyNova universe.
+            </p>
+
             <p className="text-sm md:text-base text-neutral-300 leading-relaxed max-w-[90%] md:max-w-none">{product.description}</p>
           </div>
         </div>
       </motion.section>
+
+      {/* DESIGN FOCUS SECTION */}
+      {images.some((s) => /back/i.test(s.split('/').pop() || '')) && (
+        <section className="w-full bg-black" style={{ paddingTop: '80px', paddingBottom: '80px' }}>
+          <div className="mx-auto max-w-[900px] px-6">
+            <img
+              src={images.find((s) => /back/i.test(s.split('/').pop() || ''))!}
+              alt={`${product.name} design`}
+              className="w-full object-contain"
+              style={{ maxHeight: '90vh' }}
+            />
+            <div className="mt-8 text-center">
+              <p style={{ fontSize: '0.75rem', letterSpacing: '0.4em', color: '#555555', lineHeight: 1.6 }} className="uppercase">
+                {product.name}
+              </p>
+              <p style={{ fontSize: '0.65rem', letterSpacing: '0.3em', color: '#333333', lineHeight: 1.6, marginTop: '8px' }} className="uppercase">
+                {product.tagline}
+              </p>
+            </div>
+          </div>
+        </section>
+      )}
     </main>
   )
 }

@@ -25,8 +25,8 @@ export const products: Product[] = [
     description: '7.5oz (255 GSM) Heavyweight Cotton. Custom boxy fit. Rugged texture. Engineered for those who seek the light within the void.',
     price: '59.99€',
     images: [
-      '/Assets/Images/Preview/Seraphim_Broken 001/Broken Original Black.webp',
-      '/Assets/Images/Preview/Seraphim_Broken 001/V3B Original Black.webp',
+      '/Assets/Images/Preview/Seraphim_Broken 001/Broken Original Black Back.webp',
+      '/Assets/Images/Preview/Seraphim_Broken 001/V3B Original Black Front.webp',
       '/Assets/Images/Preview/Seraphim_Broken 001/Neck Label Black.webp',
     ],
   },
@@ -39,23 +39,9 @@ export const products: Product[] = [
     description: 'Built for presence. 7.5oz (255 GSM) Heavyweight Cotton. Custom boxy fit. Rugged texture. A signal from the first constellations.',
     price: '59.99€',
     images: [
-      '/Assets/Images/Preview/Soulfull/Soulfull Black/Soulfull on Almost Black.webp',
-      '/Assets/Images/Preview/Soulfull/Soulfull Black/Original Esentials Black.jpg',
+      '/Assets/Images/Preview/Soulfull/Soulfull Black/Soulfull on Almost Black Back.webp',
+      '/Assets/Images/Preview/Soulfull/Soulfull Black/Original Esentials Black front.jpg',
       '/Assets/Images/Preview/Soulfull/Soulfull Black/Neck Label Black.webp',
-    ],
-  },
-  {
-    id: 'soulfull-white',
-    category: 'individuals' as Category,
-    productType: 'tee' as ProductType,
-    name: 'SOULFULL — WHITE',
-    tagline: 'From the first constellations',
-    description: 'Built for presence. 7.5oz (255 GSM) Heavyweight Cotton. Custom boxy fit. Rugged texture. A signal from the first constellations.',
-    price: '59.99€',
-    images: [
-      '/Assets/Images/Preview/Soulfull/Soulful White/Soulfull White.webp',
-      '/Assets/Images/Preview/Soulfull/Soulful White/V3B White Original.webp',
-      '/Assets/Images/Preview/Soulfull/Soulful White/Neck Label White.webp',
     ],
   },
   {
@@ -67,8 +53,8 @@ export const products: Product[] = [
     description: '350 GSM Brushed Fleece. Premium Organic Cotton Blend. Structured silhouette.',
     price: '89.99€',
     images: [
-      '/Assets/Images/Preview/Esential Hoodie/Hoodie On black Original.webp',
-      '/Assets/Images/Preview/Esential Hoodie/Hoodie Black Original Back.webp',
+      '/Assets/Images/Preview/Esential Hoodie/Hoodie On black Original Front.webp',
+      '/Assets/Images/Preview/Esential Hoodie/Hoodie Black Original Back Black.webp',
       '/Assets/Images/Preview/Esential Hoodie/Detailed black hoodie close-up.webp',
     ],
   },
@@ -81,13 +67,13 @@ export const products: Product[] = [
     description: '7.5oz (255 GSM) Heavyweight Cotton. Custom boxy fit. Rugged texture.',
     price: '44.99€',
     images: [
-      '/Assets/Images/Preview/Esentials_Black/Original Esentials Black.webp',
+      '/Assets/Images/Preview/Esentials_Black/Original Esentials Black Front.webp',
       '/Assets/Images/Preview/Esentials_Black/Black closeup on Black.webp',
       '/Assets/Images/Preview/Esentials_Black/Neck Label Black.webp',
     ],
   },
   {
-    id: 'essentials-crem',
+    id: 'essentials-white',
     category: 'essentials' as Category,
     productType: 'tee' as ProductType,
     name: 'Essentials - White',
@@ -96,7 +82,7 @@ export const products: Product[] = [
     price: '44.99€',
     images: [
       '/Assets/Images/Preview/Esential_White/White ES Front.webp',
-      '/Assets/Images/Preview/Esential_White/Esentials Close UP Model Front Black.webp',
+      '/Assets/Images/Preview/Esential_White/White closeup on black.webp',
       '/Assets/Images/Preview/Esential_White/Neck Label White.webp',
     ],
   },
