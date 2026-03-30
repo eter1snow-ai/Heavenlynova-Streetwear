@@ -89,10 +89,10 @@ export default function Navbar() {
                 <span className={linkClass} onClick={() => handleDropsFilter()}>Drops</span>
               </li>
               <li>
-                <span className={linkClass} onClick={() => handleDropsFilter('tee')}>Tees</span>
+                <span className={linkClass} onClick={() => handleAnchorClick('soulfull')}>Soulfull</span>
               </li>
               <li>
-                <span className={linkClass} onClick={() => handleDropsFilter('hoodie')}>Hoodies</span>
+                <span className={linkClass} onClick={() => handleAnchorClick('broken')}>Broken</span>
               </li>
               <li>
                 <span className={linkClass} onClick={() => handleAnchorClick('essentials')}>Essentials</span>
@@ -137,8 +137,8 @@ export default function Navbar() {
             <ul className="space-y-2 px-6 py-4 list-none">
               {[
                 { label: 'Drops', action: () => handleDropsFilter() },
-                { label: 'Tees', action: () => handleDropsFilter('tee') },
-                { label: 'Hoodies', action: () => handleDropsFilter('hoodie') },
+                { label: 'Soulfull', action: () => handleAnchorClick('soulfull') },
+                { label: 'Broken', action: () => handleAnchorClick('broken') },
                 { label: 'Essentials', action: () => handleAnchorClick('essentials') },
                 { label: 'Seraphim', action: () => handleDropsFilter(undefined, 'flagship') },
                 // { label: 'Heritage', action: () => handleDropsFilter(undefined, 'individuals') }, // hidden until launch

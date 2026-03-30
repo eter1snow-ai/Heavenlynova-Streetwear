@@ -75,7 +75,7 @@ export default function ProductCard({ product, showPrice = false, className }: P
                 <motion.img
                   src={hover}
                   alt={`${product.name} hover`}
-                  className="absolute inset-0 w-full h-full object-contain object-top"
+                  className="absolute inset-0 w-full h-full object-contain object-center"
                   style={{
                     backgroundColor: 'transparent',
                     mixBlendMode: 'normal',

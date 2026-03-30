@@ -3,12 +3,14 @@ import { products } from '../data/drops'
 import { Link, useLocation } from 'react-router-dom'
 import ProductCard from '../components/shared/ProductCard'
 import { useEffect } from 'react'
+import { motion } from 'framer-motion'
 
 export default function Home() {
   const location = useLocation()
-  const heritage = products.find((p) => p.category === 'individuals')
-  const coreHoodie = products.find((p) => p.id === 'core-hoodie')
-  const featured = [heritage, coreHoodie].filter(Boolean)
+
+  const soulfullBlack = products.find((p) => p.id === 'soulfull-black')
+  const broken = products.find((p) => p.id === 'broken-001')
+  const essentials = products.filter((p) => p.id === 'essentials-black' || p.id === 'essentials-crem')
 
   useEffect(() => {
     if (location.state?.scrollTo) {
@@ -21,53 +23,50 @@ export default function Home() {
   return (
     <main className="bg-black">
       <Hero />
-      <section className="bg-black text-white py-10 sm:py-14 lg:py-16">
-        <div className="mx-auto w-full max-w-[1300px] px-6 lg:px-12">
-          <div className="flex flex-wrap justify-center gap-6">
-            {featured.map((p) => (
-              <ProductCard key={p!.id} product={p!} />
-            ))}
-          </div>
-        </div>
-      </section>
 
-      <section className="bg-black text-white py-6 sm:py-10">
+      {/* 1. SOULFULL HERO */}
+      <section id="soulfull" className="bg-black text-white py-16 sm:py-24 lg:py-32">
         <div className="mx-auto w-full max-w-[1300px] px-6 lg:px-12">
-          <div className="mx-auto max-w-[700px] text-center">
-            <p className="text-sm sm:text-base leading-relaxed text-neutral-300">
-              Monochrome essentials forged for presence. Precise silhouettes, heavyweight comfort, and
-              a calm intensity built for everyday rituals.
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.9 }}>
+            <p style={{ fontSize: '0.65rem', letterSpacing: '0.45em', color: '#888888', lineHeight: 1.6 }} className="uppercase mb-3">
+              Heritage Collection
             </p>
-          </div>
-        </div>
-      </section>
-      <section id="essentials" className="bg-neutral-950 text-white py-10 sm:py-16 lg:py-24">
-        <div className="mx-auto w-full max-w-[1300px] px-6 lg:px-12">
-          <h2 className="text-xl sm:text-2xl font-semibold leading-tight tracking-tight uppercase">The Essentials</h2>
-          <p className="mt-2 max-w-xl text-neutral-300 leading-relaxed">Monochrome essentials forged for presence. Precise silhouettes, heavyweight comfort, and a calm intensity built for everyday rituals.</p>
-          <div className="mt-8 flex flex-wrap justify-center gap-8">
-            {products.filter((p) => p.category === 'essentials' && p.id !== 'core-hoodie').map((p) => (
-              <ProductCard key={p.id} product={p} />
-            ))}
-          </div>
+            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 3.2rem)', fontWeight: 500, letterSpacing: '0.08em', lineHeight: 1.2, color: '#E6E6E6' }} className="uppercase mb-10">
+              Soulfull
+            </h2>
+          </motion.div>
+          {soulfullBlack && (
+            <div className="flex flex-wrap justify-center gap-8">
+              <div className="flex flex-col items-center">
+                <ProductCard product={soulfullBlack} />
+                <p style={{ fontSize: '0.6rem', letterSpacing: '0.35em', color: '#666666', marginTop: '10px' }} className="uppercase">
+                  Part of the Heritage Collection
+                </p>
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
-      {/* Heritage section hidden until launch */}
-      {/* <section id="heritage" className="bg-neutral-950 text-white py-10 sm:py-16 lg:py-24">
-        ...
-      </section> */}
+      <div className="border-t border-white/5" />
 
-      <section id="limited-drops" className="bg-neutral-950 text-white py-10 sm:py-16 lg:py-24">
+      {/* 2. BROKEN STATEMENT */}
+      <section id="broken" className="bg-black text-white py-16 sm:py-24 lg:py-32">
         <div className="mx-auto w-full max-w-[1300px] px-6 lg:px-12">
-          <h2 className="text-xl sm:text-2xl font-semibold leading-tight tracking-tight uppercase">Seraphim</h2>
-          <p className="mt-2 max-w-xl text-neutral-300 leading-relaxed">SERAPHIM // 001. THE ONES WHO BURN. Exclusive pieces. Controlled release.</p>
-          <div className="mt-8 flex flex-wrap justify-center gap-6">
-            {products.filter((p) => p.category === 'flagship').map((p) => (
-              <ProductCard key={p.id} product={p} />
-            ))}
-          </div>
-          <div className="mt-8 flex justify-center">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.9 }}>
+            <p style={{ fontSize: '0.65rem', letterSpacing: '0.45em', color: '#888888', lineHeight: 1.6 }} className="uppercase mb-3">
+              Seraphim // 001
+            </p>
+            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 3.2rem)', fontWeight: 500, letterSpacing: '0.08em', lineHeight: 1.2, color: '#E6E6E6' }} className="uppercase mb-10">
+              Broken
+            </h2>
+          </motion.div>
+          {broken && (
+            <div className="flex flex-wrap justify-center gap-8">
+              <ProductCard product={broken} />
+            </div>
+          )}
+          <div className="mt-10 flex justify-center">
             <Link
               to="/story"
               className="inline-flex border-b border-white/40 pb-1 text-xs font-semibold uppercase tracking-[0.24em] text-white/60 transition-colors hover:text-white hover:border-white"
@@ -78,6 +77,31 @@ export default function Home() {
         </div>
       </section>
 
+      <div className="border-t border-white/5" />
+
+      {/* 3. ESSENTIALS */}
+      <section id="essentials" className="bg-neutral-950 text-white py-16 sm:py-24 lg:py-32">
+        <div className="mx-auto w-full max-w-[1300px] px-6 lg:px-12">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.9 }}>
+            <p style={{ fontSize: '0.65rem', letterSpacing: '0.45em', color: '#888888', lineHeight: 1.6 }} className="uppercase mb-3">
+              Core Collection
+            </p>
+            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 3.2rem)', fontWeight: 500, letterSpacing: '0.08em', lineHeight: 1.2, color: '#E6E6E6' }} className="uppercase mb-4">
+              Essentials
+            </h2>
+            <p style={{ fontSize: '0.8rem', letterSpacing: '0.2em', lineHeight: 1.8, color: '#888888', maxWidth: '480px' }} className="uppercase mb-10">
+              Monochrome essentials forged for presence. Precise silhouettes, heavyweight comfort, and a calm intensity built for everyday rituals.
+            </p>
+          </motion.div>
+          <div className="flex flex-wrap justify-center gap-8">
+            {essentials.map((p) => (
+              <ProductCard key={p.id} product={p} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 4. NEWSLETTER */}
       <section className="bg-neutral-950 border-t border-white/5" style={{ paddingTop: '80px', paddingBottom: '80px' }}>
         <div className="mx-auto w-full px-6 flex flex-col items-center justify-center text-center" style={{ maxWidth: '580px' }}>
           <p className="uppercase mb-6" style={{ fontSize: '0.65rem', letterSpacing: '0.5em', lineHeight: 1.6, color: '#aaaaaa' }}>Enter the Ascent</p>

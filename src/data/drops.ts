@@ -17,26 +17,60 @@ export type Product = {
 
 export const products: Product[] = [
   {
-    id: 'seraphim-01',
+    id: 'broken-001',
     category: 'flagship' as Category,
     productType: 'tee' as ProductType,
-    name: 'SERAPHIM // 001',
+    name: 'BROKEN // 001',
     tagline: 'THE ONES WHO BURN',
-    description:
-      '7.5oz (255 GSM) Heavyweight Cotton. Custom boxy fit. Rugged texture. Engineered for those who seek the light within the void.',
+    description: '7.5oz (255 GSM) Heavyweight Cotton. Custom boxy fit. Rugged texture. Engineered for those who seek the light within the void.',
     price: '59.99€',
-    images: ['/Assets/Images/Preview/Seraphim-01/Seraph-001.png'],
+    images: [
+      '/Assets/Images/Preview/Seraphim_Broken 001/Broken Original Black.webp',
+      '/Assets/Images/Preview/Seraphim_Broken 001/V3B Original Black.webp',
+      '/Assets/Images/Preview/Seraphim_Broken 001/Neck Label Black.webp',
+    ],
   },
   {
-    id: 'shadow-01',
+    id: 'soulfull-black',
     category: 'individuals' as Category,
     productType: 'tee' as ProductType,
-    name: 'EMBRACE YOUR SHADOW',
-    tagline: 'BORN FROM THE DARK',
-    description:
-      '7.5oz (255 GSM) Heavyweight Cotton. Custom boxy fit. Rugged texture. A statement of acceptance and power.',
+    name: 'SOULFULL — BLACK',
+    tagline: 'PART OF THE HERITAGE COLLECTION',
+    description: '7.5oz (255 GSM) Heavyweight Cotton. Custom boxy fit. Rugged texture. A signal from the first constellations.',
     price: '59.99€',
-    images: ['/Assets/Images/Preview/EmbraceYourShadow/Embrace Youre Shadow - Copy.png'],
+    images: [
+      '/Assets/Images/Preview/Soulfull/Soulfull Black/Soulfull on Almost Black.webp',
+      '/Assets/Images/Preview/Soulfull/Soulfull Black/Original Esentials Black.jpg',
+      '/Assets/Images/Preview/Soulfull/Soulfull Black/Neck Label Black.webp',
+    ],
+  },
+  {
+    id: 'soulfull-white',
+    category: 'individuals' as Category,
+    productType: 'tee' as ProductType,
+    name: 'SOULFULL — WHITE',
+    tagline: 'PART OF THE HERITAGE COLLECTION',
+    description: '7.5oz (255 GSM) Heavyweight Cotton. Custom boxy fit. Rugged texture. A signal from the first constellations.',
+    price: '59.99€',
+    images: [
+      '/Assets/Images/Preview/Soulfull/Soulful White/Soulfull White.webp',
+      '/Assets/Images/Preview/Soulfull/Soulful White/V3B White Original.webp',
+      '/Assets/Images/Preview/Soulfull/Soulful White/Neck Label White.webp',
+    ],
+  },
+  {
+    id: 'soulfull-skye-blue',
+    category: 'individuals' as Category,
+    productType: 'tee' as ProductType,
+    name: 'SOULFULL — SKYE BLUE',
+    tagline: 'PART OF THE HERITAGE COLLECTION',
+    description: '7.5oz (255 GSM) Heavyweight Cotton. Custom boxy fit. Rugged texture. A signal from the first constellations.',
+    price: '59.99€',
+    images: [
+      '/Assets/Images/Preview/Soulfull/Soulfull Skye Blue/Soulfull Skye Blue.webp',
+      '/Assets/Images/Preview/Soulfull/Soulfull Skye Blue/V3B Skye Blue Original.webp',
+      '/Assets/Images/Preview/Soulfull/Soulfull Skye Blue/New Skye Neck Closeup.webp',
+    ],
   },
   {
     id: 'core-hoodie-white',
@@ -47,8 +81,9 @@ export const products: Product[] = [
     description: '350 GSM Brushed Fleece. Premium Organic Cotton Blend. Structured silhouette.',
     price: '89.99€',
     images: [
-      '/Assets/Images/Preview/Esential Hoodie/Hoodie Origin 1.webp',
-      '/Assets/Images/Preview/Esential Hoodie/save.webp'
+      '/Assets/Images/Preview/Esential Hoodie/Hoodie On black Original.webp',
+      '/Assets/Images/Preview/Esential Hoodie/Hoodie Black Original Back.webp',
+      '/Assets/Images/Preview/Esential Hoodie/Detailed black hoodie close-up.webp',
     ],
   },
   {
@@ -56,13 +91,13 @@ export const products: Product[] = [
     category: 'essentials' as Category,
     productType: 'tee' as ProductType,
     name: 'Essentials - Black',
-    tagline: '240 GSM fleece',
+    tagline: '255 GSM Heavyweight Cotton',
     description: '7.5oz (255 GSM) Heavyweight Cotton. Custom boxy fit. Rugged texture.',
     price: '44.99€',
     images: [
-      '/Assets/Images/Preview/Esentials_Black/Insta Origin 1.webp',
-      '/Assets/Images/Preview/Esentials_Black/Close up Black.webp',
-      '/Assets/Images/Preview/Esentials_Black/Neck Origin1.webp',
+      '/Assets/Images/Preview/Esentials_Black/Original Esentials Black.webp',
+      '/Assets/Images/Preview/Esentials_Black/Black closeup on Black.webp',
+      '/Assets/Images/Preview/Esentials_Black/Neck Label Black.webp',
     ],
   },
   {
@@ -70,34 +105,33 @@ export const products: Product[] = [
     category: 'essentials' as Category,
     productType: 'tee' as ProductType,
     name: 'Essentials - White',
-    tagline: '240 GSM cotton',
+    tagline: '255 GSM Heavyweight Cotton',
     description: '7.5oz (255 GSM) Heavyweight Cotton. Custom boxy fit. Rugged texture.',
     price: '44.99€',
     images: [
-      '/Assets/Images/Preview/Esential_White/White Front1.webp',
-      '/Assets/Images/Preview/Esential_White/White Close up.webp',
-      '/Assets/Images/Preview/Esential_White/Neck Design White 1 Esential.webp',
+      '/Assets/Images/Preview/Esential_White/White ES Front.webp',
+      '/Assets/Images/Preview/Esential_White/Esentials Close UP Model Front Black.webp',
+      '/Assets/Images/Preview/Esential_White/Neck Label White.webp',
     ],
   },
-
   {
     id: 'esential-skye-blue',
     category: 'essentials' as Category,
     productType: 'tee' as ProductType,
     name: 'Essential Sky Blue',
-    tagline: '240 GSM cotton',
+    tagline: '255 GSM Heavyweight Cotton',
     description: '7.5oz (255 GSM) Heavyweight Cotton. Custom boxy fit. Rugged texture.',
     price: '44.99€',
     images: [
-      '/Assets/Images/Preview/Esential_Skye _Blue/SkyBlue 2 Front.webp',
-      '/Assets/Images/Preview/Esential_Skye _Blue/Close up Sky blue.webp',
-      '/Assets/Images/Preview/Esential_Skye _Blue/Skye Blue Neck Origin1.webp',
+      '/Assets/Images/Preview/Esential_Skye _Blue/SKye Blue ES Front.webp',
+      '/Assets/Images/Preview/Esential_Skye _Blue/Skye Closeup on Black.webp',
+      '/Assets/Images/Preview/Esential_Skye _Blue/New Skye Neck Closeup.webp',
     ],
   },
 ]
 
-export const featuredProducts: Product[] = products.filter((p) => 
-  p.id === 'seraphim-01' || p.id === 'core-hoodie-white'
+export const featuredProducts: Product[] = products.filter((p) =>
+  p.id === 'broken-001' || p.id === 'core-hoodie-white'
 )
 
 export const getProductById = (id: string): Product | undefined => products.find((p) => p.id === id)
