@@ -66,7 +66,7 @@ export default function Drops() {
             </div>
             <div className="flex flex-wrap gap-2 items-center">
               <span className="text-[10px] uppercase tracking-widest text-neutral-500 mr-1">Collection</span>
-              {(['all', 'flagship', 'individuals', 'essentials'] as CollectionFilter[]).map((c) => (
+              {(['all', 'flagship', 'essentials'] as CollectionFilter[]).map((c) => ( // 'individuals' hidden until launch
                 <button key={c} onClick={() => setCollectionFilter(c)} className={filterBtn(collectionFilter === c)} style={{ borderRadius: 0 }}>
                   {collectionLabels[c]}
                 </button>

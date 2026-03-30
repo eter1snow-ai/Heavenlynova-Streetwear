@@ -26,12 +26,13 @@ export default function Join() {
         transition={{ duration: 0.8 }}
         className="relative z-10 max-w-md w-full px-6"
       >
-        <div className="text-center mb-8">
-          <h1 className="text-4xl sm:text-5xl font-black uppercase tracking-tight mb-4">
-            JOIN THE ASCENT
+        <div className="text-center mb-10">
+          <p className="uppercase mb-5" style={{ fontSize: '0.65rem', letterSpacing: '0.5em', lineHeight: 1.6, color: '#aaaaaa' }}>Enter the Ascent</p>
+          <h1 className="uppercase mb-5" style={{ fontSize: '2rem', fontWeight: 500, letterSpacing: '0.12em', lineHeight: 1.5, color: '#E6E6E6' }}>
+            Chapter /001:<br />Seraphim is Now Live.
           </h1>
-          <p className="text-xs uppercase tracking-[0.2em] text-white/60">
-            Enter your coordinates for early access to Chapter /001: Seraphim.
+          <p className="uppercase" style={{ fontSize: '0.75rem', letterSpacing: '0.35em', lineHeight: 1.8, color: '#888888' }}>
+            Receive exclusive drops, lore fragments,<br />and early access to future chapters.
           </p>
         </div>
 
@@ -50,8 +51,8 @@ export default function Join() {
           </button>
         </div>
 
-        <p className="text-[10px] uppercase tracking-widest text-white/40 mt-6 text-center">
-          Chapter /001: Seraphim is coming. Be first.
+        <p className="text-[10px] uppercase tracking-widest text-white/30 mt-6 text-center">
+          We respect your privacy. Unsubscribe anytime.
         </p>
       </motion.div>
     </main>
