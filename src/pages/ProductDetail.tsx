@@ -181,6 +181,17 @@ export default function ProductDetail() {
                   The ones who ascend
                 </p>
               )}
+              {product.id === 'broken-001' && (
+                <div className="mt-4 space-y-3">
+                  <p style={{ fontSize: '0.82rem', letterSpacing: '0.08em', lineHeight: 1.8, color: '#A8A8A8', fontStyle: 'italic' }}>
+                    Not everything that breaks is meant to stay broken.<br /><br />
+                    Some fractures don't end you —<br />
+                    they open you.<br /><br />
+                    BROKEN marks the moment where something shifts.<br />
+                    Not the fall, but the beginning of ascension.
+                  </p>
+                </div>
+              )}
               {product.id.startsWith('soulfull') && (
                 <div className="mt-4 space-y-3">
                   <p style={{ fontSize: '0.82rem', letterSpacing: '0.08em', lineHeight: 1.8, color: '#A8A8A8', fontStyle: 'italic' }}>
