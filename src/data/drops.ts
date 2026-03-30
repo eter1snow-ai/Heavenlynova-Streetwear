@@ -21,7 +21,7 @@ export const products: Product[] = [
     category: 'flagship' as Category,
     productType: 'tee' as ProductType,
     name: 'BROKEN // 001',
-    tagline: 'THE ONES WHO BURN',
+    tagline: 'THE ONES WHO ASCEND',
     description: '7.5oz (255 GSM) Heavyweight Cotton. Custom boxy fit. Rugged texture. Engineered for those who seek the light within the void.',
     price: '59.99€',
     images: [
@@ -35,8 +35,8 @@ export const products: Product[] = [
     category: 'individuals' as Category,
     productType: 'tee' as ProductType,
     name: 'SOULFULL — BLACK',
-    tagline: 'PART OF THE HERITAGE COLLECTION',
-    description: '7.5oz (255 GSM) Heavyweight Cotton. Custom boxy fit. Rugged texture. A signal from the first constellations.',
+    tagline: 'From the first constellations',
+    description: 'Built for presence. 7.5oz (255 GSM) Heavyweight Cotton. Custom boxy fit. Rugged texture. A signal from the first constellations.',
     price: '59.99€',
     images: [
       '/Assets/Images/Preview/Soulfull/Soulfull Black/Soulfull on Almost Black.webp',
@@ -49,27 +49,13 @@ export const products: Product[] = [
     category: 'individuals' as Category,
     productType: 'tee' as ProductType,
     name: 'SOULFULL — WHITE',
-    tagline: 'PART OF THE HERITAGE COLLECTION',
-    description: '7.5oz (255 GSM) Heavyweight Cotton. Custom boxy fit. Rugged texture. A signal from the first constellations.',
+    tagline: 'From the first constellations',
+    description: 'Built for presence. 7.5oz (255 GSM) Heavyweight Cotton. Custom boxy fit. Rugged texture. A signal from the first constellations.',
     price: '59.99€',
     images: [
       '/Assets/Images/Preview/Soulfull/Soulful White/Soulfull White.webp',
       '/Assets/Images/Preview/Soulfull/Soulful White/V3B White Original.webp',
       '/Assets/Images/Preview/Soulfull/Soulful White/Neck Label White.webp',
-    ],
-  },
-  {
-    id: 'soulfull-skye-blue',
-    category: 'individuals' as Category,
-    productType: 'tee' as ProductType,
-    name: 'SOULFULL — SKYE BLUE',
-    tagline: 'PART OF THE HERITAGE COLLECTION',
-    description: '7.5oz (255 GSM) Heavyweight Cotton. Custom boxy fit. Rugged texture. A signal from the first constellations.',
-    price: '59.99€',
-    images: [
-      '/Assets/Images/Preview/Soulfull/Soulfull Skye Blue/Soulfull Skye Blue.webp',
-      '/Assets/Images/Preview/Soulfull/Soulfull Skye Blue/V3B Skye Blue Original.webp',
-      '/Assets/Images/Preview/Soulfull/Soulfull Skye Blue/New Skye Neck Closeup.webp',
     ],
   },
   {
@@ -114,21 +100,8 @@ export const products: Product[] = [
       '/Assets/Images/Preview/Esential_White/Neck Label White.webp',
     ],
   },
-  {
-    id: 'esential-skye-blue',
-    category: 'essentials' as Category,
-    productType: 'tee' as ProductType,
-    name: 'Essential Sky Blue',
-    tagline: '255 GSM Heavyweight Cotton',
-    description: '7.5oz (255 GSM) Heavyweight Cotton. Custom boxy fit. Rugged texture.',
-    price: '44.99€',
-    images: [
-      '/Assets/Images/Preview/Esential_Skye _Blue/SKye Blue ES Front.webp',
-      '/Assets/Images/Preview/Esential_Skye _Blue/Skye Closeup on Black.webp',
-      '/Assets/Images/Preview/Esential_Skye _Blue/New Skye Neck Closeup.webp',
-    ],
-  },
 ]
+
 
 export const featuredProducts: Product[] = products.filter((p) =>
   p.id === 'broken-001' || p.id === 'core-hoodie-white'

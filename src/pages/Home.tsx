@@ -31,16 +31,19 @@ export default function Home() {
             <p style={{ fontSize: '0.65rem', letterSpacing: '0.45em', color: '#888888', lineHeight: 1.6 }} className="uppercase mb-3">
               Heritage Collection
             </p>
-            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 3.2rem)', fontWeight: 500, letterSpacing: '0.08em', lineHeight: 1.2, color: '#E6E6E6' }} className="uppercase mb-10">
+            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 3.2rem)', fontWeight: 500, letterSpacing: '0.08em', lineHeight: 1.2, color: '#E6E6E6' }} className="uppercase mb-3">
               Soulfull
             </h2>
+            <p style={{ fontSize: '0.82rem', letterSpacing: '0.2em', lineHeight: 1.7, color: '#888888' }} className="mb-10">
+              Some things are meant to be worn.
+            </p>
           </motion.div>
           {soulfullBlack && (
             <div className="flex flex-wrap justify-center gap-8">
               <div className="flex flex-col items-center">
                 <ProductCard product={soulfullBlack} />
                 <p style={{ fontSize: '0.6rem', letterSpacing: '0.35em', color: '#666666', marginTop: '10px' }} className="uppercase">
-                  Part of the Heritage Collection
+                  Wear what you feel.
                 </p>
               </div>
             </div>
@@ -50,36 +53,7 @@ export default function Home() {
 
       <div className="border-t border-white/5" />
 
-      {/* 2. BROKEN STATEMENT */}
-      <section id="broken" className="bg-black text-white py-16 sm:py-24 lg:py-32">
-        <div className="mx-auto w-full max-w-[1300px] px-6 lg:px-12">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.9 }}>
-            <p style={{ fontSize: '0.65rem', letterSpacing: '0.45em', color: '#888888', lineHeight: 1.6 }} className="uppercase mb-3">
-              Seraphim // 001
-            </p>
-            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 3.2rem)', fontWeight: 500, letterSpacing: '0.08em', lineHeight: 1.2, color: '#E6E6E6' }} className="uppercase mb-10">
-              Broken
-            </h2>
-          </motion.div>
-          {broken && (
-            <div className="flex flex-wrap justify-center gap-8">
-              <ProductCard product={broken} />
-            </div>
-          )}
-          <div className="mt-10 flex justify-center">
-            <Link
-              to="/story"
-              className="inline-flex border-b border-white/40 pb-1 text-xs font-semibold uppercase tracking-[0.24em] text-white/60 transition-colors hover:text-white hover:border-white"
-            >
-              Read the Origin
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <div className="border-t border-white/5" />
-
-      {/* 3. ESSENTIALS */}
+      {/* 2. ESSENTIALS */}
       <section id="essentials" className="bg-neutral-950 text-white py-16 sm:py-24 lg:py-32">
         <div className="mx-auto w-full max-w-[1300px] px-6 lg:px-12">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.9 }}>
@@ -98,6 +72,27 @@ export default function Home() {
               <ProductCard key={p.id} product={p} />
             ))}
           </div>
+        </div>
+      </section>
+
+      <div className="border-t border-white/5" />
+
+      {/* 3. BROKEN - SERAPHIM */}
+      <section id="broken" className="bg-black text-white py-16 sm:py-24 lg:py-32">
+        <div className="mx-auto w-full max-w-[1300px] px-6 lg:px-12">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.9 }}>
+            <p style={{ fontSize: '0.65rem', letterSpacing: '0.45em', color: '#888888', lineHeight: 1.6 }} className="uppercase mb-3">
+              Seraphim // 001
+            </p>
+            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 3.2rem)', fontWeight: 500, letterSpacing: '0.08em', lineHeight: 1.2, color: '#E6E6E6' }} className="uppercase mb-10">
+              Broken
+            </h2>
+          </motion.div>
+          {broken && (
+            <div className="flex flex-wrap justify-center gap-8">
+              <ProductCard product={broken} />
+            </div>
+          )}
         </div>
       </section>
 
@@ -133,6 +128,17 @@ export default function Home() {
             We respect your privacy. Unsubscribe anytime.
           </p>
         </div>
+      </section>
+
+      {/* 5. READ THE ORIGIN - subtle */}
+      <section className="bg-black py-16 flex justify-center items-center">
+        <Link
+          to="/story"
+          style={{ fontSize: '0.65rem', letterSpacing: '0.5em', color: '#444444', lineHeight: 1.6 }}
+          className="uppercase hover:text-white/60 transition-colors"
+        >
+          — The Origin —
+        </Link>
       </section>
     </main>
   )

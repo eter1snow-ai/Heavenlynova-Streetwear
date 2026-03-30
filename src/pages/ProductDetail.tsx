@@ -266,7 +266,7 @@ export default function ProductDetail() {
               className="w-full border border-white bg-transparent py-3 text-xs font-semibold uppercase tracking-[0.24em] text-white transition-soft hover:bg-white hover:text-black"
               style={{ borderRadius: 0 }}
             >
-              Add to Cart
+              Claim Your Piece
             </button>
 
             <p className="text-sm md:text-base text-neutral-300 leading-relaxed max-w-[90%] md:max-w-none">{product.description}</p>
