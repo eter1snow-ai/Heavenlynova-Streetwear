@@ -31,7 +31,7 @@ export default function Footer() {
               {['Contact Us', 'Privacy Policy', 'Refund Policy', 'Shipping Policy', 'Terms of Service'].map((item) => (
                 <div key={item} style={{ fontSize: '0.82rem', fontWeight: 300, letterSpacing: '0.1em', lineHeight: 1.6, color: '#C2C2C2' }}
                   className="uppercase hover:text-white transition-colors cursor-pointer">
-                  {item}
+                  {item === 'Contact Us' ? <Link to="/contact" style={{ color: 'inherit' }}>{item}</Link> : item}
                 </div>
               ))}
             </nav>
