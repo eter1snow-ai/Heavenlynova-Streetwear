@@ -6,6 +6,10 @@ import Heritage from './pages/Heritage'
 import Join from './pages/Join'
 import Contact from './pages/Contact'
 import Seraphim from './pages/Seraphim'
+import PrivacyPolicy from './pages/PrivacyPolicy'
+import TermsOfService from './pages/TermsOfService'
+import ShippingPolicy from './pages/ShippingPolicy'
+import RefundPolicy from './pages/RefundPolicy'
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
 import EmailCapture from './components/shared/EmailCapture'
@@ -46,7 +50,11 @@ function AnimatedRoutes() {
         <Route path="/heritage" element={<MotionPage><Heritage /></MotionPage>} />
         <Route path="/join" element={<MotionPage><Join /></MotionPage>} />
         <Route path="/contact" element={<MotionPage><Contact /></MotionPage>} />
-        <Route path="/seraphim" element={<MotionPage><Seraphim /></MotionPage>} />
+<Route path="/seraphim" element={<MotionPage><Seraphim /></MotionPage>} />
+        <Route path="/privacy-policy" element={<MotionPage><PrivacyPolicy /></MotionPage>} />
+        <Route path="/terms-of-service" element={<MotionPage><TermsOfService /></MotionPage>} />
+        <Route path="/shipping-policy" element={<MotionPage><ShippingPolicy /></MotionPage>} />
+        <Route path="/refund-policy" element={<MotionPage><RefundPolicy /></MotionPage>} />
         <Route path="/product/:productId" element={<MotionPage><ProductDetail /></MotionPage>} />
         <Route path="*" element={<MotionPage><Home /></MotionPage>} />
       </Routes>

@@ -28,12 +28,21 @@ export default function Footer() {
               Support
             </h3>
             <nav style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-              {['Contact Us', 'Privacy Policy', 'Refund Policy', 'Shipping Policy', 'Terms of Service'].map((item) => (
-                <div key={item} style={{ fontSize: '0.82rem', fontWeight: 300, letterSpacing: '0.1em', lineHeight: 1.6, color: '#C2C2C2' }}
-                  className="uppercase hover:text-white transition-colors cursor-pointer">
-                  {item === 'Contact Us' ? <Link to="/contact" style={{ color: 'inherit' }}>{item}</Link> : item}
-                </div>
-              ))}
+              {['Contact Us', 'Privacy Policy', 'Refund Policy', 'Shipping Policy', 'Terms of Service'].map((item) => {
+                const links = {
+                  'Contact Us': '/contact',
+                  'Privacy Policy': '/privacy-policy',
+                  'Terms of Service': '/terms-of-service',
+                  'Shipping Policy': '/shipping-policy',
+                  'Refund Policy': '/refund-policy'
+                } as { [key: string]: string };
+                return (
+                  <div key={item} style={{ fontSize: '0.82rem', fontWeight: 300, letterSpacing: '0.1em', lineHeight: 1.6, color: '#C2C2C2' }}
+                    className="uppercase hover:text-white transition-colors cursor-pointer">
+                    {links[item] ? <Link to={links[item]} style={{ color: 'inherit' }}>{item}</Link> : item}
+                  </div>
+                );
+              })}
             </nav>
           </div>
 
