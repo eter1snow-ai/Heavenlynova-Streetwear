@@ -106,8 +106,7 @@ export default function Navbar() {
                 {collectionsOpen && (
                   <div className="absolute top-full left-0 mt-2 w-40 bg-black border border-white/10 py-2 z-50">
                     {[
-                      { label: 'Seraphim', collection: 'flagship' },
-                      // { label: 'Heritage', collection: 'individuals' }, // hidden until launch
+                      // { label: 'Seraphim', collection: 'flagship' }, // hidden - coming soon
                       { label: 'Essentials', collection: 'essentials' },
                     ].map((item) => (
                       <button
@@ -132,7 +131,7 @@ export default function Navbar() {
               {[
                 { label: 'Drops', action: () => handleDropsFilter() },
                 { label: 'Essentials', action: () => handleAnchorClick('essentials') },
-                { label: 'Seraphim', action: () => navigate('/seraphim') },
+                // { label: 'Seraphim', action: () => navigate('/seraphim') }, // hidden - coming soon
                 // { label: 'Heritage', action: () => handleDropsFilter(undefined, 'individuals') }, // hidden until launch
               ].map((item) => (
                 <li key={item.label}>

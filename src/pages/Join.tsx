@@ -29,10 +29,10 @@ export default function Join() {
         <div className="text-center mb-10">
           <p className="uppercase mb-5" style={{ fontSize: '0.65rem', letterSpacing: '0.5em', lineHeight: 1.6, color: '#aaaaaa' }}>Enter the Ascent</p>
           <h1 className="uppercase mb-5" style={{ fontSize: '2rem', fontWeight: 500, letterSpacing: '0.12em', lineHeight: 1.5, color: '#E6E6E6' }}>
-            Chapter /001:<br />Seraphim is Now Live.
+            Join the Ascent
           </h1>
           <p className="uppercase" style={{ fontSize: '0.75rem', letterSpacing: '0.35em', lineHeight: 1.8, color: '#888888' }}>
-            Receive exclusive drops, lore fragments,<br />and early access to future chapters.
+            The first light has arrived.<br />Be among the first to receive drops, lore fragments,<br />and early access to future chapters.
           </p>
         </div>
 

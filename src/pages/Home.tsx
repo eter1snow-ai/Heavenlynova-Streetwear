@@ -99,15 +99,15 @@ export default function Home() {
       {/* 4. NEWSLETTER */}
       <section className="bg-neutral-950 border-t border-white/5" style={{ paddingTop: '80px', paddingBottom: '80px' }}>
         <div className="mx-auto w-full px-6 flex flex-col items-center justify-center text-center" style={{ maxWidth: '580px' }}>
-          <p className="uppercase mb-6" style={{ fontSize: '0.65rem', letterSpacing: '0.5em', lineHeight: 1.6, color: '#aaaaaa' }}>Enter the Ascent</p>
+          <p className="uppercase mb-6" style={{ fontSize: '0.65rem', letterSpacing: '0.5em', lineHeight: 1.6, color: '#aaaaaa' }}>The Seraphim Archive</p>
           <h2
             className="uppercase mb-5"
             style={{ fontFamily: '\'Glasgow Serial\', sans-serif', fontWeight: 500, fontSize: '2rem', letterSpacing: '0.12em', lineHeight: 1.5, color: '#E6E6E6' }}
           >
-            Chapter /001:<br />Seraphim is Now Live.
+            The first chapter<br />is approaching.
           </h2>
           <p className="uppercase mb-12" style={{ fontSize: '0.75rem', letterSpacing: '0.35em', lineHeight: 1.8, color: '#888888' }}>
-            Receive exclusive drops, lore fragments,<br />and early access to future chapters.
+            Enter your email for exclusive access<br />and private transmissions.
           </p>
           <form onSubmit={(e) => e.preventDefault()} className="w-full flex flex-col items-center gap-4">
             <input
