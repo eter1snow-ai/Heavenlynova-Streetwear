@@ -6,6 +6,8 @@ import Heritage from './pages/Heritage'
 import Join from './pages/Join'
 import Contact from './pages/Contact'
 import Seraphim from './pages/Seraphim'
+import { CartProvider } from './components/cart/CartContext'
+import CartDrawer from './components/cart/CartDrawer'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsOfService from './pages/TermsOfService'
 import ShippingPolicy from './pages/ShippingPolicy'
@@ -65,13 +67,16 @@ function AnimatedRoutes() {
 export default function App() {
   return (
     <BrowserRouter>
-      <EmailCapture />
-      <CookieBanner />
-      <div className="min-h-screen bg-black text-white hn-radius-0">
-        <Navbar />
-        <AnimatedRoutes />
-        <Footer />
-      </div>
+      <CartProvider>
+        <EmailCapture />
+        <CookieBanner />
+        <CartDrawer />
+        <div className="min-h-screen bg-black text-white hn-radius-0">
+          <Navbar />
+          <AnimatedRoutes />
+          <Footer />
+        </div>
+      </CartProvider>
     </BrowserRouter>
   )
 }

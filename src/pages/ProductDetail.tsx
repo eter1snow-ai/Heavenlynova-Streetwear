@@ -4,12 +4,14 @@ import { getProductById } from '../data/drops'
 import { useEffect, useState, useMemo } from 'react'
 import ZoomImage from '../components/shared/ZoomImage'
 import SizeGuideModal from '../components/shared/SizeGuideModal'
+import { useCart } from '../components/cart/CartContext'
 
 const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'] as const
 
 export default function ProductDetail() {
   const { productId } = useParams()
   const product = getProductById(productId || '')
+  const { openCart } = useCart()
   const [size, setSize] = useState<string>(() => {
     try {
       const raw = localStorage.getItem('draftFormData')
@@ -283,6 +285,7 @@ export default function ProductDetail() {
             />
 
             <button
+              onClick={openCart}
               className="w-full border border-white bg-transparent py-3 text-xs font-semibold uppercase tracking-[0.24em] text-white transition-soft hover:bg-white hover:text-black"
               style={{ borderRadius: 0 }}
             >
