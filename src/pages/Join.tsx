@@ -27,12 +27,12 @@ export default function Join() {
         className="relative z-10 max-w-md w-full px-6"
       >
         <div className="text-center mb-10">
-          <p className="uppercase mb-5" style={{ fontSize: '0.65rem', letterSpacing: '0.5em', lineHeight: 1.6, color: '#aaaaaa' }}>Enter the Ascent</p>
+          <p className="uppercase mb-5" style={{ fontSize: '0.65rem', letterSpacing: '0.5em', lineHeight: 1.6, color: '#aaaaaa' }}>Born from Light & Shadow.</p>
           <h1 className="uppercase mb-5" style={{ fontSize: '2rem', fontWeight: 500, letterSpacing: '0.12em', lineHeight: 1.5, color: '#E6E6E6' }}>
-            Join the Ascent
+            The Heritage Line<br />is Live.
           </h1>
           <p className="uppercase" style={{ fontSize: '0.75rem', letterSpacing: '0.35em', lineHeight: 1.8, color: '#888888' }}>
-            The first light has arrived.<br />Be among the first to receive drops, lore fragments,<br />and early access to future chapters.
+            Be among the first to receive exclusive drops,<br />lore fragments, and early access to what comes next.
           </p>
         </div>
 

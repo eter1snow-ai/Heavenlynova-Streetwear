@@ -89,6 +89,9 @@ export default function Navbar() {
                 <span className={linkClass} onClick={() => handleDropsFilter()}>Drops</span>
               </li>
               <li>
+                <span className={linkClass} onClick={() => navigate('/heritage')}>Heritage</span>
+              </li>
+              <li>
                 <span className={linkClass} onClick={() => handleAnchorClick('essentials')}>Essentials</span>
               </li>
 
@@ -106,12 +109,12 @@ export default function Navbar() {
                 {collectionsOpen && (
                   <div className="absolute top-full left-0 mt-2 w-40 bg-black border border-white/10 py-2 z-50">
                     {[
-                      // { label: 'Seraphim', collection: 'flagship' }, // hidden - coming soon
-                      { label: 'Essentials', collection: 'essentials' },
+                      { label: 'Heritage', action: () => navigate('/heritage') },
+                      { label: 'Essentials', action: () => handleDropsFilter(undefined, 'essentials') },
                     ].map((item) => (
                       <button
-                        key={item.collection}
-                        onClick={() => item.collection === 'flagship' ? navigate('/seraphim') : handleDropsFilter(undefined, item.collection)}
+                        key={item.label}
+                        onClick={item.action}
                         className="block w-full text-left px-4 py-2 text-xs uppercase tracking-widest text-white/60 hover:text-white hover:bg-white/5 transition-colors"
                       >
                         {item.label}
@@ -130,9 +133,9 @@ export default function Navbar() {
             <ul className="space-y-2 px-6 py-4 list-none">
               {[
                 { label: 'Drops', action: () => handleDropsFilter() },
+                { label: 'Heritage', action: () => navigate('/heritage') },
                 { label: 'Essentials', action: () => handleAnchorClick('essentials') },
                 // { label: 'Seraphim', action: () => navigate('/seraphim') }, // hidden - coming soon
-                // { label: 'Heritage', action: () => handleDropsFilter(undefined, 'individuals') }, // hidden until launch
               ].map((item) => (
                 <li key={item.label}>
                   <span

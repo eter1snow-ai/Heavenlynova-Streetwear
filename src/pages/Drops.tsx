@@ -30,7 +30,9 @@ export default function Drops() {
   const filtered = products.filter((p) => {
     const matchType = typeFilter === 'all' || p.productType === typeFilter
     const matchCollection = collectionFilter === 'all' || p.category === collectionFilter
-    return matchType && matchCollection
+    // hide flagship (Seraphim) unless explicitly selected
+    const notHidden = p.category !== 'flagship'
+    return matchType && matchCollection && notHidden
   })
 
   const filterBtn = (active: boolean) =>
@@ -66,7 +68,7 @@ export default function Drops() {
             </div>
             <div className="flex flex-wrap gap-2 items-center">
               <span className="text-[10px] uppercase tracking-widest text-neutral-500 mr-1">Collection</span>
-              {(['all', 'flagship', 'essentials'] as CollectionFilter[]).map((c) => ( // 'individuals' hidden until launch
+              {(['all', 'individuals', 'essentials'] as CollectionFilter[]).map((c) => ( // 'flagship' hidden until launch
                 <button key={c} onClick={() => setCollectionFilter(c)} className={filterBtn(collectionFilter === c)} style={{ borderRadius: 0 }}>
                   {collectionLabels[c]}
                 </button>

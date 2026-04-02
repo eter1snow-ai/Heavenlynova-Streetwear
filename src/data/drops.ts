@@ -36,7 +36,7 @@ export const products: Product[] = [
     productType: 'tee' as ProductType,
     name: 'SOULFULL — BLACK',
     tagline: 'From the first constellations',
-    description: 'Built for presence. 7.5oz (255 GSM) Heavyweight Cotton. Custom boxy fit. Rugged texture. A signal from the first constellations.',
+    description: 'Part of the Heritage Line. Built for presence. 7.5oz (255 GSM) Heavyweight Cotton. Custom boxy fit. Rugged texture. A signal from the first constellations.',
     price: '59.99€',
     images: [
       '/Assets/Images/Preview/Soulfull/Soulfull Black/Soulfull on Almost Black Back.webp',
