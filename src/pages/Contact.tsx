@@ -4,13 +4,32 @@ import { useEffect, useState } from 'react'
 export default function Contact() {
   useEffect(() => { window.scrollTo(0, 0) }, [])
 
-  const [form, setForm] = useState({ name: '', email: '', message: '' })
+  const [form, setForm] = useState({ name: '', email: '', message: '', website: '' })
   const [sent, setSent] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!form.email || !form.message) return
-    setSent(true)
+    if (!form.email || !form.message || !form.name) return
+    setLoading(true)
+    setError('')
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+      if (res.ok) {
+        setSent(true)
+      } else {
+        setError('Something went wrong. Try again.')
+      }
+    } catch {
+      setError('Something went wrong. Try again.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -42,6 +61,16 @@ export default function Contact() {
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.9 }}>
             {!sent ? (
               <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
+                {/* Honeypot anti-spam */}
+                <input
+                  type="text"
+                  name="website"
+                  value={form.website}
+                  onChange={(e) => setForm({ ...form, website: e.target.value })}
+                  style={{ display: 'none' }}
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
                 {[
                   { key: 'name', label: 'Your Name', placeholder: 'Enter your name', type: 'text' },
                   { key: 'email', label: 'Your Email', placeholder: 'Enter your coordinates', type: 'email' },
@@ -78,11 +107,13 @@ export default function Contact() {
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                   <button
                     type="submit"
-                    style={{ alignSelf: 'flex-start', border: '1px solid rgba(255,255,255,0.25)', background: 'transparent', color: '#E6E6E6', fontSize: '0.7rem', letterSpacing: '0.35em', padding: '14px 40px', borderRadius: 0, cursor: 'pointer' }}
+                    disabled={loading}
+                    style={{ alignSelf: 'flex-start', border: '1px solid rgba(255,255,255,0.25)', background: 'transparent', color: '#E6E6E6', fontSize: '0.7rem', letterSpacing: '0.35em', padding: '14px 40px', borderRadius: 0, cursor: loading ? 'not-allowed' : 'pointer', opacity: loading ? 0.5 : 1 }}
                     className="uppercase hover:bg-white hover:text-black transition-colors"
                   >
-                    Transmit
+                    {loading ? 'Transmitting...' : 'Transmit'}
                   </button>
+                  {error && <p style={{ fontSize: '0.65rem', letterSpacing: '0.25em', color: '#ff4444' }} className="uppercase">{error}</p>}
                   <p style={{ fontSize: '0.65rem', letterSpacing: '0.25em', lineHeight: 1.6, color: '#555555' }} className="uppercase">
                     Your message remains in the shadows. We respect your privacy.
                   </p>
@@ -92,10 +123,10 @@ export default function Contact() {
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8 }} style={{ paddingTop: '40px' }}>
                 <p style={{ fontSize: '0.65rem', letterSpacing: '0.4em', color: '#888888' }} className="uppercase mb-4">Transmission received</p>
                 <h2 style={{ fontSize: '1.8rem', fontWeight: 400, letterSpacing: '0.1em', lineHeight: 1.4, color: '#E6E6E6' }} className="uppercase mb-4">
-                  Your message<br />entered the orbit.
+                  Your truth has been received.
                 </h2>
                 <p style={{ fontSize: '0.78rem', letterSpacing: '0.2em', lineHeight: 1.8, color: '#888888' }} className="uppercase">
-                  We move with precision, not haste.<br />Response within 24–48 hours.
+                  Expect a sign within 24–48 hours.
                 </p>
               </motion.div>
             )}

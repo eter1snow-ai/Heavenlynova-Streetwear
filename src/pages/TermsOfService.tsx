@@ -3,7 +3,7 @@
 export default function TermsOfService() {
   return (
     <main className="min-h-screen bg-black text-white">
-      <div className="legal-policy-container" style={{ maxWidth: '800px', margin: '0 auto', padding: '40px 20px', lineHeight: 1.6 }}>
+      <div className="legal-policy-container" style={{ maxWidth: '800px', margin: '0 auto', padding: '120px 20px 40px', lineHeight: 1.6 }}>
         <h1 style={{ textTransform: 'uppercase', marginBottom: '10px' }}>Terms of Service</h1>
         <p><strong>Last updated:</strong> October 2, 2025</p>
 
