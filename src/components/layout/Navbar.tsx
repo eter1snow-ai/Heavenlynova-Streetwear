@@ -61,11 +61,7 @@ export default function Navbar() {
 
   return (
     <>
-      {!isJoinPage && (
-        <div className="text-xs tracking-widest text-center py-2 bg-black text-white">
-          🌍 FREE WORLDWIDE SHIPPING
-        </div>
-      )}
+
 
       <header className={`fixed top-0 left-0 right-0 z-50 ${isJoinPage ? 'bg-transparent border-transparent' : `border-b border-neutral-800 ${scrolled ? 'bg-black/90 backdrop-blur-md' : 'bg-black/70 backdrop-blur-sm'}`}`}>
         <nav className="mx-auto flex max-w-[1300px] items-center justify-between px-6 py-4 lg:px-12">
