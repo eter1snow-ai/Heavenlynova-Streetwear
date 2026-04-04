@@ -4,7 +4,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex h-[70vh] sm:h-[60vh] w-full items-center bg-black text-white overflow-hidden pt-20"
+      className="relative flex h-[70vh] sm:h-[60vh] w-full items-end bg-black text-white overflow-hidden pt-20 pb-12"
     >
       {/* Static Image Background */}
       <img
