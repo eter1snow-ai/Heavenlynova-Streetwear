@@ -30,7 +30,7 @@ export default function RefundPolicy() {
 
   return (
     <main className="min-h-screen bg-black text-white">
-      <div className="legal-policy-container" style={{ maxWidth: '800px', margin: '0 auto', padding: '120px 20px 40px', lineHeight: 1.6 }}>
+      <div className="legal-policy-container" style={{ maxWidth: '800px', margin: '0 auto', padding: '120px 20px 40px', lineHeight: 1.6, overflowX: 'hidden' }}>
         <h1 style={{ textTransform: 'uppercase', marginBottom: '10px' }}>Refund Policy</h1>
         <p><strong>Last updated:</strong> October 2, 2025</p>
 
@@ -82,6 +82,14 @@ export default function RefundPolicy() {
         <p>Orders can only be cancelled <strong>within a short window after purchase</strong>. Once production has started, cancellation is no longer possible.</p>
 
         <div style={{ height: '1px', backgroundColor: '#333333', margin: '40px 0' }} />
+
+        {/* SEPARATOR + TRANSITION TEXT */}
+        <div style={{ margin: '60px 0 48px', textAlign: 'center' }}>
+          <div style={{ height: '1px', backgroundColor: 'rgba(255,255,255,0.1)', marginBottom: '32px' }} />
+          <p className="text-xs uppercase tracking-[0.4em]" style={{ opacity: 0.4 }}>Initiate Your Truth</p>
+          <p className="text-xs uppercase tracking-[0.3em]" style={{ opacity: 0.2, marginTop: '8px' }}>Return Process Below</p>
+          <div style={{ height: '1px', backgroundColor: 'rgba(255,255,255,0.1)', marginTop: '32px' }} />
+        </div>
 
         {/* INITIATE RETURN FORM */}
         <p className="text-xs tracking-[0.3em] uppercase" style={{ opacity: 0.6, marginBottom: '12px' }}>Initiate Return</p>
