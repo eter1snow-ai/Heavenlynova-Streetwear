@@ -12,6 +12,7 @@ import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsOfService from './pages/TermsOfService'
 import ShippingPolicy from './pages/ShippingPolicy'
 import RefundPolicy from './pages/RefundPolicy'
+import Returns from './pages/Returns'
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
 import EmailCapture from './components/shared/EmailCapture'
@@ -57,6 +58,7 @@ function AnimatedRoutes() {
         <Route path="/terms-of-service" element={<MotionPage><TermsOfService /></MotionPage>} />
         <Route path="/shipping-policy" element={<MotionPage><ShippingPolicy /></MotionPage>} />
         <Route path="/refund-policy" element={<MotionPage><RefundPolicy /></MotionPage>} />
+        <Route path="/returns" element={<MotionPage><Returns /></MotionPage>} />
         <Route path="/product/:productId" element={<MotionPage><ProductDetail /></MotionPage>} />
         <Route path="*" element={<MotionPage><Home /></MotionPage>} />
       </Routes>
