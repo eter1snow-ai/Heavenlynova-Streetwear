@@ -2,7 +2,7 @@ import Hero from '../components/home/Hero'
 import { products } from '../data/drops'
 import { Link, useLocation } from 'react-router-dom'
 import ProductCard from '../components/shared/ProductCard'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 
 export default function Home() {
@@ -10,6 +10,25 @@ export default function Home() {
 
   const soulfullBlack = products.find((p) => p.id === 'soulfull-black')
   const essentials = products.filter((p) => p.id === 'essentials-black' || p.id === 'essentials-white')
+  const [nlEmail, setNlEmail] = useState('')
+  const [nlSent, setNlSent] = useState(false)
+  const [nlLoading, setNlLoading] = useState(false)
+
+  const handleNewsletter = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!nlEmail) return
+    setNlLoading(true)
+    try {
+      await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: nlEmail, type: 'newsletter' }),
+      })
+      setNlSent(true)
+    } finally {
+      setNlLoading(false)
+    }
+  }
 
   useEffect(() => {
     if (location.state?.scrollTo) {
@@ -121,21 +140,31 @@ export default function Home() {
           <p className="uppercase mb-12" style={{ fontSize: '0.75rem', letterSpacing: '0.35em', lineHeight: 1.8, color: '#888888' }}>
             Join the ascent for exclusive drops<br />and lore fragments.
           </p>
-          <form onSubmit={(e) => e.preventDefault()} className="w-full flex flex-col items-center gap-4">
-            <input
-              type="email"
-              placeholder="your@email.com"
-              className="w-full bg-transparent border-b border-white/20 text-white text-xs tracking-widest px-0 py-3 placeholder:text-white/20 focus:border-white/60 focus:outline-none transition-colors text-center"
-              style={{ borderRadius: 0 }}
-            />
-            <button
-              type="submit"
-              className="mt-2 bg-transparent border border-white/30 text-white text-[10px] tracking-[0.3em] px-10 py-3 uppercase hover:bg-white hover:text-black transition-colors"
-              style={{ borderRadius: 0 }}
-            >
-              Initiate
-            </button>
-          </form>
+          {!nlSent ? (
+            <form onSubmit={handleNewsletter} className="w-full flex flex-col items-center gap-4">
+              <input
+                type="email"
+                placeholder="your@email.com"
+                value={nlEmail}
+                onChange={(e) => setNlEmail(e.target.value)}
+                required
+                className="w-full bg-transparent border-b border-white/20 text-white text-xs tracking-widest px-0 py-3 placeholder:text-white/20 focus:border-white/60 focus:outline-none transition-colors text-center"
+                style={{ borderRadius: 0 }}
+              />
+              <button
+                type="submit"
+                disabled={nlLoading}
+                className="mt-2 bg-transparent border border-white/30 text-white text-[10px] tracking-[0.3em] px-10 py-3 uppercase hover:bg-white hover:text-black transition-colors"
+                style={{ borderRadius: 0, opacity: nlLoading ? 0.5 : 1 }}
+              >
+                {nlLoading ? '...' : 'Initiate'}
+              </button>
+            </form>
+          ) : (
+            <p className="uppercase tracking-[0.3em]" style={{ fontSize: '0.75rem', color: '#E6E6E6', lineHeight: 1.8 }}>
+              You are now part of the universe.
+            </p>
+          )}
           <p className="text-[9px] text-white/15 mt-6 uppercase tracking-[0.3em]">
             We respect your privacy. Unsubscribe anytime.
           </p>
