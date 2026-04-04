@@ -6,7 +6,14 @@ export default function Footer() {
       <video
         className="absolute inset-0 w-full h-full object-cover opacity-20"
         src="/Assets/Images/Video1.mp4"
-        autoPlay loop muted playsInline
+        autoPlay
+        loop
+        muted
+        playsInline
+        controls={false}
+        preload="metadata"
+        aria-hidden="true"
+        webkit-playsinline="true"
       />
 
       <div className="relative z-10 mx-auto px-10" style={{ maxWidth: '1400px' }}>
