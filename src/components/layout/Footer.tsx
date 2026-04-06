@@ -35,13 +35,12 @@ export default function Footer() {
               Support
             </h3>
             <nav style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-              {['Contact Us', 'Privacy Policy', 'Refund Policy', 'Shipping Policy', 'Terms of Service'].map((item) => {
+              {['Contact Us', 'Track Your Order', 'Refund Policy', 'Shipping Policy'].map((item) => {
                 const links = {
                   'Contact Us': '/contact',
-                  'Privacy Policy': '/privacy-policy',
-                  'Terms of Service': '/terms-of-service',
-                  'Shipping Policy': '/shipping-policy',
-                  'Refund Policy': '/refund-policy'
+                  'Track Your Order': '/track-order',
+                  'Refund Policy': '/refund-policy',
+                  'Shipping Policy': '/shipping-policy'
                 } as { [key: string]: string };
                 return (
                   <div key={item} style={{ fontSize: '0.82rem', fontWeight: 300, letterSpacing: '0.1em', lineHeight: 1.6, color: '#C2C2C2' }}
@@ -53,7 +52,7 @@ export default function Footer() {
             </nav>
           </div>
 
-          {/* Brand Links */}
+          {/* Brand */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
             <h3 style={{ fontSize: '0.72rem', fontWeight: 600, letterSpacing: '0.28em', lineHeight: 1.4, color: '#D6D6D6' }} className="uppercase">
               Brand
@@ -61,8 +60,6 @@ export default function Footer() {
             <nav style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
               <Link to="/drops" style={{ fontSize: '0.82rem', fontWeight: 300, letterSpacing: '0.1em', lineHeight: 1.6, color: '#C2C2C2' }} className="uppercase hover:text-white transition-colors">Drops</Link>
               <Link to="/heritage" style={{ fontSize: '0.82rem', fontWeight: 300, letterSpacing: '0.1em', lineHeight: 1.6, color: '#C2C2C2' }} className="uppercase hover:text-white transition-colors">Heritage</Link>
-
-              {/* Seraphim hidden - coming soon */}
               <Link to="/join" style={{ fontSize: '0.82rem', fontWeight: 300, letterSpacing: '0.1em', lineHeight: 1.6, color: '#C2C2C2' }} className="uppercase hover:text-white transition-colors">Join</Link>
             </nav>
           </div>
@@ -81,10 +78,15 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col md:flex-row justify-between items-center" style={{ borderTop: '1px solid #2A2A2A', marginTop: '80px', paddingTop: '40px', paddingBottom: '20px' }}>
-          <span className="uppercase" style={{ fontSize: '0.72rem', letterSpacing: '0.2em', lineHeight: 1.6, color: '#888888' }}>2026 HEAVENLYNOVA - All Rights Reserved</span>
-          <span className="uppercase mt-2 md:mt-0" style={{ fontSize: '0.82rem', letterSpacing: '0.15em', lineHeight: 1.6, color: '#D6D6D6' }}>support@heavenlynova.com</span>
+          <span style={{ fontSize: '0.72rem', letterSpacing: '0.2em', lineHeight: 1.6, color: '#888888' }} className="uppercase">
+            2026 HEAVENLYNOVA - ALL RIGHTS RESERVED | 
+            <Link to="/privacy-policy" style={{ color: '#888888', textDecoration: 'none', margin: '0 0.5rem', fontSize: '0.72rem', letterSpacing: '0.2em', lineHeight: 1.6 }} className="uppercase hover:text-white transition-colors">Privacy Policy</Link> |
+            <Link to="/terms-of-service" style={{ color: '#888888', textDecoration: 'none', margin: '0 0.5rem', fontSize: '0.72rem', letterSpacing: '0.2em', lineHeight: 1.6 }} className="uppercase hover:text-white transition-colors">Terms of Service</Link>
+          </span>
+          <a href="mailto:support@heavenlynova.com" className="uppercase mt-2 md:mt-0 hover:text-white transition-colors" style={{ fontSize: '0.82rem', letterSpacing: '0.15em', lineHeight: 1.6, color: '#D6D6D6', textDecoration: 'none' }}>support@heavenlynova.com</a>
         </div>
       </div>
     </footer>
   )
 }
+
