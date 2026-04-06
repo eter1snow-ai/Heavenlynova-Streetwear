@@ -57,6 +57,7 @@ function AnimatedRoutes() {
         <Route path="/terms-of-service" element={<MotionPage><TermsOfService /></MotionPage>} />
         <Route path="/shipping-policy" element={<MotionPage><ShippingPolicy /></MotionPage>} />
         <Route path="/refund-policy" element={<MotionPage><RefundPolicy /></MotionPage>} />
+        <Route path="/track-order" element={<MotionPage><TrackOrder /></MotionPage>} />
         <Route path="/product/:productId" element={<MotionPage><ProductDetail /></MotionPage>} />
         <Route path="*" element={<MotionPage><Home /></MotionPage>} />
       </Routes>
