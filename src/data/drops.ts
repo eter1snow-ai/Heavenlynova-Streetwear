@@ -39,9 +39,9 @@ export const products: Product[] = [
     description: 'Part of the Heritage Line. Built for presence. 7.5oz (255 GSM) Heavyweight Cotton. Custom boxy fit. Rugged texture. A signal from the first constellations.',
     price: '59.99€',
     images: [
-      '/Assets/Images/Preview/Soulfull/Soulfull Black/Soulfull on Almost Black Back.webp',
-      '/Assets/Images/Preview/Soulfull/Soulfull Black/Original Esentials Black front.jpg',
-      '/Assets/Images/Preview/Soulfull/Soulfull Black/Neck Label Black.webp',
+      '/Assets/Images/Preview/Soulfull/Soulfull Black/Back.webp',
+      '/Assets/Images/Preview/Soulfull/Soulfull Black/Front.jpg',
+      '/Assets/Images/Preview/Soulfull/Soulfull Black/Neck.webp',
     ],
   },
   {
@@ -84,6 +84,20 @@ export const products: Product[] = [
       '/Assets/Images/Preview/Esential_White/White ES Front.webp',
       '/Assets/Images/Preview/Esential_White/White closeup on black.webp',
       '/Assets/Images/Preview/Esential_White/Neck Label White.webp',
+    ],
+  },
+  {
+    id: 'the-origin',
+    category: 'individuals' as Category,
+    productType: 'tee' as ProductType,
+    name: 'THE ORIGIN PIECE',
+    tagline: 'Chapter 00 — The First Signal',
+    description: 'Origin Tee - Chapter 00 is reserved for those who reach the end of the story. A quiet signal that you were here first. 7.5oz (255 GSM) Heavyweight Cotton. Custom boxy fit.',
+    price: '59.99€',
+    images: [
+      '/Assets/Images/Preview/The Origin Piece/Original Esentials Black Front.webp',
+      '/Assets/Images/Preview/The Origin Piece/The Origin 1.webp',
+      '/Assets/Images/Preview/The Origin Piece/Neck Label Black.webp',
     ],
   },
 ]

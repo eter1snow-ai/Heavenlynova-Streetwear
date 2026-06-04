@@ -1,7 +1,14 @@
 import { motion } from 'framer-motion'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export default function Story() {
+  const navigate = useNavigate()
+  const [hoverImage, setHoverImage] = useState(false)
+
+  const backImage = '/Assets/Images/Preview/The Origin Piece/The Origin 1.webp'
+  const frontImage = '/Assets/Images/Preview/The Origin Piece/Original Esentials Black Front.webp'
+
   useEffect(() => {
     window.scrollTo(0, 0);
     console.log('✅ THE ORIGIN PIECE section ready');
@@ -113,8 +120,33 @@ export default function Story() {
             </p>
           </div>
           <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] items-stretch">
-            <div className="relative overflow-hidden border border-neutral-800 bg-neutral-950">
-              <div className="h-64 sm:h-80 md:h-96 w-full bg-neutral-900" />
+            <div 
+              className="relative overflow-hidden border border-neutral-800 bg-neutral-950"
+              onMouseEnter={() => setHoverImage(true)}
+              onMouseLeave={() => setHoverImage(false)}
+            >
+              <div className="w-full bg-neutral-900 relative flex items-center justify-center" style={{ aspectRatio: '2044/2000' }}>
+                <motion.img 
+                  src={backImage}
+                  alt="The Origin Piece - Back"
+                  className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 grayscale"
+                  style={{ borderRadius: 0 }}
+                  initial={{ opacity: 1 }}
+                  animate={{ opacity: hoverImage ? 0 : 1 }}
+                  transition={{ duration: 0.5, ease: 'easeInOut' }}
+                  loading="lazy"
+                />
+                <motion.img 
+                  src={frontImage}
+                  alt="The Origin Piece - Front"
+                  className="absolute inset-0 w-full h-full object-cover grayscale"
+                  style={{ borderRadius: 0 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: hoverImage ? 1 : 0 }}
+                  transition={{ duration: 0.5, ease: 'easeInOut' }}
+                  loading="lazy"
+                />
+              </div>
             </div>
             <div className="flex flex-col justify-between space-y-6">
               <div className="space-y-4">
@@ -133,6 +165,7 @@ export default function Story() {
               </div>
               <div>
                 <button
+                  onClick={() => navigate('/product/the-origin')}
                   className="inline-flex items-center border border-white/40 bg-transparent px-6 py-3 text-xs font-semibold uppercase tracking-[0.24em] text-white transition-soft hover:border-white hover:bg-white hover:text-black"
                   style={{ borderRadius: 0 }}
                 >

@@ -51,11 +51,14 @@ export default function ProductDetail() {
     return file.includes(color)
   }
   const filteredVariantImages = useMemo(() => {
+    if (product?.id === 'the-origin') {
+      return images.filter((s) => !isNeck(s))
+    }
     if (!selectedColor || selectedColor === 'var') {
       return images.filter((s) => !isNeck(s))
     }
     return images.filter((s) => !isNeck(s) && matchesColor(selectedColor, s))
-  }, [images, selectedColor])
+  }, [images, selectedColor, product?.id])
   const neckSelected =
     neckImages.find((n) => matchesColor(selectedColor, n)) || neckImages[0]
 
@@ -129,8 +132,8 @@ export default function ProductDetail() {
                       key={i}
                       src={img}
                       alt={product.name}
-                      className={`aspect-[3/4] w-full object-contain ${i === 1 ? 'object-top' : 'object-center'}`}
-                      style={{ borderRadius: 0, backgroundColor: 'transparent', mixBlendMode: 'normal' }}
+                      className={`w-full ${(product.id.startsWith('soulfull') || product.id === 'the-origin') ? 'object-cover' : 'object-contain'} ${(product.id.startsWith('soulfull') || product.id === 'the-origin') ? '' : 'aspect-[3/4]'} ${i === 1 ? 'object-top' : 'object-center'}`}
+                      style={{ borderRadius: 0, backgroundColor: 'transparent', mixBlendMode: 'normal', aspectRatio: (product.id.startsWith('soulfull') || product.id === 'the-origin') ? '2044/2000' : undefined }}
                       loading="lazy"
                       onLoad={() => console.log('✅ Variant loaded', img)}
                       onError={(e) => {

@@ -82,12 +82,12 @@ export default function EmailCapture() {
               <>
                 {/* Content */}
         <div className="text-center mb-10">
-                  <p className="uppercase mb-5" style={{ fontSize: '0.65rem', letterSpacing: '0.5em', lineHeight: 1.6, color: '#aaaaaa' }}>Enter the Ascent</p>
+                  <p className="uppercase mb-5" style={{ fontSize: '0.65rem', letterSpacing: '0.5em', lineHeight: 1.6, color: '#aaaaaa' }}>ENTER THE ASCENT</p>
                   <h2 className="uppercase mb-5" style={{ fontSize: '1.9rem', fontWeight: 500, letterSpacing: '0.12em', lineHeight: 1.5, color: '#E6E6E6' }}>
-                    Chapter /001:<br />Seraphim is Now Live.
+                    THE FIRST LIGHT HAS ARRIVED.
                   </h2>
                   <p className="uppercase" style={{ fontSize: '0.75rem', letterSpacing: '0.35em', lineHeight: 1.8, color: '#888888' }}>
-                    Receive exclusive drops, lore fragments,<br />and early access to future chapters.
+                    RECEIVE EXCLUSIVE DROPS, LORE FRAGMENTS, AND EARLY ACCESS TO FUTURE CHAPTERS.
                   </p>
                 </div>
 
@@ -112,7 +112,7 @@ export default function EmailCapture() {
                 </form>
 
                 <p className="text-[10px] text-neutral-600 text-center mt-6 uppercase tracking-widest">
-                  We respect your privacy. Unsubscribe anytime.
+                  WE RESPECT YOUR PRIVACY. UNSUBSCRIBE ANYTIME.
                 </p>
               </>
             ) : (

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 export default function Heritage() {
   useEffect(() => {
@@ -87,6 +88,23 @@ export default function Heritage() {
             </div>
           </motion.div>
         </div>
+      </section>
+
+      {/* Easter Egg Section */}
+      <section className="mx-auto max-w-[1300px] px-6 lg:px-12 py-24 sm:py-32 border-t border-white/10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center"
+        >
+          <p className="text-sm uppercase tracking-[0.3em] text-neutral-600 hover:text-neutral-300 transition-colors">
+            <Link to="/story" className="hover:text-white">
+              — THE ORIGIN EXISTS —
+            </Link>
+          </p>
+        </motion.div>
       </section>
     </main>
   )
