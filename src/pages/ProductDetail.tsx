@@ -51,7 +51,7 @@ export default function ProductDetail() {
     return file.includes(color)
   }
   const filteredVariantImages = useMemo(() => {
-    if (product?.id === 'the-origin') {
+    if (product?.id === 'the-origin' || product?.id === 'soulfull-hoodie') {
       return images.filter((s) => !isNeck(s))
     }
     if (!selectedColor || selectedColor === 'var') {

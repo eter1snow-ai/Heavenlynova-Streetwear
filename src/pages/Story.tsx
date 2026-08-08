@@ -6,7 +6,7 @@ export default function Story() {
   const navigate = useNavigate()
   const [hoverImage, setHoverImage] = useState(false)
 
-  const backImage = '/Assets/Images/Preview/The Origin Piece/The Origin 1.webp'
+  const backImage = '/Assets/Images/Preview/The Origin Piece/The Origin Piece Back.webp'
   const frontImage = '/Assets/Images/Preview/The Origin Piece/Original Esentials Black Front.webp'
 
   useEffect(() => {
@@ -121,9 +121,10 @@ export default function Story() {
           </div>
           <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] items-stretch">
             <div 
-              className="relative overflow-hidden border border-neutral-800 bg-neutral-950"
+              className="relative overflow-hidden border border-neutral-800 bg-neutral-950 cursor-pointer"
               onMouseEnter={() => setHoverImage(true)}
               onMouseLeave={() => setHoverImage(false)}
+              onClick={() => navigate('/product/the-origin')}
             >
               <div className="w-full bg-neutral-900 relative flex items-center justify-center" style={{ aspectRatio: '2044/2000' }}>
                 <motion.img 
@@ -160,7 +161,7 @@ export default function Story() {
                   Available only to those who seek.
                 </p>
                 <p className="mt-4 text-sm sm:text-base leading-relaxed text-neutral-300 max-w-md">
-                  Origin Tee - Chapter 00 is reserved for those who reach the end of the story. A quiet signal that you were here first.
+                  Origin Tee - Chapter 000 is reserved for those who reach the end. A quiet signal that you were here first.
                 </p>
               </div>
               <div>

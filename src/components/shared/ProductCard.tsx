@@ -38,13 +38,13 @@ export default function ProductCard({ product, showPrice = false, className }: P
           boxShadow: '0 0 0 rgba(255, 255, 255, 0)'
         }}
       >
-        <div className="relative w-full border-b border-neutral-800 bg-transparent">
+        <div className="relative w-full aspect-[4/5] sm:aspect-square border-b border-neutral-800 bg-transparent">
           {(front || hover) ? (
             <>
               <motion.img
                 src={(variants[variantIndex]?.src) || front || hover!}
                 alt={product.name}
-                className="block w-full h-auto object-contain object-top"
+                className="absolute inset-0 w-full h-full object-contain object-center p-4"
                 style={{
                   backgroundColor: 'transparent',
                   mixBlendMode: 'normal',
@@ -75,7 +75,7 @@ export default function ProductCard({ product, showPrice = false, className }: P
                 <motion.img
                   src={hover}
                   alt={`${product.name} hover`}
-                  className="absolute inset-0 w-full h-full object-contain object-center"
+                  className="absolute inset-0 w-full h-full object-contain object-center p-4"
                   style={{
                     backgroundColor: 'transparent',
                     mixBlendMode: 'normal',

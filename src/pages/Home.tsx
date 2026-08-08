@@ -8,7 +8,7 @@ import { motion } from 'framer-motion'
 export default function Home() {
   const location = useLocation()
 
-  const soulfullBlack = products.find((p) => p.id === 'soulfull-black')
+  const heritage = products.filter((p) => p.category === 'individuals')
   const essentials = products.filter((p) => p.id === 'essentials-black' || p.id === 'essentials-white')
   const [nlEmail, setNlEmail] = useState('')
   const [nlSent, setNlSent] = useState(false)
@@ -56,16 +56,16 @@ export default function Home() {
               Some things are meant to be worn.
             </p>
           </motion.div>
-          {soulfullBlack && (
-            <div className="flex flex-wrap justify-center gap-8">
-              <div className="flex flex-col items-center">
-                <ProductCard product={soulfullBlack} />
-                <p style={{ fontSize: '0.6rem', letterSpacing: '0.35em', color: '#666666', marginTop: '10px' }} className="uppercase">
+          <div className="flex flex-wrap justify-center gap-8 w-full">
+            {heritage.map((p) => (
+              <div key={p.id} className="flex flex-col items-center w-full max-w-[400px]">
+                <ProductCard product={p} />
+                <p style={{ fontSize: '0.6rem', letterSpacing: '0.35em', color: '#666666', marginTop: '10px' }} className="uppercase text-center">
                   Wear what you feel.
                 </p>
               </div>
-            </div>
-          )}
+            ))}
+          </div>
         </div>
       </section>
 
@@ -109,13 +109,11 @@ export default function Home() {
               HeavenlyNova began long before the first product. Born from instinctive designs that appeared like sparks in chaos, these early creations carried meaning before the brand had a name. Heritage preserves those first constellations.
             </p>
           </motion.div>
-          {soulfullBlack && (
-            <div className="flex flex-wrap justify-center gap-8">
-              <div className="flex flex-col items-center">
-                <ProductCard product={soulfullBlack} />
-              </div>
-            </div>
-          )}
+          <div className="flex flex-wrap justify-center gap-8 w-full">
+            {heritage.map((p) => (
+              <ProductCard key={p.id} product={p} className="w-full max-w-[400px]" />
+            ))}
+          </div>
           <div className="mt-8 text-center">
             <Link
               to="/heritage"

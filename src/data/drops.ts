@@ -1,6 +1,6 @@
 // Image paths kept simple and direct (No Casino Mode)
 
-export type Category = 'flagship' | 'individuals' | 'essentials'
+export type Category = 'flagship' | 'individuals' | 'essentials' | 'origin'
 
 export type ProductType = 'tee' | 'hoodie'
 
@@ -88,16 +88,30 @@ export const products: Product[] = [
   },
   {
     id: 'the-origin',
-    category: 'individuals' as Category,
+    category: 'origin' as Category,
     productType: 'tee' as ProductType,
     name: 'THE ORIGIN PIECE',
-    tagline: 'Chapter 00 — The First Signal',
-    description: 'Origin Tee - Chapter 00 is reserved for those who reach the end of the story. A quiet signal that you were here first. 7.5oz (255 GSM) Heavyweight Cotton. Custom boxy fit.',
+    tagline: 'Chapter 000 — The First Signal',
+    description: 'Origin Tee - Chapter 000 is reserved for those who reach the end. A quiet signal that you were here first. 7.5oz (255 GSM) Heavyweight Cotton. Custom boxy fit.',
     price: '59.99€',
     images: [
+      '/Assets/Images/Preview/The Origin Piece/The Origin Piece Back.webp',
       '/Assets/Images/Preview/The Origin Piece/Original Esentials Black Front.webp',
-      '/Assets/Images/Preview/The Origin Piece/The Origin 1.webp',
       '/Assets/Images/Preview/The Origin Piece/Neck Label Black.webp',
+    ],
+  },
+  {
+    id: 'soulfull-hoodie',
+    category: 'individuals' as Category,
+    productType: 'hoodie' as ProductType,
+    name: 'SOULFULL HOODIE',
+    tagline: 'From the first constellations',
+    description: 'Part of the Heritage Line. Built for presence. 350 GSM Heavyweight Organic Cotton. Structured silhouette. A signal from the first constellations.',
+    price: '89.99€',
+    images: [
+      '/Assets/Images/Preview/Design Hoodies/Soulfull Hoodie/Soulfull Hoodie Back.webp',
+      '/Assets/Images/Preview/Design Hoodies/Soulfull Hoodie/Hoodie On black Original Front.webp',
+      '/Assets/Images/Preview/Design Hoodies/Soulfull Hoodie/Detailed black hoodie close-up.webp',
     ],
   },
 ]

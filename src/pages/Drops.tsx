@@ -61,7 +61,10 @@ export default function Drops() {
             <div className="flex flex-wrap gap-2 items-center">
               <span className="text-[10px] uppercase tracking-widest text-neutral-500 mr-1">Type</span>
               {(['all', 'tee', 'hoodie'] as TypeFilter[]).map((t) => (
-                <button key={t} onClick={() => setTypeFilter(t)} className={filterBtn(typeFilter === t)} style={{ borderRadius: 0 }}>
+                <button key={t} onClick={() => {
+                  setTypeFilter(t)
+                  if (t !== 'all') setCollectionFilter('all')
+                }} className={filterBtn(typeFilter === t)} style={{ borderRadius: 0 }}>
                   {t === 'all' ? 'All' : t === 'tee' ? 'Tees' : 'Hoodies'}
                 </button>
               ))}
@@ -69,7 +72,10 @@ export default function Drops() {
             <div className="flex flex-wrap gap-2 items-center">
               <span className="text-[10px] uppercase tracking-widest text-neutral-500 mr-1">Collection</span>
               {(['all', 'individuals', 'essentials'] as CollectionFilter[]).map((c) => ( // 'flagship' hidden until launch
-                <button key={c} onClick={() => setCollectionFilter(c)} className={filterBtn(collectionFilter === c)} style={{ borderRadius: 0 }}>
+                <button key={c} onClick={() => {
+                  setCollectionFilter(c)
+                  if (c !== 'all') setTypeFilter('all')
+                }} className={filterBtn(collectionFilter === c)} style={{ borderRadius: 0 }}>
                   {collectionLabels[c]}
                 </button>
               ))}
