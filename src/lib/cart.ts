@@ -36,7 +36,9 @@ import type {
   ShopifyCartQueryResponse,
 } from './shopify/types'
 
-const USE_MOCK = import.meta.env.VITE_USE_MOCK_DATA === 'true'
+// Mock mode e ACTIV implicit (dacă var nu e setată explicit la 'false')
+// Live mode: setează VITE_USE_MOCK_DATA=false în Vercel env vars + adaugă tokenul Shopify
+const USE_MOCK = import.meta.env.VITE_USE_MOCK_DATA !== 'false'
 const CART_ID_KEY = 'hn_cart_id'
 
 // ─── Tipuri normalizate pentru CartContext ────────────────────────────────────

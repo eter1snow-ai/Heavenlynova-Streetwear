@@ -24,7 +24,9 @@ import type {
   ShopifyVariant,
 } from './shopify/types'
 
-const USE_MOCK = import.meta.env.VITE_USE_MOCK_DATA === 'true'
+// Mock mode e ACTIV implicit (dacă var nu e setată explicit la 'false')
+// Live mode: setează VITE_USE_MOCK_DATA=false în Vercel env vars + adaugă tokenul Shopify
+const USE_MOCK = import.meta.env.VITE_USE_MOCK_DATA !== 'false'
 
 // ─── Sizes folosite în mock mode ──────────────────────────────────────────────
 // Când datele vin din drops.ts (care nu are variante), le generăm artificial
