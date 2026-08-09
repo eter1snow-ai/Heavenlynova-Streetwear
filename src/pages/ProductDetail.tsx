@@ -114,6 +114,21 @@ export default function ProductDetail() {
     }
   }
 
+  // [NOTE] variantsBySize indexează după title (ex: "S", "M", "L").
+  // Funcționează corect pentru produse cu o singură culoare per SKU (cazul actual).
+  // TODO: dacă în viitor un produs are "S / Black" + "S / White", va trebui să
+  // indexezi după selectedOptions (size + color) pentru a nu pierde stocul per culoare.
+  // IMPORTANT: useMemo trebuie să fie ÎNAINTE de orice return condiționat (Rules of Hooks)
+  const variantsBySize = useMemo(() => {
+    const map: Record<string, { availableForSale: boolean; variantId: string }> = {}
+    ;(product?.variants ?? []).forEach((v) => {
+      map[v.title] = { availableForSale: v.availableForSale, variantId: v.id }
+    })
+    return map
+  }, [product?.variants])
+
+  const displaySizes = (product?.variants ?? []).map((v) => v.title)
+
   // [CHANGED] Loading state — skeleton minimal, fără a afecta layout-ul vizual
   if (loading) {
     return (
@@ -144,23 +159,6 @@ export default function ProductDetail() {
   }
 
   const isSeraphim = product.category === 'flagship'
-
-  // [CHANGED] Variante din NormalizedProduct (mock: generate S/M/L/XL, live: din Shopify)
-  // Folosit pentru disabled state pe butoanele de mărime
-  // [NOTE] variantsBySize indexează după title (ex: "S", "M", "L").
-  // Funcționează corect pentru produse cu o singură culoare per SKU (cazul actual).
-  // TODO: dacă în viitor un produs are "S / Black" + "S / White", va trebui să
-  // indexezi după selectedOptions (size + color) pentru a nu pierde stocul per culoare.
-  const variantsBySize = useMemo(() => {
-    const map: Record<string, { availableForSale: boolean; variantId: string }> = {}
-    product.variants.forEach((v) => {
-      map[v.title] = { availableForSale: v.availableForSale, variantId: v.id }
-    })
-    return map
-  }, [product.variants])
-
-  // Toate mărimile afișate — din variante normalizate (nu mai e hardcodat ['XS','S','M'...])
-  const displaySizes = product.variants.map((v) => v.title)
 
   return (
     <main className="bg-black text-white">
