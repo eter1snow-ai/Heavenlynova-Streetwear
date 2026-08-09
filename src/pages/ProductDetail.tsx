@@ -1,29 +1,41 @@
 import { useParams } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { getProductById } from '../data/drops'
 import { useEffect, useState, useMemo } from 'react'
 import ZoomImage from '../components/shared/ZoomImage'
 import SizeGuideModal from '../components/shared/SizeGuideModal'
 import { useCart } from '../components/cart/CartContext'
-
-const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'] as const
+// [CHANGED] Importăm din lib/products în loc de data/drops direct
+import { getProduct } from '../lib/products'
+import type { NormalizedProduct } from '../lib/products'
 
 export default function ProductDetail() {
   const { productId } = useParams()
-  const product = getProductById(productId || '')
   const { openCart } = useCart()
+
+  // [CHANGED] Produs async prin getProduct() — înlocuiește getProductById() sincron
+  const [product, setProduct] = useState<NormalizedProduct | null>(null)
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    setLoading(true)
+    getProduct(productId || '').then((p) => {
+      setProduct(p)
+      setLoading(false)
+    })
+  }, [productId])
+
   const [size, setSize] = useState<string>(() => {
     try {
       const raw = localStorage.getItem('draftFormData')
       const data = raw ? JSON.parse(raw) : null
-      return data && data.productId === product?.id && typeof data.size === 'string' ? data.size : ''
+      return data && data.productId === productId && typeof data.size === 'string' ? data.size : ''
     } catch {
       return ''
     }
   })
   const [variantIndex, setVariantIndex] = useState<number>(() => 0)
   const [showSizeGuide, setShowSizeGuide] = useState(false)
-  
+
   const isNeck = (src: string) => /neck/i.test(src)
   const images = useMemo(() => (product?.images || []).filter(Boolean), [product])
   const variantImages = useMemo(() => images.filter((s) => !isNeck(s)).slice(0, 2), [images])
@@ -62,7 +74,6 @@ export default function ProductDetail() {
   const neckSelected =
     neckImages.find((n) => matchesColor(selectedColor, n)) || neckImages[0]
 
-  // Load draft from localStorage on mount
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
@@ -75,14 +86,12 @@ export default function ProductDetail() {
       if (data && data.productId === product?.id && data.color) {
         const idx = swatches.findIndex((s) => s.label === data.color)
         if (idx >= 0 && idx !== variantIndex) {
-          // defer setState via microtask to avoid cascading renders warning
           queueMicrotask(() => setVariantIndex(idx))
         }
       }
     } catch {
       /* noop */
     }
-    // run only once after swatches computed
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [product?.id, swatches.length])
 
@@ -93,13 +102,28 @@ export default function ProductDetail() {
       const data = raw ? JSON.parse(raw) : {}
       const next = { ...data, productId, color, size }
       localStorage.setItem('draftFormData', JSON.stringify(next))
-      console.log('✅ Draft saved', next)
     } catch (err) {
       console.warn('Draft save failed', err)
     }
   }
 
-  // Simplified: rely on original image paths; WebP fallback handled by server/CDN if present
+  // [CHANGED] Loading state — skeleton minimal, fără a afecta layout-ul vizual
+  if (loading) {
+    return (
+      <main className="bg-black text-white">
+        <section className="mx-auto w-full max-w-[1300px] px-6 lg:px-12 py-24">
+          <div className="grid gap-10 lg:grid-cols-[3fr_2fr] animate-pulse">
+            <div className="aspect-[3/4] w-full bg-neutral-900" style={{ borderRadius: 0 }} />
+            <div className="space-y-6">
+              <div className="h-8 bg-neutral-900 w-3/4" style={{ borderRadius: 0 }} />
+              <div className="h-4 bg-neutral-900 w-1/4" style={{ borderRadius: 0 }} />
+              <div className="h-4 bg-neutral-900 w-1/2" style={{ borderRadius: 0 }} />
+            </div>
+          </div>
+        </section>
+      </main>
+    )
+  }
 
   if (!product) {
     return (
@@ -113,6 +137,23 @@ export default function ProductDetail() {
   }
 
   const isSeraphim = product.category === 'flagship'
+
+  // [CHANGED] Variante din NormalizedProduct (mock: generate S/M/L/XL, live: din Shopify)
+  // Folosit pentru disabled state pe butoanele de mărime
+  // [NOTE] variantsBySize indexează după title (ex: "S", "M", "L").
+  // Funcționează corect pentru produse cu o singură culoare per SKU (cazul actual).
+  // TODO: dacă în viitor un produs are "S / Black" + "S / White", va trebui să
+  // indexezi după selectedOptions (size + color) pentru a nu pierde stocul per culoare.
+  const variantsBySize = useMemo(() => {
+    const map: Record<string, { availableForSale: boolean; variantId: string }> = {}
+    product.variants.forEach((v) => {
+      map[v.title] = { availableForSale: v.availableForSale, variantId: v.id }
+    })
+    return map
+  }, [product.variants])
+
+  // Toate mărimile afișate — din variante normalizate (nu mai e hardcodat ['XS','S','M'...])
+  const displaySizes = product.variants.map((v) => v.title)
 
   return (
     <main className="bg-black text-white">
@@ -258,26 +299,38 @@ export default function ProductDetail() {
                   Size Guide
                 </button>
               </div>
+              {/* [CHANGED] Butoane de mărime din variante normalizate cu disabled state */}
               <div className="grid grid-cols-6 gap-2">
-                {sizes.map((s) => (
-                  <button
-                    key={s}
-                    onClick={() => {
-                      setSize(s)
-                      saveDraft(product.id, swatches[variantIndex]?.label, s)
-                    }}
-                    className={
-                      'h-6 border text-[10px] font-medium uppercase tracking-[0.2em] transition-soft ' +
-                      (size === s
-                        ? 'bg-white text-black border-white'
-                        : 'bg-neutral-950 text-white hover:bg-neutral-900 hover:border-white/70 hover:text-white/80 border-neutral-800')
-                    }
-                    style={{ borderRadius: 0 }}
-                    aria-pressed={size === s}
-                  >
-                    {s}
-                  </button>
-                ))}
+                {displaySizes.map((s) => {
+                  const variantInfo = variantsBySize[s]
+                  const available = variantInfo?.availableForSale ?? true
+                  return (
+                    <button
+                      key={s}
+                      onClick={() => {
+                        if (!available) return
+                        setSize(s)
+                        saveDraft(product.id, swatches[variantIndex]?.label, s)
+                      }}
+                      disabled={!available}
+                      className={
+                        'h-6 border text-[10px] font-medium uppercase tracking-[0.2em] transition-soft ' +
+                        (size === s && available
+                          ? 'bg-white text-black border-white'
+                          : !available
+                            // [CHANGED] disabled: visibile ma sbiadite, cursor not-allowed
+                            ? 'bg-transparent text-neutral-700 border-neutral-800 cursor-not-allowed line-through'
+                            : 'bg-neutral-950 text-white hover:bg-neutral-900 hover:border-white/70 hover:text-white/80 border-neutral-800')
+                      }
+                      style={{ borderRadius: 0 }}
+                      aria-pressed={size === s}
+                      aria-disabled={!available}
+                      title={!available ? 'Out of stock' : undefined}
+                    >
+                      {s}
+                    </button>
+                  )
+                })}
               </div>
             </div>
 
