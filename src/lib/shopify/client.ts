@@ -13,8 +13,11 @@ const TOKEN = import.meta.env.VITE_SHOPIFY_STOREFRONT_TOKEN as string
 const API_VERSION = '2024-01'
 
 export class ShopifyError extends Error {
-  constructor(public errors: { message: string; locations?: unknown; path?: unknown }[]) {
+  errors: { message: string; locations?: unknown; path?: unknown }[]
+
+  constructor(errors: { message: string; locations?: unknown; path?: unknown }[]) {
     super(errors.map((e) => e.message).join('\n'))
+    this.errors = errors
     this.name = 'ShopifyError'
   }
 }

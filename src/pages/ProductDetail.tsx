@@ -18,10 +18,17 @@ export default function ProductDetail() {
 
   useEffect(() => {
     setLoading(true)
-    getProduct(productId || '').then((p) => {
-      setProduct(p)
-      setLoading(false)
-    })
+    getProduct(productId || '')
+      .then((p) => {
+        setProduct(p)
+      })
+      .catch((err) => {
+        console.error('[ProductDetail] getProduct failed', err)
+        setProduct(null)
+      })
+      .finally(() => {
+        setLoading(false)
+      })
   }, [productId])
 
   const [size, setSize] = useState<string>(() => {
