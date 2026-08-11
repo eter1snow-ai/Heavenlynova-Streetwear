@@ -145,6 +145,7 @@ export default function ZoomImage({ src, alt, className, zoomFactor = 1.6 }: Pro
           imageRendering: 'auto',
           zIndex: 20,
           willChange: 'transform',
+          pointerEvents: 'none',
         }}
       />
     </div>

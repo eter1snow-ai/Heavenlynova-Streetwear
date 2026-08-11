@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer className="relative w-full bg-black text-white overflow-hidden" style={{ paddingTop: '100px', paddingBottom: '80px' }}>
       <video
-        className="absolute inset-0 w-full h-full object-cover opacity-20"
+        className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none"
         src="/Assets/Images/Video1.mp4"
         autoPlay
         loop

@@ -129,7 +129,13 @@ export default function CartDrawer() {
                   </p>
                 </div>
                 <button
-                  onClick={checkout}
+                  onClick={() => {
+                    if (!cartState.checkoutUrl) {
+                      console.error("Checkout URL missing");
+                      return;
+                    }
+                    window.location.href = cartState.checkoutUrl;
+                  }}
                   disabled={isLoading}
                   className={`w-full bg-white text-black uppercase transition-colors ${isLoading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-neutral-200'}`}
                   style={{ fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.3em', padding: '14px', borderRadius: 0 }}
