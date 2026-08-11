@@ -1,4 +1,16 @@
 {
+  "redirects": [
+    {
+      "source": "/cart/:path*",
+      "destination": "https://carpatia.myshopify.com/cart/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/checkouts/:path*",
+      "destination": "https://carpatia.myshopify.com/checkouts/:path*",
+      "permanent": false
+    }
+  ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]
