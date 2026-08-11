@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import type { Product } from '../../data/drops'
 import { useState, useMemo } from 'react'
+import { getOptimizedImageUrl } from '../../lib/utils'
 
 type Props = {
   product: Product
@@ -42,7 +43,7 @@ export default function ProductCard({ product, showPrice = false, className }: P
           {(front || hover) ? (
             <>
               <motion.img
-                src={(variants[variantIndex]?.src) || front || hover!}
+                src={getOptimizedImageUrl((variants[variantIndex]?.src) || front || hover!, 600)}
                 alt={product.name}
                 className="absolute inset-0 w-full h-full object-contain object-center p-4"
                 style={{
@@ -52,6 +53,7 @@ export default function ProductCard({ product, showPrice = false, className }: P
                   filter: product.id === 'core-hoodie-white' ? 'contrast(1.08) brightness(1.02)' : undefined
                 }}
                 loading="lazy"
+                decoding="async"
                 onLoad={(e) => {
                   const nw = e.currentTarget.naturalWidth
                   const nh = e.currentTarget.naturalHeight
@@ -73,7 +75,7 @@ export default function ProductCard({ product, showPrice = false, className }: P
               />
               {hover && (
                 <motion.img
-                  src={hover}
+                  src={getOptimizedImageUrl(hover, 600)}
                   alt={`${product.name} hover`}
                   className="absolute inset-0 w-full h-full object-contain object-center p-4"
                   style={{
@@ -85,6 +87,7 @@ export default function ProductCard({ product, showPrice = false, className }: P
                   whileHover={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, ease: 'easeInOut' }}
                   loading="lazy"
+                  decoding="async"
                   onLoad={(e) => {
                     const nw = e.currentTarget.naturalWidth
                     const nh = e.currentTarget.naturalHeight

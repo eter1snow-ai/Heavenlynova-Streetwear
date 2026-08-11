@@ -7,6 +7,7 @@ import { useCart } from '../components/cart/CartContext'
 // [CHANGED] Importăm din lib/products în loc de data/drops direct
 import { getProduct } from '../lib/products'
 import type { NormalizedProduct } from '../lib/products'
+import { getOptimizedImageUrl } from '../lib/utils'
 
 export default function ProductDetail() {
   const { productId } = useParams()
@@ -178,11 +179,13 @@ export default function ProductDetail() {
                   {filteredVariantImages.map((img, i) => (
                     <motion.img
                       key={i}
-                      src={img}
+                      src={getOptimizedImageUrl(img, 1200)}
                       alt={product.name}
                       className={`w-full ${(product.id.startsWith('soulfull') || product.id === 'the-origin') ? 'object-cover' : 'object-contain'} ${(product.id.startsWith('soulfull') || product.id === 'the-origin') ? '' : 'aspect-[3/4]'} ${i === 1 ? 'object-top' : 'object-center'}`}
                       style={{ borderRadius: 0, backgroundColor: 'transparent', mixBlendMode: 'normal', aspectRatio: (product.id.startsWith('soulfull') || product.id === 'the-origin') ? '2044/2000' : undefined }}
-                      loading="lazy"
+                      loading={i === 0 ? "eager" : "lazy"}
+                      fetchpriority={i === 0 ? "high" : "low"}
+                      decoding="async"
                       onLoad={() => console.log('✅ Variant loaded', img)}
                       onError={(e) => {
                         console.log('❌ Variant fallback', img)
@@ -397,10 +400,12 @@ export default function ProductDetail() {
         <section className="w-full bg-black" style={{ paddingTop: '80px', paddingBottom: '80px' }}>
           <div className="mx-auto max-w-[900px] px-6">
             <img
-              src={images.find((s) => /back|mid|design/i.test(s.split('/').pop() || ''))!}
+              src={getOptimizedImageUrl(images.find((s) => /back|mid|design/i.test(s.split('/').pop() || ''))!, 1200)}
               alt={`${product.name} design`}
               className="w-full object-contain"
               style={{ maxHeight: '90vh' }}
+              loading="lazy"
+              decoding="async"
             />
             <div className="mt-8 text-center">
               <p style={{ fontSize: '0.75rem', letterSpacing: '0.4em', color: '#555555', lineHeight: 1.6 }} className="uppercase">

@@ -136,6 +136,9 @@ function normalizeShopifyProduct(p: ShopifyProduct, mockId?: string): Normalized
 
 // ─── API publică ──────────────────────────────────────────────────────────────
 
+let productsCache: NormalizedProduct[] | null = null;
+let productDetailCache: Record<string, NormalizedProduct> = {};
+
 /**
  * Returnează lista completă de produse.
  * Mock: din drops.ts (filtrat fără 'flagship')
@@ -147,6 +150,8 @@ export async function getProducts(): Promise<NormalizedProduct[]> {
       .filter((p) => p.category !== 'flagship')
       .map(normalizeMockProduct)
   }
+
+  if (productsCache) return productsCache;
 
   const data = await shopifyFetch<ShopifyProductsResponse>({
     query: GET_PRODUCTS,
@@ -169,7 +174,8 @@ export async function getProducts(): Promise<NormalizedProduct[]> {
     })
     .map(normalizeMockProduct)
 
-  return [...shopifyProducts, ...unmappedMockProducts]
+  productsCache = [...shopifyProducts, ...unmappedMockProducts]
+  return productsCache
 }
 
 /**
@@ -187,6 +193,8 @@ export async function getProduct(mockId: string): Promise<NormalizedProduct | nu
     return found ? normalizeMockProduct(found) : null
   }
 
+  if (productDetailCache[mockId]) return productDetailCache[mockId];
+
   const shopifyHandle = HANDLE_MAP[mockId]
 
   if (shopifyHandle) {
@@ -196,7 +204,9 @@ export async function getProduct(mockId: string): Promise<NormalizedProduct | nu
         variables: { handle: shopifyHandle },
       })
       if (data.productByHandle) {
-        return normalizeShopifyProduct(data.productByHandle, mockId)
+        const prod = normalizeShopifyProduct(data.productByHandle, mockId)
+        productDetailCache[mockId] = prod
+        return prod
       }
     } catch (err) {
       console.warn(
@@ -210,7 +220,9 @@ export async function getProduct(mockId: string): Promise<NormalizedProduct | nu
   const mockFallback = mockProducts.find((p) => p.id === mockId)
   if (mockFallback) {
     console.info(`[getProduct] "${mockId}" → mock fallback (not in Shopify yet)`)
-    return normalizeMockProduct(mockFallback)
+    const prod = normalizeMockProduct(mockFallback)
+    productDetailCache[mockId] = prod
+    return prod
   }
 
   return null
