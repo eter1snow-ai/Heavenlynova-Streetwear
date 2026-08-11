@@ -10,7 +10,7 @@ import type { NormalizedProduct } from '../lib/products'
 
 export default function ProductDetail() {
   const { productId } = useParams()
-  const { openCart, addItem, isLoading } = useCart()
+  const { addItem, isLoading } = useCart()
 
   const [showSizeError, setShowSizeError] = useState(false)
 
