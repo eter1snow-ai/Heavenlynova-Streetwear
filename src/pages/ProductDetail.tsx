@@ -10,7 +10,9 @@ import type { NormalizedProduct } from '../lib/products'
 
 export default function ProductDetail() {
   const { productId } = useParams()
-  const { openCart } = useCart()
+  const { openCart, addItem, isLoading } = useCart()
+
+  const [showSizeError, setShowSizeError] = useState(false)
 
   // [CHANGED] Produs async prin getProduct() — înlocuiește getProductById() sincron
   const [product, setProduct] = useState<NormalizedProduct | null>(null)
@@ -315,6 +317,7 @@ export default function ProductDetail() {
                       onClick={() => {
                         if (!available) return
                         setSize(s)
+                        setShowSizeError(false)
                         saveDraft(product.id, swatches[variantIndex]?.label, s)
                       }}
                       disabled={!available}
@@ -322,7 +325,9 @@ export default function ProductDetail() {
                         'h-6 border text-[10px] font-medium uppercase tracking-[0.2em] transition-soft ' +
                         (size === s && available
                           ? 'bg-white text-black border-white'
-                          : !available
+                          : showSizeError
+                            ? 'border-red-500/50 text-red-500/70'
+                            : !available
                             // [CHANGED] disabled: visibile ma sbiadite, cursor not-allowed
                             ? 'bg-transparent text-neutral-700 border-neutral-800 cursor-not-allowed line-through'
                             : 'bg-neutral-950 text-white hover:bg-neutral-900 hover:border-white/70 hover:text-white/80 border-neutral-800')
@@ -346,11 +351,22 @@ export default function ProductDetail() {
             />
 
             <button
-              onClick={openCart}
-              className="w-full border border-white bg-transparent py-3 text-xs font-semibold uppercase tracking-[0.24em] text-white transition-soft hover:bg-white hover:text-black"
+              onClick={() => {
+                if (!size) {
+                  setShowSizeError(true)
+                  setTimeout(() => setShowSizeError(false), 2000)
+                  return
+                }
+                const variantId = variantsBySize[size]?.variantId
+                if (variantId) {
+                  addItem(variantId, 1)
+                }
+              }}
+              disabled={isLoading}
+              className={`w-full border ${showSizeError ? 'border-red-500 text-red-500' : 'border-white text-white hover:bg-white hover:text-black'} ${isLoading ? 'opacity-50 cursor-not-allowed' : ''} bg-transparent py-3 text-xs font-semibold uppercase tracking-[0.24em] transition-soft`}
               style={{ borderRadius: 0 }}
             >
-              Claim Your Piece
+              {isLoading ? 'ADDING...' : showSizeError ? 'SELECT A SIZE' : 'Claim Your Piece'}
             </button>
 
             {product.id.startsWith('soulfull') && (

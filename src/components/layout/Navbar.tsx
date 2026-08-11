@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from 'react'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
+import { useCart } from '../cart/CartContext'
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
@@ -9,6 +10,7 @@ export default function Navbar() {
   const collectionsRef = useRef<HTMLLIElement>(null)
   const navigate = useNavigate()
   const location = useLocation()
+  const { openCart, itemCount } = useCart()
   const isJoinPage = location.pathname === '/join'
 
   const handleAnchorClick = (anchor: string) => {
@@ -69,18 +71,11 @@ export default function Navbar() {
             HEAVENLYNOVA
           </Link>
 
-          {!isDesktop && (
-            <button
-              aria-label="Toggle menu"
-              onClick={() => setOpen(!open)}
-              className={`inline-flex items-center justify-center border px-3 py-2 text-xs font-medium uppercase tracking-[0.16em] text-white transition-soft ${isJoinPage ? 'border-white/20 hover:bg-white/10' : 'border-neutral-700 hover:bg-neutral-900'}`}
-            >
-              {open ? 'Close' : 'Menu'}
-            </button>
-          )}
 
-          <div className="hidden md:flex items-center gap-8">
-            <ul className="flex gap-8 list-none items-center">
+
+          <div className="flex items-center gap-4 md:gap-8">
+            <div className="hidden md:flex items-center gap-8">
+              <ul className="flex gap-8 list-none items-center">
               <li>
                 <span className={linkClass} onClick={() => handleDropsFilter()}>Drops</span>
               </li>
@@ -121,6 +116,34 @@ export default function Navbar() {
               </li>
             </ul>
           </div>
+          
+          {/* Cart Icon */}
+          <button
+            onClick={openCart}
+            className={`relative flex items-center justify-center transition-soft ${isJoinPage ? 'text-white/40 hover:text-white/60' : 'text-white hover:text-white/70'}`}
+            aria-label="Open cart"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+            </svg>
+            {itemCount > 0 && (
+              <span className="absolute -top-1 -right-2 flex h-4 w-4 items-center justify-center rounded-full bg-white text-[9px] font-bold text-black">
+                {itemCount}
+              </span>
+            )}
+          </button>
+          
+          {/* Mobile Toggle */}
+          {!isDesktop && (
+            <button
+              aria-label="Toggle menu"
+              onClick={() => setOpen(!open)}
+              className={`inline-flex items-center justify-center border px-3 py-2 text-xs font-medium uppercase tracking-[0.16em] text-white transition-soft ml-2 ${isJoinPage ? 'border-white/20 hover:bg-white/10' : 'border-neutral-700 hover:bg-neutral-900'}`}
+            >
+              {open ? 'Close' : 'Menu'}
+            </button>
+          )}
+        </div>
         </nav>
 
         {/* Mobile Menu */}
