@@ -87,7 +87,7 @@ export default function EmailCapture() {
                     THE FIRST LIGHT HAS ARRIVED.
                   </h2>
                   <p className="uppercase" style={{ fontSize: '0.75rem', letterSpacing: '0.35em', lineHeight: 1.8, color: '#888888' }}>
-                    RECEIVE EXCLUSIVE DROPS, LORE FRAGMENTS, AND EARLY ACCESS TO FUTURE CHAPTERS.
+                    JOIN THE INITIATION. RECEIVE AN EXCLUSIVE 10% ACCESS CODE FOR YOUR FIRST PIECE, LORE FRAGMENTS, AND EARLY DROP ACCESS.
                   </p>
                 </div>
 
@@ -122,7 +122,7 @@ export default function EmailCapture() {
                   Welcome to the Ascent
                 </h3>
                 <p className="text-sm text-neutral-400">
-                  You'll be the first to know.
+                  Use code ASCENT10 at checkout for 10% off your first piece.
                 </p>
               </div>
             )}
