@@ -2,7 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useCart } from './CartContext'
 
 export default function CartDrawer() {
-  const { isOpen, closeCart, cartState, updateItem, removeItem, checkout, isLoading } = useCart()
+  const { isOpen, closeCart, cartState, updateItem, removeItem, isLoading } = useCart()
 
   return (
     <AnimatePresence>
