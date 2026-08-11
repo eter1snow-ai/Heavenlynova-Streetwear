@@ -84,9 +84,16 @@ function normalizeCart(cart: ShopifyCart): CartState {
     productHandle: node.merchandise.product.handle,
   }))
 
+  // Sanitizăm checkoutUrl: înlocuim orice domeniu custom cu myshopify nativ
+  // Asta previne bucla Vercel SPA rewrite care re-randează index.html pe /cart/c/...
+  const rawCheckoutUrl = cart.checkoutUrl ?? null
+  const checkoutUrl = rawCheckoutUrl
+    ? rawCheckoutUrl.replace('heavenlynova.com', 'carpatia.myshopify.com')
+    : null
+
   return {
     id: cart.id,
-    checkoutUrl: cart.checkoutUrl,
+    checkoutUrl,
     lines,
     subtotal: `${parseFloat(cart.estimatedCost.subtotalAmount.amount).toFixed(2)}€`,
     total: `${parseFloat(cart.estimatedCost.totalAmount.amount).toFixed(2)}€`,
