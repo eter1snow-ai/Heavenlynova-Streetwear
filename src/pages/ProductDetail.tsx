@@ -376,11 +376,12 @@ export default function ProductDetail() {
       </motion.section>
 
       {/* DESIGN FOCUS SECTION */}
-      {images.some((s) => /back/i.test(s.split('/').pop() || '')) && (
+      {/* Detectăm imagini de tip back/design din filename — funcționează cu mock (back) și Shopify (mid/design/back) */}
+      {images.some((s) => /back|mid|design/i.test(s.split('/').pop() || '')) && (
         <section className="w-full bg-black" style={{ paddingTop: '80px', paddingBottom: '80px' }}>
           <div className="mx-auto max-w-[900px] px-6">
             <img
-              src={images.find((s) => /back/i.test(s.split('/').pop() || ''))!}
+              src={images.find((s) => /back|mid|design/i.test(s.split('/').pop() || ''))!}
               alt={`${product.name} design`}
               className="w-full object-contain"
               style={{ maxHeight: '90vh' }}
