@@ -84,14 +84,9 @@ function normalizeCart(cart: ShopifyCart): CartState {
     productHandle: node.merchandise.product.handle,
   }))
 
-  // Sanitizăm checkoutUrl: înlocuim cu subdomeniu branded checkout.heavenlynova.com
-  // Acesta e setat ca Primary Domain în Shopify și nu e interceptat de Vercel SPA
-  const rawCheckoutUrl = cart.checkoutUrl ?? null
-  const checkoutUrl = rawCheckoutUrl
-    ? rawCheckoutUrl
-        .replace('carpatia.myshopify.com', 'checkout.heavenlynova.com')
-        .replace('heavenlynova.com', 'checkout.heavenlynova.com')
-    : null
+  // checkoutUrl vine direct de la Shopify cu domeniu corect (checkout.heavenlynova.com)
+  // Nu mai aplicăm niciun replace — orice transformare cauzează triple-prefix bug
+  const checkoutUrl = cart.checkoutUrl ?? null
 
   return {
     id: cart.id,

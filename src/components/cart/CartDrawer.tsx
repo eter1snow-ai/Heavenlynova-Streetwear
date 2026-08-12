@@ -134,11 +134,9 @@ export default function CartDrawer() {
                       console.error("Checkout URL missing");
                       return;
                     }
-                    // Forțăm subdomeniu branded checkout.heavenlynova.com
-                    const brandedCheckoutUrl = cartState.checkoutUrl
-                      .replace('carpatia.myshopify.com', 'checkout.heavenlynova.com')
-                      .replace('heavenlynova.com', 'checkout.heavenlynova.com');
-                    window.location.href = brandedCheckoutUrl;
+                    // Shopify generează deja checkout.heavenlynova.com corect (Primary Domain)
+                    // Niciun replace necesar — orice transformare cauzează triple-prefix bug
+                    window.location.href = cartState.checkoutUrl;
                   }}
                   disabled={isLoading}
                   className={`w-full bg-white text-black uppercase transition-colors ${isLoading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-neutral-200'}`}
