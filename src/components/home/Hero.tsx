@@ -6,12 +6,15 @@ export default function Hero() {
       id="hero"
       className="relative flex h-[70vh] sm:h-[60vh] w-full items-end bg-black text-white overflow-hidden pt-20 pb-12"
     >
-      {/* Static Image Background */}
+      {/* Static Image Background — compressed 245KB (was 5.4MB) */}
       <img
-        src="/Assets/Images/pexels-andrei-3583381-5363190.webp"
+        src="/Assets/Images/hero-bg.webp"
         alt="HeavenlyNova Hero"
         className="absolute inset-0 h-full w-full object-cover object-center"
         style={{ objectPosition: 'center 60%', opacity: 0.5 }}
+        loading="eager"
+        fetchPriority="high"
+        decoding="sync"
       />
       
       {/* Content */}
