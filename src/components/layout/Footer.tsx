@@ -1,9 +1,21 @@
 import { Link } from 'react-router-dom'
+import { useRef, useEffect } from 'react'
 
 export default function Footer() {
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    const v = videoRef.current
+    if (!v) return
+    v.muted = true
+    v.play().catch(() => {/* silently ignored — autoplay blocked by browser */})
+  }, [])
+
   return (
     <footer className="relative w-full bg-black text-white overflow-hidden" style={{ paddingTop: '100px', paddingBottom: '80px' }}>
+      {/* Video background — programmatic play pentru iOS (evită butonul nativ ▶) */}
       <video
+        ref={videoRef}
         className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none"
         autoPlay
         loop

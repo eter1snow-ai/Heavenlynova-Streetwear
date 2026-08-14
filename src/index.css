@@ -82,3 +82,20 @@
 .animate-pulse-glow {
   animation: pulseGlow 6s ease-in-out infinite;
 }
+
+/* Suppress iOS Safari native video play button overlay */
+video::-webkit-media-controls {
+  display: none !important;
+}
+video::-webkit-media-controls-panel {
+  display: none !important;
+}
+video::-webkit-media-controls-play-button {
+  display: none !important;
+}
+video::-webkit-media-controls-start-playback-button {
+  display: none !important;
+  -webkit-appearance: none;
+  opacity: 0;
+  pointer-events: none;
+}

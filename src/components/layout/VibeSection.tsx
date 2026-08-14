@@ -1,9 +1,21 @@
+import { useRef, useEffect } from 'react'
+
 export default function VibeSection() {
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    const v = videoRef.current
+    if (!v) return
+    v.muted = true
+    v.play().catch(() => {/* silently ignored */})
+  }, [])
+
   return (
     <section className="relative bg-black text-white">
       <div className="mx-auto w-full">
         <div className="relative h-[60vh] md:h-[70vh]">
           <video
+            ref={videoRef}
             autoPlay
             muted
             loop
