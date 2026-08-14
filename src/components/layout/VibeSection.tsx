@@ -4,13 +4,17 @@ export default function VibeSection() {
       <div className="mx-auto w-full">
         <div className="relative h-[60vh] md:h-[70vh]">
           <video
-            src="/Assets/Images/Video1.mp4"
-            muted
             autoPlay
+            muted
             loop
             playsInline
-            className="absolute inset-0 h-full w-full object-cover"
-          />
+            controls={false}
+            preload="auto"
+            aria-hidden="true"
+            className="absolute inset-0 h-full w-full object-cover pointer-events-none"
+          >
+            <source src="/Assets/Images/Video1.mp4" type="video/mp4" />
+          </video>
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
           <div className="absolute inset-0 flex items-center justify-center">
             <h2 className="font-display text-5xl md:text-6xl lg:text-7xl uppercase tracking-[0.5em] opacity-90">

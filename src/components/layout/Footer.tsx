@@ -5,16 +5,16 @@ export default function Footer() {
     <footer className="relative w-full bg-black text-white overflow-hidden" style={{ paddingTop: '100px', paddingBottom: '80px' }}>
       <video
         className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none"
-        src="/Assets/Images/Video1.mp4"
         autoPlay
         loop
         muted
         playsInline
         controls={false}
-        preload="metadata"
+        preload="auto"
         aria-hidden="true"
-        webkit-playsinline="true"
-      />
+      >
+        <source src="/Assets/Images/Video1.mp4" type="video/mp4" />
+      </video>
 
       <div className="relative z-10 mx-auto px-10" style={{ maxWidth: '1400px' }}>
         <div className="grid grid-cols-2 md:grid-cols-4" style={{ gap: '64px' }}>
