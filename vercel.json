@@ -1,39 +1,33 @@
 {
-  "headers": [
+  "routes": [
     {
-      "source": "/seraphim",
-      "headers": [
-        { "key": "X-Robots-Tag", "value": "noindex, follow" }
-      ]
+      "src": "/cart/(.*)",
+      "dest": "https://carpatia.myshopify.com/cart/$1",
+      "status": 301
     },
     {
-      "source": "/sitemap.xml",
-      "headers": [
-        { "key": "Content-Type", "value": "application/xml; charset=utf-8" },
-        { "key": "Cache-Control", "value": "public, max-age=86400" }
-      ]
+      "src": "/checkouts/(.*)",
+      "dest": "https://carpatia.myshopify.com/checkouts/$1",
+      "status": 301
     },
+    { "handle": "filesystem" },
+    { "src": "^/$",                      "dest": "/index.html" },
+    { "src": "^/drops$",                 "dest": "/index.html" },
+    { "src": "^/heritage$",              "dest": "/index.html" },
+    { "src": "^/story$",                 "dest": "/index.html" },
+    { "src": "^/join$",                  "dest": "/index.html" },
+    { "src": "^/contact$",               "dest": "/index.html" },
+    { "src": "^/privacy-policy$",        "dest": "/index.html" },
+    { "src": "^/terms-of-service$",      "dest": "/index.html" },
+    { "src": "^/shipping-policy$",       "dest": "/index.html" },
+    { "src": "^/refund-policy$",         "dest": "/index.html" },
+    { "src": "^/track-order$",           "dest": "/index.html" },
+    { "src": "^/product/[^/]+$",         "dest": "/index.html" },
     {
-      "source": "/robots.txt",
-      "headers": [
-        { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
-        { "key": "Cache-Control", "value": "public, max-age=86400" }
-      ]
-    }
-  ],
-  "redirects": [
-    {
-      "source": "/cart/:path*",
-      "destination": "https://carpatia.myshopify.com/cart/:path*",
-      "permanent": true
+      "src": "^/seraphim$",
+      "dest": "/index.html",
+      "headers": { "X-Robots-Tag": "noindex, follow" }
     },
-    {
-      "source": "/checkouts/:path*",
-      "destination": "https://carpatia.myshopify.com/checkouts/:path*",
-      "permanent": true
-    }
-  ],
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "src": "/(.*)", "dest": "/index.html", "status": 404 }
   ]
 }
