@@ -13,14 +13,7 @@ export default function Navbar() {
   const { openCart, itemCount } = useCart()
   const isJoinPage = location.pathname === '/join'
 
-  const handleAnchorClick = (anchor: string) => {
-    setOpen(false)
-    if (location.pathname !== '/') {
-      navigate('/', { state: { scrollTo: anchor } })
-    } else {
-      document.getElementById(anchor)?.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
+
 
   const handleDropsFilter = (type?: string, collection?: string) => {
     setOpen(false)
