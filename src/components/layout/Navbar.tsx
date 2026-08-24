@@ -83,7 +83,7 @@ export default function Navbar() {
                 <span className={linkClass} onClick={() => navigate('/heritage')}>Heritage</span>
               </li>
               <li>
-                <span className={linkClass} onClick={() => handleAnchorClick('essentials')}>Essentials</span>
+                <span className={linkClass} onClick={() => { setOpen(false); navigate('/essentials') }}>Essentials</span>
               </li>
 
               {/* Collections Dropdown */}
@@ -100,8 +100,8 @@ export default function Navbar() {
                 {collectionsOpen && (
                   <div className="absolute top-full left-0 mt-2 w-40 bg-black border border-white/10 py-2 z-50">
                     {[
-                      { label: 'Heritage', action: () => navigate('/heritage') },
-                      { label: 'Essentials', action: () => handleDropsFilter(undefined, 'essentials') },
+                      { label: 'Heritage', action: () => { setCollectionsOpen(false); navigate('/heritage') } },
+                      { label: 'Essentials', action: () => { setCollectionsOpen(false); navigate('/essentials') } },
                     ].map((item) => (
                       <button
                         key={item.label}
@@ -152,8 +152,8 @@ export default function Navbar() {
             <ul className="space-y-2 px-6 py-4 list-none">
               {[
                 { label: 'Drops', action: () => handleDropsFilter() },
-                { label: 'Heritage', action: () => navigate('/heritage') },
-                { label: 'Essentials', action: () => handleAnchorClick('essentials') },
+                { label: 'Heritage', action: () => { setOpen(false); navigate('/heritage') } },
+                { label: 'Essentials', action: () => { setOpen(false); navigate('/essentials') } },
                 // { label: 'Seraphim', action: () => navigate('/seraphim') }, // hidden - coming soon
               ].map((item) => (
                 <li key={item.label}>
@@ -172,3 +172,4 @@ export default function Navbar() {
     </>
   )
 }
+

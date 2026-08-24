@@ -90,6 +90,14 @@ export default function Home() {
               <ProductCard key={p.id} product={p} />
             ))}
           </div>
+          <div className="mt-16 text-center">
+            <Link
+              to="/essentials"
+              className="inline-flex border-b border-white/40 pb-1 text-xs font-medium uppercase tracking-[0.24em] text-neutral-400 transition-colors hover:text-white hover:border-white"
+            >
+              ? Explore Core Collection
+            </Link>
+          </div>
         </div>
       </section>
 

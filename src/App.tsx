@@ -3,6 +3,7 @@ import Drops from './pages/Drops'
 import ProductDetail from './pages/ProductDetail'
 import Story from './pages/Story'
 import Heritage from './pages/Heritage'
+import Essentials from './pages/Essentials'
 import Join from './pages/Join'
 import Contact from './pages/Contact'
 import Seraphim from './pages/Seraphim'
@@ -42,6 +43,11 @@ const ROUTE_SEO: Record<string, Parameters<typeof applySEO>[0]> = {
     path: '/heritage',
     title: 'Heritage — The First Constellations | HeavenlyNova',
     description: 'The Heritage collection: original designs born from truth, not trend. The first constellations of the HeavenlyNova universe.',
+  },
+  '/essentials': {
+    path: '/essentials',
+    title: 'Essentials | Core Collection | HeavenlyNova',
+    description: 'Monochrome essentials forged for presence. Precise silhouettes, heavyweight comfort, and a calm intensity built for everyday rituals.',
   },
   '/story': {
     path: '/story',
@@ -128,6 +134,7 @@ function AnimatedRoutes() {
         <Route path="/drops" element={<MotionPage><Drops /></MotionPage>} />
         <Route path="/story" element={<MotionPage><Story /></MotionPage>} />
         <Route path="/heritage" element={<MotionPage><Heritage /></MotionPage>} />
+        <Route path="/essentials" element={<MotionPage><Essentials /></MotionPage>} />
         <Route path="/join" element={<MotionPage><Join /></MotionPage>} />
         <Route path="/contact" element={<MotionPage><Contact /></MotionPage>} />
         <Route path="/seraphim" element={<MotionPage><Seraphim /></MotionPage>} />
