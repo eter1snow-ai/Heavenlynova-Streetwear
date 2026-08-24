@@ -8,6 +8,31 @@ import { useCart } from '../components/cart/CartContext'
 import { getProduct } from '../lib/products'
 import type { NormalizedProduct } from '../lib/products'
 import { getOptimizedImageUrl } from '../lib/utils'
+import { applySEO } from '../hooks/useSEO'
+
+// ─── SEO overrides per produs ─────────────────────────────────────────────────
+// Produsele cu conținut editorial distinct primesc title/desc specifice.
+// Restul folosesc fallback generic din datele produsului.
+
+const PRODUCT_SEO_OVERRIDES: Record<string, { title: string; description: string }> = {
+  'the-origin': {
+    title: 'The Origin Piece — Chapter 000 Tee | HeavenlyNova',
+    description: 'Shop The Origin Piece, Chapter 000 — The First Signal. Heavyweight cotton tee from HeavenlyNova.',
+  },
+  'broken-001': {
+    title: 'BROKEN // 001 — Seraphim Tee | HeavenlyNova',
+    description: 'BROKEN // 001. Not everything that breaks is meant to stay broken. 255 GSM heavyweight cotton tee from HeavenlyNova.',
+  },
+  'soulfull-black': {
+    title: 'SOULFULL — Black Tee | Heritage Line | HeavenlyNova',
+    description: 'SOULFULL Black. Part of the Heritage Line. 255 GSM heavyweight cotton tee, built for presence.',
+  },
+  'soulfull-hoodie': {
+    title: 'SOULFULL Hoodie | Heritage Line | HeavenlyNova',
+    description: 'SOULFULL Hoodie. Part of the Heritage Line. 350 GSM heavyweight organic cotton. Structured silhouette.',
+  },
+}
+
 
 export default function ProductDetail() {
   const { productId } = useParams()
@@ -33,6 +58,31 @@ export default function ProductDetail() {
         setLoading(false)
       })
   }, [productId])
+
+  // ─── SEO injection per produs ───────────────────────────────────────────────
+  useEffect(() => {
+    if (!product || !productId) return
+
+    const override = PRODUCT_SEO_OVERRIDES[productId]
+    const title = override?.title ?? `${product.name} | HeavenlyNova`
+    const description = override?.description ?? product.description
+
+    // Canonical self-ref curat, fără query params
+    const path = `/product/${productId}`
+
+    applySEO({
+      path,
+      title,
+      description,
+      product: {
+        name: product.name,
+        description: product.description,
+        price: product.price,
+        available: product.variants.some((v) => v.availableForSale),
+        image: product.images[0] ?? undefined,
+      },
+    })
+  }, [product, productId])
 
   const [size, setSize] = useState<string>(() => {
     try {

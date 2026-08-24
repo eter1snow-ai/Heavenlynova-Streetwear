@@ -33,7 +33,7 @@ export default function Story() {
               WebkitMaskImage: 'linear-gradient(to bottom, black 40%, transparent 95%)'
             }}
           />
-          {/* Mysterious overlay effect */}fdf
+          {/* Mysterious overlay effect */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30 opacity-70"></div>
           <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/50 opacity-50"></div>
         </div>
@@ -46,7 +46,7 @@ export default function Story() {
               transition={{ duration: 1, ease: "easeOut" }}
               className="text-5xl sm:text-6xl md:text-8xl font-bold uppercase tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60"
             >
-              Born from <br /> Light & Shadow
+              Born from <br /> Light &amp; Shadow
             </motion.h1>
           </div>
         </div>
@@ -100,12 +100,79 @@ export default function Story() {
                 }}
               />
               <p className="mt-4 text-xs uppercase tracking-widest text-neutral-600">
-                FORGED IN THE COLLISION OF LIGHT & SHADOW
+                FORGED IN THE COLLISION OF LIGHT &amp; SHADOW
               </p>
             </div>
           </motion.div>
         </div>
       </section>
+
+      {/* ─── Chapter /000 — Origin Protocol ──────────────────────────────────── */}
+      {/*
+        This section is distinct from /product/the-origin.
+        /story is the editorial origin narrative of HeavenlyNova as a brand.
+        /product/the-origin is the product page for the physical tee.
+        Google indexes them separately with different canonical URLs.
+      */}
+      <motion.section
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 1, ease: 'easeOut' }}
+        className="border-t border-white/10 bg-black"
+      >
+        <div className="mx-auto max-w-[1300px] px-6 lg:px-12 py-24 sm:py-32">
+          <p className="text-xs uppercase tracking-[0.45em] text-neutral-600 mb-12">
+            Chapter /000 — Origin Protocol
+          </p>
+          <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:gap-24">
+            <div className="space-y-8 text-neutral-300 leading-relaxed text-base sm:text-lg">
+              <p>
+                Before the first drop, before the first stitch, there was a signal. Chapter /000 is not a product — it is a protocol.
+                The moment that precedes everything: the instant before the collision, when light and shadow recognized each other
+                for the first time and understood they were not opposites, but complements.
+              </p>
+              <p>
+                The Origin Protocol marks the beginning of a language that HeavenlyNova speaks through fabric, weight, and design.
+                It is not about what you wear. It is about what you carry — the fractures, the clarity, the quiet knowing
+                that something in you has always been reaching toward the light.
+              </p>
+              <p>
+                Those who find Chapter /000 are not looking for streetwear. They are looking for a signal that they are not alone
+                in the void. This is that signal. The First Light. The original frequency from which everything else radiates.
+              </p>
+              <p>
+                HeavenlyNova was built from this origin — raw, instinctive, and unapologetically present.
+                Every piece that follows carries a fragment of this first moment, encoded in heavyweight cotton and quiet design.
+              </p>
+            </div>
+            <div className="space-y-4 text-neutral-500 text-sm leading-relaxed">
+              <p className="text-xs uppercase tracking-[0.35em] text-neutral-700 mb-6">
+                The First Signal
+              </p>
+              <p>
+                Chapter /000 exists at the intersection of personal mythology and physical craft.
+                It is the story of becoming something through the act of creating —
+                of finding that the universe responds not to force, but to presence.
+              </p>
+              <p>
+                The wounded dragon and the luminous angel: two forces that, in their collision,
+                produced not destruction but a new kind of light. A HeavenlyNova — a star born
+                from the energy of two worlds merging.
+              </p>
+              <p>
+                This is why every piece we make is built to last. Not as a trend, but as an artifact.
+                A quiet marker of a moment when something shifted — when you decided to carry the light
+                instead of waiting for it to arrive.
+              </p>
+              <p className="text-xs uppercase tracking-[0.3em] text-neutral-700 pt-6 border-t border-white/5">
+                Chapter /000 — The First Signal — Origin Protocol
+              </p>
+            </div>
+          </div>
+        </div>
+      </motion.section>
+
       <motion.section
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
