@@ -4,7 +4,7 @@ import { products } from '../data/drops'
 import ProductCard from '../components/shared/ProductCard'
 
 export default function Essentials() {
-  const essentials = products.filter((p) => p.id === 'essentials-black' || p.id === 'essentials-white')
+  const essentials = products.filter((p) => p.category === 'essentials')
 
   useEffect(() => {
     window.scrollTo(0, 0)

@@ -9,7 +9,7 @@ export default function Home() {
   const location = useLocation()
 
   const heritage = products.filter((p) => p.category === 'individuals')
-  const essentials = products.filter((p) => p.id === 'essentials-black' || p.id === 'essentials-white')
+  const essentials = products.filter((p) => p.category === 'essentials')
   const [nlEmail, setNlEmail] = useState('')
   const [nlSent, setNlSent] = useState(false)
   const [nlLoading, setNlLoading] = useState(false)
