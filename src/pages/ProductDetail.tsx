@@ -439,7 +439,7 @@ export default function ProductDetail() {
               Part of the HeavenlyNova universe.
             </p>
 
-            <p className="text-sm md:text-base text-neutral-300 leading-relaxed max-w-[90%] md:max-w-none">{product.description}</p>
+            <p className="text-sm md:text-base text-neutral-300 leading-relaxed max-w-[90%] md:max-w-none whitespace-pre-wrap">{product.description}</p>
           </div>
         </div>
       </motion.section>

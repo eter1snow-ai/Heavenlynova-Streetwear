@@ -36,7 +36,7 @@ export const products: Product[] = [
     productType: 'tee' as ProductType,
     name: 'SOULFULL — BLACK',
     tagline: 'From the first constellations',
-    description: 'Part of the Heritage Line. Built for presence. 7.5oz (255 GSM) Heavyweight Cotton. Custom boxy fit. Rugged texture. A signal from the first constellations.',
+    description: 'Not everything needs to be loud to be felt. Soulfull is the original piece that started it all — the foundation of the HVN universe, calm in presence, strong in identity.\n\nIt exists between what is seen and what is felt, holding attention rather than seeking it.\n\nHeavyweight oversized boxy fit at 7.5oz cotton, drop shoulder construction, premium long-lasting print.\n\nPart of the Heritage Collection — the origin layer of HeavenlyNova, where everything begins.',
     price: '59.99€',
     images: [
       '/Assets/Images/Preview/Soulfull/Soulfull Black/Back.webp',
@@ -50,7 +50,7 @@ export const products: Product[] = [
     productType: 'hoodie' as ProductType,
     name: 'Core Hoodie',
     tagline: '350 GSM Heavyweight Organic Cotton',
-    description: '350 GSM Brushed Fleece. Premium Organic Cotton Blend. Structured silhouette.',
+    description: 'Minimal. Structured. Essential. A core layer built for everyday wear, clean in design and strong in presence.\n\n350 GSM heavyweight organic cotton, relaxed oversized fit with drop shoulder, adjustable hood, and kangaroo pocket.\n\nA quiet staple that carries the full weight of the story behind it.',
     price: '89.99€',
     images: [
       '/Assets/Images/Preview/Esential Hoodie/Hoodie On black Original Front.webp',
@@ -64,7 +64,7 @@ export const products: Product[] = [
     productType: 'tee' as ProductType,
     name: 'Essentials - Black',
     tagline: '255 GSM Heavyweight Cotton',
-    description: '7.5oz (255 GSM) Heavyweight Cotton. Custom boxy fit. Rugged texture.',
+    description: 'The Foundation of Darkness. A pure, structural staple built for form, drape, and enduring presence.\n\nBoxy oversized fit with dropped shoulders and relaxed sleeves, cut from 100% heavyweight cotton at 7.5oz — garment-washed for a soft touch and a natural, deep black fall.\n\nMinimal HeavenlyNova insignia on the left chest, heavy ribbed collar with double-needle stitching throughout.\n\nTrue to size for the oversized drape — size down for a closer fit. Machine wash cold, inside out. Do not tumble dry. Hang dry in shade.',
     price: '44.99€',
     images: [
       '/Assets/Images/Preview/Esentials_Black/Original Esentials Black Front.webp',
@@ -78,7 +78,7 @@ export const products: Product[] = [
     productType: 'tee' as ProductType,
     name: 'Essentials - White',
     tagline: '255 GSM Heavyweight Cotton',
-    description: '7.5oz (255 GSM) Heavyweight Cotton. Custom boxy fit. Rugged texture.',
+    description: 'The Foundation of Light. A pure, structural staple built for form, drape, and enduring presence.\n\nBoxy oversized fit with dropped shoulders and relaxed sleeves, cut from 100% heavyweight cotton at 7.5oz — garment-washed for a soft touch and a natural fall.\n\nMinimal HeavenlyNova insignia on the left chest, heavy ribbed collar with double-needle stitching throughout.\n\nTrue to size for the oversized drape — size down for a closer fit. Machine wash cold, inside out. Do not tumble dry. Hang dry in shade.',
     price: '44.99€',
     images: [
       '/Assets/Images/Preview/Esential_White/White ES Front.webp',
@@ -92,7 +92,7 @@ export const products: Product[] = [
     productType: 'tee' as ProductType,
     name: 'THE ORIGIN PIECE',
     tagline: 'Chapter 000 — The First Signal',
-    description: 'Origin Tee - Chapter 000 is reserved for those who reach the end. A quiet signal that you were here first. 7.5oz (255 GSM) Heavyweight Cotton. Custom boxy fit.',
+    description: 'Chapter /000 is reserved for those who reach the end. A quiet signal that you were here first.\n\nHeavyweight 7.5oz cotton, custom boxy fit — the origin point of the HeavenlyNova universe.',
     price: '59.99€',
     images: [
       '/Assets/Images/Preview/The Origin Piece/The Origin Piece Back.webp',
@@ -106,7 +106,7 @@ export const products: Product[] = [
     productType: 'hoodie' as ProductType,
     name: 'SOULFULL HOODIE',
     tagline: 'From the first constellations',
-    description: 'Part of the Heritage Line. Built for presence. 350 GSM Heavyweight Organic Cotton. Structured silhouette. A signal from the first constellations.',
+    description: 'Minimal. Structured. Essential. A core layer built for everyday wear, clean in design and strong in presence.\n\n350 GSM heavyweight organic cotton, relaxed oversized fit with drop shoulder, adjustable hood, and kangaroo pocket.\n\nA quiet staple that carries the full weight of the story behind it.',
     price: '89.99€',
     images: [
       '/Assets/Images/Preview/Design Hoodies/Soulfull Hoodie/Soulfull Hoodie Back.webp',

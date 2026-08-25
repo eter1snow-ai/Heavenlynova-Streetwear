@@ -118,12 +118,14 @@ function normalizeShopifyProduct(p: ShopifyProduct, mockId?: string): Normalized
     t.toLowerCase().includes('hoodie') || t.toLowerCase().includes('sweatshirt')
   )
 
+  const localMock = mockId ? mockProducts.find(m => m.id === mockId) : undefined;
+
   return {
     id: mockId ?? p.handle,     // păstrăm mock ID pentru navigare URL (ex: 'soulfull-black')
     handle: p.handle,           // handle-ul real Shopify
     name: p.title,
     tagline: p.tags.find((t) => t.startsWith('tagline:'))?.replace('tagline:', '') ?? '',
-    description: p.description,
+    description: localMock?.description ?? p.description,
     price: `${parseFloat(p.priceRange.minVariantPrice.amount).toFixed(2)}€`,
     images: p.images.edges.map((e) => e.node.url),
     category: categoryEntry ?? 'essentials',
