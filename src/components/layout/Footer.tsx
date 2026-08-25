@@ -82,9 +82,9 @@ export default function Footer() {
               Social
             </h3>
             <nav style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-              <a href="#" style={{ fontSize: '0.82rem', fontWeight: 300, letterSpacing: '0.1em', lineHeight: 1.6, color: '#C2C2C2' }} className="uppercase hover:text-white transition-colors">Instagram →</a>
-              <a href="#" style={{ fontSize: '0.82rem', fontWeight: 300, letterSpacing: '0.1em', lineHeight: 1.6, color: '#C2C2C2' }} className="uppercase hover:text-white transition-colors">TikTok →</a>
-              <a href="#" style={{ fontSize: '0.82rem', fontWeight: 300, letterSpacing: '0.1em', lineHeight: 1.6, color: '#C2C2C2' }} className="uppercase hover:text-white transition-colors">Facebook →</a>
+              <a href="https://www.instagram.com/heavenlynovastreetwear" target="_blank" rel="noopener noreferrer" style={{ fontSize: '0.82rem', fontWeight: 300, letterSpacing: '0.1em', lineHeight: 1.6, color: '#C2C2C2' }} className="uppercase hover:text-white transition-colors">Instagram →</a>
+              <a href="https://www.tiktok.com/@heavenlynova.studio" target="_blank" rel="noopener noreferrer" style={{ fontSize: '0.82rem', fontWeight: 300, letterSpacing: '0.1em', lineHeight: 1.6, color: '#C2C2C2' }} className="uppercase hover:text-white transition-colors">TikTok →</a>
+              <a href="https://www.pinterest.com/HeavenlynovaStreetwear/" target="_blank" rel="noopener noreferrer" style={{ fontSize: '0.82rem', fontWeight: 300, letterSpacing: '0.1em', lineHeight: 1.6, color: '#C2C2C2' }} className="uppercase hover:text-white transition-colors">Pinterest →</a>
               <Link to="/story" style={{ fontSize: '0.82rem', fontWeight: 300, letterSpacing: '0.1em', lineHeight: 1.6 }} className="uppercase text-white hover:text-white transition-colors">— THE ORIGIN —</Link>
             </nav>
           </div>
