@@ -9,6 +9,7 @@ import { getProduct } from '../lib/products'
 import type { NormalizedProduct } from '../lib/products'
 import { getOptimizedImageUrl } from '../lib/utils'
 import { applySEO } from '../hooks/useSEO'
+import { products as localDrops } from '../data/drops'
 
 // ─── SEO overrides per produs ─────────────────────────────────────────────────
 // Produsele cu conținut editorial distinct primesc title/desc specifice.
@@ -273,43 +274,30 @@ export default function ProductDetail() {
 
           <div className="space-y-6">
             <div>
-              <h1
-                className={
-                  isSeraphim
-                    ? 'font-serif text-2xl sm:text-3xl font-semibold leading-tight tracking-tight'
-                    : 'font-display text-2xl sm:text-3xl font-semibold leading-tight tracking-tight'
-                }
-              >
-                {isSeraphim ? 'Seraphim' : product.name}
-              </h1>
-              {isSeraphim && (
-                <p className="mt-2 text-xs uppercase tracking-[0.25em] text-neutral-400">
-                  The ones who ascend
-                </p>
-              )}
-              {product.id === 'broken-001' && (
-                <div className="mt-4 space-y-3">
-                  <p style={{ fontSize: '0.82rem', letterSpacing: '0.08em', lineHeight: 1.8, color: '#A8A8A8', fontStyle: 'italic' }}>
-                    Not everything that breaks is meant to stay broken.<br /><br />
-                    Some fractures don't end you —<br />
-                    they open you.<br /><br />
-                    BROKEN marks the moment where something shifts.<br />
-                    Not the fall, but the beginning of ascension.
-                  </p>
-                </div>
-              )}
-              {product.id.startsWith('soulfull') && (
-                <div className="mt-4 space-y-3">
-                  <p style={{ fontSize: '0.82rem', letterSpacing: '0.08em', lineHeight: 1.8, color: '#A8A8A8', fontStyle: 'italic' }}>
-                    Not everything needs to be loud to be felt.<br />
-                    Soulfull is a quiet statement —<br />
-                    for those who carry more than they show.
-                  </p>
-                </div>
-              )}
-              {!isSeraphim && !product.id.startsWith('soulfull') && (
-                <p className="mt-4 text-neutral-300 leading-relaxed">{product.tagline}</p>
-              )}
+              {(() => {
+                const localMock = localDrops.find((m) => m.id === product.id || m.id === productId)
+                const displayTitle = isSeraphim ? 'Seraphim' : (localMock?.name || product.name)
+                const displayTagline = localMock?.tagline || product.tagline
+
+                return (
+                  <>
+                    <h1
+                      className={
+                        isSeraphim
+                          ? 'font-serif text-2xl sm:text-3xl font-semibold leading-tight tracking-tight'
+                          : 'font-display text-2xl sm:text-3xl font-semibold leading-tight tracking-tight'
+                      }
+                    >
+                      {displayTitle}
+                    </h1>
+                    {displayTagline && (
+                      <p style={{ fontSize: '0.82rem', letterSpacing: '0.08em', lineHeight: 1.8, color: '#A8A8A8', fontStyle: 'italic' }} className="mt-4">
+                        {displayTagline}
+                      </p>
+                    )}
+                  </>
+                )
+              })()}
             </div>
 
             <div className="space-y-3">
@@ -422,22 +410,11 @@ export default function ProductDetail() {
               {isLoading ? 'ADDING...' : showSizeError ? 'SELECT A SIZE' : 'Claim Your Piece'}
             </button>
 
-            {product.id.startsWith('soulfull') && (
-              <div className="space-y-4 pt-2">
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  {['Emotional identity piece', 'Part of the Heritage line', 'Designed for introspection, not attention'].map((b) => (
-                    <p key={b} style={{ fontSize: '0.72rem', letterSpacing: '0.15em', lineHeight: 1.6, color: '#555555' }} className="uppercase">· {b}</p>
-                  ))}
-                </div>
-                <p style={{ fontSize: '0.75rem', letterSpacing: '0.1em', lineHeight: 1.7, color: '#444444', fontStyle: 'italic' }}>
-                  Built for those who don't need to explain what they feel.
-                </p>
-              </div>
+            {!product.description.includes('Part of the HeavenlyNova universe') && (
+              <p style={{ fontSize: '0.62rem', letterSpacing: '0.3em', color: '#333333', lineHeight: 1.6 }} className="uppercase">
+                Part of the HeavenlyNova universe.
+              </p>
             )}
-
-            <p style={{ fontSize: '0.62rem', letterSpacing: '0.3em', color: '#333333', lineHeight: 1.6 }} className="uppercase">
-              Part of the HeavenlyNova universe.
-            </p>
 
             <p className="text-sm md:text-base text-neutral-300 leading-relaxed max-w-[90%] md:max-w-none whitespace-pre-wrap">{product.description}</p>
           </div>

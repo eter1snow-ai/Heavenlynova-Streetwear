@@ -1,11 +1,15 @@
 import { motion } from 'framer-motion'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { products } from '../data/drops'
+import ProductCard from '../components/shared/ProductCard'
 
 export default function Heritage() {
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
+
+  const heritageProducts = products.filter((p) => p.category === 'individuals')
 
   return (
     <main className="bg-black text-white">
@@ -87,6 +91,31 @@ export default function Heritage() {
               </p>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Heritage Product Grid */}
+      <section className="border-t border-white/10 py-24 sm:py-32">
+        <div className="mx-auto max-w-[1300px] px-6 lg:px-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.9 }}
+            className="mb-14"
+          >
+            <p style={{ fontSize: '0.65rem', letterSpacing: '0.45em', color: '#888888' }} className="uppercase mb-3">
+              Heritage Line
+            </p>
+            <h2 style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.8rem)', fontWeight: 500, letterSpacing: '0.06em', lineHeight: 1.2, color: '#E6E6E6' }} className="uppercase">
+              The First Pieces
+            </h2>
+          </motion.div>
+          <div className="flex flex-wrap justify-center gap-8">
+            {heritageProducts.map((p) => (
+              <ProductCard key={p.id} product={p} />
+            ))}
+          </div>
         </div>
       </section>
 

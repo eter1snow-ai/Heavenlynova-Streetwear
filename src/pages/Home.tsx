@@ -177,15 +177,20 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. READ THE ORIGIN - subtle */}
-      <section className="bg-black py-16 flex justify-center items-center">
-        <Link
-          to="/story"
-          style={{ fontSize: '0.65rem', letterSpacing: '0.5em', color: '#444444', lineHeight: 1.6 }}
-          className="uppercase hover:text-white/60 transition-colors"
+      {/* 5. READ THE ORIGIN - same style as Heritage easter egg */}
+      <section className="bg-black py-24 sm:py-32 border-t border-white/10 flex justify-center items-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
         >
-          — The Origin —
-        </Link>
+          <p className="text-sm uppercase tracking-[0.3em] text-neutral-600 hover:text-neutral-300 transition-colors">
+            <Link to="/story" className="hover:text-white">
+              — THE ORIGIN —
+            </Link>
+          </p>
+        </motion.div>
       </section>
     </main>
   )
