@@ -147,10 +147,11 @@ export default function EmailCapture() {
                   />
                   <button
                     type="submit"
-                    className="w-full bg-white text-black text-xs tracking-[0.2em] px-6 py-3 uppercase font-semibold hover:bg-neutral-200 transition-colors"
+                    disabled={isSubmitting}
+                    className={`w-full bg-white text-black text-xs tracking-[0.2em] px-6 py-3 uppercase font-semibold hover:bg-neutral-200 transition-colors ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
                     style={{ borderRadius: 0 }}
                   >
-                    Initiate
+                    {isSubmitting ? 'Initiating...' : 'Initiate'}
                   </button>
                 </form>
 
