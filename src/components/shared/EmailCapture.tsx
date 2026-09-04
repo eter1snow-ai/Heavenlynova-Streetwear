@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { shopifyFetch } from '../../lib/shopify/client'
 
 export default function EmailCapture() {
   const [isOpen, setIsOpen] = useState(false)
   const [email, setEmail] = useState('')
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [copied, setCopied] = useState(false)
 
   useEffect(() => {
@@ -28,23 +30,52 @@ export default function EmailCapture() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!email) return
+
+    setIsSubmitting(true)
 
     // Save flags and captured email to localStorage
     localStorage.setItem('hvn_newsletter_sub', 'true')
     localStorage.setItem('hvn_email_captured', 'true')
     localStorage.setItem('hvn_email', email)
 
-    fetch('/api/subscribe', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, type: 'initiate' }),
-    }).catch(() => {})
-
-    setIsSubmitted(true)
-    console.log('✅ Email captured:', email)
+    // Send request to Shopify Storefront API to create/register customer record with marketing consent
+    try {
+      await shopifyFetch({
+        query: `
+          mutation customerCreate($input: CustomerCreateInput!) {
+            customerCreate(input: $input) {
+              customer {
+                id
+                email
+                acceptsMarketing
+              }
+              customerUserErrors {
+                code
+                field
+                message
+              }
+            }
+          }
+        `,
+        variables: {
+          input: {
+            email: email.trim(),
+            password: `HVN_${Date.now()}_${Math.random().toString(36).slice(2, 10)}!`,
+            acceptsMarketing: true,
+          },
+        },
+      })
+      console.log('✅ Shopify customer registered with acceptsMarketing: true')
+    } catch (err) {
+      // Graceful error handling: still transition to success view with code even if API fails or email exists
+      console.warn('⚠️ Shopify customer creation notice (handled gracefully):', err)
+    } finally {
+      setIsSubmitting(false)
+      setIsSubmitted(true)
+    }
   }
 
   const handleClose = () => {
