@@ -85,7 +85,7 @@ export default function CartDrawer() {
                             </button>
                           </div>
                           <p style={{ fontSize: '0.65rem', letterSpacing: '0.1em', color: '#888', marginTop: '4px' }} className="uppercase">
-                            Size: {item.variantTitle}
+                            Size: {item.variantTitle.includes('/') ? item.variantTitle.split('/').pop()?.trim() : item.variantTitle}
                           </p>
                         </div>
                         <div className="flex justify-between items-center mt-4">

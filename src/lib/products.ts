@@ -15,6 +15,7 @@ import type { Product } from '../data/drops'
 import { products as mockProducts } from '../data/drops'
 import { shopifyFetch } from './shopify/client'
 import { GET_PRODUCTS, GET_PRODUCT_BY_HANDLE } from './shopify/queries'
+import { formatMoney } from './utils'
 import type {
   NormalizedProduct,
   NormalizedVariant,
@@ -102,7 +103,7 @@ function normalizeShopifyVariant(v: ShopifyVariant): NormalizedVariant {
     title: v.title,                                // ex: "black / S", "black / M"
     availableForSale: v.availableForSale,
     quantityAvailable: v.quantityAvailable,
-    price: `${parseFloat(v.priceV2.amount).toFixed(2)}€`,
+    price: formatMoney(v.priceV2.amount, v.priceV2.currencyCode),
   }
 }
 
@@ -126,7 +127,7 @@ function normalizeShopifyProduct(p: ShopifyProduct, mockId?: string): Normalized
     name: p.title,
     tagline: p.tags.find((t) => t.startsWith('tagline:'))?.replace('tagline:', '') ?? '',
     description: localMock?.description ?? p.description,
-    price: `${parseFloat(p.priceRange.minVariantPrice.amount).toFixed(2)}€`,
+    price: formatMoney(p.priceRange.minVariantPrice.amount, p.priceRange.minVariantPrice.currencyCode),
     images: p.images.edges.map((e) => e.node.url),
     category: categoryEntry ?? 'essentials',
     productType: typeTag

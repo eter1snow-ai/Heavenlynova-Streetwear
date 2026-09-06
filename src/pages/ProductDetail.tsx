@@ -347,11 +347,12 @@ export default function ProductDetail() {
                   Size Guide
                 </button>
               </div>
-              {/* [CHANGED] Butoane de mărime din variante normalizate cu disabled state */}
+              {/* Butoane de mărime din variante normalizate cu disabled state */}
               <div className="grid grid-cols-6 gap-2">
                 {displaySizes.map((s) => {
                   const variantInfo = variantsBySize[s]
                   const available = variantInfo?.availableForSale ?? true
+                  const cleanLabel = s.includes('/') ? s.split('/').pop()?.trim() || s : s
                   return (
                     <button
                       key={s}
@@ -363,7 +364,7 @@ export default function ProductDetail() {
                       }}
                       disabled={!available}
                       className={
-                        'h-6 border text-[10px] font-medium uppercase tracking-[0.2em] transition-soft ' +
+                        'h-8 sm:h-9 border text-xs font-medium uppercase tracking-[0.15em] transition-soft flex items-center justify-center ' +
                         (size === s && available
                           ? 'bg-white text-black border-white'
                           : showSizeError
@@ -378,7 +379,7 @@ export default function ProductDetail() {
                       aria-disabled={!available}
                       title={!available ? 'Out of stock' : undefined}
                     >
-                      {s}
+                      {cleanLabel}
                     </button>
                   )
                 })}

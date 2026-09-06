@@ -26,6 +26,7 @@ import {
   CART_LINES_REMOVE,
 } from './shopify/mutations'
 import { GET_CART } from './shopify/queries'
+import { formatMoney } from './utils'
 import type {
   ShopifyCart,
   ShopifyCartLine,
@@ -66,8 +67,8 @@ export const EMPTY_CART: CartState = {
   id: null,
   checkoutUrl: null,
   lines: [],
-  subtotal: '0.00€',
-  total: '0.00€',
+  subtotal: '$0.00',
+  total: '$0.00',
 }
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -78,7 +79,7 @@ function normalizeCart(cart: ShopifyCart): CartState {
     variantId: node.merchandise.id,
     productTitle: node.merchandise.product.title,
     variantTitle: node.merchandise.title,
-    price: `${parseFloat(node.estimatedCost.totalAmount.amount).toFixed(2)}€`,
+    price: formatMoney(node.estimatedCost.totalAmount.amount, node.estimatedCost.totalAmount.currencyCode),
     quantity: node.quantity,
     imageUrl: node.merchandise.product.images.edges[0]?.node.url ?? null,
     productHandle: node.merchandise.product.handle,
@@ -92,8 +93,8 @@ function normalizeCart(cart: ShopifyCart): CartState {
     id: cart.id,
     checkoutUrl,
     lines,
-    subtotal: `${parseFloat(cart.estimatedCost.subtotalAmount.amount).toFixed(2)}€`,
-    total: `${parseFloat(cart.estimatedCost.totalAmount.amount).toFixed(2)}€`,
+    subtotal: formatMoney(cart.estimatedCost.subtotalAmount.amount, cart.estimatedCost.subtotalAmount.currencyCode),
+    total: formatMoney(cart.estimatedCost.totalAmount.amount, cart.estimatedCost.totalAmount.currencyCode),
   }
 }
 
