@@ -112,6 +112,11 @@ function AnimatedRoutes() {
   // Inject canonical + title + meta per-rută (rute statice)
   // Paginile de produs (/product/:id) gestionează SEO intern via useSEO.ts
   useEffect(() => {
+    // Meta Pixel PageView on SPA route change
+    if (typeof window !== 'undefined' && (window as any).fbq) {
+      ;(window as any).fbq('track', 'PageView')
+    }
+
     const isProductRoute = location.pathname.startsWith('/product/')
     if (!isProductRoute) {
       const seoConfig = ROUTE_SEO[location.pathname]

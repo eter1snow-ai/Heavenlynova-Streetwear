@@ -83,6 +83,17 @@ export default function ProductDetail() {
         image: product.images[0] ?? undefined,
       },
     })
+
+    // Meta Pixel: ViewContent
+    if (typeof window !== 'undefined' && (window as any).fbq) {
+      ;(window as any).fbq('track', 'ViewContent', {
+        content_name: product.name,
+        content_ids: [product.id],
+        content_type: 'product',
+        value: parseFloat(product.price.replace(/[^0-9.]/g, '')) || 0,
+        currency: 'USD',
+      })
+    }
   }, [product, productId])
 
   const [size, setSize] = useState<string>(() => {

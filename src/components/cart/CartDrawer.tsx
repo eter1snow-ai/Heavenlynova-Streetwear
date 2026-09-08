@@ -134,6 +134,17 @@ export default function CartDrawer() {
                       console.error("Checkout URL missing");
                       return;
                     }
+
+                    // Meta Pixel: InitiateCheckout
+                    if (typeof window !== 'undefined' && (window as any).fbq) {
+                      ;(window as any).fbq('track', 'InitiateCheckout', {
+                        value: parseFloat(cartState.subtotal.replace(/[^0-9.]/g, '')) || 0,
+                        currency: 'USD',
+                        num_items: cartState.lines.reduce((acc, line) => acc + line.quantity, 0),
+                        content_ids: cartState.lines.map((l) => l.variantId),
+                      })
+                    }
+
                     // Shopify generează deja checkout.heavenlynova.com corect (Primary Domain)
                     // Niciun replace necesar — orice transformare cauzează triple-prefix bug
                     window.location.href = cartState.checkoutUrl;
