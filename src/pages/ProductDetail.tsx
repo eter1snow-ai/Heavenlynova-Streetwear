@@ -402,6 +402,16 @@ export default function ProductDetail() {
                 const variantId = variantsBySize[size]?.variantId
                 if (variantId) {
                   addItem(variantId, 1)
+
+                  if (typeof window !== 'undefined' && (window as any).fbq) {
+                    (window as any).fbq('track', 'AddToCart', {
+                      content_name: product.name,
+                      currency: 'USD',
+                      value: parseFloat(product.price.replace(/[^0-9.]/g, '')) || 0,
+                      content_ids: [variantId],
+                      content_type: 'product',
+                    })
+                  }
                 }
               }}
               disabled={isLoading}

@@ -23,6 +23,7 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { applySEO } from './hooks/useSEO'
+import { Analytics } from '@vercel/analytics/react'
 
 // ─── SEO config per-rută ────────────────────────────────────────────────────
 // Paginile de produs (/product/:id) își setează SEO-ul intern în ProductDetail.
@@ -162,6 +163,7 @@ export default function App() {
           <AnimatedRoutes />
           <Footer />
         </div>
+        <Analytics />
       </CartProvider>
     </BrowserRouter>
   )
