@@ -55,6 +55,21 @@ const ROUTE_SEO: Record<string, Parameters<typeof applySEO>[0]> = {
     title: 'The Origin Story — Chapter 000 | HeavenlyNova',
     description: 'Those who reach the end carry the first symbol. Discover the origin of HeavenlyNova — Chapter 000, The First Signal.',
   },
+  '/join': {
+    path: '/join',
+    title: 'Join — Exclusive Access | HeavenlyNova',
+    description: 'Be among the first to receive exclusive drops, lore fragments, and early access to what comes next. Join HeavenlyNova.',
+  },
+  '/contact': {
+    path: '/contact',
+    title: 'Contact Us | HeavenlyNova',
+    description: 'Get in touch with the HeavenlyNova team for inquiries, order support, and collaborations.',
+  },
+  '/track-order': {
+    path: '/track-order',
+    title: 'Track Your Order | HeavenlyNova',
+    description: 'Follow the path of your pieces. Check tracking details and fulfillment updates for HeavenlyNova orders.',
+  },
   '/seraphim': {
     path: '/seraphim',
     title: 'Seraphim — Chapter /001 | HeavenlyNova',
