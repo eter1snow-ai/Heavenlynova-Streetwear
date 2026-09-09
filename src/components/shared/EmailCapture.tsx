@@ -16,18 +16,17 @@ export default function EmailCapture() {
       localStorage.getItem('hvn_email_captured')
     if (hasSubscribed) return
 
-    // Show popup when user scrolls to 50% of page
-    const handleScroll = () => {
-      const scrollPercent =
-        (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100
-      if (scrollPercent >= 50) {
+    // Strictly enforce minimum 9-10 seconds on page before showing popup
+    const timer = setTimeout(() => {
+      const alreadyHandled =
+        localStorage.getItem('hvn_newsletter_sub') ||
+        localStorage.getItem('hvn_email_captured')
+      if (!alreadyHandled) {
         setIsOpen(true)
-        window.removeEventListener('scroll', handleScroll)
       }
-    }
+    }, 9500)
 
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    return () => clearTimeout(timer)
   }, [])
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -124,13 +123,24 @@ export default function EmailCapture() {
             {!isSubmitted ? (
               <>
                 {/* Content */}
-                <div className="text-center mb-10">
-                  <p className="uppercase mb-5" style={{ fontSize: '0.65rem', letterSpacing: '0.5em', lineHeight: 1.6, color: '#aaaaaa' }}>ENTER THE ASCENT</p>
-                  <h2 className="uppercase mb-5" style={{ fontSize: '1.9rem', fontWeight: 500, letterSpacing: '0.12em', lineHeight: 1.5, color: '#E6E6E6' }}>
-                    THE FIRST LIGHT HAS ARRIVED.
+                <div className="text-center mb-8">
+                  <p
+                    className="uppercase mb-3 font-mono text-neutral-400"
+                    style={{ fontSize: '0.65rem', letterSpacing: '0.35em', lineHeight: 1.5 }}
+                  >
+                    EXCLUSIVE ACCESS
+                  </p>
+                  <h2
+                    className="uppercase mb-4 font-display font-semibold"
+                    style={{ fontSize: 'clamp(1.5rem, 3.5vw, 1.85rem)', letterSpacing: '0.08em', lineHeight: 1.25, color: '#FFFFFF' }}
+                  >
+                    UNLOCK 10% OFF<br />DROP /000
                   </h2>
-                  <p className="uppercase" style={{ fontSize: '0.75rem', letterSpacing: '0.35em', lineHeight: 1.8, color: '#888888' }}>
-                    JOIN THE INITIATION. RECEIVE AN EXCLUSIVE 10% ACCESS CODE FOR YOUR FIRST PIECE, LORE FRAGMENTS, AND EARLY DROP ACCESS.
+                  <p
+                    className="text-xs sm:text-sm leading-relaxed max-w-[92%] mx-auto"
+                    style={{ color: '#A3A3A3' }}
+                  >
+                    Join the inner circle for early access and an exclusive discount on your first piece.
                   </p>
                 </div>
 
@@ -142,16 +152,16 @@ export default function EmailCapture() {
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="ENTER YOUR EMAIL"
                     required
-                    className="w-full bg-transparent border border-white/40 text-white text-xs tracking-wide px-4 py-3 placeholder:text-neutral-600 focus:border-white focus:outline-none transition-colors"
+                    className="w-full bg-transparent border border-white/40 text-white text-xs tracking-wide px-4 py-3.5 placeholder:text-neutral-600 focus:border-white focus:outline-none transition-colors"
                     style={{ borderRadius: 0 }}
                   />
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className={`w-full bg-white text-black text-xs tracking-[0.2em] px-6 py-3 uppercase font-semibold hover:bg-neutral-200 transition-colors ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
+                    className={`w-full bg-white text-black text-xs tracking-[0.2em] px-6 py-3.5 uppercase font-semibold hover:bg-neutral-200 transition-colors ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
                     style={{ borderRadius: 0 }}
                   >
-                    {isSubmitting ? 'Initiating...' : 'Initiate'}
+                    {isSubmitting ? 'CLAIMING...' : 'CLAIM 10% OFF'}
                   </button>
                 </form>
 
