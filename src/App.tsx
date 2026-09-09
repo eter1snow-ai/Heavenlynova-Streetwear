@@ -37,18 +37,18 @@ const ROUTE_SEO: Record<string, Parameters<typeof applySEO>[0]> = {
   },
   '/drops': {
     path: '/drops',
-    title: 'Drops — HeavenlyNova Streetwear',
-    description: 'Shop all HeavenlyNova drops. Heavyweight tees and hoodies. Heritage line, Essentials and exclusive pieces.',
+    title: 'Drops & Core Capsules | HeavenlyNova',
+    description: 'Core capsules in rotation. Chapter /000 — Heavyweight streetwear artifacts built to last. Calm in presence, strong in identity.',
   },
   '/heritage': {
     path: '/heritage',
-    title: 'Heritage — The First Constellations | HeavenlyNova',
-    description: 'The Heritage collection: original designs born from truth, not trend. The first constellations of the HeavenlyNova universe.',
+    title: 'Heritage Line — The First Constellations | HeavenlyNova',
+    description: 'Emerging from raw, instinctive designs. Artifacts shaped by shadow and clarity, struggle and awakening. Discover the Soulfull collection and the original constellations.',
   },
   '/essentials': {
     path: '/essentials',
-    title: 'Essentials | Core Collection | HeavenlyNova',
-    description: 'Monochrome essentials forged for presence. Precise silhouettes, heavyweight comfort, and a calm intensity built for everyday rituals.',
+    title: 'Essentials Collection — Architectural Streetwear | HeavenlyNova',
+    description: 'Minimal silhouettes. Heavyweight feel. Everyday luxury cut from high-density cotton.',
   },
   '/story': {
     path: '/story',

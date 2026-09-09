@@ -5,6 +5,5 @@ Disallow: /api/
 Disallow: /cart
 Disallow: /checkouts/
 Disallow: /track-order
-Disallow: /join
 
 Sitemap: https://heavenlynova.com/sitemap.xml

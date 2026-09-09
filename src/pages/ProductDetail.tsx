@@ -25,8 +25,8 @@ const PRODUCT_SEO_OVERRIDES: Record<string, { title: string; description: string
     description: 'BROKEN // 001. Not everything that breaks is meant to stay broken. 255 GSM heavyweight cotton tee from HeavenlyNova.',
   },
   'soulfull-black': {
-    title: 'SOULFULL — Black Tee | Heritage Line | HeavenlyNova',
-    description: 'SOULFULL Black. Part of the Heritage Line. 255 GSM heavyweight cotton tee, built for presence.',
+    title: 'SOULFULL — Black Heavyweight Tee (7.5oz) | HeavenlyNova',
+    description: 'Not everything needs to be loud to be felt. Soulfull is a quiet statement forged from heavyweight 255 GSM cotton. Part of the Heritage Collection.',
   },
   'soulfull-hoodie': {
     title: 'SOULFULL Hoodie | Heritage Line | HeavenlyNova',

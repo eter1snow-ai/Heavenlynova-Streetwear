@@ -44,6 +44,16 @@ function setMeta(name: string, content: string) {
   el.setAttribute('content', content)
 }
 
+function setPropertyMeta(property: string, content: string) {
+  let el = document.querySelector<HTMLMetaElement>(`meta[property="${property}"]`)
+  if (!el) {
+    el = document.createElement('meta')
+    el.setAttribute('property', property)
+    document.head.appendChild(el)
+  }
+  el.setAttribute('content', content)
+}
+
 function removeMeta(name: string) {
   document.querySelector(`meta[name="${name}"]`)?.remove()
 }
@@ -92,17 +102,32 @@ export function applySEO({
   const canonicalUrl = `${BASE_URL}${path}`
   setCanonical(canonicalUrl)
 
-  // 2. Title
+  // 2. Title & Open Graph Title
   if (title) {
     document.title = title
+    setPropertyMeta('og:title', title)
+    setPropertyMeta('twitter:title', title)
   }
 
-  // 3. Meta description
+  // 3. Meta description & Open Graph Description
   if (description) {
     setMeta('description', description)
+    setPropertyMeta('og:description', description)
+    setPropertyMeta('twitter:description', description)
   }
 
-  // 4. Robots noindex
+  // 4. Canonical Open Graph URL
+  setPropertyMeta('og:url', canonicalUrl)
+  setPropertyMeta('twitter:url', canonicalUrl)
+
+  // 5. Open Graph Image (dacă este produs)
+  if (product?.image) {
+    const imgUrl = product.image.startsWith('http') ? product.image : `${BASE_URL}${product.image}`
+    setPropertyMeta('og:image', imgUrl)
+    setPropertyMeta('twitter:image', imgUrl)
+  }
+
+  // 6. Robots noindex
   if (noindex) {
     setMeta('robots', 'noindex, follow')
   } else {
