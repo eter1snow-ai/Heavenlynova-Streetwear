@@ -3,32 +3,23 @@
  *
  * Context global pentru starea coșului de cumpărături.
  *
- * MOCK MODE (VITE_USE_MOCK_DATA=true):
- *   - CartDrawer se deschide și arată UI-ul vizual complet
- *   - Articolele adăugate sunt stocate LOCAL în state (fără Shopify)
- *   - "Proceed to Checkout" nu face redirect (no checkoutUrl real)
- *   - Ideal pentru testarea UX înainte de tokenul real
- *
- * LIVE MODE (VITE_USE_MOCK_DATA=false):
- *   - addItem() apelează addToCart() din lib/cart.ts → Shopify Cart API
- *   - Cart-ul e hidratat din localStorage la mount (hydrateCart)
- *   - "Proceed to Checkout" → redirect la cart.checkoutUrl Shopify
+ * POST-MIGRARE (v2 — fără Shopify):
+ *   Coșul este 100% client-side, stocat în localStorage.
+ *   Nu există mock mode / live mode — există un singur mod.
+ *   Checkout inițiază o sesiune Stripe via /api/create-checkout-session.
  */
 
 import { createContext, useContext, useState, useEffect, useCallback } from 'react'
 import {
-  addToCart as shopifyAddToCart,
-  updateCartLine as shopifyUpdateCartLine,
-  removeCartLine as shopifyRemoveCartLine,
   hydrateCart,
+  addToCart,
+  updateCartLine,
+  removeCartLine,
   goToCheckout,
+  clearCart,
   EMPTY_CART,
 } from '../../lib/cart'
-import type { CartState, CartLineItem } from '../../lib/cart'
-
-// Mock mode e ACTIV implicit (dacă var nu e setată explicit la 'false')
-// Live mode: setează VITE_USE_MOCK_DATA=false în Vercel env vars + adaugă tokenul Shopify
-const USE_MOCK = import.meta.env.VITE_USE_MOCK_DATA !== 'false'
+import type { CartState } from '../../lib/cart'
 
 // ─── Tipuri pentru Context ────────────────────────────────────────────────────
 
@@ -39,13 +30,22 @@ type CartContextType = {
   // Cart state
   cartState: CartState
   // Acțiuni
-  addItem: (variantId: string, quantity?: number) => Promise<void>
-  updateItem: (lineId: string, quantity: number) => Promise<void>
-  removeItem: (lineId: string) => Promise<void>
-  checkout: () => void
+  addItem: (params: {
+    variantId: string
+    productTitle: string
+    priceUsd: number
+    price: string
+    quantity?: number
+    imageUrl?: string | null
+  }) => void
+  updateItem: (lineId: string, quantity: number) => void
+  removeItem: (lineId: string) => void
+  checkout: () => Promise<void>
+  resetCart: () => void
   // UI helpers
   itemCount: number
   isLoading: boolean
+  checkoutError: string | null
 }
 
 const CartContext = createContext<CartContextType>({
@@ -53,124 +53,74 @@ const CartContext = createContext<CartContextType>({
   openCart: () => {},
   closeCart: () => {},
   cartState: EMPTY_CART,
-  addItem: async () => {},
-  updateItem: async () => {},
-  removeItem: async () => {},
-  checkout: () => {},
+  addItem: () => {},
+  updateItem: () => {},
+  removeItem: () => {},
+  checkout: async () => {},
+  resetCart: () => {},
   itemCount: 0,
   isLoading: false,
+  checkoutError: null,
 })
-
-// ─── Mock cart helpers ────────────────────────────────────────────────────────
-// În mock mode, gestionăm un coș local în memorie (fără Shopify)
-
-type MockLine = CartLineItem
-
-function mockAddLine(lines: MockLine[], variantId: string, quantity: number): MockLine[] {
-  const existing = lines.find((l) => l.variantId === variantId)
-  if (existing) {
-    return lines.map((l) =>
-      l.variantId === variantId ? { ...l, quantity: l.quantity + quantity } : l
-    )
-  }
-  // Construim un line item mock minimal pentru afișare în CartDrawer
-  const newLine: MockLine = {
-    lineId: `mock-line-${Date.now()}`,
-    variantId,
-    productTitle: 'HeavenlyNova Piece',
-    variantTitle: variantId.split('-').pop() ?? '',
-    price: '—',
-    quantity,
-    imageUrl: null,
-    productHandle: '',
-  }
-  return [...lines, newLine]
-}
-
-function mockUpdateLine(lines: MockLine[], lineId: string, quantity: number): MockLine[] {
-  if (quantity === 0) return lines.filter((l) => l.lineId !== lineId)
-  return lines.map((l) => (l.lineId === lineId ? { ...l, quantity } : l))
-}
-
-function mockRemoveLine(lines: MockLine[], lineId: string): MockLine[] {
-  return lines.filter((l) => l.lineId !== lineId)
-}
 
 // ─── Provider ─────────────────────────────────────────────────────────────────
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
   const [isOpen, setIsOpen] = useState(false)
   const [cartState, setCartState] = useState<CartState>(EMPTY_CART)
-  const [mockLines, setMockLines] = useState<MockLine[]>([])
   const [isLoading, setIsLoading] = useState(false)
+  const [checkoutError, setCheckoutError] = useState<string | null>(null)
 
-  // Hidratare cart din localStorage la mount (doar în live mode)
+  // Hidratare coș din localStorage la mount
   useEffect(() => {
-    if (USE_MOCK) return
-    hydrateCart().then((state) => {
-      if (state.lines.length > 0) setCartState(state)
+    const stored = hydrateCart()
+    if (stored.lines.length > 0) {
+      setCartState(stored)
+    }
+  }, [])
+
+  const itemCount = cartState.lines.reduce((acc, l) => acc + l.quantity, 0)
+
+  const addItem = useCallback((params: {
+    variantId: string
+    productTitle: string
+    priceUsd: number
+    price: string
+    quantity?: number
+    imageUrl?: string | null
+  }) => {
+    const updated = addToCart(params)
+    setCartState(updated)
+    setIsOpen(true) // Deschide CartDrawer după add
+  }, [])
+
+  const updateItem = useCallback((lineId: string, quantity: number) => {
+    const updated = updateCartLine(lineId, quantity)
+    setCartState(updated)
+  }, [])
+
+  const removeItem = useCallback((lineId: string) => {
+    const updated = removeCartLine(lineId)
+    setCartState(updated)
+  }, [])
+
+  const checkout = useCallback(async () => {
+    setIsLoading(true)
+    setCheckoutError(null)
+
+    await goToCheckout(cartState.lines, (errMsg) => {
+      setCheckoutError(errMsg)
+      setIsLoading(false)
     })
+
+    // Dacă ajungem aici fără eroare → redirect-ul e în curs → nu mai facem nimic
+    // setIsLoading(false) nu e necesar (pagina se schimbă)
+  }, [cartState.lines])
+
+  const resetCart = useCallback(() => {
+    clearCart()
+    setCartState(EMPTY_CART)
   }, [])
-
-  // Stare cart efectivă: mock lines sau Shopify cart
-  const effectiveCartState: CartState = USE_MOCK
-    ? { ...EMPTY_CART, lines: mockLines }
-    : cartState
-
-  const itemCount = effectiveCartState.lines.reduce((acc, l) => acc + l.quantity, 0)
-
-  const addItem = useCallback(async (variantId: string, quantity = 1) => {
-    setIsLoading(true)
-    try {
-      if (USE_MOCK) {
-        setMockLines((prev) => mockAddLine(prev, variantId, quantity))
-      } else {
-        const updated = await shopifyAddToCart(variantId, quantity)
-        setCartState(updated)
-      }
-      setIsOpen(true) // Deschide CartDrawer după add (comportament păstrat)
-    } catch (err) {
-      console.error('[CartContext] addItem failed', err)
-    } finally {
-      setIsLoading(false)
-    }
-  }, [])
-
-  const updateItem = useCallback(async (lineId: string, quantity: number) => {
-    setIsLoading(true)
-    try {
-      if (USE_MOCK) {
-        setMockLines((prev) => mockUpdateLine(prev, lineId, quantity))
-      } else {
-        const updated = await shopifyUpdateCartLine(lineId, quantity)
-        setCartState(updated)
-      }
-    } catch (err) {
-      console.error('[CartContext] updateItem failed', err)
-    } finally {
-      setIsLoading(false)
-    }
-  }, [])
-
-  const removeItem = useCallback(async (lineId: string) => {
-    setIsLoading(true)
-    try {
-      if (USE_MOCK) {
-        setMockLines((prev) => mockRemoveLine(prev, lineId))
-      } else {
-        const updated = await shopifyRemoveCartLine(lineId)
-        setCartState(updated)
-      }
-    } catch (err) {
-      console.error('[CartContext] removeItem failed', err)
-    } finally {
-      setIsLoading(false)
-    }
-  }, [])
-
-  const checkout = useCallback(() => {
-    goToCheckout(cartState.checkoutUrl)
-  }, [cartState.checkoutUrl])
 
   return (
     <CartContext.Provider
@@ -178,13 +128,15 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         isOpen,
         openCart: () => setIsOpen(true),
         closeCart: () => setIsOpen(false),
-        cartState: effectiveCartState,
+        cartState,
         addItem,
         updateItem,
         removeItem,
         checkout,
+        resetCart,
         itemCount,
         isLoading,
+        checkoutError,
       }}
     >
       {children}

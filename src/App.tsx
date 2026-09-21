@@ -15,6 +15,7 @@ import TermsOfService from './pages/TermsOfService'
 import ShippingPolicy from './pages/ShippingPolicy'
 import RefundPolicy from './pages/RefundPolicy'
 import TrackOrder from './pages/TrackOrder'
+import OrderSuccess from './pages/OrderSuccess'
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
 import EmailCapture from './components/shared/EmailCapture'
@@ -96,6 +97,12 @@ const ROUTE_SEO: Record<string, Parameters<typeof applySEO>[0]> = {
     title: 'Refund Policy | HeavenlyNova',
     description: 'HeavenlyNova refund and returns policy.',
   },
+  '/order-success': {
+    path: '/order-success',
+    title: 'Order Confirmed | HeavenlyNova',
+    description: 'Your HeavenlyNova piece is in production.',
+    noindex: true,
+  },
 }
 
 // ─── Components ──────────────────────────────────────────────────────────────
@@ -164,6 +171,7 @@ function AnimatedRoutes() {
         <Route path="/shipping-policy" element={<MotionPage><ShippingPolicy /></MotionPage>} />
         <Route path="/refund-policy" element={<MotionPage><RefundPolicy /></MotionPage>} />
         <Route path="/track-order" element={<MotionPage><TrackOrder /></MotionPage>} />
+        <Route path="/order-success" element={<MotionPage><OrderSuccess /></MotionPage>} />
         <Route path="/product/:productId" element={<MotionPage><ProductDetail /></MotionPage>} />
         <Route path="*" element={<MotionPage><NotFound /></MotionPage>} />
       </Routes>

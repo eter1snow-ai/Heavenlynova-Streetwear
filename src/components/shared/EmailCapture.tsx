@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { shopifyFetch } from '../../lib/shopify/client'
 
 export default function EmailCapture() {
   const [isOpen, setIsOpen] = useState(false)
@@ -40,37 +39,17 @@ export default function EmailCapture() {
     localStorage.setItem('hvn_email_captured', 'true')
     localStorage.setItem('hvn_email', email)
 
-    // Send request to Shopify Storefront API to create/register customer record with marketing consent
+    // Trimitem email la /api/subscribe (Vercel serverless function)
     try {
-      await shopifyFetch({
-        query: `
-          mutation customerCreate($input: CustomerCreateInput!) {
-            customerCreate(input: $input) {
-              customer {
-                id
-                email
-                acceptsMarketing
-              }
-              customerUserErrors {
-                code
-                field
-                message
-              }
-            }
-          }
-        `,
-        variables: {
-          input: {
-            email: email.trim(),
-            password: `HVN_${Date.now()}_${Math.random().toString(36).slice(2, 10)}!`,
-            acceptsMarketing: true,
-          },
-        },
+      await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email.trim() }),
       })
-      console.log('✅ Shopify customer registered with acceptsMarketing: true')
+      console.log('✅ Email captured and sent to /api/subscribe')
     } catch (err) {
-      // Graceful error handling: still transition to success view with code even if API fails or email exists
-      console.warn('⚠️ Shopify customer creation notice (handled gracefully):', err)
+      // Graceful error handling: still transition to success view even if API fails
+      console.warn('⚠️ Subscribe API notice (handled gracefully):', err)
     } finally {
       setIsSubmitting(false)
       setIsSubmitted(true)

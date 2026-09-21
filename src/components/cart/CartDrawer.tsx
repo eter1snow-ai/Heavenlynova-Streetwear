@@ -2,7 +2,16 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useCart } from './CartContext'
 
 export default function CartDrawer() {
-  const { isOpen, closeCart, cartState, updateItem, removeItem, isLoading } = useCart()
+  const {
+    isOpen,
+    closeCart,
+    cartState,
+    updateItem,
+    removeItem,
+    checkout,
+    isLoading,
+    checkoutError,
+  } = useCart()
 
   return (
     <AnimatePresence>
@@ -85,7 +94,7 @@ export default function CartDrawer() {
                             </button>
                           </div>
                           <p style={{ fontSize: '0.65rem', letterSpacing: '0.1em', color: '#888', marginTop: '4px' }} className="uppercase">
-                            Size: {item.variantTitle.includes('/') ? item.variantTitle.split('/').pop()?.trim() : item.variantTitle}
+                            Size: {item.size}
                           </p>
                         </div>
                         <div className="flex justify-between items-center mt-4">
@@ -128,35 +137,25 @@ export default function CartDrawer() {
                     {cartState.subtotal}
                   </p>
                 </div>
+
+                {/* Eroare checkout */}
+                {checkoutError && (
+                  <p style={{ fontSize: '0.6rem', letterSpacing: '0.15em', color: '#ef4444', marginBottom: '10px', textAlign: 'center', lineHeight: 1.6 }}>
+                    {checkoutError}
+                  </p>
+                )}
+
                 <button
-                  onClick={() => {
-                    if (!cartState.checkoutUrl) {
-                      console.error("Checkout URL missing");
-                      return;
-                    }
-
-                    // Meta Pixel: InitiateCheckout
-                    if (typeof window !== 'undefined' && (window as any).fbq) {
-                      ;(window as any).fbq('track', 'InitiateCheckout', {
-                        value: parseFloat(cartState.subtotal.replace(/[^0-9.]/g, '')) || 0,
-                        currency: 'USD',
-                        num_items: cartState.lines.reduce((acc, line) => acc + line.quantity, 0),
-                        content_ids: cartState.lines.map((l) => l.variantId),
-                      })
-                    }
-
-                    // Shopify generează deja checkout.heavenlynova.com corect (Primary Domain)
-                    // Niciun replace necesar — orice transformare cauzează triple-prefix bug
-                    window.location.href = cartState.checkoutUrl;
-                  }}
+                  onClick={checkout}
                   disabled={isLoading}
                   className={`w-full bg-white text-black uppercase transition-colors ${isLoading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-neutral-200'}`}
                   style={{ fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.3em', padding: '14px', borderRadius: 0 }}
                 >
-                  {isLoading ? 'PROCESSING...' : 'Proceed to Checkout'}
+                  {isLoading ? 'REDIRECTING...' : 'Proceed to Checkout'}
                 </button>
+
                 <p style={{ fontSize: '0.6rem', letterSpacing: '0.25em', color: '#333', marginTop: '12px', textAlign: 'center' }} className="uppercase">
-                  Shipping calculated at checkout
+                  Secure checkout · Powered by Stripe
                 </p>
               </div>
             )}

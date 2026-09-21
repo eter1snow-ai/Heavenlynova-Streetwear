@@ -1,4 +1,16 @@
-// Image paths kept simple and direct (No Casino Mode)
+/**
+ * src/data/drops.ts
+ *
+ * SURSA UNICĂ DE ADEVĂR pentru catalogul de produse HeavenlyNova.
+ *
+ * Nu mai există dependență de Shopify Storefront API.
+ * Toate datele despre produse, variante și prețuri sunt definite aici.
+ *
+ * SPREADCONNECT_VARIANTS: mapează productId + size → article ID din Spreadconnect.
+ * Completează aceste ID-uri după ce accesezi dashboard-ul Spreadconnect.
+ */
+
+// ─── Tipuri ───────────────────────────────────────────────────────────────────
 
 export type Category = 'flagship' | 'individuals' | 'essentials' | 'origin'
 
@@ -12,8 +24,11 @@ export type Product = {
   tagline: string
   description: string
   price: string
+  priceUsd: number           // preț numeric în USD, folosit la Stripe (în cenți = priceUsd * 100)
   images: string[]
 }
+
+// ─── Catalog produse ──────────────────────────────────────────────────────────
 
 export const products: Product[] = [
   {
@@ -24,6 +39,7 @@ export const products: Product[] = [
     tagline: 'THE ONES WHO ASCEND',
     description: '7.5oz (255 GSM) Heavyweight Cotton. Custom boxy fit. Rugged texture. Engineered for those who seek the light within the void.',
     price: '$59.99',
+    priceUsd: 59.99,
     images: [
       '/Assets/Images/Preview/Seraphim_Broken 001/Broken Original Black Back.webp',
       '/Assets/Images/Preview/Seraphim_Broken 001/V3B Original Black Front.webp',
@@ -38,6 +54,7 @@ export const products: Product[] = [
     tagline: 'Not everything needs to be loud to be felt. Soulfull is a quiet statement — for those who carry more than they show.',
     description: '· EMOTIONAL IDENTITY PIECE\n· PART OF THE HERITAGE LINE\n· DESIGNED FOR INTROSPECTION, NOT ATTENTION\n\nBuilt for those who don\'t need to explain what they feel.\nPart of the HeavenlyNova universe.\n\nSoulfull is the original piece that started it all — the foundation of the HVN universe, calm in presence, strong in identity.\n\nIt exists between what is seen and what is felt, holding attention rather than seeking it.\n\nHeavyweight oversized boxy fit at 7.5oz cotton, drop shoulder construction, premium long-lasting print.\n\nPart of the Heritage Collection — the origin layer of HeavenlyNova, where everything begins.',
     price: '$59.99',
+    priceUsd: 59.99,
     images: [
       '/Assets/Images/Preview/Soulfull/Soulfull Black/Back.webp',
       '/Assets/Images/Preview/Soulfull/Soulfull Black/Front.jpg',
@@ -52,6 +69,7 @@ export const products: Product[] = [
     tagline: '350 GSM Heavyweight Organic Cotton',
     description: 'Minimal. Structured. Essential. A core layer built for everyday wear, clean in design and strong in presence.\n\n350 GSM heavyweight organic cotton, relaxed oversized fit with drop shoulder, adjustable hood, and kangaroo pocket.\n\nA quiet staple that carries the full weight of the story behind it.',
     price: '$89.99',
+    priceUsd: 89.99,
     images: [
       '/Assets/Images/Preview/Esential Hoodie/Hoodie On black Original Front.webp',
       '/Assets/Images/Preview/Esential Hoodie/Hoodie Black Original Back Black.webp',
@@ -66,6 +84,7 @@ export const products: Product[] = [
     tagline: 'The Foundation of Shadow. A pure, structural staple forged in stillness and depth.',
     description: 'Boxy oversized fit with dropped shoulders and relaxed sleeves.\n\nCut from 100% heavyweight cotton at 7.5 oz — garment-washed for a soft touch and a natural, deep black fall.\n\nMinimal HeavenlyNova insignia on the left chest, heavy ribbed collar with double-needle stitching throughout.\n\nTrue to size for the oversized drape — size down for a closer fit.\n\nMachine wash cold, inside out. Do not tumble dry. Hang dry in shade.',
     price: '$44.99',
+    priceUsd: 44.99,
     images: [
       '/Assets/Images/Preview/Esentials_Black/Original Esentials Black Front.webp',
       '/Assets/Images/Preview/Esentials_Black/Black closeup on Black.webp',
@@ -80,6 +99,7 @@ export const products: Product[] = [
     tagline: 'The Foundation of Light. A pure, structural staple built for form, drape, and enduring presence.',
     description: 'Boxy oversized fit with dropped shoulders and relaxed sleeves, cut from 100% heavyweight cotton at 7.5oz — garment-washed for a soft touch and a natural fall.\n\nMinimal HeavenlyNova insignia on the left chest, heavy ribbed collar with double-needle stitching throughout.\n\nTrue to size for the oversized drape — size down for a closer fit. Machine wash cold, inside out. Do not tumble dry. Hang dry in shade.',
     price: '$44.99',
+    priceUsd: 44.99,
     images: [
       '/Assets/Images/Preview/Esential_White/White ES Front.webp',
       '/Assets/Images/Preview/Esential_White/White closeup on black.webp',
@@ -94,6 +114,7 @@ export const products: Product[] = [
     tagline: 'Chapter 000 — The First Signal',
     description: 'Chapter /000 is reserved for those who reach the end. A quiet signal that you were here first.\n\nHeavyweight 7.5oz cotton, custom boxy fit — the origin point of the HeavenlyNova universe.',
     price: '$59.99',
+    priceUsd: 59.99,
     images: [
       '/Assets/Images/Preview/The Origin Piece/The Origin Piece Back.webp',
       '/Assets/Images/Preview/The Origin Piece/Original Esentials Black Front.webp',
@@ -108,6 +129,7 @@ export const products: Product[] = [
     tagline: 'From the first constellations',
     description: 'Minimal. Structured. Essential. A core layer built for everyday wear, clean in design and strong in presence.\n\n350 GSM heavyweight organic cotton, relaxed oversized fit with drop shoulder, adjustable hood, and kangaroo pocket.\n\nA quiet staple that carries the full weight of the story behind it.',
     price: '$89.99',
+    priceUsd: 89.99,
     images: [
       '/Assets/Images/Preview/Design Hoodies/Soulfull Hoodie/Soulfull Hoodie Back.webp',
       '/Assets/Images/Preview/Design Hoodies/Soulfull Hoodie/Hoodie On black Original Front.webp',
@@ -116,9 +138,92 @@ export const products: Product[] = [
   },
 ]
 
+// ─── Spreadconnect Variant IDs ────────────────────────────────────────────────
+//
+// Mapare: productId → size → Spreadconnect Article ID (numeric)
+//
+// TODO: Completează aceste ID-uri după ce accesezi Spreadconnect Dashboard
+//       → Products → (selectează produsul) → obții article ID per variantă
+//
+// Dacă un ID lipsește (0 = placeholder), webhook-ul va loga un warning
+// și va omite acel item din comanda Spreadconnect.
+//
+// Format: https://api.spreadconnect.app/v1/articles/{id}
+
+export const SPREADCONNECT_VARIANTS: Record<string, Record<string, number>> = {
+  'essentials-black': {
+    XS: 0,   // TODO: completează cu ID-ul real din Spreadconnect
+    S:  0,
+    M:  0,
+    L:  0,
+    XL: 0,
+    XXL: 0,
+  },
+  'essentials-white': {
+    XS: 0,
+    S:  0,
+    M:  0,
+    L:  0,
+    XL: 0,
+    XXL: 0,
+  },
+  'core-hoodie-white': {
+    XS: 0,
+    S:  0,
+    M:  0,
+    L:  0,
+    XL: 0,
+    XXL: 0,
+  },
+  'soulfull-black': {
+    XS: 0,
+    S:  0,
+    M:  0,
+    L:  0,
+    XL: 0,
+    XXL: 0,
+  },
+  'soulfull-hoodie': {
+    XS: 0,
+    S:  0,
+    M:  0,
+    L:  0,
+    XL: 0,
+    XXL: 0,
+  },
+  'the-origin': {
+    XS: 0,
+    S:  0,
+    M:  0,
+    L:  0,
+    XL: 0,
+    XXL: 0,
+  },
+  'broken-001': {
+    XS: 0,
+    S:  0,
+    M:  0,
+    L:  0,
+    XL: 0,
+    XXL: 0,
+  },
+}
+
+// ─── Helpers ─────────────────────────────────────────────────────────────────
 
 export const featuredProducts: Product[] = products.filter((p) =>
   p.id === 'broken-001' || p.id === 'core-hoodie-white'
 )
 
-export const getProductById = (id: string): Product | undefined => products.find((p) => p.id === id)
+export const getProductById = (id: string): Product | undefined =>
+  products.find((p) => p.id === id)
+
+/**
+ * Returnează Spreadconnect article ID pentru un produs + mărime.
+ * Returnează null dacă ID-ul nu e completat (placeholder 0).
+ */
+export function getSpreadconnectArticleId(productId: string, size: string): number | null {
+  const articleId = SPREADCONNECT_VARIANTS[productId]?.[size]
+  if (!articleId || articleId === 0) return null
+  return articleId
+}

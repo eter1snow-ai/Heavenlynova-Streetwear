@@ -1,28 +1,20 @@
 {
   "routes": [
-    {
-      "src": "/cart/(.*)",
-      "dest": "https://carpatia.myshopify.com/cart/$1",
-      "status": 301
-    },
-    {
-      "src": "/checkouts/(.*)",
-      "dest": "https://carpatia.myshopify.com/checkouts/$1",
-      "status": 301
-    },
     { "handle": "filesystem" },
-    { "src": "^/$",                      "dest": "/index.html" },
-    { "src": "^/drops$",                 "dest": "/index.html" },
-    { "src": "^/heritage$",              "dest": "/index.html" },
-    { "src": "^/story$",                 "dest": "/index.html" },
-    { "src": "^/join$",                  "dest": "/index.html" },
+    { "src": "^/$",                       "dest": "/index.html" },
+    { "src": "^/drops$",                  "dest": "/index.html" },
+    { "src": "^/heritage$",               "dest": "/index.html" },
+    { "src": "^/story$",                  "dest": "/index.html" },
+    { "src": "^/essentials$",             "dest": "/index.html" },
+    { "src": "^/join$",                   "dest": "/index.html" },
     { "src": "^/contact$",               "dest": "/index.html" },
-    { "src": "^/privacy-policy$",        "dest": "/index.html" },
-    { "src": "^/terms-of-service$",      "dest": "/index.html" },
-    { "src": "^/shipping-policy$",       "dest": "/index.html" },
-    { "src": "^/refund-policy$",         "dest": "/index.html" },
-    { "src": "^/track-order$",           "dest": "/index.html" },
-    { "src": "^/product/[^/]+$",         "dest": "/index.html" },
+    { "src": "^/privacy-policy$",         "dest": "/index.html" },
+    { "src": "^/terms-of-service$",       "dest": "/index.html" },
+    { "src": "^/shipping-policy$",        "dest": "/index.html" },
+    { "src": "^/refund-policy$",          "dest": "/index.html" },
+    { "src": "^/track-order$",            "dest": "/index.html" },
+    { "src": "^/order-success$",          "dest": "/index.html" },
+    { "src": "^/product/[^/]+$",          "dest": "/index.html" },
     {
       "src": "^/seraphim$",
       "dest": "/index.html",

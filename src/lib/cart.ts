@@ -1,122 +1,96 @@
 /**
  * src/lib/cart.ts
  *
- * Abstracție completă pentru gestionarea coșului de cumpărături.
+ * Gestionarea coșului de cumpărături — 100% client-side (localStorage).
  *
- * MOCK MODE (VITE_USE_MOCK_DATA=true):
- *   - CartDrawer se deschide și arată UI-ul complet (testare vizuală)
- *   - Nicio mutație nu se trimite la Shopify
- *   - Checkout redirect NU funcționează (nu există checkoutUrl real)
- *   - variantId-urile mock (mock-...) sunt IGNORATE — nu ajung la nicio API
+ * POST-MIGRARE (v2 — fără Shopify):
+ *   Coșul este stocat exclusiv în localStorage sub cheia 'hn_cart_v2'.
+ *   Nu există niciun apel GraphQL sau Shopify API.
  *
- * LIVE MODE (VITE_USE_MOCK_DATA=false):
- *   - cartCreate la primul add — cart.id salvat în localStorage
- *   - cartLinesAdd refolosește cart.id existent
- *   - variantId trebuie să fie GID real din Shopify
- *   - Checkout = redirect la cart.checkoutUrl
+ * Checkout:
+ *   Butonul "Checkout" apelează goToCheckout() care:
+ *   1. Trimite cartLines la /api/create-checkout-session (Vercel serverless)
+ *   2. Primește un sessionUrl de la Stripe
+ *   3. Redirecționează utilizatorul la pagina securizată Stripe
  *
- * cart.id e stocat în localStorage sub cheia 'hn_cart_id'
+ * Structura variantId:
+ *   Format local: `${productId}-${size}` — ex: "essentials-black-M"
+ *   Parsing: split('-') → ultimul element = size, restul = productId
  */
 
-import { shopifyFetch } from './shopify/client'
-import {
-  CART_CREATE,
-  CART_LINES_ADD,
-  CART_LINES_UPDATE,
-  CART_LINES_REMOVE,
-} from './shopify/mutations'
-import { GET_CART } from './shopify/queries'
 import { formatMoney } from './utils'
-import type {
-  ShopifyCart,
-  ShopifyCartLine,
-  ShopifyCartCreateResponse,
-  ShopifyCartLinesAddResponse,
-  ShopifyCartLinesUpdateResponse,
-  ShopifyCartLinesRemoveResponse,
-  ShopifyCartQueryResponse,
-} from './shopify/types'
 
-// Mock mode e ACTIV implicit (dacă var nu e setată explicit la 'false')
-// Live mode: setează VITE_USE_MOCK_DATA=false în Vercel env vars + adaugă tokenul Shopify
-const USE_MOCK = import.meta.env.VITE_USE_MOCK_DATA !== 'false'
-const CART_ID_KEY = 'hn_cart_id'
-
-// ─── Tipuri normalizate pentru CartContext ────────────────────────────────────
+// ─── Tipuri ───────────────────────────────────────────────────────────────────
 
 export type CartLineItem = {
-  lineId: string
-  variantId: string
-  productTitle: string
-  variantTitle: string
-  price: string
+  lineId: string          // UUID local generat la add
+  variantId: string       // format: `${productId}-${size}`
+  productId: string       // ex: "essentials-black"
+  size: string            // ex: "M"
+  productTitle: string    // ex: "Essential T-Shirt — Black"
+  variantTitle: string    // ex: "M"
+  price: string           // afișat în UI: "$44.99"
+  priceUsd: number        // numeric pentru calcul total și Stripe
   quantity: number
   imageUrl: string | null
-  productHandle: string
+  productHandle: string   // același cu productId — pentru link /product/:handle
 }
 
 export type CartState = {
-  id: string | null
-  checkoutUrl: string | null
   lines: CartLineItem[]
   subtotal: string
   total: string
 }
 
 export const EMPTY_CART: CartState = {
-  id: null,
-  checkoutUrl: null,
   lines: [],
   subtotal: '$0.00',
   total: '$0.00',
 }
 
+// ─── Constante ────────────────────────────────────────────────────────────────
+
+const CART_KEY = 'hn_cart_v2'
+
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
-function normalizeCart(cart: ShopifyCart): CartState {
-  const lines: CartLineItem[] = cart.lines.edges.map(({ node }: { node: ShopifyCartLine }) => ({
-    lineId: node.id,
-    variantId: node.merchandise.id,
-    productTitle: node.merchandise.product.title,
-    variantTitle: node.merchandise.title,
-    price: formatMoney(node.estimatedCost.totalAmount.amount, node.estimatedCost.totalAmount.currencyCode),
-    quantity: node.quantity,
-    imageUrl: node.merchandise.product.images.edges[0]?.node.url ?? null,
-    productHandle: node.merchandise.product.handle,
-  }))
+function generateLineId(): string {
+  return `line-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`
+}
 
-  // checkoutUrl vine direct de la Shopify cu domeniu corect (checkout.heavenlynova.com)
-  // Nu mai aplicăm niciun replace — orice transformare cauzează triple-prefix bug
-  const checkoutUrl = cart.checkoutUrl ?? null
-
+function computeCartState(lines: CartLineItem[]): CartState {
+  const totalUsd = lines.reduce((acc, l) => acc + l.priceUsd * l.quantity, 0)
+  const formatted = formatMoney(totalUsd.toFixed(2), 'USD')
   return {
-    id: cart.id,
-    checkoutUrl,
     lines,
-    subtotal: formatMoney(cart.estimatedCost.subtotalAmount.amount, cart.estimatedCost.subtotalAmount.currencyCode),
-    total: formatMoney(cart.estimatedCost.totalAmount.amount, cart.estimatedCost.totalAmount.currencyCode),
+    subtotal: formatted,
+    total: formatted,
   }
 }
 
-function getStoredCartId(): string | null {
+// ─── Persistență localStorage ─────────────────────────────────────────────────
+
+function loadLines(): CartLineItem[] {
   try {
-    return localStorage.getItem(CART_ID_KEY)
+    const raw = localStorage.getItem(CART_KEY)
+    if (!raw) return []
+    return JSON.parse(raw) as CartLineItem[]
   } catch {
-    return null
+    return []
   }
 }
 
-function storeCartId(id: string) {
+function saveLines(lines: CartLineItem[]): void {
   try {
-    localStorage.setItem(CART_ID_KEY, id)
+    localStorage.setItem(CART_KEY, JSON.stringify(lines))
   } catch {
-    /* noop — storage unavailable */
+    /* noop — storage unavailable (ex: Safari private mode) */
   }
 }
 
-function clearCartId() {
+function clearLines(): void {
   try {
-    localStorage.removeItem(CART_ID_KEY)
+    localStorage.removeItem(CART_KEY)
   } catch {
     /* noop */
   }
@@ -125,169 +99,161 @@ function clearCartId() {
 // ─── API publică ──────────────────────────────────────────────────────────────
 
 /**
+ * Hidratează coșul din localStorage.
+ * Apelat la mount în CartProvider.
+ */
+export function hydrateCart(): CartState {
+  const lines = loadLines()
+  return computeCartState(lines)
+}
+
+/**
  * Adaugă un produs la coș.
- * - Dacă nu există un cart → cartCreate
- * - Dacă există → cartLinesAdd
+ * Dacă varianta există deja → incrementează cantitatea.
  *
- * @param variantId - GID real din Shopify în live mode (ex: gid://shopify/ProductVariant/123)
- *                    În mock mode acest parametru este ignorat la nivel de API.
- * @param quantity  - câte bucăți (default 1)
- * @returns CartState actualizat, sau EMPTY_CART în mock mode
+ * @param variantId   - format: `${productId}-${size}` (ex: "essentials-black-M")
+ * @param productTitle - numele afișat în coș
+ * @param priceUsd    - prețul numeric în USD
+ * @param quantity    - cantitate (default 1)
+ * @param imageUrl    - prima imagine a produsului
  */
-export async function addToCart(variantId: string, quantity = 1): Promise<CartState> {
-  if (USE_MOCK) {
-    // Mock mode: nu facem niciun request — CartContext va gestiona starea local
-    return EMPTY_CART
-  }
+export function addToCart(params: {
+  variantId: string
+  productTitle: string
+  priceUsd: number
+  price: string
+  quantity?: number
+  imageUrl?: string | null
+}): CartState {
+  const { variantId, productTitle, priceUsd, price, quantity = 1, imageUrl = null } = params
 
-  const existingCartId = getStoredCartId()
+  // Parseaza productId și size din variantId: "essentials-black-M" → productId="essentials-black", size="M"
+  const parts = variantId.split('-')
+  const size = parts[parts.length - 1]
+  const productId = parts.slice(0, parts.length - 1).join('-')
 
-  if (!existingCartId) {
-    // Primul add — creăm un cart nou
-    const data = await shopifyFetch<ShopifyCartCreateResponse>({
-      query: CART_CREATE,
-      variables: {
-        input: {
-          lines: [{ merchandiseId: variantId, quantity }],
-        },
-      },
-    })
+  const lines = loadLines()
+  const existingIdx = lines.findIndex((l) => l.variantId === variantId)
 
-    const { cart, userErrors } = data.cartCreate
-    if (userErrors.length > 0) {
-      throw new Error(`[cartCreate] ${userErrors.map((e) => e.message).join(', ')}`)
+  let updatedLines: CartLineItem[]
+
+  if (existingIdx >= 0) {
+    updatedLines = lines.map((l, i) =>
+      i === existingIdx ? { ...l, quantity: l.quantity + quantity } : l
+    )
+  } else {
+    const newLine: CartLineItem = {
+      lineId: generateLineId(),
+      variantId,
+      productId,
+      size,
+      productTitle,
+      variantTitle: size,
+      price,
+      priceUsd,
+      quantity,
+      imageUrl,
+      productHandle: productId,
     }
-
-    storeCartId(cart.id)
-    return normalizeCart(cart)
+    updatedLines = [...lines, newLine]
   }
 
-  // Cart existent — adăugăm la el
-  const data = await shopifyFetch<ShopifyCartLinesAddResponse>({
-    query: CART_LINES_ADD,
-    variables: {
-      cartId: existingCartId,
-      lines: [{ merchandiseId: variantId, quantity }],
-    },
-  })
-
-  const { cart, userErrors } = data.cartLinesAdd
-  if (userErrors.length > 0) {
-    // Cart-ul poate fi expirat (Shopify carts expiră după 10 zile)
-    // → ștergem ID-ul vechi și reîncercăm cu un cart nou
-    if (userErrors.some((e) => e.code === 'INVALID')) {
-      clearCartId()
-      return addToCart(variantId, quantity)
-    }
-    throw new Error(`[cartLinesAdd] ${userErrors.map((e) => e.message).join(', ')}`)
-  }
-
-  return normalizeCart(cart)
+  saveLines(updatedLines)
+  return computeCartState(updatedLines)
 }
 
 /**
- * Modifică cantitatea unei linii existente din cart.
- * @param lineId  - id-ul liniei din cart (NU variantId)
- * @param quantity - noua cantitate (0 = remove)
+ * Actualizează cantitatea unei linii.
+ * Dacă quantity === 0 → elimină linia.
  */
-export async function updateCartLine(lineId: string, quantity: number): Promise<CartState> {
-  if (USE_MOCK) return EMPTY_CART
+export function updateCartLine(lineId: string, quantity: number): CartState {
+  if (quantity === 0) return removeCartLine(lineId)
 
-  const cartId = getStoredCartId()
-  if (!cartId) return EMPTY_CART
-
-  if (quantity === 0) {
-    return removeCartLine(lineId)
-  }
-
-  const data = await shopifyFetch<ShopifyCartLinesUpdateResponse>({
-    query: CART_LINES_UPDATE,
-    variables: {
-      cartId,
-      lines: [{ id: lineId, quantity }],
-    },
-  })
-
-  const { cart, userErrors } = data.cartLinesUpdate
-  if (userErrors.length > 0) {
-    throw new Error(`[cartLinesUpdate] ${userErrors.map((e) => e.message).join(', ')}`)
-  }
-
-  return normalizeCart(cart)
+  const lines = loadLines()
+  const updatedLines = lines.map((l) =>
+    l.lineId === lineId ? { ...l, quantity } : l
+  )
+  saveLines(updatedLines)
+  return computeCartState(updatedLines)
 }
 
 /**
- * Elimină o linie din cart.
- * @param lineId - id-ul liniei de șters
+ * Elimină o linie din coș după lineId.
  */
-export async function removeCartLine(lineId: string): Promise<CartState> {
-  if (USE_MOCK) return EMPTY_CART
-
-  const cartId = getStoredCartId()
-  if (!cartId) return EMPTY_CART
-
-  const data = await shopifyFetch<ShopifyCartLinesRemoveResponse>({
-    query: CART_LINES_REMOVE,
-    variables: {
-      cartId,
-      lineIds: [lineId],
-    },
-  })
-
-  const { cart, userErrors } = data.cartLinesRemove
-  if (userErrors.length > 0) {
-    throw new Error(`[cartLinesRemove] ${userErrors.map((e) => e.message).join(', ')}`)
-  }
-
-  return normalizeCart(cart)
+export function removeCartLine(lineId: string): CartState {
+  const lines = loadLines()
+  const updatedLines = lines.filter((l) => l.lineId !== lineId)
+  saveLines(updatedLines)
+  return computeCartState(updatedLines)
 }
 
 /**
- * Re-hidratează cart-ul din localStorage la reload pagină.
- * Verifică dacă cart-ul mai există pe Shopify (poate fi expirat).
- * @returns CartState sau EMPTY_CART dacă nu există / a expirat
+ * Resetează complet coșul (apelat după checkout finalizat cu succes).
  */
-export async function hydrateCart(): Promise<CartState> {
-  if (USE_MOCK) return EMPTY_CART
-
-  const cartId = getStoredCartId()
-  if (!cartId) return EMPTY_CART
-
-  try {
-    const data = await shopifyFetch<ShopifyCartQueryResponse>({
-      query: GET_CART,
-      variables: { cartId },
-    })
-
-    if (!data.cart) {
-      clearCartId()
-      return EMPTY_CART
-    }
-
-    return normalizeCart(data.cart)
-  } catch {
-    // Cart invalid / expirat
-    clearCartId()
-    return EMPTY_CART
-  }
+export function clearCart(): void {
+  clearLines()
 }
 
 /**
- * Redirect la checkout.
- * În mock mode: nu face nimic (nu există checkoutUrl real).
- * În live mode: redirect la cart.checkoutUrl primit din Shopify.
+ * Inițiază checkout via Stripe.
+ * Trimite datele coșului la /api/create-checkout-session și redirecționează.
+ *
+ * @param lines - liniile curente din coș
+ * @param onError - callback opțional pentru gestionarea erorilor în UI
  */
-export function goToCheckout(checkoutUrl: string | null) {
-  if (USE_MOCK || !checkoutUrl) {
-    console.warn('[cart] Checkout not available in mock mode or missing checkoutUrl')
+export async function goToCheckout(
+  lines: CartLineItem[],
+  onError?: (msg: string) => void
+): Promise<void> {
+  if (lines.length === 0) {
+    onError?.('Coșul este gol.')
     return
   }
-  window.location.href = checkoutUrl
-}
 
-/**
- * Resetează complet cart-ul local (după checkout finalizat).
- */
-export function clearCart() {
-  clearCartId()
+  // Construim payload-ul pentru serverless function
+  const cartPayload = lines.map((l) => ({
+    variantId: l.variantId,
+    productId: l.productId,
+    size: l.size,
+    productTitle: l.productTitle,
+    priceUsd: l.priceUsd,
+    quantity: l.quantity,
+    imageUrl: l.imageUrl,
+  }))
+
+  try {
+    // Meta Pixel: InitiateCheckout
+    if (typeof window !== 'undefined' && (window as any).fbq) {
+      const subtotalUsd = lines.reduce((acc, l) => acc + l.priceUsd * l.quantity, 0)
+      ;(window as any).fbq('track', 'InitiateCheckout', {
+        value: subtotalUsd,
+        currency: 'USD',
+        num_items: lines.reduce((acc, l) => acc + l.quantity, 0),
+        content_ids: lines.map((l) => l.variantId),
+      })
+    }
+
+    const response = await fetch('/api/create-checkout-session', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ cartLines: cartPayload }),
+    })
+
+    if (!response.ok) {
+      const err = await response.json().catch(() => ({ error: 'Eroare necunoscută' }))
+      throw new Error(err.error ?? `HTTP ${response.status}`)
+    }
+
+    const { sessionUrl } = await response.json()
+
+    if (!sessionUrl) {
+      throw new Error('Nu s-a primit URL-ul de checkout de la server.')
+    }
+
+    window.location.href = sessionUrl
+
+  } catch (err: any) {
+    console.error('[cart] goToCheckout failed:', err)
+    onError?.(err.message ?? 'Eroare la inițierea checkout-ului. Încearcă din nou.')
+  }
 }
