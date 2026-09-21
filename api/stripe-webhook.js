@@ -65,6 +65,7 @@ const PRINTIFY_PRODUCT_MAP = {
         '2XL': '21708063790067979334',
       },
       variants: {
+        XS: 117443, // Fallback la S dacă cineva selectează XS
         S: 117443,
         M: 117442,
         L: 117441,
@@ -76,6 +77,7 @@ const PRINTIFY_PRODUCT_MAP = {
     eu: {
       product_id: '6aae1606905b342a3c0d43c5',
       skus: {
+        XS:    '93498971001141875352',
         S:     '93498971001141875352',
         M:     '23940223616866547957',
         L:     '19487763733185097336',
@@ -84,6 +86,7 @@ const PRINTIFY_PRODUCT_MAP = {
         '2XL': '21708063790067979334',
       },
       variants: {
+        XS: 117443,
         S: 117443,
         M: 117442,
         L: 117441,
