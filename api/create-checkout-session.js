@@ -22,23 +22,16 @@ const AUTHORIZED_PRICES = {
   'broken-001':        5999,
 }
 
-// ─── Livrare globală: 235 de țări acceptate de Stripe și Printify ────────────
-const GLOBAL_SHIPPING_COUNTRIES = [
-  'AC', 'AD', 'AE', 'AF', 'AG', 'AI', 'AL', 'AM', 'AO', 'AQ', 'AR', 'AT', 'AU', 'AW', 'AX', 'AZ',
-  'BA', 'BB', 'BD', 'BE', 'BF', 'BG', 'BH', 'BI', 'BJ', 'BL', 'BM', 'BN', 'BO', 'BQ', 'BR', 'BS',
-  'BT', 'BV', 'BW', 'BY', 'BZ', 'CA', 'CD', 'CF', 'CG', 'CH', 'CI', 'CK', 'CL', 'CM', 'CN', 'CO',
-  'CR', 'CV', 'CW', 'CY', 'CZ', 'DE', 'DJ', 'DK', 'DM', 'DO', 'DZ', 'EC', 'EE', 'EG', 'EH', 'ER',
-  'ES', 'ET', 'FI', 'FJ', 'FK', 'FO', 'FR', 'GA', 'GB', 'GD', 'GE', 'GF', 'GG', 'GH', 'GI', 'GL',
-  'GM', 'GN', 'GP', 'GQ', 'GR', 'GS', 'GT', 'GU', 'GW', 'GY', 'HK', 'HN', 'HR', 'HT', 'HU', 'ID',
-  'IE', 'IL', 'IM', 'IN', 'IO', 'IQ', 'IS', 'IT', 'JE', 'JM', 'JO', 'JP', 'KE', 'KG', 'KH', 'KI',
-  'KM', 'KN', 'KR', 'KW', 'KY', 'KZ', 'LA', 'LB', 'LC', 'LI', 'LK', 'LR', 'LS', 'LT', 'LU', 'LV',
-  'LY', 'MA', 'MC', 'MD', 'ME', 'MF', 'MG', 'MK', 'ML', 'MM', 'MN', 'MO', 'MQ', 'MR', 'MS', 'MT',
-  'MU', 'MV', 'MW', 'MX', 'MY', 'MZ', 'NA', 'NC', 'NE', 'NG', 'NI', 'NL', 'NO', 'NP', 'NR', 'NU',
-  'NZ', 'OM', 'PA', 'PE', 'PF', 'PG', 'PH', 'PK', 'PL', 'PM', 'PN', 'PR', 'PS', 'PT', 'PY', 'QA',
-  'RE', 'RO', 'RS', 'RW', 'SA', 'SB', 'SC', 'SE', 'SG', 'SH', 'SI', 'SJ', 'SK', 'SL', 'SM', 'SN',
-  'SO', 'SR', 'SS', 'ST', 'SV', 'SX', 'SZ', 'TA', 'TC', 'TD', 'TF', 'TG', 'TH', 'TJ', 'TK', 'TL',
-  'TM', 'TN', 'TO', 'TR', 'TT', 'TV', 'TW', 'TZ', 'UA', 'UG', 'US', 'UY', 'UZ', 'VA', 'VC', 'VE',
-  'VG', 'VN', 'VU', 'WF', 'WS', 'XK', 'YE', 'YT', 'ZA', 'ZM', 'ZW'
+// ─── Piețe Tier 1 (US, CA, UK + Europa majoră & România) ──────────────────────
+// Asigură livrare rapidă (3–7 zile), producție locală și marjă protejată cu Free Shipping
+const TIER1_SHIPPING_COUNTRIES = [
+  'US', 'CA',                         // America de Nord (Fulfillment SUA)
+  'GB',                               // Marea Britanie
+  'RO',                               // România
+  'DE', 'FR', 'IT', 'ES', 'NL', 'BE', // Europa de Vest
+  'AT', 'CH', 'IE', 'LU', 'PT',       // Europa Centrală / Vest
+  'SE', 'DK', 'NO', 'FI',             // Scandinavia
+  'PL', 'CZ', 'GR',                   // Europa Centrală / Sud
 ]
 
 export default async function handler(req, res) {
@@ -135,9 +128,9 @@ export default async function handler(req, res) {
       payment_method_types: ['card'],
       line_items: lineItems,
 
-      // Colectare adresă de livrare de la client (livrare globală)
+      // Colectare adresă de livrare de la client (Piețe Tier 1)
       shipping_address_collection: {
-        allowed_countries: GLOBAL_SHIPPING_COUNTRIES,
+        allowed_countries: TIER1_SHIPPING_COUNTRIES,
       },
 
       // Opțiuni livrare afișate clientului (livrare gratuită conform politicii)
