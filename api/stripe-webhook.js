@@ -274,6 +274,7 @@ async function placePrintifyOrder(session, orderItems) {
       headers: {
         'Authorization': `Bearer ${PRINTIFY_API_TOKEN}`,
         'Content-Type': 'application/json',
+        'User-Agent': 'HeavenlyNovaStore/1.0',
       },
       body: JSON.stringify(printifyPayload),
     }
