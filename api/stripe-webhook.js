@@ -55,26 +55,26 @@ const PRINTIFY_SHOP_ID = process.env.PRINTIFY_SHOP_ID || 'placeholder_shop_id'
 const PRINTIFY_PRODUCT_MAP = {
   'essentials-black': {
     us: {
-      product_id: 'PRINTIFY_PRODUCT_ID_SHAKA_BLACK',   // TODO: înlocuiește
-      variants: {
-        XS:  0,  // TODO: variant_id numeric din Printify
-        S:   0,
-        M:   0,
-        L:   0,
-        XL:  0,
-        XXL: 0,
+      product_id: '6aae1606905b342a3c0d43c5',
+      skus: {
+        S:   '93498971001141875352',
+        M:   '23940223616866547957',
+        L:   '19487763733185097336',
+        XL:  '30825576690655714896',
+        XXL: '21708063790087979334',
       },
+      variants: { XS: 0, S: 0, M: 0, L: 0, XL: 0, XXL: 0 },
     },
     eu: {
-      product_id: 'PRINTIFY_PRODUCT_ID_SS_BLACK',      // Stanley/Stella
-      variants: {
-        XS:  0,
-        S:   0,
-        M:   0,
-        L:   0,
-        XL:  0,
-        XXL: 0,
+      product_id: '6aae1606905b342a3c0d43c5',
+      skus: {
+        S:   '93498971001141875352',
+        M:   '23940223616866547957',
+        L:   '19487763733185097336',
+        XL:  '30825576690655714896',
+        XXL: '21708063790087979334',
       },
+      variants: { XS: 0, S: 0, M: 0, L: 0, XL: 0, XXL: 0 },
     },
   },
 
@@ -102,11 +102,25 @@ const PRINTIFY_PRODUCT_MAP = {
 
   'soulfull-black': {
     us: {
-      product_id: 'PRINTIFY_PRODUCT_ID_SHAKA_SOULFULL_BLACK',
+      product_id: '6aae1606905b342a3c0d43c5',
+      skus: {
+        S:   '93498971001141875352',
+        M:   '23940223616866547957',
+        L:   '19487763733185097336',
+        XL:  '30825576690655714896',
+        XXL: '21708063790087979334',
+      },
       variants: { XS: 0, S: 0, M: 0, L: 0, XL: 0, XXL: 0 },
     },
     eu: {
-      product_id: 'PRINTIFY_PRODUCT_ID_SS_SOULFULL_BLACK',
+      product_id: '6aae1606905b342a3c0d43c5',
+      skus: {
+        S:   '93498971001141875352',
+        M:   '23940223616866547957',
+        L:   '19487763733185097336',
+        XL:  '30825576690655714896',
+        XXL: '21708063790087979334',
+      },
       variants: { XS: 0, S: 0, M: 0, L: 0, XL: 0, XXL: 0 },
     },
   },
@@ -198,22 +212,28 @@ async function placePrintifyOrder(session, orderItems) {
       continue
     }
 
-    const variantId = regionMap.variants[item.size]
+    const sku = regionMap.skus?.[item.size]
+    const variantId = regionMap.variants?.[item.size]
 
-    if (!variantId || variantId === 0) {
+    if (sku) {
+      lineItems.push({
+        sku: sku,
+        quantity: parseInt(item.quantity, 10),
+      })
+    } else if (variantId && variantId !== 0) {
+      lineItems.push({
+        product_id: regionMap.product_id,
+        variant_id: variantId,
+        quantity: parseInt(item.quantity, 10),
+      })
+    } else {
       console.warn(
-        `[printify] ⚠️  variant_id not configured for ${item.productId} / ${item.size} / ${region}. ` +
+        `[printify] ⚠️  variant/sku not configured for ${item.productId} / ${item.size} / ${region}. ` +
         `Update PRINTIFY_PRODUCT_MAP in api/stripe-webhook.js`
       )
-      skippedItems.push({ ...item, reason: 'VARIANT_ID_PLACEHOLDER', region })
+      skippedItems.push({ ...item, reason: 'VARIANT_OR_SKU_PLACEHOLDER', region })
       continue
     }
-
-    lineItems.push({
-      product_id: regionMap.product_id,
-      variant_id: variantId,
-      quantity: parseInt(item.quantity, 10),
-    })
   }
 
   if (lineItems.length === 0) {
