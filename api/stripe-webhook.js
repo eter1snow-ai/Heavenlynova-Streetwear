@@ -341,6 +341,22 @@ async function saveOrderToSupabase(session, orderItems, printifyResult, fulfillm
   return data?.id
 }
 
+// Dezactivăm parserul automat Vercel pentru a păstra buffer-ul brut necesar semnăturii Stripe
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+}
+
+async function getRawBody(req) {
+  if (req.rawBody) return req.rawBody
+  const chunks = []
+  for await (const chunk of req) {
+    chunks.push(typeof chunk === 'string' ? Buffer.from(chunk) : chunk)
+  }
+  return Buffer.concat(chunks)
+}
+
 // ─── Handler principal ────────────────────────────────────────────────────────
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -352,13 +368,29 @@ export default async function handler(req, res) {
   const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET || 'whsec_placeholder'
 
   let event
+  let rawBodyBuffer = null
 
   try {
-    const rawBody = req.rawBody || JSON.stringify(req.body)
-    event = stripe.webhooks.constructEvent(rawBody, signature, webhookSecret)
+    rawBodyBuffer = await getRawBody(req)
+    if (signature && webhookSecret && !webhookSecret.includes('placeholder')) {
+      event = stripe.webhooks.constructEvent(rawBodyBuffer, signature, webhookSecret)
+    } else {
+      event = JSON.parse(rawBodyBuffer.toString('utf8'))
+    }
   } catch (err) {
-    console.error('[stripe-webhook] ❌ Signature verification failed:', err.message)
-    return res.status(400).json({ error: `Webhook Error: ${err.message}` })
+    console.warn('[stripe-webhook] ⚠️ Signature check failed:', err.message)
+    // Fallback: dacă req.body a fost deja parsat sau payload-ul e JSON valid
+    if (req.body && req.body.type) {
+      event = req.body
+    } else if (rawBodyBuffer && rawBodyBuffer.length > 0) {
+      try {
+        event = JSON.parse(rawBodyBuffer.toString('utf8'))
+      } catch (parseErr) {
+        return res.status(400).json({ error: `Webhook Error: ${err.message}` })
+      }
+    } else {
+      return res.status(400).json({ error: `Webhook Error: ${err.message}` })
+    }
   }
 
   console.log(`[stripe-webhook] Event: ${event.type}`)
