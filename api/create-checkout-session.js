@@ -1,26 +1,17 @@
 /**
  * api/create-checkout-session.js
  *
- * Vercel Serverless Function — Stripe Checkout Session
+ * Vercel Serverless Function — Stripe Checkout Session (ES Module)
  *
  * Primeşte datele coşului de la frontend şi creează o sesiune de checkout Stripe.
  * Returnează sessionUrl către care frontend-ul redirectează utilizatorul.
- *
- * Flux:
- *   Frontend POST { cartLines } → această funcție → Stripe API → { sessionUrl } → redirect
- *
- * Securitate:
- *   - STRIPE_SECRET_KEY este pe server (nu în frontend)
- *   - Prețurile sunt validate server-side din catalogul local (nu preluate din request)
- *   - Nu există posibilitate de price manipulation de către client
  */
 
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY || 'sk_test_placeholder')
+import Stripe from 'stripe'
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || 'sk_test_placeholder')
 
 // ─── Catalogul de prețuri autorizate (server-side truth) ─────────────────────
-// IMPORTANT: Prețurile NU se iau din request! Se validează față de acest catalog.
-// Dacă un productId nu e în catalog → request-ul e respins cu 400.
-
 const AUTHORIZED_PRICES = {
   'essentials-black':  4499,   // $44.99 în cenți
   'essentials-white':  4499,
@@ -31,7 +22,7 @@ const AUTHORIZED_PRICES = {
   'broken-001':        5999,
 }
 
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   // CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*')
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS')
@@ -46,7 +37,16 @@ module.exports = async function handler(req, res) {
   }
 
   try {
-    const { cartLines } = req.body
+    let body = req.body
+    if (typeof body === 'string') {
+      try {
+        body = JSON.parse(body)
+      } catch {
+        body = {}
+      }
+    }
+
+    const { cartLines } = body || {}
 
     // ─── Validare input ────────────────────────────────────────────────────────
     if (!cartLines || !Array.isArray(cartLines) || cartLines.length === 0) {
@@ -61,13 +61,26 @@ module.exports = async function handler(req, res) {
 
       // Validare câmpuri obligatorii
       if (!productId || !size || !productTitle || !quantity) {
-        return res.status(400).json({ error: `Invalid cart item: missing required fields.` })
+        return res.status(400).json({ error: 'Invalid cart item: missing required fields.' })
       }
 
       // Validare preț autorizat (anti-tamper)
       const authorizedPriceUsdCents = AUTHORIZED_PRICES[productId]
       if (!authorizedPriceUsdCents) {
         return res.status(400).json({ error: `Unknown product: ${productId}` })
+      }
+
+      // Stripe necesită URL-uri absolute valide pentru imagini
+      let validImageUrl = null
+      if (imageUrl && typeof imageUrl === 'string') {
+        const fullUrl = imageUrl.startsWith('http')
+          ? imageUrl
+          : `https://heavenlynova.com${imageUrl.startsWith('/') ? '' : '/'}${imageUrl}`
+        try {
+          validImageUrl = encodeURI(fullUrl)
+        } catch {
+          validImageUrl = null
+        }
       }
 
       // Construim item-ul Stripe
@@ -77,7 +90,7 @@ module.exports = async function handler(req, res) {
           product_data: {
             name: `${productTitle} — ${size}`,
             description: `Size: ${size}`,
-            ...(imageUrl ? { images: [imageUrl] } : {}),
+            ...(validImageUrl ? { images: [validImageUrl] } : {}),
           },
           unit_amount: authorizedPriceUsdCents,
         },
@@ -88,8 +101,6 @@ module.exports = async function handler(req, res) {
     }
 
     // ─── Construire metadata pentru webhook ────────────────────────────────────
-    // Trimitem date structurate în metadata pentru ca webhook-ul să poată
-    // plasa comanda la Spreadconnect fără un alt DB lookup.
     const orderItemsMetadata = JSON.stringify(
       cartLines.map((item) => ({
         productId: item.productId,
@@ -107,7 +118,7 @@ module.exports = async function handler(req, res) {
 
       // Colectare adresă de livrare de la client
       shipping_address_collection: {
-        allowed_countries: ['US', 'CA'],
+        allowed_countries: ['US', 'CA', 'RO', 'DE', 'FR', 'IT', 'ES', 'GB'],
       },
 
       // Opțiuni livrare afișate clientului (livrare gratuită conform politicii)
@@ -139,7 +150,6 @@ module.exports = async function handler(req, res) {
       cancel_url: `${process.env.SITE_URL || 'https://heavenlynova.com'}/`,
     })
 
-    // Returnăm URL-ul sesiunii Stripe
     return res.status(200).json({ sessionUrl: session.url })
 
   } catch (err) {
