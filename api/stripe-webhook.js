@@ -62,8 +62,9 @@ const PRINTIFY_PRODUCT_MAP = {
         L:   '19487763733185097336',
         XL:  '30825576690655714896',
         XXL: '21708063790087979334',
+        '2XL': '21708063790087979334',
       },
-      variants: { XS: 0, S: 0, M: 0, L: 0, XL: 0, XXL: 0 },
+      variants: { XS: 0, S: 0, M: 0, L: 0, XL: 0, XXL: 0, '2XL': 0 },
     },
     eu: {
       product_id: '6aae1606905b342a3c0d43c5',
@@ -73,30 +74,31 @@ const PRINTIFY_PRODUCT_MAP = {
         L:   '19487763733185097336',
         XL:  '30825576690655714896',
         XXL: '21708063790087979334',
+        '2XL': '21708063790087979334',
       },
-      variants: { XS: 0, S: 0, M: 0, L: 0, XL: 0, XXL: 0 },
+      variants: { XS: 0, S: 0, M: 0, L: 0, XL: 0, XXL: 0, '2XL': 0 },
     },
   },
 
   'essentials-white': {
     us: {
       product_id: 'PRINTIFY_PRODUCT_ID_SHAKA_WHITE',
-      variants: { XS: 0, S: 0, M: 0, L: 0, XL: 0, XXL: 0 },
+      variants: { XS: 0, S: 0, M: 0, L: 0, XL: 0, XXL: 0, '2XL': 0 },
     },
     eu: {
       product_id: 'PRINTIFY_PRODUCT_ID_SS_WHITE',
-      variants: { XS: 0, S: 0, M: 0, L: 0, XL: 0, XXL: 0 },
+      variants: { XS: 0, S: 0, M: 0, L: 0, XL: 0, XXL: 0, '2XL': 0 },
     },
   },
 
   'core-hoodie-white': {
     us: {
       product_id: 'PRINTIFY_PRODUCT_ID_SHAKA_HOODIE_WHITE',
-      variants: { XS: 0, S: 0, M: 0, L: 0, XL: 0, XXL: 0 },
+      variants: { XS: 0, S: 0, M: 0, L: 0, XL: 0, XXL: 0, '2XL': 0 },
     },
     eu: {
       product_id: 'PRINTIFY_PRODUCT_ID_SS_HOODIE_WHITE',
-      variants: { XS: 0, S: 0, M: 0, L: 0, XL: 0, XXL: 0 },
+      variants: { XS: 0, S: 0, M: 0, L: 0, XL: 0, XXL: 0, '2XL': 0 },
     },
   },
 
@@ -109,8 +111,9 @@ const PRINTIFY_PRODUCT_MAP = {
         L:   '19487763733185097336',
         XL:  '30825576690655714896',
         XXL: '21708063790087979334',
+        '2XL': '21708063790087979334',
       },
-      variants: { XS: 0, S: 0, M: 0, L: 0, XL: 0, XXL: 0 },
+      variants: { XS: 0, S: 0, M: 0, L: 0, XL: 0, XXL: 0, '2XL': 0 },
     },
     eu: {
       product_id: '6aae1606905b342a3c0d43c5',
@@ -120,8 +123,9 @@ const PRINTIFY_PRODUCT_MAP = {
         L:   '19487763733185097336',
         XL:  '30825576690655714896',
         XXL: '21708063790087979334',
+        '2XL': '21708063790087979334',
       },
-      variants: { XS: 0, S: 0, M: 0, L: 0, XL: 0, XXL: 0 },
+      variants: { XS: 0, S: 0, M: 0, L: 0, XL: 0, XXL: 0, '2XL': 0 },
     },
   },
 
@@ -175,20 +179,21 @@ function getRegion(country) {
 
 // ─── Helper: plasare comandă la Printify ──────────────────────────────────────
 async function placePrintifyOrder(session, orderItems) {
-  const shippingDetails = session.shipping_details
   const customerDetails = session.customer_details
+  const shippingDetails = session.shipping_details || customerDetails
+  const address = shippingDetails?.address || customerDetails?.address
 
-  if (!shippingDetails || !shippingDetails.address) {
-    throw new Error('[printify] Missing shipping_details in Stripe session')
+  if (!address) {
+    throw new Error('[printify] Missing shipping/customer address in Stripe session')
   }
 
-  const country = shippingDetails.address.country || 'US'
+  const country = address.country || 'US'
   const region = getRegion(country)
 
   // Parsare nume
-  const fullName = shippingDetails.name || customerDetails?.name || 'Unknown Customer'
+  const fullName = shippingDetails?.name || customerDetails?.name || 'Customer'
   const nameParts = fullName.trim().split(' ')
-  const firstName = nameParts[0] || 'Unknown'
+  const firstName = nameParts[0] || 'Customer'
   const lastName = nameParts.slice(1).join(' ') || '.'
 
   // ─── Construire line_items ──────────────────────────────────────────────────
@@ -252,11 +257,11 @@ async function placePrintifyOrder(session, orderItems) {
       last_name: lastName,
       email: customerDetails?.email || '',
       country: country,
-      region: shippingDetails.address.state || '',
-      address1: shippingDetails.address.line1 || '',
-      address2: shippingDetails.address.line2 || '',
-      city: shippingDetails.address.city || '',
-      zip: shippingDetails.address.postal_code || '',
+      region: address.state || '',
+      address1: address.line1 || '',
+      address2: address.line2 || '',
+      city: address.city || '',
+      zip: address.postal_code || '',
     },
   }
 
