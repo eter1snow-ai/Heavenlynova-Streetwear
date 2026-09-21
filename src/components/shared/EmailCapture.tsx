@@ -6,7 +6,6 @@ export default function EmailCapture() {
   const [email, setEmail] = useState('')
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [copied, setCopied] = useState(false)
 
   useEffect(() => {
     // Check if user already subscribed or dismissed
@@ -62,12 +61,6 @@ export default function EmailCapture() {
     setIsOpen(false)
   }
 
-  const handleCopyCode = () => {
-    navigator.clipboard.writeText('ASCENT10')
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2000)
-  }
-
   return (
     <AnimatePresence>
       {isOpen && (
@@ -107,19 +100,19 @@ export default function EmailCapture() {
                     className="uppercase mb-3 font-mono text-neutral-400"
                     style={{ fontSize: '0.65rem', letterSpacing: '0.35em', lineHeight: 1.5 }}
                   >
-                    EXCLUSIVE ACCESS
+                    MEMBERS ONLY
                   </p>
                   <h2
                     className="uppercase mb-4 font-display font-semibold"
                     style={{ fontSize: 'clamp(1.5rem, 3.5vw, 1.85rem)', letterSpacing: '0.08em', lineHeight: 1.25, color: '#FFFFFF' }}
                   >
-                    UNLOCK 10% OFF<br />DROP /000
+                    JOIN THE<br />INNER CIRCLE
                   </h2>
                   <p
                     className="text-xs sm:text-sm leading-relaxed max-w-[92%] mx-auto"
                     style={{ color: '#A3A3A3' }}
                   >
-                    Join the inner circle for early access and an exclusive discount on your first piece.
+                    Receive private transmissions, archival drop notifications, and priority access prior to every public release.
                   </p>
                 </div>
 
@@ -140,12 +133,12 @@ export default function EmailCapture() {
                     className={`w-full bg-white text-black text-xs tracking-[0.2em] px-6 py-3.5 uppercase font-semibold hover:bg-neutral-200 transition-colors ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
                     style={{ borderRadius: 0 }}
                   >
-                    {isSubmitting ? 'CLAIMING...' : 'CLAIM 10% OFF'}
+                    {isSubmitting ? 'INITIATING...' : 'REQUEST ACCESS'}
                   </button>
                 </form>
 
                 <p className="text-[10px] text-neutral-600 text-center mt-6 uppercase tracking-widest">
-                  WE RESPECT YOUR PRIVACY. UNSUBSCRIBE ANYTIME.
+                  STRICT PRIVACY. ZERO SPAM. DIRECT TRANSMISSIONS ONLY.
                 </p>
               </>
             ) : (
@@ -163,30 +156,19 @@ export default function EmailCapture() {
                   ACCESS GRANTED
                 </h2>
 
-                {/* Code Display with Copy Interaction */}
-                <div className="border border-white/20 bg-white/[0.03] p-4 mb-6 flex items-center justify-between gap-4">
-                  <div className="text-left">
-                    <p className="text-[10px] uppercase tracking-[0.25em] text-neutral-500 mb-1">Access Code</p>
-                    <span className="font-mono text-xl sm:text-2xl font-bold tracking-[0.25em] text-white">
-                      ASCENT10
-                    </span>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={handleCopyCode}
-                    className="text-xs uppercase tracking-[0.15em] border border-white/40 px-4 py-2 hover:bg-white hover:text-black transition-all"
-                    style={{ borderRadius: 0 }}
-                  >
-                    {copied ? 'COPIED ✓' : 'COPY CODE'}
-                  </button>
+                <div className="border border-white/20 bg-white/[0.03] p-5 mb-6">
+                  <p className="text-[10px] uppercase tracking-[0.25em] text-neutral-400 mb-2">Priority Allocation</p>
+                  <p className="text-xs uppercase tracking-[0.18em] text-white font-mono">
+                    CONFIRMED // MEMBER REGISTERED
+                  </p>
                 </div>
 
                 {/* Subtext */}
                 <p
                   className="uppercase mb-8"
-                  style={{ fontSize: '0.75rem', letterSpacing: '0.25em', lineHeight: 1.8, color: '#888888' }}
+                  style={{ fontSize: '0.75rem', letterSpacing: '0.2em', lineHeight: 1.8, color: '#888888' }}
                 >
-                  Use code <span className="text-white font-semibold">ASCENT10</span> at checkout for 10% off your first piece.
+                  You are now on the private allocation list. You will receive direct transmissions prior to every public release.
                 </p>
 
                 <button
