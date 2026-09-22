@@ -144,8 +144,8 @@ export const products: Product[] = [
 · Three-panel structured hood with fleece lining
 · Reinforced double-needle construction and metal hardware
 · Relaxed streetwear silhouette with drop-shoulder fit`,
-    price: '$89.99',
-    priceUsd: 89.99,
+    price: '$94.99',
+    priceUsd: 94.99,
     images: [
       '/Assets/Images/Preview/Design Hoodies/Soulfull Hoodie/Soulfull Hoodie Back.webp',
       '/Assets/Images/Preview/Design Hoodies/Soulfull Hoodie/Hoodie On black Original Front.webp',

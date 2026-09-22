@@ -18,7 +18,7 @@ const AUTHORIZED_PRICES = {
   'core-hoodie-white': 7999,   // $79.99 (Core Hoodie — Black US)
   'core-hoodie':       7999,   // $79.99
   'soulfull-black':    5999,   // $59.99
-  'soulfull-hoodie':   8999,   // $89.99
+  'soulfull-hoodie':   9499,   // $94.99
   'the-origin':        5999,   // $59.99
   'broken-001':        5999,   // $59.99
 }
