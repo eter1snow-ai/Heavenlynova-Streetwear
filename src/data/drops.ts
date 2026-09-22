@@ -66,10 +66,18 @@ export const products: Product[] = [
     category: 'essentials' as Category,
     productType: 'hoodie' as ProductType,
     name: 'Core Hoodie',
-    tagline: '350 GSM Heavyweight Organic Cotton',
-    description: 'Minimal. Structured. Essential. A core layer built for everyday wear, clean in design and strong in presence.\n\n350 GSM heavyweight organic cotton, relaxed oversized fit with drop shoulder, adjustable hood, and kangaroo pocket.\n\nA quiet staple that carries the full weight of the story behind it.',
-    price: '$89.99',
-    priceUsd: 89.99,
+    tagline: '10 oz / 340 GSM Heavyweight 3-End Fleece',
+    description: `A relaxed, structural staple forged for permanence. Built with a 100% combed cotton face for unmatched texture, a structured three-panel hood, and custom dyed-to-match hardware.
+
+· 10 oz / 340 GSM Heavyweight 3-End Fleece
+· Solids: 70% Combed Cotton / 30% Recycled Polyester
+· 100% Combed Cotton exterior face for a clean, archival finish
+· Three-panel structured hood with fleece lining
+· Double-needle topstitching & heavy-gauge matching drawcords with metal eyelets
+· Kangaroo pocket and ribbed 1x1 cuffs and waistband
+· Pre-shrunk under 5% for an enduring boxy drape`,
+    price: '$79.99',
+    priceUsd: 79.99,
     images: [
       '/Assets/Images/Preview/Esential Hoodie/Hoodie On black Original Front.webp',
       '/Assets/Images/Preview/Esential Hoodie/Hoodie Black Original Back Black.webp',
@@ -126,8 +134,16 @@ export const products: Product[] = [
     category: 'individuals' as Category,
     productType: 'hoodie' as ProductType,
     name: 'SOULFULL HOODIE',
-    tagline: 'From the first constellations',
-    description: 'Minimal. Structured. Essential. A core layer built for everyday wear, clean in design and strong in presence.\n\n350 GSM heavyweight organic cotton, relaxed oversized fit with drop shoulder, adjustable hood, and kangaroo pocket.\n\nA quiet staple that carries the full weight of the story behind it.',
+    tagline: '10 oz / 340 GSM Heavyweight 3-End Fleece // Signature Piece',
+    description: `From the first constellations. Heavyweight architectural fleece carrying our signature archival motif on the reverse, balanced by minimal chest branding.
+
+· 10 oz / 340 GSM Heavyweight 3-End Fleece
+· Solids: 70% Combed Cotton / 30% Recycled Polyester
+· 100% Combed Cotton exterior face engineered for high-density DTG print
+· Full-scale reverse artwork & subtle chest insignia
+· Three-panel structured hood with fleece lining
+· Reinforced double-needle construction and metal hardware
+· Relaxed streetwear silhouette with drop-shoulder fit`,
     price: '$89.99',
     priceUsd: 89.99,
     images: [

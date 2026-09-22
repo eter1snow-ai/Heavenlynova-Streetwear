@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 type SizeGuideProps = {
@@ -6,25 +7,43 @@ type SizeGuideProps = {
   productType: 'hoodie' | 'tshirt'
 }
 
-const hoodieData = [
-  { size: 'S', chest: '55cm', length: '63cm', sleeve: '69cm' },
-  { size: 'M', chest: '59cm', length: '66cm', sleeve: '73cm' },
-  { size: 'L', chest: '62cm', length: '67cm', sleeve: '75cm' },
-  { size: 'XL', chest: '65cm', length: '68cm', sleeve: '77cm' },
-  { size: '2XL', chest: '69cm', length: '69cm', sleeve: '79cm' },
-  { size: '3XL', chest: '73cm', length: '69cm', sleeve: '81cm' }
+type HoodieMeasurement = {
+  size: string
+  chestCm: string
+  lengthCm: string
+  chestIn: string
+  lengthIn: string
+}
+
+type TshirtMeasurement = {
+  size: string
+  chestCm: string
+  lengthCm: string
+  sleeveCm: string
+  chestIn: string
+  lengthIn: string
+  sleeveIn: string
+}
+
+const hoodieData: HoodieMeasurement[] = [
+  { size: 'S',   chestCm: '53.3 cm', lengthCm: '72.4 cm', chestIn: '21.0 in', lengthIn: '28.5 in' },
+  { size: 'M',   chestCm: '58.4 cm', lengthCm: '74.9 cm', chestIn: '23.0 in', lengthIn: '29.5 in' },
+  { size: 'L',   chestCm: '62.2 cm', lengthCm: '77.5 cm', chestIn: '24.5 in', lengthIn: '30.5 in' },
+  { size: 'XL',  chestCm: '67.3 cm', lengthCm: '80.0 cm', chestIn: '26.5 in', lengthIn: '31.5 in' },
+  { size: '2XL', chestCm: '69.9 cm', lengthCm: '82.6 cm', chestIn: '27.5 in', lengthIn: '32.5 in' },
+  { size: '3XL', chestCm: '72.4 cm', lengthCm: '85.1 cm', chestIn: '28.5 in', lengthIn: '33.5 in' },
 ]
 
-const tshirtData = [
-  { size: 'S', chest: '46cm', length: '72cm', sleeve: '20cm' },
-  { size: 'M', chest: '48cm', length: '76cm', sleeve: '21cm' },
-  { size: 'L', chest: '55cm', length: '78cm', sleeve: '23cm' },
-  { size: 'XL', chest: '60cm', length: '79cm', sleeve: '27cm' },
-  { size: '2XL', chest: '65cm', length: '83cm', sleeve: '30cm' }
+const tshirtData: TshirtMeasurement[] = [
+  { size: 'S',   chestCm: '46.0 cm', lengthCm: '72.0 cm', sleeveCm: '20.0 cm', chestIn: '18.1 in', lengthIn: '28.3 in', sleeveIn: '7.9 in' },
+  { size: 'M',   chestCm: '48.0 cm', lengthCm: '76.0 cm', sleeveCm: '21.0 cm', chestIn: '18.9 in', lengthIn: '29.9 in', sleeveIn: '8.3 in' },
+  { size: 'L',   chestCm: '55.0 cm', lengthCm: '78.0 cm', sleeveCm: '23.0 cm', chestIn: '21.7 in', lengthIn: '30.7 in', sleeveIn: '9.1 in' },
+  { size: 'XL',  chestCm: '60.0 cm', lengthCm: '79.0 cm', sleeveCm: '27.0 cm', chestIn: '23.6 in', lengthIn: '31.1 in', sleeveIn: '10.6 in' },
+  { size: '2XL', chestCm: '65.0 cm', lengthCm: '83.0 cm', sleeveCm: '30.0 cm', chestIn: '25.6 in', lengthIn: '32.7 in', sleeveIn: '11.8 in' },
 ]
 
 export default function SizeGuideModal({ isOpen, onClose, productType }: SizeGuideProps) {
-  const data = productType === 'hoodie' ? hoodieData : tshirtData
+  const [unit, setUnit] = useState<'cm' | 'in'>('cm')
 
   return (
     <AnimatePresence>
@@ -49,7 +68,29 @@ export default function SizeGuideModal({ isOpen, onClose, productType }: SizeGui
           >
             {/* Header */}
             <div className="flex items-center justify-between p-6 border-b border-neutral-800">
-              <h2 className="text-lg font-semibold uppercase tracking-wider">Size Guide</h2>
+              <div className="flex items-center gap-4">
+                <h2 className="text-lg font-semibold uppercase tracking-wider">Size Guide</h2>
+                <div className="inline-flex border border-neutral-800 rounded-none p-0.5 text-[11px] uppercase tracking-wider">
+                  <button
+                    type="button"
+                    onClick={() => setUnit('cm')}
+                    className={`px-2.5 py-1 font-medium transition-colors ${
+                      unit === 'cm' ? 'bg-white text-black' : 'text-neutral-400 hover:text-white'
+                    }`}
+                  >
+                    CM
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setUnit('in')}
+                    className={`px-2.5 py-1 font-medium transition-colors ${
+                      unit === 'in' ? 'bg-white text-black' : 'text-neutral-400 hover:text-white'
+                    }`}
+                  >
+                    INCH
+                  </button>
+                </div>
+              </div>
               <button
                 onClick={onClose}
                 className="text-neutral-400 hover:text-white transition-colors text-2xl leading-none"
@@ -62,7 +103,9 @@ export default function SizeGuideModal({ isOpen, onClose, productType }: SizeGui
             {/* Content */}
             <div className="p-6">
               <p className="text-xs text-neutral-400 uppercase tracking-wider mb-6">
-                {productType === 'hoodie' ? 'Heavyweight Hoodie — 350 GSM' : 'Oversized T-Shirt — 240 GSM'}
+                {productType === 'hoodie'
+                  ? 'Heavyweight Pullover Hoodie — 10 oz / 340 GSM (Lane Seven LS19001)'
+                  : 'Heavyweight Oversized T-Shirt — 7.5 oz / 255 GSM (Shaka Wear)'}
               </p>
 
               {/* Table */}
@@ -71,20 +114,46 @@ export default function SizeGuideModal({ isOpen, onClose, productType }: SizeGui
                   <thead>
                     <tr className="border-b border-neutral-800">
                       <th className="py-3 px-4 text-xs font-semibold uppercase tracking-wider text-neutral-400">Size</th>
-                      <th className="py-3 px-4 text-xs font-semibold uppercase tracking-wider text-neutral-400">Chest (A)</th>
-                      <th className="py-3 px-4 text-xs font-semibold uppercase tracking-wider text-neutral-400">Length (B)</th>
-                      <th className="py-3 px-4 text-xs font-semibold uppercase tracking-wider text-neutral-400">Sleeve (C)</th>
+                      <th className="py-3 px-4 text-xs font-semibold uppercase tracking-wider text-neutral-400">
+                        Chest Width ({unit.toUpperCase()})
+                      </th>
+                      <th className="py-3 px-4 text-xs font-semibold uppercase tracking-wider text-neutral-400">
+                        Length ({unit.toUpperCase()})
+                      </th>
+                      {productType === 'tshirt' && (
+                        <th className="py-3 px-4 text-xs font-semibold uppercase tracking-wider text-neutral-400">
+                          Sleeve ({unit.toUpperCase()})
+                        </th>
+                      )}
                     </tr>
                   </thead>
                   <tbody>
-                    {data.map((row, i) => (
-                      <tr key={row.size} className={i !== data.length - 1 ? 'border-b border-neutral-800/50' : ''}>
-                        <td className="py-3 px-4 text-sm font-medium">{row.size}</td>
-                        <td className="py-3 px-4 text-sm text-neutral-300">{row.chest}</td>
-                        <td className="py-3 px-4 text-sm text-neutral-300">{row.length}</td>
-                        <td className="py-3 px-4 text-sm text-neutral-300">{row.sleeve}</td>
-                      </tr>
-                    ))}
+                    {productType === 'hoodie'
+                      ? hoodieData.map((row, i) => (
+                          <tr key={row.size} className={i !== hoodieData.length - 1 ? 'border-b border-neutral-800/50' : ''}>
+                            <td className="py-3 px-4 text-sm font-medium">{row.size}</td>
+                            <td className="py-3 px-4 text-sm text-neutral-300">
+                              {unit === 'cm' ? row.chestCm : row.chestIn}
+                            </td>
+                            <td className="py-3 px-4 text-sm text-neutral-300">
+                              {unit === 'cm' ? row.lengthCm : row.lengthIn}
+                            </td>
+                          </tr>
+                        ))
+                      : tshirtData.map((row, i) => (
+                          <tr key={row.size} className={i !== tshirtData.length - 1 ? 'border-b border-neutral-800/50' : ''}>
+                            <td className="py-3 px-4 text-sm font-medium">{row.size}</td>
+                            <td className="py-3 px-4 text-sm text-neutral-300">
+                              {unit === 'cm' ? row.chestCm : row.chestIn}
+                            </td>
+                            <td className="py-3 px-4 text-sm text-neutral-300">
+                              {unit === 'cm' ? row.lengthCm : row.lengthIn}
+                            </td>
+                            <td className="py-3 px-4 text-sm text-neutral-300">
+                              {unit === 'cm' ? row.sleeveCm : row.sleeveIn}
+                            </td>
+                          </tr>
+                        ))}
                   </tbody>
                 </table>
               </div>

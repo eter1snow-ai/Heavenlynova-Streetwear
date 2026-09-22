@@ -14,12 +14,13 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || 'sk_test_placeholder'
 // ─── Catalogul de prețuri autorizate (server-side truth) ─────────────────────
 const AUTHORIZED_PRICES = {
   'essentials-black':  4499,   // $44.99 în cenți
-  'essentials-white':  4499,
-  'core-hoodie-white': 8999,   // $89.99
+  'essentials-white':  4499,   // $44.99
+  'core-hoodie-white': 7999,   // $79.99 (Core Hoodie — Black US)
+  'core-hoodie':       7999,   // $79.99
   'soulfull-black':    5999,   // $59.99
-  'soulfull-hoodie':   8999,
-  'the-origin':        5999,
-  'broken-001':        5999,
+  'soulfull-hoodie':   8999,   // $89.99
+  'the-origin':        5999,   // $59.99
+  'broken-001':        5999,   // $59.99
 }
 
 // ─── Piețe Tier 1 (US, CA, UK + Europa majoră & România) ──────────────────────
