@@ -108,7 +108,7 @@ export default function PrivacyPolicy() {
 
         <p style={{ marginTop: '40px', textAlign: 'center', opacity: 0.8, fontStyle: 'italic' }}>
           HeavenlyNova<br />
-          Built from Light & Shadow
+          Between Light & Shadow
         </p>
       </div>
     </main>

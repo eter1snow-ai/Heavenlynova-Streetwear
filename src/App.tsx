@@ -33,7 +33,7 @@ import { Analytics } from '@vercel/analytics/react'
 const ROUTE_SEO: Record<string, Parameters<typeof applySEO>[0]> = {
   '/': {
     path: '/',
-    title: 'HeavenlyNova — Born from Light & Shadow',
+    title: 'HeavenlyNova — Between Light & Shadow',
     description: 'Forged in light and shadow. Luxury heavyweight streetwear, 7.5oz architectural cuts, and cosmic artifacts. Chapter /000 — Origin Protocol is live.',
   },
   '/drops': {

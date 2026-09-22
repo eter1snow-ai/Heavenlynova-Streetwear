@@ -45,7 +45,7 @@ export default function Join() {
         className="relative z-10 max-w-md w-full px-6"
       >
         <div className="text-center mb-10">
-          <p className="uppercase mb-5" style={{ fontSize: '0.65rem', letterSpacing: '0.5em', lineHeight: 1.6, color: '#aaaaaa' }}>Born from Light & Shadow.</p>
+          <p className="uppercase mb-5" style={{ fontSize: '0.65rem', letterSpacing: '0.5em', lineHeight: 1.6, color: '#aaaaaa' }}>Between Light & Shadow.</p>
           <h1 className="uppercase mb-5" style={{ fontSize: '2rem', fontWeight: 500, letterSpacing: '0.12em', lineHeight: 1.5, color: '#E6E6E6' }}>
             The Heritage Line<br />is Live.
           </h1>

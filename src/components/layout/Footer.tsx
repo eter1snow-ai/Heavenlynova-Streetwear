@@ -37,7 +37,7 @@ export default function Footer() {
               HEAVENLYNOVA
             </h2>
             <p style={{ fontSize: '0.75rem', letterSpacing: '0.15em', lineHeight: 1.7, color: '#888888' }} className="uppercase">
-              Born from Light & Shadow
+              Between Light & Shadow
             </p>
           </div>
 

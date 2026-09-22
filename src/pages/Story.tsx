@@ -46,7 +46,7 @@ export default function Story() {
               transition={{ duration: 1, ease: "easeOut" }}
               className="text-5xl sm:text-6xl md:text-8xl font-bold uppercase tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60"
             >
-              Born from <br /> Light &amp; Shadow
+              Between <br /> Light &amp; Shadow
             </motion.h1>
           </div>
         </div>
