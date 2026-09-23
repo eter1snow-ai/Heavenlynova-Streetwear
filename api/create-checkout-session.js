@@ -21,6 +21,7 @@ const AUTHORIZED_PRICES = {
   'soulfull-hoodie':   9499,   // $94.99
   'the-origin':        5999,   // $59.99
   'broken-001':        5999,   // $59.99
+  'broken-hoodie':     9499,   // $94.99
 }
 
 // ─── Piețe Tier 1 (US, CA, UK + Europa majoră & România) ──────────────────────

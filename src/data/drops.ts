@@ -47,6 +47,29 @@ export const products: Product[] = [
     ],
   },
   {
+    id: 'broken-hoodie',
+    category: 'flagship' as Category,
+    productType: 'hoodie' as ProductType,
+    name: 'BROKEN HOODIE',
+    tagline: '10 oz / 340 GSM Heavyweight 3-End Fleece // Seraphim Ascension',
+    description: `The architectural heavy fleece of the Seraphim collection. Carrying the iconic fractured wings on the reverse, balanced by the subtle left-chest insignia.
+
+· 10 oz / 340 GSM Heavyweight 3-End Fleece
+· Solids: 70% Combed Cotton / 30% Recycled Polyester
+· 100% Combed Cotton exterior face engineered for high-density DTG print
+· Full-scale reverse Seraphim artwork & subtle chest insignia
+· Three-panel structured hood with fleece lining
+· Reinforced double-needle construction and metal hardware
+· Enduring oversized streetwear drape`,
+    price: '$94.99',
+    priceUsd: 94.99,
+    images: [
+      '/Assets/Images/Preview/Seraphim_Broken 001/Broken Hoodie Back.webp',
+      '/Assets/Images/Preview/Seraphim_Broken 001/Broken Hoodie Front.webp',
+      '/Assets/Images/Preview/Seraphim_Broken 001/Neck Label Black.webp',
+    ],
+  },
+  {
     id: 'soulfull-black',
     category: 'individuals' as Category,
     productType: 'tee' as ProductType,
@@ -216,6 +239,14 @@ export const SPREADCONNECT_VARIANTS: Record<string, Record<string, number>> = {
     XXL: 0,
   },
   'broken-001': {
+    XS: 0,
+    S:  0,
+    M:  0,
+    L:  0,
+    XL: 0,
+    XXL: 0,
+  },
+  'broken-hoodie': {
     XS: 0,
     S:  0,
     M:  0,

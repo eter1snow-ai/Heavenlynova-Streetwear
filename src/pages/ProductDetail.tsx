@@ -24,6 +24,10 @@ const PRODUCT_SEO_OVERRIDES: Record<string, { title: string; description: string
     title: 'BROKEN // 001 — Seraphim Tee | HeavenlyNova',
     description: 'BROKEN // 001. Not everything that breaks is meant to stay broken. 255 GSM heavyweight cotton tee from HeavenlyNova.',
   },
+  'broken-hoodie': {
+    title: 'BROKEN HOODIE — Seraphim Fleece (10 oz) | HeavenlyNova',
+    description: 'The architectural heavy fleece of the Seraphim collection. Fractured wings reverse, subtle left-chest insignia. 340 GSM heavyweight 3-end fleece.',
+  },
   'soulfull-black': {
     title: 'SOULFULL — Black Heavyweight Tee (7.5oz) | HeavenlyNova',
     description: 'Not everything needs to be loud to be felt. Soulfull is a quiet statement forged from heavyweight 255 GSM cotton. Part of the Heritage Collection.',
@@ -135,7 +139,7 @@ export default function ProductDetail() {
     return file.includes(color)
   }
   const filteredVariantImages = useMemo(() => {
-    if (product?.id === 'the-origin' || product?.id === 'soulfull-hoodie') {
+    if (product?.id === 'the-origin' || product?.id === 'soulfull-hoodie' || product?.id?.startsWith('broken')) {
       return images.filter((s) => !isNeck(s))
     }
     if (!selectedColor || selectedColor === 'var') {
@@ -243,8 +247,8 @@ export default function ProductDetail() {
                       key={i}
                       src={getOptimizedImageUrl(img, 1200)}
                       alt={product.name}
-                      className={`w-full ${(product.id.startsWith('soulfull') || product.id === 'the-origin' || product.id === 'broken-001') ? 'object-cover' : 'object-contain'} ${(product.id.startsWith('soulfull') || product.id === 'the-origin' || product.id === 'broken-001') ? '' : 'aspect-[3/4]'} ${i === 1 ? 'object-top' : 'object-center'}`}
-                      style={{ borderRadius: 0, backgroundColor: 'transparent', mixBlendMode: 'normal', aspectRatio: (product.id.startsWith('soulfull') || product.id === 'the-origin' || product.id === 'broken-001') ? '2044/2000' : undefined }}
+                      className={`w-full ${(product.id.startsWith('soulfull') || product.id === 'the-origin' || product.id.startsWith('broken')) ? 'object-cover' : 'object-contain'} ${(product.id.startsWith('soulfull') || product.id === 'the-origin' || product.id.startsWith('broken')) ? '' : 'aspect-[3/4]'} ${i === 1 ? 'object-top' : 'object-center'}`}
+                      style={{ borderRadius: 0, backgroundColor: 'transparent', mixBlendMode: 'normal', aspectRatio: (product.id.startsWith('soulfull') || product.id === 'the-origin' || product.id.startsWith('broken')) ? '2044/2000' : undefined }}
                       loading={i === 0 ? "eager" : "lazy"}
                       fetchPriority={i === 0 ? "high" : "low"}
                       decoding="async"
@@ -287,7 +291,7 @@ export default function ProductDetail() {
             <div>
               {(() => {
                 const localMock = localDrops.find((m) => m.id === product.id || m.id === productId)
-                const displayTitle = isSeraphim ? 'Seraphim' : (localMock?.name || product.name)
+                const displayTitle = product.id === 'broken-hoodie' ? 'BROKEN HOODIE' : isSeraphim ? 'Seraphim' : (localMock?.name || product.name)
                 const displayTagline = localMock?.tagline || product.tagline
 
                 return (
