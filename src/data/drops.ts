@@ -64,9 +64,9 @@ export const products: Product[] = [
     price: '$94.99',
     priceUsd: 94.99,
     images: [
-      '/Assets/Images/Preview/Seraphim_Broken 001/Broken Hoodie Back.webp',
-      '/Assets/Images/Preview/Seraphim_Broken 001/Broken Hoodie Front.webp',
-      '/Assets/Images/Preview/Seraphim_Broken 001/Neck Label Black.webp',
+      '/Assets/Images/Preview/Design Hoodies/Broken Hoodie/Broken Hoodie Back.webp',
+      '/Assets/Images/Preview/Design Hoodies/Broken Hoodie/Hoodie On black Original Front.webp',
+      '/Assets/Images/Preview/Design Hoodies/Broken Hoodie/Detailed black hoodie close-up.webp',
     ],
   },
   {

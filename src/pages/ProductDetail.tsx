@@ -112,7 +112,7 @@ export default function ProductDetail() {
   const [variantIndex, setVariantIndex] = useState<number>(() => 0)
   const [showSizeGuide, setShowSizeGuide] = useState(false)
 
-  const isNeck = (src: string) => /neck/i.test(src)
+  const isNeck = (src: string) => /neck|close-up|detailed/i.test(src)
   const images = useMemo(() => (product?.images || []).filter(Boolean), [product])
   const variantImages = useMemo(() => images.filter((s) => !isNeck(s)).slice(0, 2), [images])
   const neckImages = useMemo(() => images.filter((s) => isNeck(s)), [images])
@@ -268,13 +268,13 @@ export default function ProductDetail() {
                     <div className="transform -rotate-2">
                       <ZoomImage
                         src={neckSelected}
-                        alt={`${product.name} neck label detail`}
+                        alt={`${product.name} detail`}
                         className="aspect-square object-cover"
                         zoomFactor={2.8}
                       />
                     </div>
                     <p className="mt-3 text-[10px] uppercase tracking-widest text-neutral-500 text-center">
-                      Hover to zoom • Neck label detail
+                      Hover to zoom • {/neck/i.test(neckSelected) ? 'Neck label detail' : 'Fabric & construction detail'}
                     </p>
                   </div>
                 )}
