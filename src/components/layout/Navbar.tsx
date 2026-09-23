@@ -95,6 +95,7 @@ export default function Navbar() {
                     {[
                       { label: 'Heritage', action: () => { setCollectionsOpen(false); navigate('/heritage') } },
                       { label: 'Essentials', action: () => { setCollectionsOpen(false); navigate('/essentials') } },
+                      { label: 'Seraphim', action: () => { setCollectionsOpen(false); navigate('/seraphim') } },
                     ].map((item) => (
                       <button
                         key={item.label}
@@ -147,7 +148,7 @@ export default function Navbar() {
                 { label: 'Drops', action: () => handleDropsFilter() },
                 { label: 'Heritage', action: () => { setOpen(false); navigate('/heritage') } },
                 { label: 'Essentials', action: () => { setOpen(false); navigate('/essentials') } },
-                // { label: 'Seraphim', action: () => navigate('/seraphim') }, // hidden - coming soon
+                { label: 'Seraphim', action: () => { setOpen(false); navigate('/seraphim') } },
               ].map((item) => (
                 <li key={item.label}>
                   <span

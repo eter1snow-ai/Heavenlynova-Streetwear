@@ -87,10 +87,9 @@ const normalizedCache: NormalizedProduct[] = catalogProducts.map(normalizeProduc
 
 /**
  * Returnează lista completă de produse normalizate.
- * Exclude categoria 'flagship' din listinguri publice (afișat separat via Seraphim).
  */
 export async function getProducts(): Promise<NormalizedProduct[]> {
-  return normalizedCache.filter((p) => p.category !== 'flagship')
+  return normalizedCache
 }
 
 /**
