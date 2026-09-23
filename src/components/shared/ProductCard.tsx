@@ -39,30 +39,22 @@ export default function ProductCard({ product, showPrice = false, className }: P
           boxShadow: '0 0 0 rgba(255, 255, 255, 0)'
         }}
       >
-        <div className="relative w-full aspect-[4/5] sm:aspect-square border-b border-neutral-800 bg-transparent">
+        <div className="relative w-full aspect-[4/5] sm:aspect-square border-b border-neutral-800 bg-transparent overflow-hidden">
           {(front || hover) ? (
             <>
-              <motion.img
+              <img
                 src={getOptimizedImageUrl((variants[variantIndex]?.src) || front || hover!, 600)}
                 alt={product.name}
-                className="absolute inset-0 w-full h-full object-contain object-center p-4"
+                className={`absolute inset-0 w-full h-full object-contain object-center p-4 transition-opacity duration-200 ease-out pointer-events-none ${
+                  hover ? 'group-hover:opacity-0' : ''
+                }`}
                 style={{
                   backgroundColor: 'transparent',
                   mixBlendMode: 'normal',
                   imageRendering: 'auto',
                   filter: product.id === 'core-hoodie-white' ? 'contrast(1.08) brightness(1.02)' : undefined
                 }}
-                loading="lazy"
                 decoding="async"
-                onLoad={(e) => {
-                  const nw = e.currentTarget.naturalWidth
-                  const nh = e.currentTarget.naturalHeight
-                  const cw = e.currentTarget.clientWidth
-                  const ch = e.currentTarget.clientHeight
-                  const upscaled = cw > nw || ch > nh
-                  console.log(`🔄 Card front ${product.name}: natural ${nw}x${nh}, rendered ${cw}x${ch}`)
-                  console.log(upscaled ? '❌ CSS scaling/upscaling detected on card' : '✅ Native resolution on card')
-                }}
                 onError={(e) => {
                   const src = e.currentTarget.src
                   if (/\.webp($|\?)/i.test(src)) {
@@ -70,33 +62,19 @@ export default function ProductCard({ product, showPrice = false, className }: P
                   } else {
                     e.currentTarget.src = '/Assets/Images/placeholder.svg'
                   }
-                  console.log('❌ Front fallback', product.name)
                 }}
               />
               {hover && (
-                <motion.img
+                <img
                   src={getOptimizedImageUrl(hover, 600)}
                   alt={`${product.name} hover`}
-                  className="absolute inset-0 w-full h-full object-contain object-center p-4"
+                  className="absolute inset-0 w-full h-full object-contain object-center p-4 opacity-0 transition-opacity duration-200 ease-out group-hover:opacity-100 pointer-events-none"
                   style={{
                     backgroundColor: 'transparent',
                     mixBlendMode: 'normal',
                     imageRendering: 'auto',
                   }}
-                  initial={{ opacity: 0, scale: 1 }}
-                  whileHover={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, ease: 'easeInOut' }}
-                  loading="lazy"
                   decoding="async"
-                  onLoad={(e) => {
-                    const nw = e.currentTarget.naturalWidth
-                    const nh = e.currentTarget.naturalHeight
-                    const cw = e.currentTarget.clientWidth
-                    const ch = e.currentTarget.clientHeight
-                    const upscaled = cw > nw || ch > nh
-                    console.log(`🔄 Card hover ${product.name}: natural ${nw}x${nh}, rendered ${cw}x${ch}`)
-                    console.log(upscaled ? '❌ CSS scaling/upscaling detected on hover overlay' : '✅ Native resolution on hover overlay')
-                  }}
                   onError={(e) => {
                     const src = e.currentTarget.src
                     if (/\.webp($|\?)/i.test(src)) {
@@ -104,7 +82,6 @@ export default function ProductCard({ product, showPrice = false, className }: P
                     } else {
                       e.currentTarget.src = '/Assets/Images/placeholder.svg'
                     }
-                    console.log('❌ Hover fallback', product.name)
                   }}
                 />
               )}

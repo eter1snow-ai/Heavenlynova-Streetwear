@@ -1,10 +1,9 @@
 import { motion } from 'framer-motion'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 export default function Story() {
   const navigate = useNavigate()
-  const [hoverImage, setHoverImage] = useState(false)
 
   const backImage = '/Assets/Images/Preview/The Origin Piece/The Origin Piece Back.webp'
   const frontImage = '/Assets/Images/Preview/The Origin Piece/Original Esentials Black Front.webp'
@@ -188,31 +187,23 @@ export default function Story() {
           </div>
           <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] items-stretch">
             <div 
-              className="relative overflow-hidden border border-neutral-800 bg-neutral-950 cursor-pointer"
-              onMouseEnter={() => setHoverImage(true)}
-              onMouseLeave={() => setHoverImage(false)}
+              className="relative overflow-hidden border border-neutral-800 bg-neutral-950 cursor-pointer group"
               onClick={() => navigate('/product/the-origin')}
             >
               <div className="w-full bg-neutral-900 relative flex items-center justify-center" style={{ aspectRatio: '2044/2000' }}>
-                <motion.img 
+                <img 
                   src={backImage}
                   alt="The Origin Piece - Back"
-                  className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 grayscale"
+                  className="absolute inset-0 w-full h-full object-cover transition-opacity duration-200 ease-out grayscale group-hover:opacity-0 pointer-events-none"
                   style={{ borderRadius: 0 }}
-                  initial={{ opacity: 1 }}
-                  animate={{ opacity: hoverImage ? 0 : 1 }}
-                  transition={{ duration: 0.5, ease: 'easeInOut' }}
-                  loading="lazy"
+                  decoding="async"
                 />
-                <motion.img 
+                <img 
                   src={frontImage}
                   alt="The Origin Piece - Front"
-                  className="absolute inset-0 w-full h-full object-cover grayscale"
+                  className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-200 ease-out grayscale group-hover:opacity-100 pointer-events-none"
                   style={{ borderRadius: 0 }}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: hoverImage ? 1 : 0 }}
-                  transition={{ duration: 0.5, ease: 'easeInOut' }}
-                  loading="lazy"
+                  decoding="async"
                 />
               </div>
             </div>
