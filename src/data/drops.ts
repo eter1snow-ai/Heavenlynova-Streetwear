@@ -42,7 +42,7 @@ export const products: Product[] = [
     priceUsd: 59.99,
     images: [
       '/Assets/Images/Preview/Seraphim_Broken 001/Broken Original Black Back.webp',
-      '/Assets/Images/Preview/Seraphim_Broken 001/V3B Original Black Front.webp',
+      '/Assets/Images/Preview/Seraphim_Broken 001/V3C Original Black Front.jpg',
       '/Assets/Images/Preview/Seraphim_Broken 001/Neck Label Black.webp',
     ],
   },

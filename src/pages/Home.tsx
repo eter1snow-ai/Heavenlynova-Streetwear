@@ -10,6 +10,7 @@ export default function Home() {
 
   const heritage = products.filter((p) => p.category === 'individuals')
   const essentials = products.filter((p) => p.category === 'essentials')
+  const seraphim = products.filter((p) => p.category === 'flagship')
   const [nlEmail, setNlEmail] = useState('')
   const [nlSent, setNlSent] = useState(false)
   const [nlLoading, setNlLoading] = useState(false)
@@ -133,7 +134,39 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. NEWSLETTER */}
+      <div className="border-t border-white/5" />
+
+      {/* 4. SERAPHIM COLLECTION */}
+      <section id="seraphim" className="bg-black text-white py-16 sm:py-24 lg:py-32">
+        <div className="mx-auto w-full max-w-[1300px] px-6 lg:px-12">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.9 }}>
+            <p style={{ fontSize: '0.65rem', letterSpacing: '0.45em', color: '#888888', lineHeight: 1.6 }} className="uppercase mb-3">
+              Flagship Collection // Chapter 001
+            </p>
+            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 3.2rem)', fontWeight: 500, letterSpacing: '0.08em', lineHeight: 1.2, color: '#E6E6E6' }} className="uppercase mb-3">
+              Seraphim
+            </h2>
+            <p style={{ fontSize: '0.82rem', letterSpacing: '0.15em', lineHeight: 1.8, color: '#A8A8A8', maxWidth: '600px', fontStyle: 'italic' }} className="mb-10">
+              Where light fractures and something higher begins. The Seraphim burn not to destroy, but to refine — marking the first ascension through what was broken.
+            </p>
+          </motion.div>
+          <div className="flex flex-wrap justify-center gap-8 w-full">
+            {seraphim.map((p) => (
+              <ProductCard key={p.id} product={p} className="w-full max-w-[400px]" />
+            ))}
+          </div>
+          <div className="mt-8 text-center">
+            <Link
+              to="/seraphim"
+              className="inline-flex border-b border-white/40 pb-1 text-xs font-medium uppercase tracking-[0.24em] text-neutral-400 transition-colors hover:text-white hover:border-white"
+            >
+              → Explore the Seraphim Ascension
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. NEWSLETTER */}
       <section className="bg-neutral-950 border-t border-white/5" style={{ paddingTop: '80px', paddingBottom: '80px' }}>
         <div className="mx-auto w-full px-6 flex flex-col items-center justify-center text-center" style={{ maxWidth: '580px' }}>
           <p className="uppercase mb-6" style={{ fontSize: '0.65rem', letterSpacing: '0.5em', lineHeight: 1.6, color: '#aaaaaa' }}>The Universe Has Begun</p>
