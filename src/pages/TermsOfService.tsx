@@ -158,8 +158,18 @@ export default function TermsOfService() {
 
         <div style={{ height: '1px', backgroundColor: '#333333', margin: '40px 0' }} />
 
-        <h3 style={{ marginTop: '30px', textTransform: 'uppercase' }}>17. Contact</h3>
-        <p>For any questions regarding these Terms:</p>
+        <h3 style={{ marginTop: '30px', textTransform: 'uppercase' }}>17. Product Safety & EU Compliance (GPSR)</h3>
+        <p>In accordance with the EU General Product Safety Regulation (GPSR), products fulfilled and delivered within the European Union comply with applicable safety standards:</p>
+        <ul style={{ marginLeft: '20px', listStyleType: 'disc', lineHeight: 1.8 }}>
+          <li><strong>EU Authorized Economic Representative:</strong> HONSON VENTURES LIMITED, Gnaftis House, flat 102, Limassol, Mesa Geitonia, 4003, Cyprus (email: gpsr@honsonventures.com).</li>
+          <li><strong>Product Standards:</strong> Apparel items fulfilled in Europe are crafted using premium certified textiles (Stanley/Stella).</li>
+          <li><strong>Care & Safety:</strong> Machine wash cold (30°C / 90°F) inside out. Do not bleach. Tumble dry low or hang dry. Iron low heat, do not iron on print. Not intended for sleepwear.</li>
+        </ul>
+
+        <div style={{ height: '1px', backgroundColor: '#333333', margin: '40px 0' }} />
+
+        <h3 style={{ marginTop: '30px', textTransform: 'uppercase' }}>18. Contact</h3>
+        <p>For any questions regarding these Terms or product safety:</p>
         <p style={{ marginLeft: '20px' }}><strong><a href="mailto:support@heavenlynova.com" style={{ color: '#ffffff', textDecoration: 'underline' }}>support@heavenlynova.com</a></strong></p>
 
         <div style={{ height: '1px', backgroundColor: '#333333', margin: '40px 0' }} />
