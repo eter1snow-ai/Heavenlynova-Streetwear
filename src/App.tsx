@@ -9,6 +9,7 @@ import Contact from './pages/Contact'
 import Seraphim from './pages/Seraphim'
 import NotFound from './pages/NotFound'
 import { CartProvider } from './components/cart/CartContext'
+import { CurrencyProvider } from './context/CurrencyContext'
 import CartDrawer from './components/cart/CartDrawer'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsOfService from './pages/TermsOfService'
@@ -182,17 +183,19 @@ function AnimatedRoutes() {
 export default function App() {
   return (
     <BrowserRouter>
-      <CartProvider>
-        <EmailCapture />
-        <CookieBanner />
-        <CartDrawer />
-        <div className="min-h-screen bg-black text-white hn-radius-0">
-          <Navbar />
-          <AnimatedRoutes />
-          <Footer />
-        </div>
-        <Analytics />
-      </CartProvider>
+      <CurrencyProvider>
+        <CartProvider>
+          <EmailCapture />
+          <CookieBanner />
+          <CartDrawer />
+          <div className="min-h-screen bg-black text-white hn-radius-0">
+            <Navbar />
+            <AnimatedRoutes />
+            <Footer />
+          </div>
+          <Analytics />
+        </CartProvider>
+      </CurrencyProvider>
     </BrowserRouter>
   )
 }

@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from 'react'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useCart } from '../cart/CartContext'
+import { useCurrency } from '../../context/CurrencyContext'
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
@@ -11,6 +12,7 @@ export default function Navbar() {
   const navigate = useNavigate()
   const location = useLocation()
   const { openCart, itemCount } = useCart()
+  const { currency, setCurrency } = useCurrency()
   const isJoinPage = location.pathname === '/join'
 
 
@@ -111,6 +113,25 @@ export default function Navbar() {
             </ul>
           </div>
           
+          {/* Currency Switcher (Desktop & Tablet) */}
+          <div className="hidden sm:flex items-center text-[10px] tracking-[0.2em] uppercase font-mono border border-neutral-800 bg-neutral-950/80 px-2 py-1">
+            <button
+              onClick={() => setCurrency('USD')}
+              className={`transition-colors ${currency === 'USD' ? 'text-white font-bold' : 'text-neutral-500 hover:text-neutral-300'}`}
+              title="United States Dollar ($)"
+            >
+              USD $
+            </button>
+            <span className="mx-1.5 text-neutral-700">|</span>
+            <button
+              onClick={() => setCurrency('EUR')}
+              className={`transition-colors ${currency === 'EUR' ? 'text-white font-bold' : 'text-neutral-500 hover:text-neutral-300'}`}
+              title="Euro (€)"
+            >
+              EUR €
+            </button>
+          </div>
+
           {/* Cart Icon */}
           <button
             onClick={openCart}
@@ -159,6 +180,26 @@ export default function Navbar() {
                   </span>
                 </li>
               ))}
+
+              {/* Mobile Currency Switcher */}
+              <li className="pt-3 mt-1 border-t border-neutral-800/60 flex items-center justify-between">
+                <span className="text-[10px] uppercase tracking-widest text-neutral-500">Currency</span>
+                <div className="flex items-center text-[10px] tracking-[0.15em] uppercase font-mono border border-neutral-800 bg-neutral-950 px-2 py-1">
+                  <button
+                    onClick={() => setCurrency('USD')}
+                    className={`transition-colors ${currency === 'USD' ? 'text-white font-bold' : 'text-neutral-500 hover:text-neutral-300'}`}
+                  >
+                    USD $
+                  </button>
+                  <span className="mx-1.5 text-neutral-700">|</span>
+                  <button
+                    onClick={() => setCurrency('EUR')}
+                    className={`transition-colors ${currency === 'EUR' ? 'text-white font-bold' : 'text-neutral-500 hover:text-neutral-300'}`}
+                  >
+                    EUR €
+                  </button>
+                </div>
+              </li>
             </ul>
           </div>
         )}

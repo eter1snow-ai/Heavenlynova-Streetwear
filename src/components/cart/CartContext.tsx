@@ -10,6 +10,7 @@
  */
 
 import { createContext, useContext, useState, useEffect, useCallback } from 'react'
+import { useCurrency } from '../../context/CurrencyContext'
 import {
   hydrateCart,
   addToCart,
@@ -66,6 +67,7 @@ const CartContext = createContext<CartContextType>({
 // ─── Provider ─────────────────────────────────────────────────────────────────
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
+  const { currency } = useCurrency()
   const [isOpen, setIsOpen] = useState(false)
   const [cartState, setCartState] = useState<CartState>(EMPTY_CART)
   const [isLoading, setIsLoading] = useState(false)
@@ -111,11 +113,11 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     await goToCheckout(cartState.lines, (errMsg) => {
       setCheckoutError(errMsg)
       setIsLoading(false)
-    })
+    }, currency)
 
     // Dacă ajungem aici fără eroare → redirect-ul e în curs → nu mai facem nimic
     // setIsLoading(false) nu e necesar (pagina se schimbă)
-  }, [cartState.lines])
+  }, [cartState.lines, currency])
 
   const resetCart = useCallback(() => {
     clearCart()

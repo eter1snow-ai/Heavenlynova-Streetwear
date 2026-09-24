@@ -203,7 +203,8 @@ export function clearCart(): void {
  */
 export async function goToCheckout(
   lines: CartLineItem[],
-  onError?: (msg: string) => void
+  onError?: (msg: string) => void,
+  currency: 'USD' | 'EUR' = 'USD'
 ): Promise<void> {
   if (lines.length === 0) {
     onError?.('Coșul este gol.')
@@ -227,7 +228,7 @@ export async function goToCheckout(
       const subtotalUsd = lines.reduce((acc, l) => acc + l.priceUsd * l.quantity, 0)
       ;(window as any).fbq('track', 'InitiateCheckout', {
         value: subtotalUsd,
-        currency: 'USD',
+        currency: currency,
         num_items: lines.reduce((acc, l) => acc + l.quantity, 0),
         content_ids: lines.map((l) => l.variantId),
       })
@@ -236,7 +237,7 @@ export async function goToCheckout(
     const response = await fetch('/api/create-checkout-session', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ cartLines: cartPayload }),
+      body: JSON.stringify({ cartLines: cartPayload, currency: currency.toLowerCase() }),
     })
 
     if (!response.ok) {

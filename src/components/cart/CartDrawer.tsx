@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useCart } from './CartContext'
+import { useCurrency } from '../../context/CurrencyContext'
 
 export default function CartDrawer() {
   const {
@@ -12,6 +13,9 @@ export default function CartDrawer() {
     isLoading,
     checkoutError,
   } = useCart()
+  const { formatPrice } = useCurrency()
+
+  const subtotalNumeric = cartState.lines.reduce((acc, l) => acc + l.priceUsd * l.quantity, 0)
 
   return (
     <AnimatePresence>
@@ -116,7 +120,7 @@ export default function CartDrawer() {
                             </button>
                           </div>
                           <p style={{ fontSize: '0.75rem', letterSpacing: '0.1em' }} className="text-white">
-                            {item.price}
+                            {formatPrice(item.priceUsd)}
                           </p>
                         </div>
                       </div>
@@ -134,7 +138,7 @@ export default function CartDrawer() {
                     Subtotal
                   </p>
                   <p style={{ fontSize: '0.85rem', fontWeight: 500, letterSpacing: '0.1em', color: '#E6E6E6' }}>
-                    {cartState.subtotal}
+                    {formatPrice(subtotalNumeric)}
                   </p>
                 </div>
 

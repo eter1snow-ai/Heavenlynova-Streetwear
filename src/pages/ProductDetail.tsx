@@ -4,6 +4,7 @@ import { useEffect, useState, useMemo } from 'react'
 import ZoomImage from '../components/shared/ZoomImage'
 import SizeGuideModal from '../components/shared/SizeGuideModal'
 import { useCart } from '../components/cart/CartContext'
+import { useCurrency } from '../context/CurrencyContext'
 // [CHANGED] Importăm din lib/products în loc de data/drops direct
 import { getProduct } from '../lib/products'
 import type { NormalizedProduct } from '../lib/products'
@@ -42,6 +43,7 @@ const PRODUCT_SEO_OVERRIDES: Record<string, { title: string; description: string
 export default function ProductDetail() {
   const { productId } = useParams()
   const { addItem, isLoading } = useCart()
+  const { formatPrice, currency } = useCurrency()
 
   const [showSizeError, setShowSizeError] = useState(false)
 
@@ -82,7 +84,7 @@ export default function ProductDetail() {
       product: {
         name: product.name,
         description: product.description,
-        price: product.price,
+        price: formatPrice(product.priceUsd),
         available: product.variants.some((v) => v.availableForSale),
         image: product.images[0] ?? undefined,
       },
@@ -94,11 +96,11 @@ export default function ProductDetail() {
         content_name: product.name,
         content_ids: [product.id],
         content_type: 'product',
-        value: parseFloat(product.price.replace(/[^0-9.]/g, '')) || 0,
-        currency: 'USD',
+        value: product.priceUsd,
+        currency: currency,
       })
     }
-  }, [product, productId])
+  }, [product, productId, currency, formatPrice])
 
   const [size, setSize] = useState<string>(() => {
     try {
@@ -317,7 +319,7 @@ export default function ProductDetail() {
 
             <div className="space-y-3">
               <p className="text-xs text-neutral-400">Price</p>
-              <p className="text-sm">{product.price}</p>
+              <p className="text-sm font-medium">{formatPrice(product.priceUsd)}</p>
             </div>
 
             {swatches.length > 1 && swatches.filter(s => s.label !== 'var').length > 1 ? (
@@ -420,7 +422,7 @@ export default function ProductDetail() {
                     variantId,
                     productTitle: product.name,
                     priceUsd: product.priceUsd,
-                    price: product.price,
+                    price: formatPrice(product.priceUsd),
                     quantity: 1,
                     imageUrl: product.images[0] ?? null,
                   })
@@ -428,7 +430,7 @@ export default function ProductDetail() {
                   if (typeof window !== 'undefined' && (window as any).fbq) {
                     (window as any).fbq('track', 'AddToCart', {
                       content_name: product.name,
-                      currency: 'USD',
+                      currency: currency,
                       value: product.priceUsd,
                       content_ids: [variantId],
                       content_type: 'product',

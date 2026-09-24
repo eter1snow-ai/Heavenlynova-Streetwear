@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom'
 import { useRef, useEffect } from 'react'
+import { useCurrency } from '../../context/CurrencyContext'
 
 export default function Footer() {
   const videoRef = useRef<HTMLVideoElement>(null)
+  const { currency, setCurrency } = useCurrency()
 
   useEffect(() => {
     const v = videoRef.current
@@ -92,13 +94,31 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row justify-between items-center" style={{ borderTop: '1px solid #2A2A2A', marginTop: '80px', paddingTop: '40px', paddingBottom: '20px' }}>
-          <span style={{ fontSize: '0.72rem', letterSpacing: '0.2em', lineHeight: 1.6, color: '#888888' }} className="uppercase">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4" style={{ borderTop: '1px solid #2A2A2A', marginTop: '80px', paddingTop: '40px', paddingBottom: '20px' }}>
+          <span style={{ fontSize: '0.72rem', letterSpacing: '0.2em', lineHeight: 1.6, color: '#888888' }} className="uppercase text-center md:text-left">
             2026 HEAVENLYNOVA - ALL RIGHTS RESERVED | 
             <Link to="/privacy-policy" style={{ color: '#888888', textDecoration: 'none', margin: '0 0.5rem', fontSize: '0.72rem', letterSpacing: '0.2em', lineHeight: 1.6 }} className="uppercase hover:text-white transition-colors">Privacy Policy</Link> |
             <Link to="/terms-of-service" style={{ color: '#888888', textDecoration: 'none', margin: '0 0.5rem', fontSize: '0.72rem', letterSpacing: '0.2em', lineHeight: 1.6 }} className="uppercase hover:text-white transition-colors">Terms of Service</Link>
           </span>
-          <a href="mailto:support@heavenlynova.com" className="uppercase mt-2 md:mt-0 hover:text-white transition-colors" style={{ fontSize: '0.82rem', letterSpacing: '0.15em', lineHeight: 1.6, color: '#D6D6D6', textDecoration: 'none' }}>support@heavenlynova.com</a>
+          <div className="flex items-center gap-6">
+            {/* Footer Currency Switcher */}
+            <div className="flex items-center text-[10px] tracking-[0.15em] uppercase font-mono border border-neutral-800 bg-neutral-950 px-2 py-1">
+              <button
+                onClick={() => setCurrency('USD')}
+                className={`transition-colors ${currency === 'USD' ? 'text-white font-bold' : 'text-neutral-500 hover:text-neutral-300'}`}
+              >
+                USD $
+              </button>
+              <span className="mx-1.5 text-neutral-700">|</span>
+              <button
+                onClick={() => setCurrency('EUR')}
+                className={`transition-colors ${currency === 'EUR' ? 'text-white font-bold' : 'text-neutral-500 hover:text-neutral-300'}`}
+              >
+                EUR €
+              </button>
+            </div>
+            <a href="mailto:support@heavenlynova.com" className="uppercase hover:text-white transition-colors" style={{ fontSize: '0.82rem', letterSpacing: '0.15em', lineHeight: 1.6, color: '#D6D6D6', textDecoration: 'none' }}>support@heavenlynova.com</a>
+          </div>
         </div>
       </div>
     </footer>

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import type { Product } from '../../data/drops'
 import { useState, useMemo } from 'react'
 import { getOptimizedImageUrl } from '../../lib/utils'
+import { useCurrency } from '../../context/CurrencyContext'
 
 type Props = {
   product: Product
@@ -11,6 +12,7 @@ type Props = {
 }
 
 export default function ProductCard({ product, showPrice = false, className }: Props) {
+  const { formatPrice } = useCurrency()
   const front = product.images?.[0]
   const hover = product.images?.[1]
   const [variantIndex, setVariantIndex] = useState<number>(0)
@@ -94,7 +96,7 @@ export default function ProductCard({ product, showPrice = false, className }: P
           <h3 className="text-sm font-medium leading-snug truncate">{product.name}</h3>
           {showPrice ? (
             <>
-              <p className="text-sm font-semibold tracking-wide text-white mt-2">{product.price}</p>
+              <p className="text-sm font-semibold tracking-wide text-white mt-2">{formatPrice(product.priceUsd)}</p>
               <p className="text-xs opacity-70 mt-1">Worldwide shipping included</p>
               <div className="mt-3 flex items-center gap-2">
                 {variants.filter(v => v.label !== 'var').map((v) => (

@@ -60,7 +60,8 @@ export default async function handler(req, res) {
       }
     }
 
-    const { cartLines } = body || {}
+    const { cartLines, currency } = body || {}
+    const requestedCurrency = (typeof currency === 'string' && currency.toLowerCase() === 'eur') ? 'eur' : 'usd'
 
     // ─── Validare input ────────────────────────────────────────────────────────
     if (!cartLines || !Array.isArray(cartLines) || cartLines.length === 0) {
@@ -100,7 +101,7 @@ export default async function handler(req, res) {
       // Construim item-ul Stripe
       const stripeItem = {
         price_data: {
-          currency: 'usd',
+          currency: requestedCurrency,
           product_data: {
             name: `${productTitle} — ${size}`,
             description: `Size: ${size}`,
@@ -140,7 +141,7 @@ export default async function handler(req, res) {
         {
           shipping_rate_data: {
             type: 'fixed_amount',
-            fixed_amount: { amount: 0, currency: 'usd' },
+            fixed_amount: { amount: 0, currency: requestedCurrency },
             display_name: 'Free Standard Shipping',
             delivery_estimate: {
               minimum: { unit: 'business_day', value: 3 },
