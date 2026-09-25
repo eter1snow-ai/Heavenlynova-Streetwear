@@ -5,6 +5,7 @@ import ZoomImage from '../components/shared/ZoomImage'
 import SizeGuideModal from '../components/shared/SizeGuideModal'
 import { useCart } from '../components/cart/CartContext'
 import { useCurrency } from '../context/CurrencyContext'
+import { useLanguage } from '../context/LanguageContext'
 // [CHANGED] Importăm din lib/products în loc de data/drops direct
 import { getProduct } from '../lib/products'
 import type { NormalizedProduct } from '../lib/products'
@@ -56,6 +57,7 @@ export default function ProductDetail() {
   const { productId } = useParams()
   const { addItem, isLoading } = useCart()
   const { formatPrice, currency } = useCurrency()
+  const { t } = useLanguage()
 
   const [showSizeError, setShowSizeError] = useState(false)
 
@@ -331,13 +333,13 @@ export default function ProductDetail() {
             </div>
 
             <div className="space-y-3">
-              <p className="text-xs text-neutral-400">Price</p>
+              <p className="text-xs text-neutral-400">{t('product.price')}</p>
               <p className="text-sm font-medium">{formatPrice(product.priceUsd)}</p>
             </div>
 
             {swatches.length > 1 && swatches.filter(s => s.label !== 'var').length > 1 ? (
               <div className="space-y-2">
-                <p className="text-xs text-neutral-400">Color</p>
+                <p className="text-xs text-neutral-400">{t('product.color')}</p>
                 <div className="flex items-center gap-2">
                   {swatches.filter(s => s.label !== 'var').map((v) => (
                     <button
@@ -369,12 +371,12 @@ export default function ProductDetail() {
 
             <div className="space-y-3">
               <div className="flex items-center justify-between">
-                <p className="text-xs text-neutral-400">Size</p>
+                <p className="text-xs text-neutral-400">{t('product.size')}</p>
                 <button
                   onClick={() => setShowSizeGuide(true)}
                   className="text-xs text-neutral-400 hover:text-white transition-colors underline"
                 >
-                  Size Guide
+                  {t('product.size_guide')}
                 </button>
               </div>
               {/* Butoane de mărime din variante normalizate cu disabled state */}
@@ -455,12 +457,12 @@ export default function ProductDetail() {
               className={`w-full border ${showSizeError ? 'border-red-500 text-red-500' : 'border-white text-white hover:bg-white hover:text-black'} ${isLoading ? 'opacity-50 cursor-not-allowed' : ''} bg-transparent py-3 text-xs font-semibold uppercase tracking-[0.24em] transition-soft`}
               style={{ borderRadius: 0 }}
             >
-              {isLoading ? 'ADDING...' : showSizeError ? 'SELECT A SIZE' : 'Claim Your Piece'}
+              {isLoading ? t('product.adding') : showSizeError ? t('product.select_size') : t('product.claim')}
             </button>
 
             {!product.description.includes('Part of the HeavenlyNova universe') && (
               <p style={{ fontSize: '0.62rem', letterSpacing: '0.3em', color: '#333333', lineHeight: 1.6 }} className="uppercase">
-                Part of the HeavenlyNova universe.
+                {t('product.universe')}
               </p>
             )}
 

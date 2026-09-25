@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useCart } from './CartContext'
 import { useCurrency } from '../../context/CurrencyContext'
+import { useLanguage } from '../../context/LanguageContext'
 
 export default function CartDrawer() {
   const {
@@ -14,6 +15,7 @@ export default function CartDrawer() {
     checkoutError,
   } = useCart()
   const { formatPrice } = useCurrency()
+  const { t } = useLanguage()
 
   const subtotalNumeric = cartState.lines.reduce((acc, l) => acc + l.priceUsd * l.quantity, 0)
 
@@ -47,7 +49,7 @@ export default function CartDrawer() {
                   HeavenlyNova
                 </p>
                 <h2 style={{ fontSize: '0.85rem', fontWeight: 500, letterSpacing: '0.2em', color: '#E6E6E6' }} className="uppercase">
-                  Your Selection
+                  {t('cart.title')}
                 </h2>
               </div>
               <button
@@ -65,7 +67,7 @@ export default function CartDrawer() {
               {cartState.lines.length === 0 ? (
                 <div className="flex flex-col items-center justify-center h-full text-center" style={{ gap: '16px' }}>
                   <p style={{ fontSize: '0.65rem', letterSpacing: '0.4em', color: '#333', lineHeight: 1.6 }} className="uppercase">
-                    Your selection is empty.
+                    {t('cart.empty')}
                   </p>
                   <p style={{ fontSize: '0.7rem', letterSpacing: '0.2em', color: '#2a2a2a', lineHeight: 1.6 }} className="uppercase">
                     Add a piece to begin.
@@ -135,7 +137,7 @@ export default function CartDrawer() {
               <div className="px-6 py-6" style={{ borderTop: '1px solid #1a1a1a' }}>
                 <div className="flex justify-between items-center mb-5">
                   <p style={{ fontSize: '0.65rem', letterSpacing: '0.3em', color: '#555' }} className="uppercase">
-                    Subtotal
+                    {t('cart.subtotal')}
                   </p>
                   <p style={{ fontSize: '0.85rem', fontWeight: 500, letterSpacing: '0.1em', color: '#E6E6E6' }}>
                     {formatPrice(subtotalNumeric)}
@@ -155,7 +157,7 @@ export default function CartDrawer() {
                   className={`w-full bg-white text-black uppercase transition-colors ${isLoading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-neutral-200'}`}
                   style={{ fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.3em', padding: '14px', borderRadius: 0 }}
                 >
-                  {isLoading ? 'REDIRECTING...' : 'Proceed to Checkout'}
+                  {isLoading ? 'REDIRECTING...' : t('cart.checkout')}
                 </button>
 
                 <p style={{ fontSize: '0.6rem', letterSpacing: '0.25em', color: '#333', marginTop: '12px', textAlign: 'center' }} className="uppercase">

@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from 'react'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useCart } from '../cart/CartContext'
 import { useCurrency } from '../../context/CurrencyContext'
+import { useLanguage } from '../../context/LanguageContext'
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
@@ -13,6 +14,7 @@ export default function Navbar() {
   const location = useLocation()
   const { openCart, itemCount } = useCart()
   const { currency, setCurrency } = useCurrency()
+  const { language, setLanguage, languages, t } = useLanguage()
   const isJoinPage = location.pathname === '/join'
 
 
@@ -72,13 +74,13 @@ export default function Navbar() {
             <div className="hidden md:flex items-center gap-8">
               <ul className="flex gap-8 list-none items-center">
               <li>
-                <span className={linkClass} onClick={() => handleDropsFilter()}>Drops</span>
+                <span className={linkClass} onClick={() => handleDropsFilter()}>{t('nav.drops')}</span>
               </li>
               <li>
-                <span className={linkClass} onClick={() => navigate('/heritage')}>Heritage</span>
+                <span className={linkClass} onClick={() => navigate('/heritage')}>{t('nav.heritage')}</span>
               </li>
               <li>
-                <span className={linkClass} onClick={() => { setOpen(false); navigate('/essentials') }}>Essentials</span>
+                <span className={linkClass} onClick={() => { setOpen(false); navigate('/essentials') }}>{t('nav.essentials')}</span>
               </li>
 
               {/* Collections Dropdown */}
@@ -87,7 +89,7 @@ export default function Navbar() {
                   className={`${linkClass} flex items-center gap-1`}
                   onClick={() => setCollectionsOpen(!collectionsOpen)}
                 >
-                  Collections
+                  {t('nav.collections')}
                   <svg className={`w-3 h-3 transition-transform ${collectionsOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
@@ -113,6 +115,22 @@ export default function Navbar() {
             </ul>
           </div>
           
+          {/* Language Switcher (Desktop) */}
+          <div className="hidden lg:flex items-center text-[10px] tracking-[0.12em] uppercase font-mono border border-neutral-800 bg-neutral-950/80 px-2 py-1">
+            {languages.map((l, i) => (
+              <span key={l.code} className="flex items-center">
+                {i > 0 && <span className="mx-1 text-neutral-700">·</span>}
+                <button
+                  onClick={() => setLanguage(l.code)}
+                  className={`transition-colors ${language === l.code ? 'text-white font-bold' : 'text-neutral-500 hover:text-neutral-300'}`}
+                  title={l.label}
+                >
+                  {l.code.toUpperCase()}
+                </button>
+              </span>
+            ))}
+          </div>
+
           {/* Currency Switcher (Desktop & Tablet) */}
           <div className="hidden sm:flex items-center text-[10px] tracking-[0.2em] uppercase font-mono border border-neutral-800 bg-neutral-950/80 px-2 py-1">
             <button
@@ -198,6 +216,25 @@ export default function Navbar() {
                   >
                     EUR €
                   </button>
+                </div>
+              </li>
+
+              {/* Mobile Language Switcher */}
+              <li className="pt-2 flex items-center justify-between">
+                <span className="text-[10px] uppercase tracking-widest text-neutral-500">Language</span>
+                <div className="flex items-center text-[10px] tracking-[0.12em] uppercase font-mono border border-neutral-800 bg-neutral-950 px-2 py-1">
+                  {languages.map((l, i) => (
+                    <span key={l.code} className="flex items-center">
+                      {i > 0 && <span className="mx-1 text-neutral-700">·</span>}
+                      <button
+                        onClick={() => setLanguage(l.code)}
+                        className={`transition-colors ${language === l.code ? 'text-white font-bold' : 'text-neutral-500 hover:text-neutral-300'}`}
+                        title={l.label}
+                      >
+                        {l.code.toUpperCase()}
+                      </button>
+                    </span>
+                  ))}
                 </div>
               </li>
             </ul>
