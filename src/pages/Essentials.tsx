@@ -2,8 +2,12 @@ import { motion } from 'framer-motion'
 import { useEffect } from 'react'
 import { products } from '../data/drops'
 import ProductCard from '../components/shared/ProductCard'
+import { useLanguage } from '../context/LanguageContext'
+import { COLLECTION_TRANSLATIONS } from '../data/collectionTranslations'
 
 export default function Essentials() {
+  const { language } = useLanguage()
+  const e = (COLLECTION_TRANSLATIONS[language] || COLLECTION_TRANSLATIONS.en).essentials
   const essentials = products.filter((p) => p.category === 'essentials')
 
   useEffect(() => {
@@ -34,13 +38,13 @@ export default function Essentials() {
             transition={{ duration: 1, ease: "easeOut" }}
           >
             <p className="text-[0.65rem] uppercase tracking-[0.45em] text-[#888888] leading-[1.6] mb-3">
-              Core Collection
+              {e.badge}
             </p>
             <h1 className="text-[clamp(1.8rem,4vw,3.2rem)] font-medium uppercase tracking-[0.08em] leading-[1.2] text-[#E6E6E6] mb-4">
-              Essentials
+              {e.title}
             </h1>
             <p className="mx-auto text-[0.8rem] uppercase tracking-[0.2em] leading-[1.8] text-[#888888] max-w-[480px]">
-              Monochrome essentials forged for presence. Precise silhouettes, heavyweight comfort, and a calm intensity built for everyday rituals.
+              {e.desc}
             </p>
           </motion.div>
         </div>

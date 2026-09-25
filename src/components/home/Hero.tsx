@@ -1,6 +1,11 @@
 import { Link } from 'react-router-dom'
+import { useLanguage } from '../../context/LanguageContext'
+import { COLLECTION_TRANSLATIONS } from '../../data/collectionTranslations'
 
 export default function Hero() {
+  const { language } = useLanguage()
+  const h = (COLLECTION_TRANSLATIONS[language] || COLLECTION_TRANSLATIONS.en).home.hero
+
   return (
     <section
       id="hero"
@@ -20,7 +25,7 @@ export default function Hero() {
       {/* Content */}
       <div className="relative z-10 mx-auto w-full max-w-[1300px] px-6 lg:px-12">
         <p className="mb-4 text-xs uppercase tracking-[0.3em] text-neutral-400">
-          Luxury Streetwear
+          {h.luxuryStreetwear}
         </p>
         <h1 className="font-display text-2xl sm:text-3xl md:text-5xl font-semibold leading-tight tracking-tight uppercase">
           HEAVENLYNOVA
@@ -31,11 +36,11 @@ export default function Hero() {
             className="inline-flex border border-white bg-transparent px-8 py-3 text-xs font-semibold uppercase tracking-widest text-white transition-soft hover:bg-white hover:text-black"
             style={{ borderRadius: 0 }}
           >
-            EXPLORE COLLECTION
+            {h.exploreBtn}
           </Link>
         </div>
         <p className="mt-8 max-w-[520px] text-sm leading-relaxed text-neutral-300 md:text-base">
-          Luxury streetwear. Minimal silhouettes. Heavyweight feel.
+          {h.tagline}
         </p>
       </div>
     </section>

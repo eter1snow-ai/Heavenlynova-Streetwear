@@ -3,8 +3,13 @@ import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { products } from '../data/drops'
 import ProductCard from '../components/shared/ProductCard'
+import { useLanguage } from '../context/LanguageContext'
+import { COLLECTION_TRANSLATIONS } from '../data/collectionTranslations'
 
 export default function Heritage() {
+  const { language } = useLanguage()
+  const h = (COLLECTION_TRANSLATIONS[language] || COLLECTION_TRANSLATIONS.en).heritage
+
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
@@ -25,7 +30,7 @@ export default function Heritage() {
               transition={{ duration: 1, ease: "easeOut" }}
               className="text-5xl sm:text-6xl md:text-8xl font-bold uppercase tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60"
             >
-              Heritage
+              {h.title}
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -33,7 +38,7 @@ export default function Heritage() {
               transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
               className="mt-4 text-sm sm:text-base uppercase tracking-[0.3em] text-neutral-400"
             >
-              The First Constellations
+              {h.subtitle}
             </motion.p>
           </div>
         </div>
@@ -48,7 +53,7 @@ export default function Heritage() {
           <div className="hidden lg:block">
             <div className="sticky top-24">
               <p className="text-xs uppercase tracking-[0.3em] text-neutral-500">
-                Origin
+                {h.originLabel}
               </p>
             </div>
           </div>
@@ -61,33 +66,19 @@ export default function Heritage() {
             className="max-w-[700px] space-y-8"
           >
             <p className="text-xl sm:text-2xl font-light leading-relaxed text-white italic">
-              HeavenlyNova began long before the first product ever existed.
+              {h.quote}
             </p>
 
             <div className="space-y-6 text-white/90 leading-relaxed text-base sm:text-lg">
-              <p>
-                It emerged from raw, instinctive designs — sparks of light rising through a chaotic world. 
-                Playful, introspective, imperfect, yet deeply authentic, these early creations appeared when 
-                nothing else did, carrying meaning before the brand had a name.
-              </p>
-              <p>
-                They were not artworks. They were <span className="text-white italic">signals</span> — fragments of consciousness 
-                shaped by shadow and clarity, by struggle and awakening. These first symbols formed a language of 
-                their own, arriving naturally, without force or intention, guiding the identity that would follow.
-              </p>
-              <p>
-                This is the essence of Heritage: the original expressions that set the foundation, the constellations 
-                that marked the beginning. Designs born from truth, not trend; from evolution, not urgency.
-              </p>
-              <p>
-                HeavenlyNova continues to grow from that same source — a blend of darkness and starlight, 
-                always becoming, always rising.
-              </p>
+              <p>{h.p1}</p>
+              <p>{h.p2}</p>
+              <p>{h.p3}</p>
+              <p>{h.p4}</p>
             </div>
 
             <div className="pt-12 border-t border-white/10">
               <p className="text-xs uppercase tracking-widest text-neutral-500">
-                The collection preserves these first constellations
+                {h.footerNote}
               </p>
             </div>
           </motion.div>
@@ -105,10 +96,10 @@ export default function Heritage() {
             className="mb-14"
           >
             <p style={{ fontSize: '0.65rem', letterSpacing: '0.45em', color: '#888888' }} className="uppercase mb-3">
-              Heritage Line
+              {h.heritageLine}
             </p>
             <h2 style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.8rem)', fontWeight: 500, letterSpacing: '0.06em', lineHeight: 1.2, color: '#E6E6E6' }} className="uppercase">
-              The First Pieces
+              {h.firstPieces}
             </h2>
           </motion.div>
           <div className="flex flex-wrap justify-center gap-8">
@@ -130,7 +121,7 @@ export default function Heritage() {
         >
           <p className="text-sm uppercase tracking-[0.3em] text-neutral-600 hover:text-neutral-300 transition-colors">
             <Link to="/story" className="hover:text-white">
-              — THE ORIGIN EXISTS —
+              {h.originExists}
             </Link>
           </p>
         </motion.div>

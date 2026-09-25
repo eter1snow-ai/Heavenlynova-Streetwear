@@ -25,8 +25,10 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'nav.drops': 'Drops',
     'nav.heritage': 'Heritage',
     'nav.essentials': 'Essentials',
+    'nav.seraphim': 'Seraphim',
     'nav.collections': 'Collections',
     'nav.story': 'Story',
+    'nav.join': 'Join',
     'nav.cart': 'Cart',
     
     // Product CTA & Details
@@ -66,6 +68,10 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'cart.secure': 'Encrypted 256-Bit SSL Checkout',
     
     // Footer & Legal
+    'footer.tagline': 'Between Light & Shadow',
+    'footer.support': 'Support',
+    'footer.brand': 'Brand',
+    'footer.social': 'Social',
     'footer.rights': 'All rights reserved.',
     'footer.privacy': 'Privacy Policy',
     'footer.terms': 'Terms of Service',
@@ -73,6 +79,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'footer.refunds': 'Refund Policy',
     'footer.track': 'Track Order',
     'footer.contact': 'Contact Atelier',
+    'footer.origin': '— THE ORIGIN —',
     
     // Hero & Home
     'hero.enter': 'Enter The Archive',
@@ -84,8 +91,10 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'nav.drops': 'Drops',
     'nav.heritage': 'Heritage',
     'nav.essentials': 'Essentials',
+    'nav.seraphim': 'Seraphim',
     'nav.collections': 'Colecții',
     'nav.story': 'Poveste',
+    'nav.join': 'Alătură-te',
     'nav.cart': 'Coș',
     
     // Product CTA & Details
@@ -125,6 +134,10 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'cart.secure': 'Checkout Securizat SSL 256-Bit',
     
     // Footer & Legal
+    'footer.tagline': 'Între Lumină și Umbră',
+    'footer.support': 'Suport',
+    'footer.brand': 'Brand',
+    'footer.social': 'Social',
     'footer.rights': 'Toate drepturile rezervate.',
     'footer.privacy': 'Confidențialitate',
     'footer.terms': 'Termeni și Condiții',
@@ -132,6 +145,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'footer.refunds': 'Politică de Retur',
     'footer.track': 'Urmărește Comanda',
     'footer.contact': 'Contact Atelier',
+    'footer.origin': '— ORIGINEA —',
     
     // Hero & Home
     'hero.enter': 'Intră în Arhivă',
@@ -143,8 +157,10 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'nav.drops': 'Drops',
     'nav.heritage': 'Heritage',
     'nav.essentials': 'Essentials',
+    'nav.seraphim': 'Seraphim',
     'nav.collections': 'Colecciones',
     'nav.story': 'Historia',
+    'nav.join': 'Unirse',
     'nav.cart': 'Carrito',
     
     // Product CTA & Details
@@ -184,6 +200,10 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'cart.secure': 'Pago Seguro SSL 256-Bit',
     
     // Footer & Legal
+    'footer.tagline': 'Entre Luz y Sombra',
+    'footer.support': 'Soporte',
+    'footer.brand': 'Marca',
+    'footer.social': 'Social',
     'footer.rights': 'Todos los derechos reservados.',
     'footer.privacy': 'Política de Privacidad',
     'footer.terms': 'Términos de Servicio',
@@ -191,6 +211,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'footer.refunds': 'Política de Devoluciones',
     'footer.track': 'Seguir Pedido',
     'footer.contact': 'Contactar Atelier',
+    'footer.origin': '— EL ORIGEN —',
     
     // Hero & Home
     'hero.enter': 'Entrar al Archivo',
@@ -202,8 +223,10 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'nav.drops': 'Drops',
     'nav.heritage': 'Heritage',
     'nav.essentials': 'Essentials',
+    'nav.seraphim': 'Seraphim',
     'nav.collections': 'Kollektionen',
     'nav.story': 'Geschichte',
+    'nav.join': 'Beitreten',
     'nav.cart': 'Warenkorb',
     
     // Product CTA & Details
@@ -243,6 +266,10 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'cart.secure': 'Sichere 256-Bit SSL Kasse',
     
     // Footer & Legal
+    'footer.tagline': 'Zwischen Licht und Schatten',
+    'footer.support': 'Support',
+    'footer.brand': 'Marke',
+    'footer.social': 'Social',
     'footer.rights': 'Alle Rechte vorbehalten.',
     'footer.privacy': 'Datenschutz',
     'footer.terms': 'AGB',
@@ -250,6 +277,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'footer.refunds': 'Rückgaberichtlinie',
     'footer.track': 'Bestellung verfolgen',
     'footer.contact': 'Atelier kontaktieren',
+    'footer.origin': '— DER URSPRUNG —',
     
     // Hero & Home
     'hero.enter': 'Archiv betreten',
@@ -261,8 +289,10 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'nav.drops': 'Drops',
     'nav.heritage': 'Heritage',
     'nav.essentials': 'Essentials',
+    'nav.seraphim': 'Seraphim',
     'nav.collections': 'Collections',
     'nav.story': 'Histoire',
+    'nav.join': 'Rejoindre',
     'nav.cart': 'Panier',
     
     // Product CTA & Details
@@ -302,6 +332,10 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'cart.secure': 'Paiement Sécurisé SSL 256-Bit',
     
     // Footer & Legal
+    'footer.tagline': 'Entre Ombre et Lumière',
+    'footer.support': 'Support',
+    'footer.brand': 'Marque',
+    'footer.social': 'Réseaux',
     'footer.rights': 'Tous droits réservés.',
     'footer.privacy': 'Confidentialité',
     'footer.terms': 'Conditions Générales',
@@ -309,6 +343,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'footer.refunds': 'Retours',
     'footer.track': 'Suivre ma Commande',
     'footer.contact': 'Contacter l’Atelier',
+    'footer.origin': '— L’ORIGINE —',
     
     // Hero & Home
     'hero.enter': 'Entrer dans l’Archive',
@@ -320,8 +355,10 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'nav.drops': 'Drops',
     'nav.heritage': 'Heritage',
     'nav.essentials': 'Essentials',
+    'nav.seraphim': 'Seraphim',
     'nav.collections': 'Collezioni',
     'nav.story': 'Storia',
+    'nav.join': 'Unisciti',
     'nav.cart': 'Carrello',
     
     // Product CTA & Details
@@ -344,7 +381,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'drops.title': 'Drops',
     'drops.subtitle': 'Capsule essenziali a rotazione. Semplici, pesanti, create per durare.',
     'drops.type': 'Tipo',
-    'drops.collection': 'Collezione',
+    'drops.collection': 'Colezione',
     'drops.all': 'Tutti',
     'drops.tees': 'Magliette',
     'drops.hoodies': 'Felpe',
@@ -361,6 +398,10 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'cart.secure': 'Pagamento Protetto SSL 256-Bit',
     
     // Footer & Legal
+    'footer.tagline': 'Tra Luce e Ombra',
+    'footer.support': 'Supporto',
+    'footer.brand': 'Brand',
+    'footer.social': 'Social',
     'footer.rights': 'Tutti i diritti riservati.',
     'footer.privacy': 'Privacy',
     'footer.terms': 'Termini di Servizio',
@@ -368,6 +409,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'footer.refunds': 'Resi',
     'footer.track': 'Traccia Ordine',
     'footer.contact': 'Contatta Atelier',
+    'footer.origin': '— L’ORIGINE —',
     
     // Hero & Home
     'hero.enter': 'Accedi all’Archivio',
@@ -379,8 +421,10 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'nav.drops': 'Drops',
     'nav.heritage': 'Heritage',
     'nav.essentials': 'Essentials',
+    'nav.seraphim': 'Seraphim',
     'nav.collections': 'Kollektioner',
     'nav.story': 'Historia',
+    'nav.join': 'Gå med',
     'nav.cart': 'Varukorg',
     
     // Product CTA & Details
@@ -420,6 +464,10 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'cart.secure': 'Säker 256-Bit SSL Betalning',
     
     // Footer & Legal
+    'footer.tagline': 'Mellan Ljus och Skugga',
+    'footer.support': 'Support',
+    'footer.brand': 'Varumärke',
+    'footer.social': 'Socialt',
     'footer.rights': 'Alla rättigheter förbehållna.',
     'footer.privacy': 'Integritetspolicy',
     'footer.terms': 'Användarvillkor',
@@ -427,6 +475,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'footer.refunds': 'Återbetalningspolicy',
     'footer.track': 'Spåra Beställning',
     'footer.contact': 'Kontakta Ateljén',
+    'footer.origin': '— URSPRUNGET —',
     
     // Hero & Home
     'hero.enter': 'Gå till Arkivet',
