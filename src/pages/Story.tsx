@@ -89,17 +89,21 @@ export default function Story() {
             </div>
 
             <div className="pt-12">
-              <img 
-                src="/Assets/Images/HeroNew.webp" 
-                alt="Studio Atmosphere" 
-                className="w-full grayscale opacity-60 aspect-[16/9] object-cover"
-                style={{ 
-                  borderRadius: 0,
-                  filter: 'grayscale(100%) contrast(1.1) brightness(0.8)'
-                }}
-              />
-              <p className="mt-4 text-xs uppercase tracking-widest text-neutral-600">
-                FORGED IN THE COLLISION OF LIGHT &amp; SHADOW
+              <div className="relative overflow-hidden border border-neutral-800/80 bg-neutral-950">
+                <img 
+                  src="/Assets/Images/Noir 1.webp" 
+                  alt="HeavenlyNova Architectural Silhouette" 
+                  className="w-full aspect-square object-cover object-center transition-transform duration-700 hover:scale-[1.02]"
+                  style={{ 
+                    borderRadius: 0,
+                    filter: 'contrast(1.04) brightness(0.98)'
+                  }}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <p className="mt-4 text-[10px] sm:text-xs uppercase tracking-[0.25em] text-neutral-500">
+                FORGED IN LIGHT &amp; SHADOW // ARCHITECTURAL PRESENCE
               </p>
             </div>
           </motion.div>
