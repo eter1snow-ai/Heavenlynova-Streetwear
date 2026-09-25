@@ -19,18 +19,34 @@ export default function Seraphim() {
     <main className="bg-black text-white">
 
       {/* 1. HERO */}
-      <section className="min-h-screen flex flex-col items-center justify-center text-center px-6" style={{ paddingTop: '120px', paddingBottom: '120px' }}>
-        <motion.div {...fade} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '24px' }}>
-          <p style={{ fontSize: '0.62rem', letterSpacing: '0.55em', color: '#555555', lineHeight: 1.6 }} className="uppercase">
+      <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 overflow-hidden" style={{ paddingTop: '120px', paddingBottom: '120px' }}>
+        {/* Background Gothic Angel Banner */}
+        <div className="absolute inset-0 overflow-hidden">
+          <motion.img
+            initial={{ scale: 1.08, opacity: 0 }}
+            animate={{ scale: 1, opacity: 0.38 }}
+            transition={{ duration: 1.8, ease: "easeOut" }}
+            src="/Assets/Images/The Ascent/seraphim-banner.webp"
+            alt="Seraphim - The Ascent"
+            className="h-full w-full object-cover object-[center_28%] pointer-events-none select-none"
+          />
+        </div>
+
+        {/* Ambient Dark Gradient Overlays for High Contrast & Mystique */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/80 pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_20%,_rgba(0,0,0,0.75)_80%)] pointer-events-none" />
+
+        <motion.div {...fade} className="relative z-10" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '24px' }}>
+          <p style={{ fontSize: '0.62rem', letterSpacing: '0.55em', color: '#888888', lineHeight: 1.6 }} className="uppercase drop-shadow-sm">
             {s.chapter}
           </p>
-          <h1 style={{ fontSize: 'clamp(3rem, 8vw, 7rem)', fontWeight: 400, letterSpacing: '0.12em', lineHeight: 1.1, color: '#E6E6E6' }} className="uppercase">
+          <h1 style={{ fontSize: 'clamp(3.2rem, 8.5vw, 7.5rem)', fontWeight: 400, letterSpacing: '0.12em', lineHeight: 1.1, color: '#FFFFFF' }} className="uppercase drop-shadow-[0_4px_30px_rgba(0,0,0,0.95)]">
             {s.title}
           </h1>
-          <h2 style={{ fontSize: 'clamp(0.75rem, 2vw, 1rem)', fontWeight: 300, letterSpacing: '0.45em', color: '#A8A8A8', lineHeight: 1.6 }} className="uppercase">
+          <h2 style={{ fontSize: 'clamp(0.75rem, 2vw, 1rem)', fontWeight: 300, letterSpacing: '0.45em', color: '#D4D4D4', lineHeight: 1.6 }} className="uppercase drop-shadow-md">
             {s.subtitle}
           </h2>
-          <p style={{ fontSize: '0.82rem', letterSpacing: '0.15em', lineHeight: 1.8, color: '#555555', maxWidth: '420px', marginTop: '16px' }}>
+          <p style={{ fontSize: '0.82rem', letterSpacing: '0.18em', lineHeight: 1.8, color: '#A0A0A0', maxWidth: '440px', marginTop: '16px' }} className="drop-shadow-sm">
             {s.tagline}
           </p>
         </motion.div>
