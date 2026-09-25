@@ -100,21 +100,6 @@ export const products: Product[] = [
     ],
   },
   {
-    id: 'soulfull-skye-blue',
-    category: 'individuals' as Category,
-    productType: 'tee' as ProductType,
-    name: 'SOULFULL — SKYE BLUE',
-    tagline: 'Ethereal Washed Blue. A celestial frequency in heavyweight drape.',
-    description: '· EMOTIONAL IDENTITY PIECE\n· PART OF THE HERITAGE LINE\n· CELESTIAL SKY DYE\n\nBuilt for those who don\'t need to explain what they feel.\nPart of the HeavenlyNova universe.\n\nSoulfull in ethereal washed Skye Blue — a celestial hue honoring the wings of ascension, finished with archival reverse print.\n\nHeavyweight oversized boxy fit at 7.5oz cotton, drop shoulder construction, premium long-lasting print.\n\nPart of the Heritage Collection — the origin layer of HeavenlyNova.',
-    price: '$59.99',
-    priceUsd: 59.99,
-    images: [
-      '/Assets/Images/Preview/Soulfull/Soulfull Skye Blue/Soulfull Skye Blue Back.webp',
-      '/Assets/Images/Preview/Soulfull/Soulfull Skye Blue/SKye Blue ES Front.webp',
-      '/Assets/Images/Preview/Soulfull/Soulfull Skye Blue/Neck New Skye Neck Closeup.webp',
-    ],
-  },
-  {
     id: 'core-hoodie-white',
     category: 'essentials' as Category,
     productType: 'hoodie' as ProductType,
@@ -165,21 +150,6 @@ export const products: Product[] = [
       '/Assets/Images/Preview/Esential_White/White ES Front.webp',
       '/Assets/Images/Preview/Esential_White/White closeup on black.webp',
       '/Assets/Images/Preview/Esential_White/Neck Label White.webp',
-    ],
-  },
-  {
-    id: 'essentials-skye-blue',
-    category: 'essentials' as Category,
-    productType: 'tee' as ProductType,
-    name: 'Essential T-Shirt — Skye Blue',
-    tagline: 'The Celestial Foundation. Heavyweight washed blue with minimal Nova chest insignia.',
-    description: 'Boxy oversized fit with dropped shoulders and relaxed sleeves, cut from 100% heavyweight cotton at 7.5oz in washed Skye Blue.\n\nMinimal HeavenlyNova insignia on the left chest, heavy ribbed collar with double-needle stitching throughout.\n\nTrue to size for the oversized drape — size down for a closer fit. Machine wash cold, inside out. Do not tumble dry. Hang dry in shade.',
-    price: '$44.99',
-    priceUsd: 44.99,
-    images: [
-      '/Assets/Images/Preview/Esential_Skye _Blue/SKye Blue ES Front.webp',
-      '/Assets/Images/Preview/Esential_Skye _Blue/Skye Closeup on Black.webp',
-      '/Assets/Images/Preview/Esential_Skye _Blue/New Skye Neck Closeup.webp',
     ],
   },
   {
