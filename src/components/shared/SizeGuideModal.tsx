@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useLanguage } from '../../context/LanguageContext'
 
 type SizeGuideProps = {
   isOpen: boolean
@@ -45,6 +46,7 @@ const tshirtData: TshirtMeasurement[] = [
 
 export default function SizeGuideModal({ isOpen, onClose, productType }: SizeGuideProps) {
   const [unit, setUnit] = useState<'cm' | 'in'>('cm')
+  const { t } = useLanguage()
 
   return (
     <AnimatePresence>
@@ -70,7 +72,7 @@ export default function SizeGuideModal({ isOpen, onClose, productType }: SizeGui
             {/* Header */}
             <div className="flex items-center justify-between p-6 border-b border-neutral-800">
               <div className="flex items-center gap-4">
-                <h2 className="text-lg font-semibold uppercase tracking-wider">Size Guide</h2>
+                <h2 className="text-lg font-semibold uppercase tracking-wider">{t('product.size_guide', 'Size Guide')}</h2>
                 <div className="inline-flex border border-neutral-800 rounded-none p-0.5 text-[11px] uppercase tracking-wider">
                   <button
                     type="button"
@@ -114,16 +116,16 @@ export default function SizeGuideModal({ isOpen, onClose, productType }: SizeGui
                 <table className="w-full text-left border-collapse">
                   <thead>
                     <tr className="border-b border-neutral-800">
-                      <th className="py-3 px-4 text-xs font-semibold uppercase tracking-wider text-neutral-400">Size</th>
+                      <th className="py-3 px-4 text-xs font-semibold uppercase tracking-wider text-neutral-400">{t('product.size', 'Size')}</th>
                       <th className="py-3 px-4 text-xs font-semibold uppercase tracking-wider text-neutral-400">
-                        Chest Width ({unit.toUpperCase()})
+                        {t('size_guide.chest', 'Chest Width')} ({unit.toUpperCase()})
                       </th>
                       <th className="py-3 px-4 text-xs font-semibold uppercase tracking-wider text-neutral-400">
-                        Length ({unit.toUpperCase()})
+                        {t('size_guide.length', 'Length')} ({unit.toUpperCase()})
                       </th>
                       {productType === 'tshirt' && (
                         <th className="py-3 px-4 text-xs font-semibold uppercase tracking-wider text-neutral-400">
-                          Sleeve ({unit.toUpperCase()})
+                          {t('size_guide.sleeve', 'Sleeve')} ({unit.toUpperCase()})
                         </th>
                       )}
                     </tr>
@@ -161,7 +163,7 @@ export default function SizeGuideModal({ isOpen, onClose, productType }: SizeGui
 
               {/* Note */}
               <p className="mt-6 text-xs text-neutral-500 leading-relaxed">
-                All measurements are approximate and may vary slightly. Measured flat across the garment.
+                {t('size_guide.note', 'All measurements are approximate and may vary slightly. Measured flat across the garment.')}
               </p>
             </div>
           </motion.div>

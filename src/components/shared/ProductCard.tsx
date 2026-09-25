@@ -4,6 +4,8 @@ import type { Product } from '../../data/drops'
 import { useState, useMemo } from 'react'
 import { getOptimizedImageUrl } from '../../lib/utils'
 import { useCurrency } from '../../context/CurrencyContext'
+import { useLanguage } from '../../context/LanguageContext'
+import { getLocalizedProduct } from '../../data/productTranslations'
 
 type Props = {
   product: Product
@@ -13,6 +15,8 @@ type Props = {
 
 export default function ProductCard({ product, showPrice = false, className }: Props) {
   const { formatPrice } = useCurrency()
+  const { language, t } = useLanguage()
+  const localized = useMemo(() => getLocalizedProduct(product.id, language, product.tagline), [product.id, language, product.tagline])
   const front = product.images?.[0]
   const hover = product.images?.[1]
   const [variantIndex, setVariantIndex] = useState<number>(0)
@@ -98,7 +102,7 @@ export default function ProductCard({ product, showPrice = false, className }: P
           {showPrice ? (
             <>
               <p className="text-sm font-semibold tracking-wide text-white mt-2">{formatPrice(product.priceUsd)}</p>
-              <p className="text-xs opacity-70 mt-1">Worldwide shipping included</p>
+              <p className="text-xs opacity-70 mt-1">{t('product.shipping_included', 'Worldwide shipping included')}</p>
               <div className="mt-3 flex items-center gap-2">
                 {variants.filter(v => v.label !== 'var').map((v) => (
                   <button
@@ -134,7 +138,7 @@ export default function ProductCard({ product, showPrice = false, className }: P
               </div>
             </>
           ) : (
-            <p className="mt-2 text-xs text-neutral-400 leading-relaxed">{product.tagline}</p>
+            <p className="mt-2 text-xs text-neutral-400 leading-relaxed">{localized.tagline || product.tagline}</p>
           )}
         </div>
       </motion.article>

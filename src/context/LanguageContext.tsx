@@ -39,6 +39,21 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'product.size': 'Size',
     'product.universe': 'Part of the HeavenlyNova universe.',
     'product.curated_sizing': 'True to size for oversized drape — size down for a closer fit.',
+    'product.shipping_included': 'Worldwide shipping included',
+    'size_guide.chest': 'Chest Width',
+    'size_guide.length': 'Length',
+    'size_guide.sleeve': 'Sleeve',
+    'size_guide.note': 'All measurements are approximate and may vary slightly. Measured flat across the garment.',
+    
+    // Drops
+    'drops.title': 'Drops',
+    'drops.subtitle': 'Core capsules in rotation. Simple, heavyweight, built to last.',
+    'drops.type': 'Type',
+    'drops.collection': 'Collection',
+    'drops.all': 'All',
+    'drops.tees': 'Tees',
+    'drops.hoodies': 'Hoodies',
+    'drops.none': 'No products found.',
     
     // Cart
     'cart.title': 'Your Artifacts',
@@ -83,6 +98,21 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'product.size': 'Mărime',
     'product.universe': 'Parte din universul HeavenlyNova.',
     'product.curated_sizing': 'Mărime standard pentru croială oversized lejeră — alege o mărime mai mică pentru o potrivire clasică.',
+    'product.shipping_included': 'Livrare internațională inclusă',
+    'size_guide.chest': 'Lățime Piept',
+    'size_guide.length': 'Lungime',
+    'size_guide.sleeve': 'Mânecă',
+    'size_guide.note': 'Toate măsurătorile sunt aproximative și pot varia ușor. Măsurat pe suprafață plană.',
+    
+    // Drops
+    'drops.title': 'Drops',
+    'drops.subtitle': 'Capsule de bază în rotație. Simple, grele, create să reziste.',
+    'drops.type': 'Tip',
+    'drops.collection': 'Colecție',
+    'drops.all': 'Toate',
+    'drops.tees': 'Tricouri',
+    'drops.hoodies': 'Hanorace',
+    'drops.none': 'Niciun produs găsit.',
     
     // Cart
     'cart.title': 'Piesele Tale',
@@ -127,6 +157,21 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'product.size': 'Talla',
     'product.universe': 'Parte del universo HeavenlyNova.',
     'product.curated_sizing': 'Corte boxy oversized — elige una talla menos si prefieres un ajuste clásico.',
+    'product.shipping_included': 'Envío mundial incluido',
+    'size_guide.chest': 'Ancho Pecho',
+    'size_guide.length': 'Largo',
+    'size_guide.sleeve': 'Manga',
+    'size_guide.note': 'Todas las medidas son aproximadas y pueden variar ligeramente. Medido en plano.',
+    
+    // Drops
+    'drops.title': 'Drops',
+    'drops.subtitle': 'Cápsulas esenciales en rotación. Simples, pesadas, hechas para durar.',
+    'drops.type': 'Tipo',
+    'drops.collection': 'Colección',
+    'drops.all': 'Todos',
+    'drops.tees': 'Camisetas',
+    'drops.hoodies': 'Sudaderas',
+    'drops.none': 'No se encontraron productos.',
     
     // Cart
     'cart.title': 'Tus Piezas',
@@ -171,6 +216,21 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'product.size': 'Größe',
     'product.universe': 'Teil des HeavenlyNova Universums.',
     'product.curated_sizing': 'Fällt oversized aus — für reguläre Passform eine Größe kleiner wählen.',
+    'product.shipping_included': 'Weltweiter Versand inklusive',
+    'size_guide.chest': 'Brustweite',
+    'size_guide.length': 'Länge',
+    'size_guide.sleeve': 'Ärmellänge',
+    'size_guide.note': 'Alle Maße sind Richtwerte und können leicht variieren. Flach liegend gemessen.',
+    
+    // Drops
+    'drops.title': 'Drops',
+    'drops.subtitle': 'Kapselkollektionen in Rotation. Schlicht, schwer, für die Ewigkeit gebaut.',
+    'drops.type': 'Typ',
+    'drops.collection': 'Kollektion',
+    'drops.all': 'Alle',
+    'drops.tees': 'T-Shirts',
+    'drops.hoodies': 'Hoodies',
+    'drops.none': 'Keine Produkte gefunden.',
     
     // Cart
     'cart.title': 'Deine Artefakte',
@@ -215,6 +275,21 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'product.size': 'Taille',
     'product.universe': "Fait partie de l'univers HeavenlyNova.",
     'product.curated_sizing': 'Coupe oversize streetwear — prenez une taille en dessous pour une coupe classique.',
+    'product.shipping_included': 'Livraison mondiale incluse',
+    'size_guide.chest': 'Largeur Poitrine',
+    'size_guide.length': 'Longueur',
+    'size_guide.sleeve': 'Manche',
+    'size_guide.note': 'Toutes les mesures sont approximatives et peuvent varier légèrement. Mesuré à plat.',
+    
+    // Drops
+    'drops.title': 'Drops',
+    'drops.subtitle': 'Capsules essentielles en rotation. Épurées, denses, taillées pour durer.',
+    'drops.type': 'Type',
+    'drops.collection': 'Collection',
+    'drops.all': 'Tous',
+    'drops.tees': 'T-shirts',
+    'drops.hoodies': 'Sweats',
+    'drops.none': 'Aucun produit trouvé.',
     
     // Cart
     'cart.title': 'Vos Pièces',
@@ -259,6 +334,21 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'product.size': 'Taglia',
     'product.universe': "Parte dell'universo HeavenlyNova.",
     'product.curated_sizing': 'Vestibilità oversize — scegli una taglia in meno per un fit classico.',
+    'product.shipping_included': 'Spedizione mondiale inclusa',
+    'size_guide.chest': 'Larghezza Torace',
+    'size_guide.length': 'Lunghezza',
+    'size_guide.sleeve': 'Manica',
+    'size_guide.note': 'Tutte le misure sono approssimative e possono variare leggermente. Misurato in piano.',
+    
+    // Drops
+    'drops.title': 'Drops',
+    'drops.subtitle': 'Capsule essenziali a rotazione. Semplici, pesanti, create per durare.',
+    'drops.type': 'Tipo',
+    'drops.collection': 'Collezione',
+    'drops.all': 'Tutti',
+    'drops.tees': 'Magliette',
+    'drops.hoodies': 'Felpe',
+    'drops.none': 'Nessun prodotto trovato.',
     
     // Cart
     'cart.title': 'I Tuoi Capi',
@@ -303,6 +393,21 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'product.size': 'Storlek',
     'product.universe': 'En del av HeavenlyNova universumet.',
     'product.curated_sizing': 'Oversized passform — välj en storlek mindre för klassisk passform.',
+    'product.shipping_included': 'Världsomspännande frakt ingår',
+    'size_guide.chest': 'Bröstbredd',
+    'size_guide.length': 'Längd',
+    'size_guide.sleeve': 'Ärmlängd',
+    'size_guide.note': 'Alla mått är ungefärliga och kan variera något. Mätt plant.',
+    
+    // Drops
+    'drops.title': 'Drops',
+    'drops.subtitle': 'Kärnkapslar i rotation. Rena, tunga, skapade för att bestå.',
+    'drops.type': 'Typ',
+    'drops.collection': 'Kollektion',
+    'drops.all': 'Alla',
+    'drops.tees': 'T-shirts',
+    'drops.hoodies': 'Hoodies',
+    'drops.none': 'Inga produkter hittades.',
     
     // Cart
     'cart.title': 'Dina Plagg',

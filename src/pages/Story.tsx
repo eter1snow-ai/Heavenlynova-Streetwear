@@ -1,9 +1,13 @@
 import { motion } from 'framer-motion'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useLanguage } from '../context/LanguageContext'
+import { STORY_TRANSLATIONS } from '../data/storyTranslations'
 
 export default function Story() {
   const navigate = useNavigate()
+  const { language } = useLanguage()
+  const s = STORY_TRANSLATIONS[language] || STORY_TRANSLATIONS.en
 
   const backImage = '/Assets/Images/Preview/The Origin Piece/The Origin Piece Back.webp'
   const frontImage = '/Assets/Images/Preview/The Origin Piece/Original Esentials Black Front.webp'
@@ -43,9 +47,9 @@ export default function Story() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: "easeOut" }}
-              className="text-5xl sm:text-6xl md:text-8xl font-bold uppercase tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60"
+              className="text-5xl sm:text-6xl md:text-8xl font-bold uppercase tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60 whitespace-pre-line"
             >
-              Between <br /> Light &amp; Shadow
+              {s.headerTitle}
             </motion.h1>
           </div>
         </div>
@@ -59,7 +63,7 @@ export default function Story() {
           <div className="hidden lg:block">
             <div className="sticky top-24">
                <p className="text-xs uppercase tracking-[0.3em] text-neutral-500">
-                The Origin Story
+                {s.originLabel}
               </p>
             </div>
           </div>
@@ -72,20 +76,13 @@ export default function Story() {
             className="max-w-[700px] space-y-8"
           >
             <p className="text-xl sm:text-2xl font-light leading-relaxed text-white">
-              Our story began in the stars, with a love so immense it brought a wounded dragon and a luminous angel together.
+              {s.introQuote}
             </p>
 
             <div className="space-y-6 text-white leading-relaxed text-base sm:text-lg">
-              <p>
-                This wasn't a fight, but a beautiful, volatile dance of healing—a collision of light and shadow that birthed a new star: the <span className="text-white">HeavenlyNova</span>.
-              </p>
-              <p>
-                This is our inspiration. We take the threads of this cosmic union and weave them into designs that are both powerful and delicate. 
-                We believe that true strength lies in the balance between the rough and the refined, the darkness and the light.
-              </p>
-              <p>
-                Each piece we create is an artifact of this union-forged for those who embrace their own shadows as much as their light.
-              </p>
+              <p>{s.para1}</p>
+              <p>{s.para2}</p>
+              <p>{s.para3}</p>
             </div>
 
             <div className="pt-12">
@@ -126,50 +123,24 @@ export default function Story() {
       >
         <div className="mx-auto max-w-[1300px] px-6 lg:px-12 py-24 sm:py-32">
           <p className="text-xs uppercase tracking-[0.45em] text-neutral-600 mb-12">
-            Chapter /000 — Origin Protocol
+            {s.chapterTitle}
           </p>
           <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:gap-24">
             <div className="space-y-8 text-neutral-300 leading-relaxed text-base sm:text-lg">
-              <p>
-                Before the first drop, before the first stitch, there was a signal. Chapter /000 is not a product — it is a protocol.
-                The moment that precedes everything: the instant before the collision, when light and shadow recognized each other
-                for the first time and understood they were not opposites, but complements.
-              </p>
-              <p>
-                The Origin Protocol marks the beginning of a language that HeavenlyNova speaks through fabric, weight, and design.
-                It is not about what you wear. It is about what you carry — the fractures, the clarity, the quiet knowing
-                that something in you has always been reaching toward the light.
-              </p>
-              <p>
-                Those who find Chapter /000 are not looking for streetwear. They are looking for a signal that they are not alone
-                in the void. This is that signal. The First Light. The original frequency from which everything else radiates.
-              </p>
-              <p>
-                HeavenlyNova was built from this origin — raw, instinctive, and unapologetically present.
-                Every piece that follows carries a fragment of this first moment, encoded in heavyweight cotton and quiet design.
-              </p>
+              <p>{s.chapterPara1}</p>
+              <p>{s.chapterPara2}</p>
+              <p>{s.chapterPara3}</p>
+              <p>{s.chapterPara4}</p>
             </div>
             <div className="space-y-4 text-neutral-500 text-sm leading-relaxed">
               <p className="text-xs uppercase tracking-[0.35em] text-neutral-700 mb-6">
-                The First Signal
+                {s.signalLabel}
               </p>
-              <p>
-                Chapter /000 exists at the intersection of personal mythology and physical craft.
-                It is the story of becoming something through the act of creating —
-                of finding that the universe responds not to force, but to presence.
-              </p>
-              <p>
-                The wounded dragon and the luminous angel: two forces that, in their collision,
-                produced not destruction but a new kind of light. A HeavenlyNova — a star born
-                from the energy of two worlds merging.
-              </p>
-              <p>
-                This is why every piece we make is built to last. Not as a trend, but as an artifact.
-                A quiet marker of a moment when something shifted — when you decided to carry the light
-                instead of waiting for it to arrive.
-              </p>
+              <p>{s.signalPara1}</p>
+              <p>{s.signalPara2}</p>
+              <p>{s.signalPara3}</p>
               <p className="text-xs uppercase tracking-[0.3em] text-neutral-700 pt-6 border-t border-white/5">
-                Chapter /000 — The First Signal — Origin Protocol
+                {s.signalFooter}
               </p>
             </div>
           </div>
@@ -186,7 +157,7 @@ export default function Story() {
         <div className="mx-auto max-w-[1300px] px-6 lg:px-12 py-16 sm:py-24">
           <div className="mb-10">
             <p className="text-xs sm:text-sm leading-relaxed text-neutral-400 opacity-50 tracking-widest">
-              Those who reach the end carry the first symbol.
+              {s.exclusiveSymbol}
             </p>
           </div>
           <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] items-stretch">
@@ -214,16 +185,16 @@ export default function Story() {
             <div className="flex flex-col justify-between space-y-6">
               <div className="space-y-4">
                 <p className="text-xs uppercase tracking-[0.3em] text-neutral-500">
-                  Exclusive Item
+                  {s.exclusiveLabel}
                 </p>
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif tracking-tight uppercase text-white">
-                  THE ORIGIN PIECE
+                  {s.exclusivePieceTitle}
                 </h2>
                 <p className="text-xs uppercase tracking-[0.25em] text-neutral-400">
-                  Available only to those who seek.
+                  {s.exclusiveSeek}
                 </p>
                 <p className="mt-4 text-sm sm:text-base leading-relaxed text-neutral-300 max-w-md">
-                  Origin Tee - Chapter 000 is reserved for those who reach the end. A quiet signal that you were here first.
+                  {s.exclusiveDesc}
                 </p>
               </div>
               <div>
@@ -232,7 +203,7 @@ export default function Story() {
                   className="inline-flex items-center border border-white/40 bg-transparent px-6 py-3 text-xs font-semibold uppercase tracking-[0.24em] text-white transition-soft hover:border-white hover:bg-white hover:text-black"
                   style={{ borderRadius: 0 }}
                 >
-                  Claim Design
+                  {s.claimBtn}
                 </button>
               </div>
             </div>

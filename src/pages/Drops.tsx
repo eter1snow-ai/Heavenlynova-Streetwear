@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import ProductCard from '../components/shared/ProductCard'
 import { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
+import { useLanguage } from '../context/LanguageContext'
 
 type TypeFilter = 'all' | 'tee' | 'hoodie'
 type CollectionFilter = 'all' | 'flagship' | 'individuals' | 'essentials'
@@ -15,6 +16,7 @@ const collectionLabels: Record<string, string> = {
 }
 
 export default function Drops() {
+  const { t } = useLanguage()
   const location = useLocation()
   const [typeFilter, setTypeFilter] = useState<TypeFilter>('all')
   const [collectionFilter, setCollectionFilter] = useState<CollectionFilter>('all')
@@ -48,33 +50,33 @@ export default function Drops() {
             transition={{ duration: 0.6 }}
             className="text-3xl sm:text-4xl md:text-5xl font-bold uppercase leading-tight tracking-tight"
           >
-            Drops
+            {t('drops.title', 'Drops')}
           </motion.h1>
           <p className="mt-4 max-w-2xl text-neutral-300 leading-relaxed">
-            Core capsules in rotation. Simple, heavyweight, built to last.
+            {t('drops.subtitle', 'Core capsules in rotation. Simple, heavyweight, built to last.')}
           </p>
 
           {/* Filters */}
           <div className="mt-8 flex flex-wrap gap-6">
             <div className="flex flex-wrap gap-2 items-center">
-              <span className="text-[10px] uppercase tracking-widest text-neutral-500 mr-1">Type</span>
-              {(['all', 'tee', 'hoodie'] as TypeFilter[]).map((t) => (
-                <button key={t} onClick={() => {
-                  setTypeFilter(t)
-                  if (t !== 'all') setCollectionFilter('all')
-                }} className={filterBtn(typeFilter === t)} style={{ borderRadius: 0 }}>
-                  {t === 'all' ? 'All' : t === 'tee' ? 'Tees' : 'Hoodies'}
+              <span className="text-[10px] uppercase tracking-widest text-neutral-500 mr-1">{t('drops.type', 'Type')}</span>
+              {(['all', 'tee', 'hoodie'] as TypeFilter[]).map((tVal) => (
+                <button key={tVal} onClick={() => {
+                  setTypeFilter(tVal)
+                  if (tVal !== 'all') setCollectionFilter('all')
+                }} className={filterBtn(typeFilter === tVal)} style={{ borderRadius: 0 }}>
+                  {tVal === 'all' ? t('drops.all', 'All') : tVal === 'tee' ? t('drops.tees', 'Tees') : t('drops.hoodies', 'Hoodies')}
                 </button>
               ))}
             </div>
             <div className="flex flex-wrap gap-2 items-center">
-              <span className="text-[10px] uppercase tracking-widest text-neutral-500 mr-1">Collection</span>
+              <span className="text-[10px] uppercase tracking-widest text-neutral-500 mr-1">{t('drops.collection', 'Collection')}</span>
               {(['all', 'flagship', 'individuals', 'essentials'] as CollectionFilter[]).map((c) => (
                 <button key={c} onClick={() => {
                   setCollectionFilter(c)
                   if (c !== 'all') setTypeFilter('all')
                 }} className={filterBtn(collectionFilter === c)} style={{ borderRadius: 0 }}>
-                  {collectionLabels[c]}
+                  {c === 'all' ? t('drops.all', 'All') : collectionLabels[c]}
                 </button>
               ))}
             </div>
@@ -85,7 +87,7 @@ export default function Drops() {
       <section className="bg-neutral-950">
         <div className="mx-auto w-full max-w-[1300px] px-6 lg:px-12 py-12 sm:py-16 lg:py-24">
           {filtered.length === 0 ? (
-            <p className="text-neutral-500 text-sm uppercase tracking-widest">No products found.</p>
+            <p className="text-neutral-500 text-sm uppercase tracking-widest">{t('drops.none', 'No products found.')}</p>
           ) : (
             <div className="flex flex-wrap justify-center gap-8">
               {filtered.map((p) => (

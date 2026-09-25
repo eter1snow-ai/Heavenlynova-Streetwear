@@ -12,6 +12,7 @@ import type { NormalizedProduct } from '../lib/products'
 import { getOptimizedImageUrl } from '../lib/utils'
 import { applySEO } from '../hooks/useSEO'
 import { products as localDrops } from '../data/drops'
+import { getLocalizedProduct } from '../data/productTranslations'
 
 // ─── SEO overrides per produs ─────────────────────────────────────────────────
 // Produsele cu conținut editorial distinct primesc title/desc specifice.
@@ -57,13 +58,18 @@ export default function ProductDetail() {
   const { productId } = useParams()
   const { addItem, isLoading } = useCart()
   const { formatPrice, currency } = useCurrency()
-  const { t } = useLanguage()
+  const { language, t } = useLanguage()
 
   const [showSizeError, setShowSizeError] = useState(false)
 
   // [CHANGED] Produs async prin getProduct() — înlocuiește getProductById() sincron
   const [product, setProduct] = useState<NormalizedProduct | null>(null)
   const [loading, setLoading] = useState(true)
+
+  const localized = useMemo(() => {
+    if (!product) return null
+    return getLocalizedProduct(product.id, language, product.tagline, product.description)
+  }, [product, language])
 
   useEffect(() => {
     setLoading(true)
@@ -309,7 +315,7 @@ export default function ProductDetail() {
               {(() => {
                 const localMock = localDrops.find((m) => m.id === product.id || m.id === productId)
                 const displayTitle = product.id === 'broken-hoodie' ? 'BROKEN HOODIE' : isSeraphim ? 'Seraphim' : (localMock?.name || product.name)
-                const displayTagline = localMock?.tagline || product.tagline
+                const displayTagline = localized?.tagline || localMock?.tagline || product.tagline
 
                 return (
                   <>
@@ -460,13 +466,13 @@ export default function ProductDetail() {
               {isLoading ? t('product.adding') : showSizeError ? t('product.select_size') : t('product.claim')}
             </button>
 
-            {!product.description.includes('Part of the HeavenlyNova universe') && (
+            {!((localized?.description || product.description).includes('Part of the HeavenlyNova universe')) && (
               <p style={{ fontSize: '0.62rem', letterSpacing: '0.3em', color: '#333333', lineHeight: 1.6 }} className="uppercase">
                 {t('product.universe')}
               </p>
             )}
 
-            <p className="text-sm md:text-base text-neutral-300 leading-relaxed max-w-[90%] md:max-w-none whitespace-pre-wrap">{product.description}</p>
+            <p className="text-sm md:text-base text-neutral-300 leading-relaxed max-w-[90%] md:max-w-none whitespace-pre-wrap">{localized?.description || product.description}</p>
           </div>
         </div>
       </motion.section>
@@ -489,7 +495,7 @@ export default function ProductDetail() {
                 {product.name}
               </p>
               <p style={{ fontSize: '0.65rem', letterSpacing: '0.3em', color: '#333333', lineHeight: 1.6, marginTop: '8px' }} className="uppercase">
-                {product.tagline}
+                {localized?.tagline || product.tagline}
               </p>
             </div>
           </div>
