@@ -27,6 +27,7 @@ import { useEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { applySEO } from './hooks/useSEO'
 import { Analytics } from '@vercel/analytics/react'
+import { trackPinterestPageView } from './lib/pinterest'
 
 // ─── SEO config per-rută ────────────────────────────────────────────────────
 // Paginile de produs (/product/:id) își setează SEO-ul intern în ProductDetail.
@@ -105,6 +106,12 @@ const ROUTE_SEO: Record<string, Parameters<typeof applySEO>[0]> = {
     description: 'Your HeavenlyNova piece is in production.',
     noindex: true,
   },
+  '/success': {
+    path: '/success',
+    title: 'Order Confirmed | HeavenlyNova',
+    description: 'Your HeavenlyNova piece is in production.',
+    noindex: true,
+  },
 }
 
 // ─── Components ──────────────────────────────────────────────────────────────
@@ -141,6 +148,9 @@ function AnimatedRoutes() {
       ;(window as any).fbq('track', 'PageView')
     }
 
+    // Pinterest Tag page tracking on SPA route change
+    trackPinterestPageView()
+
     const isProductRoute = location.pathname.startsWith('/product/')
     if (!isProductRoute) {
       const seoConfig = ROUTE_SEO[location.pathname]
@@ -174,6 +184,7 @@ function AnimatedRoutes() {
         <Route path="/refund-policy" element={<MotionPage><RefundPolicy /></MotionPage>} />
         <Route path="/track-order" element={<MotionPage><TrackOrder /></MotionPage>} />
         <Route path="/order-success" element={<MotionPage><OrderSuccess /></MotionPage>} />
+        <Route path="/success" element={<MotionPage><OrderSuccess /></MotionPage>} />
         <Route path="/product/:productId" element={<MotionPage><ProductDetail /></MotionPage>} />
         <Route path="*" element={<MotionPage><NotFound /></MotionPage>} />
       </Routes>

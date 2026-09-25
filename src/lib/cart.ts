@@ -19,6 +19,7 @@
  */
 
 import { formatMoney } from './utils'
+import { trackPinterestInitiateCheckout } from './pinterest'
 
 // ─── Tipuri ───────────────────────────────────────────────────────────────────
 
@@ -223,15 +224,47 @@ export async function goToCheckout(
   }))
 
   try {
+    const subtotalUsd = lines.reduce((acc, l) => acc + l.priceUsd * l.quantity, 0)
+    const totalQuantity = lines.reduce((acc, l) => acc + l.quantity, 0)
+    const lineItemsData = lines.map((l) => ({
+      product_id: l.productId,
+      product_name: l.productTitle,
+      product_price: l.priceUsd,
+      product_quantity: l.quantity,
+    }))
+
     // Meta Pixel: InitiateCheckout
     if (typeof window !== 'undefined' && (window as any).fbq) {
-      const subtotalUsd = lines.reduce((acc, l) => acc + l.priceUsd * l.quantity, 0)
       ;(window as any).fbq('track', 'InitiateCheckout', {
         value: subtotalUsd,
         currency: currency,
-        num_items: lines.reduce((acc, l) => acc + l.quantity, 0),
+        num_items: totalQuantity,
         content_ids: lines.map((l) => l.variantId),
       })
+    }
+
+    // Pinterest Tag: InitiateCheckout
+    trackPinterestInitiateCheckout({
+      value: subtotalUsd,
+      currency: currency,
+      orderQuantity: totalQuantity,
+      lineItems: lineItemsData,
+    })
+
+    // Salvăm datele comenzii în localStorage pentru tracking Checkout pe /order-success sau /success
+    try {
+      localStorage.setItem(
+        'hn_pending_checkout',
+        JSON.stringify({
+          value: subtotalUsd,
+          currency: currency,
+          orderQuantity: totalQuantity,
+          lineItems: lineItemsData,
+          timestamp: Date.now(),
+        })
+      )
+    } catch {
+      /* noop */
     }
 
     const response = await fetch('/api/create-checkout-session', {

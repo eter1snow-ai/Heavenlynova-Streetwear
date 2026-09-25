@@ -13,6 +13,7 @@ import { getOptimizedImageUrl } from '../lib/utils'
 import { applySEO } from '../hooks/useSEO'
 import { products as localDrops } from '../data/drops'
 import { getLocalizedProduct } from '../data/productTranslations'
+import { trackPinterestPageVisit, trackPinterestAddToCart } from '../lib/pinterest'
 
 // ─── SEO overrides per produs ─────────────────────────────────────────────────
 // Produsele cu conținut editorial distinct primesc title/desc specifice.
@@ -120,6 +121,15 @@ export default function ProductDetail() {
         currency: currency,
       })
     }
+
+    // Pinterest Tag: PageVisit
+    trackPinterestPageVisit({
+      productId: product.id,
+      productName: product.name,
+      productPrice: product.priceUsd,
+      productCategory: product.category,
+      currency: currency,
+    })
   }, [product, productId, currency, formatPrice])
 
   const [size, setSize] = useState<string>(() => {
@@ -457,6 +467,16 @@ export default function ProductDetail() {
                       content_type: 'product',
                     })
                   }
+
+                  // Pinterest Tag: AddToCart
+                  trackPinterestAddToCart({
+                    productId: product.id,
+                    productName: product.name,
+                    productPrice: product.priceUsd,
+                    productCategory: product.category,
+                    quantity: 1,
+                    currency: currency,
+                  })
                 }
               }}
               disabled={isLoading}
