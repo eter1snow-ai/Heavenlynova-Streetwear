@@ -40,6 +40,7 @@ const tshirtData: TshirtMeasurement[] = [
   { size: 'L',   chestCm: '55.0 cm', lengthCm: '78.0 cm', sleeveCm: '23.0 cm', chestIn: '21.7 in', lengthIn: '30.7 in', sleeveIn: '9.1 in' },
   { size: 'XL',  chestCm: '60.0 cm', lengthCm: '79.0 cm', sleeveCm: '27.0 cm', chestIn: '23.6 in', lengthIn: '31.1 in', sleeveIn: '10.6 in' },
   { size: '2XL', chestCm: '65.0 cm', lengthCm: '83.0 cm', sleeveCm: '30.0 cm', chestIn: '25.6 in', lengthIn: '32.7 in', sleeveIn: '11.8 in' },
+  { size: '3XL', chestCm: '70.0 cm', lengthCm: '86.0 cm', sleeveCm: '32.0 cm', chestIn: '27.6 in', lengthIn: '33.9 in', sleeveIn: '12.6 in' },
 ]
 
 export default function SizeGuideModal({ isOpen, onClose, productType }: SizeGuideProps) {

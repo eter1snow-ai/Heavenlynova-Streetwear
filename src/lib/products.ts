@@ -43,7 +43,7 @@ export type NormalizedProduct = {
 
 // ─── Dimensiuni disponibile ────────────────────────────────────────────────────
 
-const SIZES_TEE    = ['S', 'M', 'L', 'XL', 'XXL']
+const SIZES_TEE    = ['S', 'M', 'L', 'XL', 'XXL', '3XL']
 const SIZES_HOODIE = ['S', 'M', 'L', 'XL', 'XXL', '3XL']
 
 function getSizesForProduct(p: Product): string[] {

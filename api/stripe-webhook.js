@@ -63,6 +63,7 @@ const PRINTIFY_PRODUCT_MAP = {
         XL:    '30825576690655714896',
         XXL:   '21708063790067979334',
         '2XL': '21708063790067979334',
+        '3XL': '75167445498081411786',
       },
       variants: {
         XS: 117443, // Fallback la S dacă cineva selectează XS
@@ -72,6 +73,7 @@ const PRINTIFY_PRODUCT_MAP = {
         XL: 117444,
         XXL: 117437,
         '2XL': 117437,
+        '3XL': 117438,
       },
     },
     eu: {
@@ -119,6 +121,7 @@ const PRINTIFY_PRODUCT_MAP = {
         XL: 117608,
         XXL: 117609,
         '2XL': 117609,
+        '3XL': 117610,
       },
     },
     eu: {
