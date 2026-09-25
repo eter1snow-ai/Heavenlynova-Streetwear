@@ -503,6 +503,93 @@ const PRINTIFY_PRODUCT_MAP = {
       },
     },
   },
+
+  'soulfull-white': {
+    us: {
+      product_id: '6ab215744f698da18b01ae9c',
+      variants: {
+        XS: 117605,
+        S: 117605,
+        M: 117606,
+        L: 117607,
+        XL: 117608,
+        XXL: 117609,
+        '2XL': 117609,
+        '3XL': 117610,
+      },
+    },
+    eu: {
+      product_id: '6ab3578c7d5ed2acdf0b4588',
+      variants: {
+        XS: 116303,
+        S: 116303,
+        M: 116304,
+        L: 116305,
+        XL: 116306,
+        XXL: 116307,
+        '2XL': 116307,
+        '3XL': 116308,
+      },
+    },
+  },
+
+  'soulfull-skye-blue': {
+    us: {
+      product_id: '6ab29adcfe1948f8e50845d0',
+      variants: {
+        XS: 117443,
+        S: 117443,
+        M: 117442,
+        L: 117441,
+        XL: 117444,
+        XXL: 117437,
+        '2XL': 117437,
+        '3XL': 117438,
+      },
+    },
+    eu: {
+      product_id: '6ab3561aeccd60519b0e46df',
+      variants: {
+        XS: 112804,
+        S: 112804,
+        M: 112805,
+        L: 112806,
+        XL: 112807,
+        XXL: 112811,
+        '2XL': 112811,
+        '3XL': 112808,
+      },
+    },
+  },
+
+  'essentials-skye-blue': {
+    us: {
+      product_id: '6aae1606905b342a3c0d43c5',
+      variants: {
+        XS: 117443,
+        S: 117443,
+        M: 117442,
+        L: 117441,
+        XL: 117444,
+        XXL: 117437,
+        '2XL': 117437,
+        '3XL': 117438,
+      },
+    },
+    eu: {
+      product_id: '6ab356f9aa5d8e79340ffd58',
+      variants: {
+        XS: 112804,
+        S: 112804,
+        M: 112805,
+        L: 112806,
+        XL: 112807,
+        XXL: 112811,
+        '2XL': 112811,
+        '3XL': 112808,
+      },
+    },
+  },
 }
 
 // ─── Țări UE (non-US routing) ─────────────────────────────────────────────────

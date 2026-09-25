@@ -22,6 +22,7 @@ export default function ProductCard({ product, showPrice = false, className }: P
       if (/green/.test(file)) return { label: 'green', hex: '#1f3a28', text: '#ffffff' }
       if (/white/.test(file)) return { label: 'white', hex: '#ffffff', text: '#000000', border: '#e5e5e5' }
       if (/creme|cream/.test(file)) return { label: 'creme', hex: '#e8dfcf', text: '#000000', border: '#cfc7b4' }
+      if (/skye|blue/i.test(file)) return { label: 'skye blue', hex: '#93b5d8', text: '#000000', border: '#7fa3c8' }
       if (/black/.test(file)) return { label: 'black', hex: '#0b0b0b', text: '#ffffff' }
       return { label: 'var', hex: '#888888', text: '#ffffff' }
     }

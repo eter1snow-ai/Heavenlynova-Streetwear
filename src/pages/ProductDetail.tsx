@@ -33,6 +33,18 @@ const PRODUCT_SEO_OVERRIDES: Record<string, { title: string; description: string
     title: 'SOULFULL — Black Heavyweight Tee (7.5oz) | HeavenlyNova',
     description: 'Not everything needs to be loud to be felt. Soulfull is a quiet statement forged from heavyweight 255 GSM cotton. Part of the Heritage Collection.',
   },
+  'soulfull-white': {
+    title: 'SOULFULL White — Heavyweight Tee (7.5oz) | HeavenlyNova',
+    description: 'Archival black seraphim ink across pristine chalk-white 255 GSM heavyweight cotton. Part of the Heritage Collection.',
+  },
+  'soulfull-skye-blue': {
+    title: 'SOULFULL Skye Blue — Heavyweight Tee (7.5oz) | HeavenlyNova',
+    description: 'Ethereal Skye Blue wash with contrast black seraphim ink on 255 GSM heavyweight cotton. Part of the Heritage Collection.',
+  },
+  'essentials-skye-blue': {
+    title: 'ESSENTIALS Skye Blue — Minimal Heavyweight Tee (7.5oz) | HeavenlyNova',
+    description: 'Subtle Nova insignia embroidered chest detail on washed Skye Blue heavyweight cotton. Part of the Essentials Line.',
+  },
   'soulfull-hoodie': {
     title: 'SOULFULL Hoodie | Heritage Line | HeavenlyNova',
     description: 'SOULFULL Hoodie. Part of the Heritage Line. 350 GSM heavyweight organic cotton. Structured silhouette.',
@@ -124,6 +136,7 @@ export default function ProductDetail() {
       if (/green/.test(file)) return { label: 'green', hex: '#1f3a28', text: '#ffffff' }
       if (/white/.test(file)) return { label: 'white', hex: '#ffffff', text: '#000000', border: '#e5e5e5' }
       if (/creme|cream/.test(file)) return { label: 'creme', hex: '#e8dfcf', text: '#000000', border: '#cfc7b4' }
+      if (/skye|blue/i.test(file)) return { label: 'skye blue', hex: '#93b5d8', text: '#000000', border: '#7fa3c8' }
       if (/black|hoodie|save/i.test(file)) return { label: 'black', hex: '#0b0b0b', text: '#ffffff' }
       return { label: 'var', hex: '#888888', text: '#ffffff' }
     }
