@@ -30,110 +30,148 @@ export default function RefundPolicy() {
 
   return (
     <main className="min-h-screen bg-black text-white">
-      <div className="legal-policy-container" style={{ maxWidth: '800px', margin: '0 auto', padding: '120px 20px 40px', lineHeight: 1.6, overflowX: 'hidden' }}>
-        <h1 style={{ textTransform: 'uppercase', marginBottom: '10px' }}>Refund Policy</h1>
-        <p><strong>Last updated:</strong> October 2, 2025</p>
+      <div className="legal-policy-container" style={{ maxWidth: '800px', margin: '0 auto', padding: '120px 20px 60px', lineHeight: 1.7, overflowX: 'hidden' }}>
+        <h1 style={{ textTransform: 'uppercase', marginBottom: '10px', fontSize: '2rem', letterSpacing: '0.08em', fontWeight: '500' }}>
+          Refund &amp; Return Policy
+        </h1>
+        <p style={{ opacity: 0.7, fontSize: '0.9rem' }}>
+          <strong>Last updated:</strong> March 2026
+        </p>
 
-        <div style={{ height: '1px', backgroundColor: '#333333', margin: '40px 0' }} />
+        <div style={{ height: '1px', backgroundColor: '#333333', margin: '35px 0' }} />
 
-        <h3 style={{ marginTop: '30px', textTransform: 'uppercase' }}>Overview</h3>
-        <p>At HeavenlyNova, every piece is made to order — created individually for you once your order is placed. Because of this, our return policy is slightly different from traditional retail.</p>
-        <p>That said, we stand behind the quality of every piece.</p>
+        {/* 1. OVERVIEW & PHILOSOPHY */}
+        <h3 style={{ marginTop: '30px', textTransform: 'uppercase', letterSpacing: '0.06em', fontSize: '1.1rem' }}>
+          1. Overview &amp; Made-to-Order Model
+        </h3>
+        <p>
+          At HeavenlyNova, every artifact is <strong>made to order</strong> — individually printed, precision-cured, and tailored once your payment is confirmed. By operating without bulk pre-warehousing, we reduce environmental waste and ensure meticulous quality control on every heavyweight textile.
+        </p>
+        <p style={{ marginTop: '10px' }}>
+          Because every piece is manufactured custom for the buyer, our cancellation and return procedures adhere strictly to international e-commerce regulations and European consumer protection directives.
+        </p>
 
-        <div style={{ height: '1px', backgroundColor: '#333333', margin: '40px 0' }} />
+        <div style={{ height: '1px', backgroundColor: '#333333', margin: '35px 0' }} />
 
-        <h3 style={{ marginTop: '30px', textTransform: 'uppercase' }}>14-Day Return Window</h3>
-        <p>You have <strong>14 days from the date of delivery</strong> to request a return.</p>
-
-        <div style={{ height: '1px', backgroundColor: '#333333', margin: '40px 0' }} />
-
-        <h3 style={{ marginTop: '30px', textTransform: 'uppercase' }}>Eligibility for Returns</h3>
-        <p>To be eligible for a return, the item must be:</p>
-        <ul style={{ marginLeft: '20px' }}>
-          <li>unworn and unused</li>
-          <li>in original condition</li>
-          <li>with tags (if applicable)</li>
-          <li>free of damage not caused by us</li>
+        {/* 2. STATUTORY CONFORMITY & DEFECTIVE GOODS */}
+        <h3 style={{ marginTop: '30px', textTransform: 'uppercase', letterSpacing: '0.06em', fontSize: '1.1rem' }}>
+          2. Quality Guarantee &amp; Defective Items (100% Covered)
+        </h3>
+        <p>
+          We stand unconditionally behind the physical construction and finish of our garments. In accordance with statutory legal conformity directives (EU Directive 2019/771, UK Consumer Rights Act 2015, and applicable US consumer laws):
+        </p>
+        <ul style={{ marginLeft: '24px', listStyleType: 'disc', marginTop: '10px', lineHeight: 1.8 }}>
+          <li>
+            <strong>Covered Issues:</strong> Manufacturing defects in stitching or fabric, misprinted designs, incorrect colorway/size sent by error, or garments damaged during transit.
+          </li>
+          <li>
+            <strong>Resolution:</strong> If your order qualifies, HeavenlyNova provides an <strong>immediate complimentary reprint and expedited reshipment</strong> at zero cost to you, or a <strong>full refund</strong> to your original payment method.
+          </li>
+          <li>
+            <strong>Reporting Window:</strong> Please inspect your parcel upon delivery and notify our team within <strong>48–72 hours of receipt</strong> by submitting the Return Request form below or emailing <a href="mailto:support@heavenlynova.com" style={{ color: '#ffffff', textDecoration: 'underline' }}>support@heavenlynova.com</a> with photographs of the defect and your order number.
+          </li>
         </ul>
 
-        <div style={{ height: '1px', backgroundColor: '#333333', margin: '40px 0' }} />
+        <div style={{ height: '1px', backgroundColor: '#333333', margin: '35px 0' }} />
 
-        <h3 style={{ marginTop: '30px', textTransform: 'uppercase' }}>Important: Made-to-Order Policy</h3>
-        <p>We <strong>do not accept returns or refunds for:</strong></p>
-        <ul style={{ marginLeft: '20px' }}>
-          <li>wrong size selected by the customer</li>
-          <li>change of mind after purchase</li>
-          <li>minor color differences (screen vs. real product)</li>
+        {/* 3. MADE-TO-ORDER & SIZING CONSIDERATIONS */}
+        <h3 style={{ marginTop: '30px', textTransform: 'uppercase', letterSpacing: '0.06em', fontSize: '1.1rem' }}>
+          3. Made-to-Order Specifications &amp; Sizing Notice
+        </h3>
+        <p>
+          In accordance with <strong>Article 16(c) of EU Directive 2011/83/EU</strong> on Consumer Rights and comparable international commercial statutes, the statutory right of withdrawal does not apply to contracts for the supply of goods made to the consumer&apos;s specifications or clearly personalized.
+        </p>
+        <p style={{ marginTop: '10px' }}>
+          Consequently, once production has begun, we cannot accept returns, size exchanges, or offer refunds for:
+        </p>
+        <ul style={{ marginLeft: '24px', listStyleType: 'disc', marginTop: '10px', lineHeight: 1.8 }}>
+          <li>Incorrect size selection chosen by the buyer (we provide detailed interactive size guides with chest width and length measurements on all product pages).</li>
+          <li>Subjective change of mind or buyer&apos;s remorse following successful production.</li>
+          <li>Subtle color variations caused by different display calibrators (monitors/phones vs. calibrated CMYK garment inks).</li>
         </ul>
 
-        <div style={{ height: '1px', backgroundColor: '#333333', margin: '40px 0' }} />
+        <div style={{ height: '1px', backgroundColor: '#333333', margin: '35px 0' }} />
 
-        <h3 style={{ marginTop: '30px', textTransform: 'uppercase' }}>Damaged, Defective, or Incorrect Items</h3>
-        <p>If your item arrives damaged, defective, or incorrect, contact us within <strong>48 hours of delivery</strong>.</p>
+        {/* 4. CANCELLATION WINDOW */}
+        <h3 style={{ marginTop: '30px', textTransform: 'uppercase', letterSpacing: '0.06em', fontSize: '1.1rem' }}>
+          4. Order Modification &amp; Cancellation Window
+        </h3>
+        <p>
+          Because our automated fulfillment pipeline immediately schedules orders for manufacturing, modifications (such as updating shipping address or size) or cancellations must be requested within <strong>2 hours of order placement</strong>.
+        </p>
+        <p style={{ marginTop: '10px' }}>
+          Once an order has entered the printing or stitching queue, it cannot be canceled or intercepted in transit.
+        </p>
 
-        <div style={{ height: '1px', backgroundColor: '#333333', margin: '40px 0' }} />
+        <div style={{ height: '1px', backgroundColor: '#333333', margin: '35px 0' }} />
 
-        <h3 style={{ marginTop: '30px', textTransform: 'uppercase' }}>Refund Process</h3>
-        <p>Once your return is received and inspected, if approved, your refund will be issued to your original payment method. Please allow <strong>5–10 business days</strong> for processing.</p>
+        {/* 5. REFUND TIMELINE */}
+        <h3 style={{ marginTop: '30px', textTransform: 'uppercase', letterSpacing: '0.06em', fontSize: '1.1rem' }}>
+          5. Refund Processing Timelines
+        </h3>
+        <p>
+          Once a replacement or refund claim is verified by our customer care team:
+        </p>
+        <ul style={{ marginLeft: '24px', listStyleType: 'disc', marginTop: '10px', lineHeight: 1.8 }}>
+          <li>Refunds are initiated immediately via our secure payment gateway (<strong>Stripe</strong>).</li>
+          <li>Funds typically reflect back in your original bank account or card balance within <strong>5–10 business days</strong>, depending on your financial institution&apos;s processing cycles.</li>
+          <li>Original delivery charges (if applicable for non-standard expedited services) are refunded for justified defective claims.</li>
+        </ul>
 
-        <div style={{ height: '1px', backgroundColor: '#333333', margin: '40px 0' }} />
-
-        <h3 style={{ marginTop: '30px', textTransform: 'uppercase' }}>Order Cancellations</h3>
-        <p>Orders can only be cancelled <strong>within a short window after purchase</strong>. Once production has started, cancellation is no longer possible.</p>
-
-        <div style={{ height: '1px', backgroundColor: '#333333', margin: '40px 0' }} />
+        <div style={{ height: '1px', backgroundColor: '#333333', margin: '35px 0' }} />
 
         {/* SEPARATOR + TRANSITION TEXT */}
         <div style={{ margin: '60px 0 48px', textAlign: 'center' }}>
           <div style={{ height: '1px', backgroundColor: 'rgba(255,255,255,0.1)', marginBottom: '32px' }} />
-          <p className="text-xs uppercase tracking-[0.4em]" style={{ opacity: 0.4 }}>Initiate Your Truth</p>
-          <p className="text-xs uppercase tracking-[0.3em]" style={{ opacity: 0.2, marginTop: '8px' }}>Return Process Below</p>
+          <p className="text-xs uppercase tracking-[0.4em]" style={{ opacity: 0.4 }}>Direct Claims Protocol</p>
+          <p className="text-xs uppercase tracking-[0.3em]" style={{ opacity: 0.2, marginTop: '8px' }}>Official Return Request</p>
           <div style={{ height: '1px', backgroundColor: 'rgba(255,255,255,0.1)', marginTop: '32px' }} />
         </div>
 
         {/* INITIATE RETURN FORM */}
-        <p className="text-xs tracking-[0.3em] uppercase" style={{ opacity: 0.6, marginBottom: '12px' }}>Initiate Return</p>
-        <h2 className="text-2xl font-light tracking-wide uppercase" style={{ marginBottom: '40px' }}>Return Request</h2>
+        <p className="text-xs tracking-[0.3em] uppercase" style={{ opacity: 0.6, marginBottom: '12px' }}>Resolution Center</p>
+        <h2 className="text-2xl font-light tracking-wide uppercase" style={{ marginBottom: '40px' }}>Submit Return / Replacement Claim</h2>
 
         {!sent ? (
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Honeypot */}
             <input type="text" name="website" value={form.website} onChange={(e) => setForm({ ...form, website: e.target.value })} style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
 
-            <input type="text" placeholder="Order Number" required value={form.orderNumber} onChange={(e) => setForm({ ...form, orderNumber: e.target.value })}
-              className="w-full bg-transparent border-b border-white/20 py-3 outline-none placeholder:opacity-40 text-sm tracking-wide" />
+            <input type="text" placeholder="Order Number (e.g., #HN-1042)" required value={form.orderNumber} onChange={(e) => setForm({ ...form, orderNumber: e.target.value })}
+              className="w-full bg-transparent border-b border-white/20 py-3 outline-none placeholder:opacity-40 text-sm tracking-wide focus:border-white transition" />
 
             <input type="text" placeholder="Full Name" required value={form.fullName} onChange={(e) => setForm({ ...form, fullName: e.target.value })}
-              className="w-full bg-transparent border-b border-white/20 py-3 outline-none placeholder:opacity-40 text-sm tracking-wide" />
+              className="w-full bg-transparent border-b border-white/20 py-3 outline-none placeholder:opacity-40 text-sm tracking-wide focus:border-white transition" />
 
-            <input type="email" placeholder="Email" required value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })}
-              className="w-full bg-transparent border-b border-white/20 py-3 outline-none placeholder:opacity-40 text-sm tracking-wide" />
+            <input type="email" placeholder="Email Address Used at Checkout" required value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })}
+              className="w-full bg-transparent border-b border-white/20 py-3 outline-none placeholder:opacity-40 text-sm tracking-wide focus:border-white transition" />
 
             <select required value={form.reason} onChange={(e) => setForm({ ...form, reason: e.target.value })}
-              className="w-full bg-black border-b border-white/20 py-3 outline-none text-sm tracking-wide" style={{ opacity: 0.8 }}>
-              <option value="">Reason</option>
-              <option>Damaged item</option>
-              <option>Wrong item received</option>
-              <option>Defective print</option>
-              <option>Other</option>
+              className="w-full bg-black border-b border-white/20 py-3 outline-none text-sm tracking-wide focus:border-white transition" style={{ opacity: 0.8 }}>
+              <option value="">Reason for Claim</option>
+              <option>Damaged in transit</option>
+              <option>Defective fabric or construction</option>
+              <option>Misprinted or incorrect design</option>
+              <option>Wrong item or variant received</option>
+              <option>Other claim</option>
             </select>
 
-            <textarea placeholder="Details" required rows={4} value={form.details} onChange={(e) => setForm({ ...form, details: e.target.value })}
-              className="w-full bg-transparent border-b border-white/20 py-3 outline-none placeholder:opacity-40 text-sm tracking-wide resize-none" />
+            <textarea placeholder="Please describe the issue in detail. If the item is damaged or misprinted, our team will reply asking for photo proof." required rows={4} value={form.details} onChange={(e) => setForm({ ...form, details: e.target.value })}
+              className="w-full bg-transparent border-b border-white/20 py-3 outline-none placeholder:opacity-40 text-sm tracking-wide resize-none focus:border-white transition" />
 
             {error && <p className="text-xs tracking-widest uppercase" style={{ color: '#ff4444' }}>{error}</p>}
 
             <button type="submit" disabled={loading}
               className="border border-white px-8 py-3 text-sm tracking-wider hover:bg-white hover:text-black transition"
               style={{ opacity: loading ? 0.5 : 1, cursor: loading ? 'not-allowed' : 'pointer' }}>
-              {loading ? 'Transmitting...' : 'Transmit Request'}
+              {loading ? 'Transmitting Request...' : 'Transmit Return Claim'}
             </button>
           </form>
         ) : (
-          <div style={{ paddingTop: '20px' }}>
-            <p className="text-xs tracking-[0.3em] uppercase" style={{ opacity: 0.6, marginBottom: '12px' }}>Request Received</p>
-            <h2 className="text-2xl font-light tracking-wide uppercase" style={{ marginBottom: '12px' }}>Return Request Received.</h2>
-            <p className="text-sm tracking-widest uppercase" style={{ opacity: 0.6 }}>Our team will review your case within 24–48 hours.</p>
+          <div style={{ paddingTop: '20px', border: '1px solid rgba(255,255,255,0.1)', padding: '24px' }}>
+            <p className="text-xs tracking-[0.3em] uppercase" style={{ opacity: 0.6, marginBottom: '12px' }}>Transmission Confirmed</p>
+            <h2 className="text-xl font-light tracking-wide uppercase" style={{ marginBottom: '12px' }}>Return Request Received.</h2>
+            <p className="text-sm tracking-widest uppercase" style={{ opacity: 0.6 }}>Our support team will review your case and reply within 24–48 hours.</p>
           </div>
         )}
 

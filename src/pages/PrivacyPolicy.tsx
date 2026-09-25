@@ -1,117 +1,164 @@
-// import { Link } from 'react-router-dom'
-
-
 export default function PrivacyPolicy() {
   return (
     <main className="min-h-screen bg-black text-white">
-<div className="legal-policy-container" style={{ maxWidth: '800px', margin: '0 auto', padding: '120px 20px 40px', lineHeight: 1.6 }}>
-        <h1 style={{ textTransform: 'uppercase', marginBottom: '10px' }}>Privacy Policy</h1>
-        <p><strong>Last updated:</strong> October 2, 2025</p>
+      <div className="legal-policy-container" style={{ maxWidth: '800px', margin: '0 auto', padding: '120px 20px 60px', lineHeight: 1.7 }}>
+        <h1 style={{ textTransform: 'uppercase', marginBottom: '10px', fontSize: '2rem', letterSpacing: '0.08em', fontWeight: '500' }}>
+          Privacy Policy
+        </h1>
+        <p style={{ opacity: 0.7, fontSize: '0.9rem' }}>
+          <strong>Last updated:</strong> March 2026
+        </p>
 
-        <p>At HeavenlyNova, your privacy is treated with the same intention as our designs — with care, clarity, and respect. This Privacy Policy describes how we collect, use, and share your personal information when you visit, use, or make a purchase from our website and services (the "Services"). HeavenlyNova operates using Shopify, which enables us to provide and deliver our products to you.</p>
+        <p style={{ marginTop: '16px' }}>
+          At HeavenlyNova, your privacy is treated with the same uncompromising standard as our garments — with precision, transparency, and care. This Privacy Policy describes how <strong>Sabie Tudor PFA</strong> (&ldquo;HeavenlyNova&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;our&rdquo;) collects, uses, protects, and discloses personal information when you visit, browse, or purchase from <strong>heavenlynova.com</strong> (the &ldquo;Services&rdquo;).
+        </p>
 
-        <div style={{ height: '1px', backgroundColor: '#333333', margin: '40px 0' }} />
+        <div style={{ height: '1px', backgroundColor: '#333333', margin: '35px 0' }} />
 
-        <h3 style={{ marginTop: '30px', textTransform: 'uppercase' }}>1. Information We Collect</h3>
-        <p>We collect personal information depending on how you interact with our Services, including:</p>
-        <ul style={{ marginLeft: '20px' }}>
-          <li><strong>Identifiers & Contact Details:</strong> Name, shipping address, billing address, email address, and phone number</li>
-          <li><strong>Payment Information:</strong> Processed securely through encrypted payment providers. We do not store full credit card details</li>
-          <li><strong>Commercial Information:</strong> Products viewed, purchased, or returned</li>
-          <li><strong>Device & Usage Data:</strong> IP address, browser type, and interactions with our website (via cookies and similar technologies)</li>
+        {/* 1. INFORMATION WE COLLECT */}
+        <h3 style={{ marginTop: '30px', textTransform: 'uppercase', letterSpacing: '0.06em', fontSize: '1.1rem' }}>
+          1. Information We Collect
+        </h3>
+        <p>Depending on your interaction with HeavenlyNova, we collect the following categories of personal data:</p>
+        <ul style={{ marginLeft: '24px', listStyleType: 'disc', marginTop: '10px', lineHeight: 1.8 }}>
+          <li>
+            <strong>Identity &amp; Contact Information:</strong> Name, shipping address, billing address, email address, and telephone number (collected during checkout or customer support interactions).
+          </li>
+          <li>
+            <strong>Order &amp; Commercial Records:</strong> Purchased artifacts, sizes, colorways, transaction timestamp, payment confirmation identifiers, order value, and returns history.
+          </li>
+          <li>
+            <strong>Payment Information:</strong> Financial data is processed directly via our encrypted payment partner, <strong>Stripe, Inc.</strong>. HeavenlyNova never handles, stores, or has access to your raw credit or debit card numbers, CVC codes, or banking secrets.
+          </li>
+          <li>
+            <strong>Device &amp; Telemetry Data:</strong> IP address, browser type, device specifications, operating system, approximate geographical location, time spent on pages, and interaction telemetry collected through cookies and tracking pixels (such as Google Analytics, Meta Pixel, and Pinterest Tag).
+          </li>
         </ul>
 
-        <div style={{ height: '1px', backgroundColor: '#333333', margin: '40px 0' }} />
+        <div style={{ height: '1px', backgroundColor: '#333333', margin: '35px 0' }} />
 
-        <h3 style={{ marginTop: '30px', textTransform: 'uppercase' }}>2. How We Use Your Information</h3>
-        <p>We use your information to operate HeavenlyNova and provide a smooth experience:</p>
-        <ul style={{ marginLeft: '20px' }}>
-          <li><strong>Order Fulfillment:</strong> Processing payments, shipping, and sending order updates</li>
-          <li><strong>Customer Support:</strong> Handling inquiries, returns, and requests</li>
-          <li><strong>Marketing:</strong> Sending updates, drops, and brand communications (only if you opt in)</li>
-          <li><strong>Security:</strong> Preventing fraud and maintaining platform integrity</li>
+        {/* 2. LEGAL BASES & PURPOSES (GDPR ART 6) */}
+        <h3 style={{ marginTop: '30px', textTransform: 'uppercase', letterSpacing: '0.06em', fontSize: '1.1rem' }}>
+          2. Legal Grounds &amp; How We Use Your Information (GDPR Article 6)
+        </h3>
+        <p>In compliance with the General Data Protection Regulation (GDPR, Regulation EU 2016/679), we process personal data under strictly defined legal bases:</p>
+        <ul style={{ marginLeft: '24px', listStyleType: 'disc', marginTop: '10px', lineHeight: 1.8 }}>
+          <li>
+            <strong>Performance of a Contract (Art. 6(1)(b) GDPR):</strong> To process your payment, submit your made-to-order garment to manufacturing, dispatch the parcel via carrier, and send automated tracking and delivery updates.
+          </li>
+          <li>
+            <strong>Legal Obligation (Art. 6(1)(c) GDPR):</strong> To comply with financial, fiscal, tax (VAT/invoicing), and consumer protection obligations under Romanian and EU law.
+          </li>
+          <li>
+            <strong>Legitimate Interests (Art. 6(1)(f) GDPR):</strong> To prevent fraudulent transactions, secure platform infrastructure, troubleshoot technical defects, and optimize user experience.
+          </li>
+          <li>
+            <strong>Consent (Art. 6(1)(a) GDPR):</strong> For opt-in marketing newsletters, lore dispatches, and non-essential analytical/advertising tracking cookies (managed through our Cookie Consent Banner).
+          </li>
         </ul>
 
-        <div style={{ height: '1px', backgroundColor: '#333333', margin: '40px 0' }} />
+        <div style={{ height: '1px', backgroundColor: '#333333', margin: '35px 0' }} />
 
-        <h3 style={{ marginTop: '30px', textTransform: 'uppercase' }}>3. Your Privacy Rights</h3>
-        <p>Depending on your location (including the United States, Canada, or the European Economic Area), you may have the right to:</p>
-        <ul style={{ marginLeft: '20px' }}>
-          <li>Access the personal data we hold about you</li>
-          <li>Request deletion of your data (subject to legal obligations)</li>
-          <li>Correct inaccurate information</li>
-          <li>Opt out of marketing communications at any time</li>
-          <li>Not be discriminated against for exercising your rights</li>
+        {/* 3. TRUSTED THIRD PARTIES & PROCESSORS */}
+        <h3 style={{ marginTop: '30px', textTransform: 'uppercase', letterSpacing: '0.06em', fontSize: '1.1rem' }}>
+          3. Data Sharing &amp; Authorized Processors
+        </h3>
+        <p>We do not sell, rent, or trade your personal data. We disclose information only to vetted third-party service providers essential for platform operations:</p>
+        <ul style={{ marginLeft: '24px', listStyleType: 'disc', marginTop: '10px', lineHeight: 1.8 }}>
+          <li><strong>Cloud &amp; Edge Infrastructure:</strong> Vercel Inc. (hosting, serverless compute, and Content Delivery Network).</li>
+          <li><strong>Payment Processing:</strong> Stripe, Inc. (PCI-DSS Level 1 certified gateway).</li>
+          <li><strong>Manufacturing &amp; Fulfillment:</strong> Printify Inc. and localized apparel production facilities in North America and the EU.</li>
+          <li><strong>Postal &amp; Logistics Carriers:</strong> USPS, FedEx, DHL, Royal Mail, DPD, and designated regional postal authorities.</li>
+          <li><strong>Analytics &amp; Advertising Partners:</strong> Google Analytics (Google LLC), Meta Pixel (Meta Platforms, Inc.), and Pinterest Tag (Pinterest, Inc. / Pinterest Europe Ltd., Tag ID: 2612782177064).</li>
         </ul>
-        <p>To exercise any of these rights, contact us at:</p>
-        <p style={{ marginLeft: '20px' }}><strong><a href="mailto:support@heavenlynova.com" style={{ color: '#ffffff', textDecoration: 'underline' }}>support@heavenlynova.com</a></strong></p>
 
-        <div style={{ height: '1px', backgroundColor: '#333333', margin: '40px 0' }} />
+        <div style={{ height: '1px', backgroundColor: '#333333', margin: '35px 0' }} />
 
-        <h3 style={{ marginTop: '30px', textTransform: 'uppercase' }}>4. Data Sharing & International Transfers</h3>
-        <p>We only share your information with trusted third parties necessary to operate our business, including:</p>
-        <ul style={{ marginLeft: '20px' }}>
-          <li>Shopify Inc. (our e-commerce platform)</li>
-          <li>Payment processors</li>
-          <li>Shipping and fulfillment providers</li>
+        {/* 4. INTERNATIONAL TRANSFERS */}
+        <h3 style={{ marginTop: '30px', textTransform: 'uppercase', letterSpacing: '0.06em', fontSize: '1.1rem' }}>
+          4. International Data Transfers
+        </h3>
+        <p>
+          Because HeavenlyNova operates across global networks, personal data may be transferred to and processed in countries outside the European Economic Area (EEA), including the United States.
+        </p>
+        <p style={{ marginTop: '10px' }}>
+          When data is transferred across international boundaries, we ensure adequate safeguards are in place, including the <strong>EU-U.S. Data Privacy Framework (DPF)</strong> and European Commission-approved <strong>Standard Contractual Clauses (SCCs)</strong>.
+        </p>
+
+        <div style={{ height: '1px', backgroundColor: '#333333', margin: '35px 0' }} />
+
+        {/* 5. COOKIES & TRACKING TECHNOLOGIES */}
+        <h3 style={{ marginTop: '30px', textTransform: 'uppercase', letterSpacing: '0.06em', fontSize: '1.1rem' }}>
+          5. Cookies, Pixels &amp; Marketing Tracking
+        </h3>
+        <p>
+          We utilize cookies, local storage, and tracking scripts to provide a responsive shopping experience:
+        </p>
+        <ul style={{ marginLeft: '24px', listStyleType: 'disc', marginTop: '10px', lineHeight: 1.8 }}>
+          <li><strong>Strictly Necessary:</strong> Essential for maintaining your shopping bag, locale preferences, and session security.</li>
+          <li><strong>Performance &amp; Analytics:</strong> Google Analytics helps us understand navigation flows without identifying individual consumers.</li>
+          <li><strong>Advertising &amp; Social Pixels:</strong> Meta Pixel and Pinterest Tag allow us to measure the performance of our campaign creative and announce new capsule releases.</li>
         </ul>
-        <p>Because we operate globally, your information may be processed in the United States, Canada, or the European Economic Area (EEA). We rely on recognized legal mechanisms to protect your data during these transfers.</p>
+        <p style={{ marginTop: '10px' }}>
+          You can adjust or revoke your cookie choices at any time via our on-site Cookie Banner or through your browser settings.
+        </p>
 
-        <div style={{ height: '1px', backgroundColor: '#333333', margin: '40px 0' }} />
+        <div style={{ height: '1px', backgroundColor: '#333333', margin: '35px 0' }} />
 
-        <h3 style={{ marginTop: '30px', textTransform: 'uppercase' }}>5. Cookies & Tracking Technologies</h3>
-        <p>We use cookies and similar technologies to enhance your experience, analyze performance, and deliver relevant content.</p>
-        <p>These may include:</p>
-        <ul style={{ marginLeft: '20px' }}>
-          <li>Essential cookies (required for website functionality)</li>
-          <li>Analytics tools (e.g., traffic and behavior analysis)</li>
-          <li>Advertising technologies (used for relevant content and campaigns)</li>
+        {/* 6. YOUR STATUTORY PRIVACY RIGHTS */}
+        <h3 style={{ marginTop: '30px', textTransform: 'uppercase', letterSpacing: '0.06em', fontSize: '1.1rem' }}>
+          6. Your Privacy Rights (GDPR &amp; CCPA / CPRA)
+        </h3>
+        <p>Under applicable European and international privacy frameworks, you are entitled to exercise the following rights:</p>
+        <ul style={{ marginLeft: '24px', listStyleType: 'disc', marginTop: '10px', lineHeight: 1.8 }}>
+          <li><strong>Right of Access (Art. 15 GDPR):</strong> Request a copy of the personal data we hold about you.</li>
+          <li><strong>Right to Rectification (Art. 16 GDPR):</strong> Request the correction of inaccurate or incomplete records.</li>
+          <li><strong>Right to Erasure / &ldquo;Right to be Forgotten&rdquo; (Art. 17 GDPR):</strong> Request deletion of your data, provided retention is not required by tax or accounting statutes.</li>
+          <li><strong>Right to Restriction &amp; Objection (Arts. 18 &amp; 21 GDPR):</strong> Limit or object to specific processing operations, including direct marketing.</li>
+          <li><strong>Right to Data Portability (Art. 20 GDPR):</strong> Receive your data in a structured, machine-readable format.</li>
+          <li><strong>California Consumer Rights (CCPA / CPRA):</strong> California residents have the right to know what personal information is collected, request its deletion, and opt out of the &ldquo;sale&rdquo; or &ldquo;sharing&rdquo; of personal information. HeavenlyNova does not sell personal data.</li>
         </ul>
-        <p>You can control or disable cookies through your browser settings. Please note that some features of the site may not function properly if cookies are disabled.</p>
+        <p style={{ marginTop: '10px' }}>
+          To submit a data access or deletion request, email our Data Privacy Officer at <a href="mailto:support@heavenlynova.com" style={{ color: '#ffffff', textDecoration: 'underline' }}>support@heavenlynova.com</a>. We will respond within 30 days without fee.
+        </p>
+
+        <div style={{ height: '1px', backgroundColor: '#333333', margin: '35px 0' }} />
+
+        {/* 7. DATA RETENTION & SECURITY */}
+        <h3 style={{ marginTop: '30px', textTransform: 'uppercase', letterSpacing: '0.06em', fontSize: '1.1rem' }}>
+          7. Data Retention &amp; Security Measures
+        </h3>
+        <p>
+          We employ state-of-the-art encryption protocols (TLS/SSL 256-bit) across our entire web application.
+        </p>
+        <p style={{ marginTop: '10px' }}>
+          Personal data related to purchases is retained strictly for the duration mandated by statutory commercial and tax record retention laws (typically 5 to 10 years for fiscal audits in Romania and the EU), after which it is securely anonymized or destroyed.
+        </p>
+
+        <div style={{ height: '1px', backgroundColor: '#333333', margin: '35px 0' }} />
+
+        {/* 8. DATA CONTROLLER & CONTACT */}
+        <h3 style={{ marginTop: '30px', textTransform: 'uppercase', letterSpacing: '0.06em', fontSize: '1.1rem' }}>
+          8. Data Controller Contact &amp; Supervisory Authority
+        </h3>
+        <p>The legal data controller responsible for your personal information is:</p>
+        <p style={{ marginTop: '10px', lineHeight: 1.8 }}>
+          <strong>Sabie Tudor PFA</strong><br />
+          <strong>Brand:</strong> HeavenlyNova<br />
+          <strong>Country:</strong> Romania, European Union<br />
+          <strong>Official Contact:</strong> <a href="mailto:support@heavenlynova.com" style={{ color: '#ffffff', textDecoration: 'underline' }}>support@heavenlynova.com</a>
+        </p>
+        <p style={{ marginTop: '12px' }}>
+          If you believe your data has been handled inconsistently with GDPR, you have the right to lodge a complaint with the Romanian National Supervisory Authority for Personal Data Processing (ANSPDCP - <em>dataprotection.ro</em>) or your local EU Member State Data Protection Authority.
+        </p>
 
         <div style={{ height: '1px', backgroundColor: '#333333', margin: '40px 0' }} />
 
-        <h3 style={{ marginTop: '30px', textTransform: 'uppercase' }}>6. Do Not Sell or Share Personal Information</h3>
-        <p>HeavenlyNova does not sell personal data. However, certain data sharing (such as advertising technologies) may be considered "sharing" under laws like the California Consumer Privacy Act (CCPA).</p>
-        <p>You may request to opt out of such data usage by contacting us at:</p>
-        <p style={{ marginLeft: '20px' }}><strong><a href="mailto:support@heavenlynova.com" style={{ color: '#ffffff', textDecoration: 'underline' }}>support@heavenlynova.com</a></strong></p>
-
-        <div style={{ height: '1px', backgroundColor: '#333333', margin: '40px 0' }} />
-
-        <h3 style={{ marginTop: '30px', textTransform: 'uppercase' }}>7. Children&apos;s Privacy</h3>
-        <p>Our Services are not intended for individuals under the age of 13 (or the applicable legal age in your region). We do not knowingly collect personal data from children.</p>
-
-        <div style={{ height: '1px', backgroundColor: '#333333', margin: '40px 0' }} />
-
-        <h3 style={{ marginTop: '30px', textTransform: 'uppercase' }}>8. Data Retention & Security</h3>
-        <p>We implement appropriate security measures to protect your information. We retain personal data only as long as necessary to:</p>
-        <ul style={{ marginLeft: '20px' }}>
-          <li>Fulfill orders and services</li>
-          <li>Comply with legal, tax, and accounting obligations</li>
-        </ul>
-        <p>Retention periods may vary depending on jurisdiction.</p>
-
-        <div style={{ height: '1px', backgroundColor: '#333333', margin: '40px 0' }} />
-
-        <h3 style={{ marginTop: '30px', textTransform: 'uppercase' }}>9. Data Controller</h3>
-        <p>For the purposes of applicable data protection laws, the data controller is:</p>
-        <p style={{ marginLeft: '20px' }}><strong>Sabie Tudor PFA</strong></p>
-        <p style={{ marginLeft: '20px' }}><strong>Trading as HeavenlyNova</strong></p>
-
-        <div style={{ height: '1px', backgroundColor: '#333333', margin: '40px 0' }} />
-
-        <h3 style={{ marginTop: '30px', textTransform: 'uppercase' }}>10. Contact</h3>
-        <p>For any questions, requests, or concerns regarding this Privacy Policy, you can contact us at:</p>
-        <p style={{ marginLeft: '20px' }}><strong><a href="mailto:support@heavenlynova.com" style={{ color: '#ffffff', textDecoration: 'underline' }}>support@heavenlynova.com</a></strong></p>
-
-        <div style={{ height: '1px', backgroundColor: '#333333', margin: '40px 0' }} />
-
-        <p style={{ marginTop: '40px', textAlign: 'center', opacity: 0.8, fontStyle: 'italic' }}>
+        <p style={{ marginTop: '40px', textAlign: 'center', opacity: 0.6, fontStyle: 'italic', fontSize: '0.9rem' }}>
           HeavenlyNova<br />
-          Between Light & Shadow
+          Between Light &amp; Shadow
         </p>
       </div>
     </main>
   )
 }
-
