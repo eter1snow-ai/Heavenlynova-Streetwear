@@ -533,9 +533,11 @@ const PRINTIFY_PRODUCT_MAP = {
     },
   },
 
+  // Skye Blue: Disponibil EXCLUSIV în SUA (Shaka Wear 7.5oz / 255 GSM).
+  // În Europa nu există bumbac greu pe această nuanță. Comenzile din EU se rutează automat către SUA cu livrare internațională.
   'soulfull-skye-blue': {
     us: {
-      product_id: '6ab29adcfe1948f8e50845d0',
+      product_id: '6ab29adcfe1948f8e50845d0', // Shaka Wear US Studio
       variants: {
         XS: 117443,
         S: 117443,
@@ -545,26 +547,13 @@ const PRINTIFY_PRODUCT_MAP = {
         XXL: 117437,
         '2XL': 117437,
         '3XL': 117438,
-      },
-    },
-    eu: {
-      product_id: '6ab3561aeccd60519b0e46df',
-      variants: {
-        XS: 112804,
-        S: 112804,
-        M: 112805,
-        L: 112806,
-        XL: 112807,
-        XXL: 112811,
-        '2XL': 112811,
-        '3XL': 112808,
       },
     },
   },
 
   'essentials-skye-blue': {
     us: {
-      product_id: '6aae1606905b342a3c0d43c5',
+      product_id: '6aae1606905b342a3c0d43c5', // Shaka Wear US Studio
       variants: {
         XS: 117443,
         S: 117443,
@@ -574,19 +563,6 @@ const PRINTIFY_PRODUCT_MAP = {
         XXL: 117437,
         '2XL': 117437,
         '3XL': 117438,
-      },
-    },
-    eu: {
-      product_id: '6ab356f9aa5d8e79340ffd58',
-      variants: {
-        XS: 112804,
-        S: 112804,
-        M: 112805,
-        L: 112806,
-        XL: 112807,
-        XXL: 112811,
-        '2XL': 112811,
-        '3XL': 112808,
       },
     },
   },
@@ -638,10 +614,11 @@ async function placePrintifyOrder(session, orderItems) {
       continue
     }
 
-    const regionMap = productMap[region]
+    // Dacă produsul nu are atelier în regiunea respectivă (ex: Skye Blue exclusiv SUA), fallback la US (livrare internațională)
+    const regionMap = productMap[region] || productMap.us
 
     if (!regionMap) {
-      console.warn(`[printify] ⚠️  No ${region} variant for productId: ${item.productId}`)
+      console.warn(`[printify] ⚠️  No ${region} or US variant for productId: ${item.productId}`)
       skippedItems.push({ ...item, reason: `NO_REGION_MAP_${region.toUpperCase()}` })
       continue
     }
