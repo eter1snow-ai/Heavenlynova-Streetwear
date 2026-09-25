@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react'
 
-export type Language = 'en' | 'ro' | 'de' | 'fr' | 'it' | 'sv'
+export type Language = 'en' | 'ro' | 'es' | 'de' | 'fr' | 'it' | 'sv'
 
 export interface LanguageContextType {
   language: Language
@@ -12,6 +12,7 @@ export interface LanguageContextType {
 export const LANGUAGES: { code: Language; label: string; flag: string }[] = [
   { code: 'en', label: 'English', flag: 'GLOBAL' },
   { code: 'ro', label: 'Română', flag: 'RO' },
+  { code: 'es', label: 'Español', flag: 'ES' },
   { code: 'de', label: 'Deutsch', flag: 'DE' },
   { code: 'fr', label: 'Français', flag: 'FR' },
   { code: 'it', label: 'Italiano', flag: 'IT' },
@@ -105,6 +106,50 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     // Hero & Home
     'hero.enter': 'Intră în Arhivă',
     'hero.explore': 'Vezi Piesele',
+  },
+
+  es: {
+    // Nav
+    'nav.drops': 'Drops',
+    'nav.heritage': 'Heritage',
+    'nav.essentials': 'Essentials',
+    'nav.collections': 'Colecciones',
+    'nav.story': 'Historia',
+    'nav.cart': 'Carrito',
+    
+    // Product CTA & Details
+    'product.claim': 'Añadir al Carrito',
+    'product.adding': 'Añadiendo...',
+    'product.select_size': 'Elige una Talla',
+    'product.size_guide': 'Guía de Tallas',
+    'product.price': 'Precio',
+    'product.color': 'Color',
+    'product.size': 'Talla',
+    'product.universe': 'Parte del universo HeavenlyNova.',
+    'product.curated_sizing': 'Corte boxy oversized — elige una talla menos si prefieres un ajuste clásico.',
+    
+    // Cart
+    'cart.title': 'Tus Piezas',
+    'cart.empty': 'Tu carrito está vacío',
+    'cart.explore': 'Explorar Colección',
+    'cart.subtotal': 'Subtotal',
+    'cart.shipping': 'Envío',
+    'cart.free_shipping': 'Envío Estándar Gratuito',
+    'cart.checkout': 'Finalizar Pedido',
+    'cart.secure': 'Pago Seguro SSL 256-Bit',
+    
+    // Footer & Legal
+    'footer.rights': 'Todos los derechos reservados.',
+    'footer.privacy': 'Política de Privacidad',
+    'footer.terms': 'Términos de Servicio',
+    'footer.shipping': 'Política de Envíos',
+    'footer.refunds': 'Política de Devoluciones',
+    'footer.track': 'Seguir Pedido',
+    'footer.contact': 'Contactar Atelier',
+    
+    // Hero & Home
+    'hero.enter': 'Entrar al Archivo',
+    'hero.explore': 'Ver Todos los Drops',
   },
 
   de: {
@@ -287,13 +332,14 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
 function detectInitialLanguage(): Language {
   try {
     const saved = localStorage.getItem('hn_lang') as Language
-    if (saved && ['en', 'ro', 'de', 'fr', 'it', 'sv'].includes(saved)) {
+    if (saved && ['en', 'ro', 'es', 'de', 'fr', 'it', 'sv'].includes(saved)) {
       return saved
     }
 
     // Detect din browser locale (navigator.language)
     const browserLang = (navigator.language || '').toLowerCase()
     if (browserLang.startsWith('ro')) return 'ro'
+    if (browserLang.startsWith('es')) return 'es'
     if (browserLang.startsWith('de')) return 'de'
     if (browserLang.startsWith('fr')) return 'fr'
     if (browserLang.startsWith('it')) return 'it'
@@ -336,6 +382,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
       .then((data) => {
         const country = String(data?.country || '').toUpperCase()
         if (country === 'RO') setLanguage('ro')
+        else if (['ES', 'MX', 'AR', 'CO', 'CL'].includes(country)) setLanguage('es')
         else if (['DE', 'AT', 'CH'].includes(country)) setLanguage('de')
         else if (['FR', 'BE', 'MC'].includes(country)) setLanguage('fr')
         else if (country === 'IT') setLanguage('it')
