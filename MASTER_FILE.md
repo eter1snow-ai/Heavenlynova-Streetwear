@@ -1,4 +1,4 @@
-﻿# MASTER FILE — HeavenlyNova Streetwear (HVN)
+# MASTER FILE — HeavenlyNova Streetwear (HVN)
 > **Sursa Unică de Adevăr** pentru sesiuni viitoare de dezvoltare.
 > Actualizat: **2 septembrie 2026**
 
@@ -206,3 +206,27 @@ Din TODO.md:
 7. Page transitions sunt 0.4s fade. Nu elimina AnimatePresence sau MotionPage.
 8. Imaginile sunt în /public/Assets/Images/Preview/ — căi relative, nu absolute cu domeniu.
 9. Build: tsc -b && vite build. Spre deosebire de landing-ui, NU există prerender script.
+
+---
+
+## 12. Arhitectura de Fulfillment & Sincronizare (Headless vs Etsy)
+
+### 12.1 Headless Storefront (`heavenlynova.com`)
+* **Single Listing + Rutare Dinamică:** Clientul vede un singur produs per design.
+* **Webhook Stripe (`api/stripe-webhook.js`):** La `checkout.session.completed`, citește `shipping_address.country`:
+  - **US / CA:** Comandă automat varianta **US** (Shaka Wear Max Heavyweight / Lane Seven).
+  - **EU / RO / International:** Comandă automat varianta **EU** (Build Your Brand BY102 / Stanley/Stella).
+* **Transport:** Inclus în preț (Free Shipping pe site prin Stripe).
+
+### 12.2 Etsy Storefront (`HeavenlyNovaApparel`)
+* **Dual-Listing per Design:** `[US Edition]` și `[EU Edition]` separate.
+  - *Motiv tehnic:* Printify Order Routing nu permite înlocuirea automată a două Blueprint-uri complet diferite (Shaka Wear vs BY102 au croieli, GSM, mărimi și ID-uri de catalog diferite).
+* **Insigna verde „FREE delivery” pe Etsy:** Activată prin setarea costului de livrare la **`0.00`** direct în **Etsy Delivery Settings**.
+* **Mapare Profile de Livrare (Etsy Delivery Profiles):**
+  1. `[US-FL] Shaka Wear Heavyweight T-Shirt` (Zip: 33014 – Florida, US): US `Free Delivery` (`0.00 €`), Canada `4.85 €`.
+  2. `[DE-06] Build Your Brand BY102 T-Shirt` (Zip: 06112 – Textildruck Halle, Germania): EU `Free Delivery` (`0.00 €`). US & Everywhere Else restricționate/blocate.
+  3. `[CZ-10] Stanley/Stella Premium Hoodie` (Zip: CZ10000 – OPT OnDemand Praga, Cehia): EU `Free Delivery` (`0.00 €`). Restricționat Non-UE.
+  4. `[US-FL] Lane Seven Heavyweight Hoodie` (Zip: 33014 – Florida, US): US `Free Delivery` (`0.00 €`).
+* **Directivă critică la republicare din Printify:** Când se actualizează descrieri, tags sau grafică din Printify, **se debifează căsuța „Shipping profile” la Publish**, pentru a preveni suprascrierea setărilor manuale de Free Delivery de pe Etsy cu valorile implicite din Printify.
+* **Smart Routing Manual (Failsafe):** Comenzile din Printify au fereastră de aprobare manuală (24h). Dacă un client european comandă din greșeală ediția de US, comanda se editează manual în Printify (`Edit order -> Replace item` pe BY102) înainte de producție.
+
