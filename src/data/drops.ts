@@ -26,11 +26,12 @@ export type Product = {
   price: string
   priceUsd: number           // preț numeric în USD, folosit la Stripe (în cenți = priceUsd * 100)
   images: string[]
+  hidden?: boolean           // dacă este true, produsul este ascuns temporar din catalog și pagini
 }
 
 // ─── Catalog produse ──────────────────────────────────────────────────────────
 
-export const products: Product[] = [
+export const allProducts: Product[] = [
   {
     id: 'broken-001',
     category: 'flagship' as Category,
@@ -101,6 +102,7 @@ export const products: Product[] = [
   },
   {
     id: 'embrace-your-shadow',
+    hidden: true, // ⚠️ DEZACTIVAT TEMPORAR (eroare print file) — schimbă pe false pentru a-l reactiva instant
     category: 'individuals' as Category,
     productType: 'tee' as ProductType,
     name: 'EMBRACE YOUR SHADOW',
@@ -221,6 +223,9 @@ Calm in presence, resolute in form.
     ],
   },
 ]
+
+// Produsele active afișate pe site (produsele cu hidden: true sunt omise din catalog și pagini)
+export const products: Product[] = allProducts.filter((p) => !p.hidden)
 
 // ─── Spreadconnect Variant IDs ────────────────────────────────────────────────
 //
