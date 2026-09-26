@@ -102,7 +102,6 @@ export const allProducts: Product[] = [
   },
   {
     id: 'embrace-your-shadow',
-    hidden: true, // ⚠️ DEZACTIVAT TEMPORAR (eroare print file) — schimbă pe false pentru a-l reactiva instant
     category: 'individuals' as Category,
     productType: 'tee' as ProductType,
     name: 'EMBRACE YOUR SHADOW',
