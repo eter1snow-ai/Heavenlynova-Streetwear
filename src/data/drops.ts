@@ -100,6 +100,36 @@ export const products: Product[] = [
     ],
   },
   {
+    id: 'embrace-your-shadow',
+    category: 'individuals' as Category,
+    productType: 'tee' as ProductType,
+    name: 'EMBRACE YOUR SHADOW',
+    tagline: 'Artifact 002 — Healing begins the moment we stop running.',
+    description: `✦ HEAVENLYNOVA // ARTIFACT 002: EMBRACE YOUR SHADOW
+· PART OF THE HERITAGE LINE
+· ARCHITECTURAL STREETWEAR SILHOUETTE
+· DESIGNED FOR INTROSPECTION, NOT ATTENTION
+
+"There are parts of us we rarely face. Healing begins the moment we stop running from them."
+
+The Embrace Your Shadow Tee explores psychological duality and the acceptance of the unseen self. Engineered on our signature heavyweight 255 GSM (7.5 oz) combed ring-spun cotton with an architectural, drop-shoulder boxy cut. High-density archival print with seamless matte integration.
+
+Calm in presence, resolute in form.
+
+· 7.5 oz / 255 GSM Heavyweight 100% Combed Ring-Spun Cotton
+· Architectural boxy drop-shoulder cut
+· High-density archival reverse artwork with seamless matte finish
+· Subtle chest insignia
+· Part of the Heritage Collection — the foundational layer of HeavenlyNova.`,
+    price: '$59.99',
+    priceUsd: 59.99,
+    images: [
+      '/Assets/Images/Preview/Embrace_Your_Shadow/Embrace Shadow PNG.webp',
+      '/Assets/Images/Preview/Embrace_Your_Shadow/Original Esentials Black Front.webp',
+      '/Assets/Images/Preview/Embrace_Your_Shadow/Neck Label Black.webp',
+    ],
+  },
+  {
     id: 'core-hoodie-white',
     category: 'essentials' as Category,
     productType: 'hoodie' as ProductType,
@@ -262,6 +292,14 @@ export const SPREADCONNECT_VARIANTS: Record<string, Record<string, number>> = {
     XXL: 0,
   },
   'broken-hoodie': {
+    XS: 0,
+    S:  0,
+    M:  0,
+    L:  0,
+    XL: 0,
+    XXL: 0,
+  },
+  'embrace-your-shadow': {
     XS: 0,
     S:  0,
     M:  0,

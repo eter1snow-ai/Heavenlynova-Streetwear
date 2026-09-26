@@ -52,6 +52,10 @@ const PRODUCT_SEO_OVERRIDES: Record<string, { title: string; description: string
     title: 'SOULFULL Hoodie | Heritage Line | HeavenlyNova',
     description: 'SOULFULL Hoodie. Part of the Heritage Line. 350 GSM heavyweight organic cotton. Structured silhouette.',
   },
+  'embrace-your-shadow': {
+    title: 'Embrace Your Shadow — Heritage Artifact 002 | HeavenlyNova',
+    description: 'Embrace Your Shadow Tee — Artifact 002. Exploring psychological duality and the unseen self. 255 GSM heavyweight combed cotton by HeavenlyNova.',
+  },
 }
 
 
@@ -172,7 +176,7 @@ export default function ProductDetail() {
     return file.includes(color)
   }
   const filteredVariantImages = useMemo(() => {
-    if (product?.id === 'the-origin' || product?.id === 'soulfull-hoodie' || product?.id?.startsWith('broken')) {
+    if (product?.id === 'the-origin' || product?.id === 'soulfull-hoodie' || product?.id?.startsWith('broken') || product?.id === 'embrace-your-shadow') {
       return images.filter((s) => !isNeck(s))
     }
     if (!selectedColor || selectedColor === 'var') {
@@ -280,8 +284,8 @@ export default function ProductDetail() {
                       key={i}
                       src={getOptimizedImageUrl(img, 1200)}
                       alt={product.name}
-                      className={`w-full ${(product.id.startsWith('soulfull') || product.id === 'the-origin' || product.id.startsWith('broken')) ? 'object-cover' : 'object-contain'} ${(product.id.startsWith('soulfull') || product.id === 'the-origin' || product.id.startsWith('broken')) ? '' : 'aspect-[3/4]'} ${i === 1 ? 'object-top' : 'object-center'}`}
-                      style={{ borderRadius: 0, backgroundColor: 'transparent', mixBlendMode: 'normal', aspectRatio: (product.id.startsWith('soulfull') || product.id === 'the-origin' || product.id.startsWith('broken')) ? '2044/2000' : undefined }}
+                      className={`w-full ${(product.id.startsWith('soulfull') || product.id === 'the-origin' || product.id.startsWith('broken') || product.id === 'embrace-your-shadow') ? 'object-cover' : 'object-contain'} ${(product.id.startsWith('soulfull') || product.id === 'the-origin' || product.id.startsWith('broken') || product.id === 'embrace-your-shadow') ? '' : 'aspect-[3/4]'} ${i === 1 ? 'object-top' : 'object-center'}`}
+                      style={{ borderRadius: 0, backgroundColor: 'transparent', mixBlendMode: 'normal', aspectRatio: (product.id.startsWith('soulfull') || product.id === 'the-origin' || product.id.startsWith('broken') || product.id === 'embrace-your-shadow') ? '2044/2000' : undefined }}
                       loading={i === 0 ? "eager" : "lazy"}
                       fetchPriority={i === 0 ? "high" : "low"}
                       decoding="async"
@@ -499,11 +503,11 @@ export default function ProductDetail() {
 
       {/* DESIGN FOCUS SECTION */}
       {/* Detectăm imagini de tip back/design din filename — funcționează cu mock (back) și Shopify (mid/design/back) */}
-      {images.some((s) => /back|mid|design/i.test(s.split('/').pop() || '')) && (
+      {images.some((s) => /back|mid|design|shadow/i.test(s.split('/').pop() || '')) && (
         <section className="w-full bg-black" style={{ paddingTop: '80px', paddingBottom: '80px' }}>
           <div className="mx-auto max-w-[900px] px-6">
             <img
-              src={getOptimizedImageUrl(images.find((s) => /back|mid|design/i.test(s.split('/').pop() || ''))!, 1200)}
+              src={getOptimizedImageUrl(images.find((s) => /back|mid|design|shadow/i.test(s.split('/').pop() || ''))!, 1200)}
               alt={`${product.name} design`}
               className="w-full object-contain"
               style={{ maxHeight: '90vh' }}

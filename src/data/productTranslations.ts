@@ -248,6 +248,33 @@ export const PRODUCT_TRANSLATIONS: Record<string, Partial<Record<Language, Local
       description: 'Ett avslappnat, strukturerat basplagg i rent vitt.\n\n· 10 oz / 340 GSM kraftig fleece\n· Strukturerad huva med tre paneler',
     },
   },
+
+  'embrace-your-shadow': {
+    ro: {
+      tagline: 'Artefact 002 — Vindecarea începe în clipa în care ne oprim din fugă.',
+      description: '✦ HEAVENLYNOVA // ARTEFACT 002: EMBRACE YOUR SHADOW\n· PARTE DIN LINIA HERITAGE\n· SILUETĂ STRĂZII ARHITECTURALĂ\n· CONCEPUT PENTRU INTROSPECȚIE, NU PENTRU ATENȚIE\n\n„Sunt părți din noi pe care rareori le privim în față. Vindecarea începe în clipa în care ne oprim din fugă.”\n\nTricoul Embrace Your Shadow explorează dualitatea psihologică și acceptarea sinelui nevăzut. Construit din bumbac greu pieptănat de 255 GSM (7.5 oz), cu o croială arhitecturală boxy și umeri căzuți. Print de arhivă de înaltă densitate cu integrare mată discretă.\n\nCalm în prezență, ferm în formă.\n\n· Bumbac greu pieptănat de 255 GSM (7.5 oz), 100% ring-spun\n· Croială arhitecturală boxy cu umeri căzuți\n· Grafică de arhivă pe spate cu finisaj mat de înaltă densitate\n· Emblemă discretă pe piept\n· Parte din Colecția Heritage — stratul fondator al HeavenlyNova.',
+    },
+    de: {
+      tagline: 'Artefakt 002 — Heilung beginnt in dem Moment, in dem wir aufhören zu fliehen.',
+      description: '✦ HEAVENLYNOVA // ARTEFAKT 002: EMBRACE YOUR SHADOW\n· TEIL DER HERITAGE LINIE\n· ARCHITEKTONISCHE STREETWEAR-SILHOUETTE\n· FÜR INTROSPEKTION GESCHAFFEN\n\n„Es gibt Teile in uns, denen wir uns selten stellen. Heilung beginnt in dem Moment, in dem wir aufhören zu fliehen.”\n\nDas Embrace Your Shadow Tee erforscht psychologische Dualität und die Annahme des ungesehenen Selbst. Gefertigt aus schwerer 255 GSM (7.5 oz) gekämmter Baumwolle im architektonischen Boxy-Schnitt mit überschnittenen Schultern. Hochdichter Archivdruck mit mattem Finish.\n\nRuhig in der Präsenz, stark in der Identität.',
+    },
+    fr: {
+      tagline: 'Artefact 002 — La guérison commence dès que nous cessons de fuir.',
+      description: '✦ HEAVENLYNOVA // ARTEFACT 002: EMBRACE YOUR SHADOW\n· FAIT PARTIE DE LA LIGNE HERITAGE\n· SILHOUETTE ARCHITECTURALE\n· CONÇU POUR L’INTROSPECTION\n\n« Il y a des parts de nous que nous affrontons rarement. La guérison commence au moment où nous cessons de fuir. »\n\nLe T-shirt Embrace Your Shadow explore la dualité psychologique et l\'acceptation de soi. Confectionné en coton peigné lourd 255 GSM (7.5 oz), coupe boxy aux épaules tombantes. Sérigraphie d’archive haute densité au fini mat.\n\nCalme dans la présence, résolu dans la forme.',
+    },
+    es: {
+      tagline: 'Artefacto 002 — La sanación comienza en el instante en que dejamos de huir.',
+      description: '✦ HEAVENLYNOVA // ARTEFACTO 002: EMBRACE YOUR SHADOW\n· PARTE DE LA LÍNEA HERITAGE\n· SILUETA ARQUITECTÓNICA\n· DISEÑADO PARA LA INTROSPECCIÓN\n\n«Hay partes de nosotros que rara vez enfrentamos. La sanación comienza en el momento en que dejamos de huir.»\n\nLa camiseta Embrace Your Shadow explora la dualidad psicológica y la aceptación del ser invisible. Confeccionada en algodón peinado de 255 GSM (7.5 oz), corte boxy con hombros caídos y estampado de archivo mate de alta densidad.\n\nCalma en presencia, firme en forma.',
+    },
+    it: {
+      tagline: 'Artefatto 002 — La guarigione inizia nel momento in cui smettiamo di fuggire.',
+      description: '✦ HEAVENLYNOVA // ARTEFATTO 002: EMBRACE YOUR SHADOW\n· PARTE DELLA LINEA HERITAGE\n· SILHOUETTE ARCHITETTONICA\n· CREATO PER L’INTROSPEZIONE\n\n«Ci sono parti di noi che affrontiamo raramente. La guarigione inizia nel momento in cui smettiamo di fuggire.»\n\nLa T-shirt Embrace Your Shadow esplora la dualità psicologica e l\'accettazione del sé invisibile. Realizzata in cotone pettinato pesante da 255 GSM (7.5 oz), taglio boxy con spalle scese e stampa d\'archivio ad alta densità.',
+    },
+    sv: {
+      tagline: 'Artefakt 002 — Läkningen börjar i det ögonblick vi slutar fly.',
+      description: '✦ HEAVENLYNOVA // ARTEFAKT 002: EMBRACE YOUR SHADOW\n· EN DEL AV HERITAGE-LINJEN\n· ARKITEKTONISK STREETWEAR-SILHUETT\n· SKAPAD FÖR INTROSPEKTION\n\n”Det finns delar av oss som vi sällan möter. Läkningen börjar i det ögonblick vi slutar fly.”\n\nEmbrace Your Shadow Tee utforskar psykologisk dualitet och acceptansen av det osedda jaget. Tillverkad i 255 GSM kraftig kammad bomull med en boxy drop-shoulder passform och arkivtryck med matt finish.',
+    },
+  },
 }
 
 export function getLocalizedProduct(
