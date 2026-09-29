@@ -247,7 +247,7 @@ Deep obsidian canvas carrying raw celestial light. The Intergalactic Love editio
     price: '$59.99',
     priceUsd: 59.99,
     images: [
-      '/Assets/Images/Preview/INTERGALACTIC-LOVE/INTERGALACTIC-LOVE-BLACK/INTERGALACTIC-LOVE-On-Black.webp',
+      '/Assets/Images/Preview/INTERGALACTIC-LOVE/INTERGALACTIC-LOVE-BLACK/INTERGALACTIC-LOVE-Back-Black.webp',
       '/Assets/Images/Preview/INTERGALACTIC-LOVE/INTERGALACTIC-LOVE-BLACK/Original-Esentials-Black-Front.webp',
       '/Assets/Images/Preview/INTERGALACTIC-LOVE/INTERGALACTIC-LOVE-BLACK/Neck-Label-Black.webp',
     ],
@@ -277,7 +277,7 @@ A celestial dialogue forged into heavyweight cotton. The Intergalactic Love edit
     price: '$59.99',
     priceUsd: 59.99,
     images: [
-      '/Assets/Images/Preview/INTERGALACTIC-LOVE/INTERGALACTIC-LOVE-WHITE/INTERGALACTIC-LOVE-Off-White.webp',
+      '/Assets/Images/Preview/INTERGALACTIC-LOVE/INTERGALACTIC-LOVE-WHITE/INTERGALACTIC-LOVE-Back-White.webp',
       '/Assets/Images/Preview/INTERGALACTIC-LOVE/INTERGALACTIC-LOVE-WHITE/White-ES-Front-2000x2000.webp',
       '/Assets/Images/Preview/INTERGALACTIC-LOVE/INTERGALACTIC-LOVE-WHITE/Neck-Label-White.webp',
     ],
