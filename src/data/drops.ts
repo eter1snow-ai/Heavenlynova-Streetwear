@@ -227,23 +227,23 @@ Calm in presence, resolute in form.
     category: 'individuals' as Category,
     productType: 'tee' as ProductType,
     name: 'INTERGALACTIC LOVE — BLACK',
-    tagline: 'Artifact 003 — Love that transcends galaxies. Worn by those who feel it all.',
-    description: `✦ HEAVENLYNOVA // ARTIFACT 003: INTERGALACTIC LOVE
-· PART OF THE HERITAGE LINE
-· ARCHITECTURAL STREETWEAR SILHOUETTE
-· DESIGNED FOR INTROSPECTION, NOT ATTENTION
+    tagline: 'Statement 003 — Deep Black. An expansive orbital dialogue rendered in high-density stark ink.',
+    description: `✦ HEAVENLYNOVA // STATEMENT SERIES: INTERGALACTIC LOVE
+· ARCHITECTURAL BOXY SILHOUETTE
+· DESIGNED FOR MONUMENTAL CALM, NOT ATTENTION
 
-"Some connections don't need words. They don't even need the same universe."
+STATEMENT SERIES // PIECE 003
 
-The Intergalactic Love Tee is the third chapter in the Heritage Collection — an archival statement on connection, distance, and the invisible thread that ties us across space and time. Engineered on our signature heavyweight 255 GSM (7.5 oz) combed ring-spun cotton with an architectural, drop-shoulder boxy cut. High-density archival print with seamless matte integration.
+"Love is not between us. It moves through us."
 
-Calm in presence, cosmic in meaning.
+Deep obsidian canvas carrying raw celestial light. The Intergalactic Love edition in Deep Black contrasts high-density pure white typography against dense heavyweight cotton. Architectural drop-shoulder construction holding a clean, rigid silhouette that moves without clinging.
 
-· 7.5 oz / 255 GSM Heavyweight 100% Combed Ring-Spun Cotton
-· Architectural boxy drop-shoulder cut
-· High-density archival artwork with seamless matte finish
-· Subtle chest insignia
-· Part of the Heritage Collection — the foundational layer of HeavenlyNova.`,
+• 245–255 GSM (7.5 oz/yd²) Heavyweight Streetwear Jersey
+• 100% Combed Ring-Spun USA Cotton (Rigid structural hand-feel)
+• Architectural boxy fit with authentic dropped shoulders
+• High-density tactile print — subtle chest insignia & full-scale orbital back piece
+• Reinforced 1" double-needle collar with shoulder-to-shoulder interior taping
+• Part of the Statement Series — engineered for daily rituals`,
     price: '$59.99',
     priceUsd: 59.99,
     images: [
@@ -257,25 +257,23 @@ Calm in presence, cosmic in meaning.
     category: 'individuals' as Category,
     productType: 'tee' as ProductType,
     name: 'INTERGALACTIC LOVE — WHITE',
-    tagline: 'Artifact 003 — The same signal, illuminated. Love rendered in light.',
-    description: `✦ HEAVENLYNOVA // ARTIFACT 003: INTERGALACTIC LOVE
-· PART OF THE HERITAGE LINE
-· ARCHITECTURAL STREETWEAR SILHOUETTE
-· DESIGNED FOR INTROSPECTION, NOT ATTENTION
+    tagline: 'Statement 003 — Chalk White. Celestial geometry and calm monumental presence.',
+    description: `✦ HEAVENLYNOVA // STATEMENT SERIES: INTERGALACTIC LOVE
+· ARCHITECTURAL BOXY SILHOUETTE
+· DESIGNED FOR MONUMENTAL CALM, NOT ATTENTION
 
-"Some connections don't need words. They don't even need the same universe."
+STATEMENT SERIES // PIECE 003
 
-Intergalactic Love in pure white — the archival cosmic motif drawn in high-density ink, paired with a minimal chest insignia. The same signal as the black edition, but rendered in clarity and light.
+"Love is not between us. It moves through us."
 
-Heavyweight oversized boxy fit at 7.5oz cotton, drop shoulder construction, premium long-lasting print.
+A celestial dialogue forged into heavyweight cotton. The Intergalactic Love edition in Chalk White merges precise astronomical geometry with an engineered boxy drape. The subtle Nova insignia rests on the chest, unfolding into a monumental celestial orbit diagram across the reverse. Crisp, architectural, and built for quiet presence.
 
-Part of the Heritage Collection — the origin layer of HeavenlyNova, where everything begins.
-
-· 7.5 oz / 255 GSM Heavyweight 100% Combed Ring-Spun Cotton
-· Architectural boxy drop-shoulder cut
-· High-density archival artwork on white canvas
-· Subtle chest insignia
-· Part of the Heritage Collection — the foundational layer of HeavenlyNova.`,
+• 245–255 GSM (7.5 oz/yd²) Heavyweight Streetwear Jersey
+• 100% Combed Ring-Spun USA Cotton (Rigid structural hand-feel)
+• Architectural boxy fit with authentic dropped shoulders
+• High-density tactile print — subtle chest insignia & full-scale orbital back piece
+• Reinforced 1" double-needle collar with shoulder-to-shoulder interior taping
+• Part of the Statement Series — engineered for daily rituals`,
     price: '$59.99',
     priceUsd: 59.99,
     images: [
