@@ -624,18 +624,16 @@ const PRINTIFY_PRODUCT_MAP = {
 
   'intergalactic-love-black': {
     us: {
-      product_id: 'TODO_INTERGALACTIC_LOVE_US_PRODUCT_ID', // TODO: copiază din URL-ul Printify
+      product_id: '6abb46f816cc1ce1f50799c8', // INTERGALACTIC LOVE — US listing (Black + White)
       skus: {
-        // Black variant SKUs — US Edition (Shaka Wear)
-        S:     '30898163047461018827',
-        M:     '17386573305615224110',
-        L:     '12760830459520371038', // verifică ultimele cifre în Printify dacă trunchiat
+        S:     '30898163047461016827',
+        M:     '17385753305615224110',
+        L:     '12760304595203719380',
         XL:    '93046478005770758326',
-        '2XL': '28659137382781900053',
+        '2XL': '28591373827819005335',
         '3XL': '39621642448149445565',
       },
       variants: {
-        // TODO: Completează variant_id numeric din Printify dacă nu folosești SKU
         S: 0,
         M: 0,
         L: 0,
@@ -669,18 +667,16 @@ const PRINTIFY_PRODUCT_MAP = {
 
   'intergalactic-love-white': {
     us: {
-      product_id: 'TODO_INTERGALACTIC_LOVE_US_PRODUCT_ID', // același listing US — produs cu 2 culori
+      product_id: '6abb46f816cc1ce1f50799c8', // INTERGALACTIC LOVE — US listing (Black + White)
       skus: {
-        // White variant SKUs — US Edition (Shaka Wear)
-        S:     '21288848408748860551',
-        M:     '10682618972453431797', // verifică ultimele cifre în Printify dacă trunchiat
-        L:     '20981303440374470838',
-        XL:    '76883200081447228856', // verifică ultimele cifre în Printify dacă trunchiat
-        '2XL': '30153135931736039128', // verifică ultimele cifre în Printify dacă trunchiat
+        S:     '21288848408749860551',
+        M:     '10682619724353431797',
+        L:     '20981303449374470638',
+        XL:    '76832009614472288560',
+        '2XL': '30153135931736039129',
         '3XL': '61702047414199212954',
       },
       variants: {
-        // TODO: Completează variant_id numeric din Printify dacă nu folosești SKU
         S: 0,
         M: 0,
         L: 0,
