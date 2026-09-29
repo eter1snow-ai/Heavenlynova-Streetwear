@@ -11,12 +11,12 @@ export default function Hero() {
       id="hero"
       className="relative flex h-[70vh] sm:h-[60vh] w-full items-end bg-black text-white overflow-hidden pt-20 pb-12"
     >
-      {/* Static Image Background — compressed 245KB (was 5.4MB) */}
+      {/* Starfield Background — HVN_Stars_Clean SVG */}
       <img
-        src="/Assets/Images/hero-bg.webp"
+        src="/Assets/Images/HVN_Stars_Clean.svg"
         alt="HeavenlyNova Hero"
         className="absolute inset-0 h-full w-full object-cover object-center"
-        style={{ objectPosition: 'center 60%', opacity: 0.5 }}
+        style={{ objectPosition: 'center 30%' }}
         loading="eager"
         fetchPriority="high"
         decoding="sync"
