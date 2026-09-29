@@ -221,6 +221,69 @@ Calm in presence, resolute in form.
       '/Assets/Images/Preview/Design Hoodies/Soulfull Hoodie/Detailed black hoodie close-up.webp',
     ],
   },
+  // ─── INTERGALACTIC LOVE ───────────────────────────────────────────────────────
+  {
+    id: 'intergalactic-love-black',
+    category: 'individuals' as Category,
+    productType: 'tee' as ProductType,
+    name: 'INTERGALACTIC LOVE — BLACK',
+    tagline: 'Artifact 003 — Love that transcends galaxies. Worn by those who feel it all.',
+    description: `✦ HEAVENLYNOVA // ARTIFACT 003: INTERGALACTIC LOVE
+· PART OF THE HERITAGE LINE
+· ARCHITECTURAL STREETWEAR SILHOUETTE
+· DESIGNED FOR INTROSPECTION, NOT ATTENTION
+
+"Some connections don't need words. They don't even need the same universe."
+
+The Intergalactic Love Tee is the third chapter in the Heritage Collection — an archival statement on connection, distance, and the invisible thread that ties us across space and time. Engineered on our signature heavyweight 255 GSM (7.5 oz) combed ring-spun cotton with an architectural, drop-shoulder boxy cut. High-density archival print with seamless matte integration.
+
+Calm in presence, cosmic in meaning.
+
+· 7.5 oz / 255 GSM Heavyweight 100% Combed Ring-Spun Cotton
+· Architectural boxy drop-shoulder cut
+· High-density archival artwork with seamless matte finish
+· Subtle chest insignia
+· Part of the Heritage Collection — the foundational layer of HeavenlyNova.`,
+    price: '$59.99',
+    priceUsd: 59.99,
+    images: [
+      '/Assets/Images/Preview/INTERGALACTIC LOVE/INTERGALACTIC LOVE BLACK/INTERGALACTIC LOVE-On Black.webp',
+      '/Assets/Images/Preview/INTERGALACTIC LOVE/INTERGALACTIC LOVE BLACK/Original Esentials Black Front.webp',
+      '/Assets/Images/Preview/INTERGALACTIC LOVE/INTERGALACTIC LOVE BLACK/Neck Label Black.webp',
+    ],
+  },
+  {
+    id: 'intergalactic-love-white',
+    category: 'individuals' as Category,
+    productType: 'tee' as ProductType,
+    name: 'INTERGALACTIC LOVE — WHITE',
+    tagline: 'Artifact 003 — The same signal, illuminated. Love rendered in light.',
+    description: `✦ HEAVENLYNOVA // ARTIFACT 003: INTERGALACTIC LOVE
+· PART OF THE HERITAGE LINE
+· ARCHITECTURAL STREETWEAR SILHOUETTE
+· DESIGNED FOR INTROSPECTION, NOT ATTENTION
+
+"Some connections don't need words. They don't even need the same universe."
+
+Intergalactic Love in pure white — the archival cosmic motif drawn in high-density ink, paired with a minimal chest insignia. The same signal as the black edition, but rendered in clarity and light.
+
+Heavyweight oversized boxy fit at 7.5oz cotton, drop shoulder construction, premium long-lasting print.
+
+Part of the Heritage Collection — the origin layer of HeavenlyNova, where everything begins.
+
+· 7.5 oz / 255 GSM Heavyweight 100% Combed Ring-Spun Cotton
+· Architectural boxy drop-shoulder cut
+· High-density archival artwork on white canvas
+· Subtle chest insignia
+· Part of the Heritage Collection — the foundational layer of HeavenlyNova.`,
+    price: '$59.99',
+    priceUsd: 59.99,
+    images: [
+      '/Assets/Images/Preview/INTERGALACTIC LOVE/INTERGALACTIC LOVE WHITE/INTERGALACTIC LOVE-Off White.webp',
+      '/Assets/Images/Preview/INTERGALACTIC LOVE/INTERGALACTIC LOVE WHITE/White ES Front 2000x2000.webp',
+      '/Assets/Images/Preview/INTERGALACTIC LOVE/INTERGALACTIC LOVE WHITE/Neck Label White.webp',
+    ],
+  },
 ]
 
 // Produsele active afișate pe site (produsele cu hidden: true sunt omise din catalog și pagini)
@@ -310,6 +373,22 @@ export const SPREADCONNECT_VARIANTS: Record<string, Record<string, number>> = {
     L:  0,
     XL: 0,
     XXL: 0,
+  },
+  'intergalactic-love-black': {
+    S:   0,   // TODO: completează cu ID-ul real din Spreadconnect
+    M:   0,
+    L:   0,
+    XL:  0,
+    '2XL': 0,
+    '3XL': 0,
+  },
+  'intergalactic-love-white': {
+    S:   0,   // TODO: completează cu ID-ul real din Spreadconnect
+    M:   0,
+    L:   0,
+    XL:  0,
+    '2XL': 0,
+    '3XL': 0,
   },
 }
 

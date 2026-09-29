@@ -615,6 +615,101 @@ const PRINTIFY_PRODUCT_MAP = {
       },
     },
   },
+
+  // ─── INTERGALACTIC LOVE ────────────────────────────────────────────────────────
+  // US Edition: listing unic cu Black + White (Shaka Wear Max Heavyweight)
+  // SKU-urile de mai jos sunt extrase din Printify Dashboard → Pricing tab
+  // TODO: Completează product_id după ce accesezi Printify → URL-ul produsului
+  // TODO: Creează EU Edition în Printify și completează blocul eu: {}
+
+  'intergalactic-love-black': {
+    us: {
+      product_id: 'TODO_INTERGALACTIC_LOVE_US_PRODUCT_ID', // TODO: copiază din URL-ul Printify
+      skus: {
+        // Black variant SKUs — US Edition (Shaka Wear)
+        S:     '30898163047461018827',
+        M:     '17386573305615224110',
+        L:     '12760830459520371038', // verifică ultimele cifre în Printify dacă trunchiat
+        XL:    '93046478005770758326',
+        '2XL': '28659137382781900053',
+        '3XL': '39621642448149445565',
+      },
+      variants: {
+        // TODO: Completează variant_id numeric din Printify dacă nu folosești SKU
+        S: 0,
+        M: 0,
+        L: 0,
+        XL: 0,
+        '2XL': 0,
+        '3XL': 0,
+      },
+    },
+    eu: {
+      // TODO: Creează EU Edition (Build Your Brand BY102 / Stanley Stella) în Printify
+      // și completează product_id + skus/variants mai jos
+      product_id: 'TODO_INTERGALACTIC_LOVE_EU_PRODUCT_ID',
+      skus: {
+        S:     'TODO',
+        M:     'TODO',
+        L:     'TODO',
+        XL:    'TODO',
+        '2XL': 'TODO',
+        '3XL': 'TODO',
+      },
+      variants: {
+        S: 0,
+        M: 0,
+        L: 0,
+        XL: 0,
+        '2XL': 0,
+        '3XL': 0,
+      },
+    },
+  },
+
+  'intergalactic-love-white': {
+    us: {
+      product_id: 'TODO_INTERGALACTIC_LOVE_US_PRODUCT_ID', // același listing US — produs cu 2 culori
+      skus: {
+        // White variant SKUs — US Edition (Shaka Wear)
+        S:     '21288848408748860551',
+        M:     '10682618972453431797', // verifică ultimele cifre în Printify dacă trunchiat
+        L:     '20981303440374470838',
+        XL:    '76883200081447228856', // verifică ultimele cifre în Printify dacă trunchiat
+        '2XL': '30153135931736039128', // verifică ultimele cifre în Printify dacă trunchiat
+        '3XL': '61702047414199212954',
+      },
+      variants: {
+        // TODO: Completează variant_id numeric din Printify dacă nu folosești SKU
+        S: 0,
+        M: 0,
+        L: 0,
+        XL: 0,
+        '2XL': 0,
+        '3XL': 0,
+      },
+    },
+    eu: {
+      // TODO: Creează EU Edition în Printify și completează mai jos
+      product_id: 'TODO_INTERGALACTIC_LOVE_EU_PRODUCT_ID',
+      skus: {
+        S:     'TODO',
+        M:     'TODO',
+        L:     'TODO',
+        XL:    'TODO',
+        '2XL': 'TODO',
+        '3XL': 'TODO',
+      },
+      variants: {
+        S: 0,
+        M: 0,
+        L: 0,
+        XL: 0,
+        '2XL': 0,
+        '3XL': 0,
+      },
+    },
+  },
 }
 
 // ─── Țări UE (non-US routing) ─────────────────────────────────────────────────
