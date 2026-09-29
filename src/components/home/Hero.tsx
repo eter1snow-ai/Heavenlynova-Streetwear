@@ -11,9 +11,9 @@ export default function Hero() {
       id="hero"
       className="relative flex h-[70vh] sm:h-[60vh] w-full items-end bg-black text-white overflow-hidden pt-20 pb-12"
     >
-      {/* Starfield Background — HVN_Stars_Clean SVG */}
+      {/* Starfield Background — HVN_Stars_Clean rasterized to WebP */}
       <img
-        src="/Assets/Images/HVN_Stars_Clean.svg"
+        src="/Assets/Images/HVN_Stars_Clean.webp"
         alt="HeavenlyNova Hero"
         className="absolute inset-0 h-full w-full object-cover object-center"
         style={{ objectPosition: 'center 30%' }}
