@@ -26,6 +26,10 @@ const AUTHORIZED_PRICES = {
   'broken-001':           5999,   // $59.99
   'broken-hoodie':        9499,   // $94.99
   'embrace-your-shadow':  5999,   // $59.99
+  'intergalactic-love-black': 5999, // $59.99
+  'intergalactic-love-white': 5999, // $59.99
+  'transcend-ego-black':  5999,   // $59.99
+  'infinity-love-dragon': 5999,   // $59.99
 }
 
 // ─── Piețe Tier 1 (US, CA, UK + Europa majoră & România) ──────────────────────
@@ -148,8 +152,8 @@ export default async function handler(req, res) {
             fixed_amount: { amount: 0, currency: requestedCurrency },
             display_name: 'Free Standard Shipping',
             delivery_estimate: {
-              minimum: { unit: 'business_day', value: 3 },
-              maximum: { unit: 'business_day', value: 7 },
+              minimum: { unit: 'business_day', value: 4 },
+              maximum: { unit: 'business_day', value: 10 },
             },
           },
         },
