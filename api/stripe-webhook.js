@@ -776,7 +776,7 @@ const PRINTIFY_PRODUCT_MAP = {
       },
     },
     eu: {
-      product_id: 'TODO_INFINITY_LOVE_DRAGON_EU_PRODUCT_ID',
+      product_id: '6abdf05352658305010d8054', // INFINITY LOVE — EU Edition (Build Your Brand)
       skus: {
         S:     '23030986250400358758',
         M:     '19788532461494424160',
