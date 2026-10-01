@@ -733,12 +733,13 @@ const PRINTIFY_PRODUCT_MAP = {
     eu: {
       product_id: 'TODO_TRANSCEND_EGO_EU_PRODUCT_ID',
       skus: {
-        S:     'TODO',
-        M:     'TODO',
-        L:     'TODO',
-        XL:    'TODO',
-        '2XL': 'TODO',
-        '3XL': 'TODO',
+        S:     '19338851190191592030',
+        M:     '27308945534746319657',
+        L:     '14712495893079894363',
+        XL:    '10562815071918296583',
+        XXL:   '47991448298684397553',
+        '2XL': '47991448298684397553',
+        '3XL': '10236065591834256850',
       },
       variants: {
         S: 0,
