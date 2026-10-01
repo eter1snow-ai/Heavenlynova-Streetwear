@@ -712,7 +712,7 @@ const PRINTIFY_PRODUCT_MAP = {
   // SKU-urile și product_id vor fi adăugate imediat după obținerea lor din Printify
   'transcend-ego-black': {
     us: {
-      product_id: 'TODO_TRANSCEND_EGO_US_PRODUCT_ID',
+      product_id: '6abbc658b0b20629f905c8da', // TRANSCEND EVO 1 Black [US Edition] (Shaka Wear)
       skus: {
         S:     '52180367318336124317',
         M:     '87179340944004982745',
@@ -731,7 +731,7 @@ const PRINTIFY_PRODUCT_MAP = {
       },
     },
     eu: {
-      product_id: 'TODO_TRANSCEND_EGO_EU_PRODUCT_ID',
+      product_id: '6abbcb4388fc7120f20ac627', // TRANSCEND EVO 1 [EU Edition] (Build Your Brand)
       skus: {
         S:     '19338851190191592030',
         M:     '27308945534746319657',
@@ -757,7 +757,7 @@ const PRINTIFY_PRODUCT_MAP = {
   // SKU-urile vor fi completate imediat ce sunt trimise din Printify
   'infinity-love-dragon': {
     us: {
-      product_id: 'TODO_INFINITY_LOVE_DRAGON_US_PRODUCT_ID',
+      product_id: '6abde83f3cf16eb0f90c4ba5', // INFINITY LOVE Black [US Edition] (Shaka Wear)
       skus: {
         S:     '24819719241385988733',
         M:     '72323482586438347268',
