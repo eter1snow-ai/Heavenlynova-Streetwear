@@ -11,9 +11,9 @@ export default function Hero() {
       id="hero"
       className="relative flex h-[70vh] sm:h-[60vh] w-full items-end bg-black text-white overflow-hidden pt-20 pb-12"
     >
-      {/* Starfield Background — HVN_Stars_Clean rasterized to WebP */}
+      {/* Starfield Background — hero-bg.webp */}
       <img
-        src="/Assets/Images/HVN_Stars_Clean.webp"
+        src="/Assets/Images/hero-bg.webp"
         alt="HeavenlyNova Hero"
         className="absolute inset-0 h-full w-full object-cover object-center"
         style={{ objectPosition: 'center 30%' }}
@@ -21,6 +21,9 @@ export default function Hero() {
         fetchPriority="high"
         decoding="sync"
       />
+      
+      {/* Gradient overlay for seamless transition to deep black */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent pointer-events-none" />
       
       {/* Content */}
       <div className="relative z-10 mx-auto w-full max-w-[1300px] px-6 lg:px-12">
