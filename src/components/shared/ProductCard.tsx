@@ -19,7 +19,7 @@ export default function ProductCard({ product, showPrice = false, className }: P
   const localized = useMemo(() => getLocalizedProduct(product.id, language, product.tagline), [product.id, language, product.tagline])
   const front = product.images?.[0]
   const hover = product.images?.[1]
-  const [variantIndex, setVariantIndex] = useState<number>(0)
+  const [selectedVariantSrc, setSelectedVariantSrc] = useState<string | null>(null)
   const variants = useMemo(() => {
     const mapColor = (p: string) => {
       const file = (p.split('/').pop() || '').toLowerCase()
@@ -57,10 +57,10 @@ export default function ProductCard({ product, showPrice = false, className }: P
           {(front || hover) ? (
             <>
               <img
-                src={getOptimizedImageUrl((variants[variantIndex]?.src) || front || hover!, 600)}
+                src={getOptimizedImageUrl(selectedVariantSrc || front || hover!, 600)}
                 alt={product.name}
                 className={`absolute inset-0 w-full h-full object-contain object-center p-4 transition-opacity duration-200 ease-out pointer-events-none ${
-                  hover ? 'group-hover:opacity-0' : ''
+                  hover && !selectedVariantSrc ? 'group-hover:opacity-0' : ''
                 }`}
                 style={{
                   backgroundColor: 'transparent',
@@ -78,7 +78,7 @@ export default function ProductCard({ product, showPrice = false, className }: P
                   }
                 }}
               />
-              {hover && (
+              {hover && !selectedVariantSrc && (
                 <img
                   src={getOptimizedImageUrl(hover, 600)}
                   alt={`${product.name} hover`}
@@ -112,37 +112,40 @@ export default function ProductCard({ product, showPrice = false, className }: P
               <p className="text-xs opacity-70 mt-1">{t('product.shipping_included', 'Worldwide shipping included')}</p>
               {variants.filter(v => v.label !== 'var').length > 1 && (
                 <div className="mt-3 flex items-center gap-2">
-                  {variants.filter(v => v.label !== 'var').map((v) => (
-                    <button
-                      key={v.label}
-                      aria-label={v.label}
-                      aria-pressed={variantIndex === v.index}
-                      onClick={(e) => {
-                        e.preventDefault()
-                        setVariantIndex(v.index)
-                        console.log('✅ Variant selected', v.label)
-                      }}
-                      className="border transition-transform"
-                      style={{
-                        borderRadius: '9999px',
-                        backgroundColor: v.hex,
-                        color: v.text,
-                        borderColor:
-                          (variantIndex === v.index ? '#ffffff' : (v.border || 'rgba(255,255,255,0.6)')),
-                        transform: variantIndex === v.index ? 'scale(1.02)' : 'scale(1)',
-                        fontWeight: 500,
-                        letterSpacing: '0.02em',
-                        minWidth: '84px',
-                        height: '28px',
-                        padding: '0 12px',
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                      }}
-                    >
-                      {v.label}
-                    </button>
-                  ))}
+                  {variants.filter(v => v.label !== 'var').map((v) => {
+                    const isSelected = selectedVariantSrc ? selectedVariantSrc === v.src : (front === v.src || v.index === 0)
+                    return (
+                      <button
+                        key={v.label}
+                        aria-label={v.label}
+                        aria-pressed={isSelected}
+                        onClick={(e) => {
+                          e.preventDefault()
+                          setSelectedVariantSrc(v.src)
+                          console.log('✅ Variant selected', v.label)
+                        }}
+                        className="border transition-transform"
+                        style={{
+                          borderRadius: '9999px',
+                          backgroundColor: v.hex,
+                          color: v.text,
+                          borderColor:
+                            (isSelected ? '#ffffff' : (v.border || 'rgba(255,255,255,0.6)')),
+                          transform: isSelected ? 'scale(1.02)' : 'scale(1)',
+                          fontWeight: 500,
+                          letterSpacing: '0.02em',
+                          minWidth: '84px',
+                          height: '28px',
+                          padding: '0 12px',
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                        }}
+                      >
+                        {v.label}
+                      </button>
+                    )
+                  })}
                 </div>
               )}
             </>
