@@ -176,4 +176,4 @@ HeavenlyNova se poziționează alături de:
 | Intergalactic Love Black | `intergalactic-love-black` | ✅ | ⏳ TODO |
 | Intergalactic Love White | `intergalactic-love-white` | ✅ | ⏳ TODO |
 | Transcend Ego Black | `transcend-ego-black` | ✅ | ✅ |
-| Infinity Love Dragon | `infinity-love-dragon` | ⏳ TODO | ⏳ TODO |
+| Infinity Love Dragon | `infinity-love-dragon` | ✅ | ⏳ TODO |

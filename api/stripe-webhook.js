@@ -759,12 +759,12 @@ const PRINTIFY_PRODUCT_MAP = {
     us: {
       product_id: 'TODO_INFINITY_LOVE_DRAGON_US_PRODUCT_ID',
       skus: {
-        S:     'TODO',
-        M:     'TODO',
-        L:     'TODO',
-        XL:    'TODO',
-        '2XL': 'TODO',
-        '3XL': 'TODO',
+        S:     '24819719241385988733',
+        M:     '72323482586438347268',
+        L:     '13277353094707065383',
+        XL:    '28808664064650661207',
+        '2XL': '16472329844241653693',
+        '3XL': '10327978562253304228',
       },
       variants: {
         S: 0,
