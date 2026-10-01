@@ -1,4 +1,5 @@
 import Hero from '../components/home/Hero'
+import ShowcaseRail from '../components/home/ShowcaseRail'
 import { products } from '../data/drops'
 import { Link, useLocation } from 'react-router-dom'
 import ProductCard from '../components/shared/ProductCard'
@@ -47,32 +48,8 @@ export default function Home() {
     <main className="bg-black">
       <Hero />
 
-      {/* 1. SOULFULL HERO */}
-      <section id="soulfull" className="bg-black text-white py-16 sm:py-24 lg:py-32">
-        <div className="mx-auto w-full max-w-[1300px] px-6 lg:px-12">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.9 }}>
-            <p style={{ fontSize: '0.65rem', letterSpacing: '0.45em', color: '#888888', lineHeight: 1.6 }} className="uppercase mb-3">
-              {c.soulfull.badge}
-            </p>
-            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 3.2rem)', fontWeight: 500, letterSpacing: '0.08em', lineHeight: 1.2, color: '#E6E6E6' }} className="uppercase mb-3">
-              Soulfull
-            </h2>
-            <p style={{ fontSize: '0.82rem', letterSpacing: '0.2em', lineHeight: 1.7, color: '#888888' }} className="mb-10">
-              {c.soulfull.subtitle}
-            </p>
-          </motion.div>
-          <div className="flex flex-wrap justify-center gap-8 w-full">
-            {heritage.map((p) => (
-              <div key={p.id} className="flex flex-col items-center w-full max-w-[400px]">
-                <ProductCard product={p} />
-                <p style={{ fontSize: '0.6rem', letterSpacing: '0.35em', color: '#666666', marginTop: '10px' }} className="uppercase text-center">
-                  {c.soulfull.cardSub}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* 1. STATEMENT SERIES // CURATED SHOWCASE (Horizontal Rail) */}
+      <ShowcaseRail products={heritage} />
 
       <div className="border-t border-white/5" />
 
@@ -101,38 +78,6 @@ export default function Home() {
               className="inline-flex border-b border-white/40 pb-1 text-xs font-medium uppercase tracking-[0.24em] text-neutral-400 transition-colors hover:text-white hover:border-white"
             >
               {c.essentials.link}
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <div className="border-t border-white/5" />
-
-      {/* 3. HERITAGE COLLECTION */}
-      <section id="heritage" className="bg-black text-white py-16 sm:py-24 lg:py-32">
-        <div className="mx-auto w-full max-w-[1300px] px-6 lg:px-12">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.9 }}>
-            <p style={{ fontSize: '0.65rem', letterSpacing: '0.45em', color: '#888888', lineHeight: 1.6 }} className="uppercase mb-3">
-              {c.heritage.badge}
-            </p>
-            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 3.2rem)', fontWeight: 500, letterSpacing: '0.08em', lineHeight: 1.2, color: '#E6E6E6' }} className="uppercase mb-3">
-              Heritage Collection
-            </h2>
-            <p style={{ fontSize: '0.82rem', letterSpacing: '0.15em', lineHeight: 1.8, color: '#A8A8A8', maxWidth: '600px', fontStyle: 'italic' }} className="mb-10">
-              {c.heritage.desc}
-            </p>
-          </motion.div>
-          <div className="flex flex-wrap justify-center gap-8 w-full">
-            {heritage.map((p) => (
-              <ProductCard key={p.id} product={p} className="w-full max-w-[400px]" />
-            ))}
-          </div>
-          <div className="mt-8 text-center">
-            <Link
-              to="/heritage"
-              className="inline-flex border-b border-white/40 pb-1 text-xs font-medium uppercase tracking-[0.24em] text-neutral-400 transition-colors hover:text-white hover:border-white"
-            >
-              {c.heritage.link}
             </Link>
           </div>
         </div>
