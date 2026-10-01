@@ -19,7 +19,7 @@ export default function ShippingPolicy() {
           </p>
 
           <p>
-            Production takes 1 to 3 business days. After that, delivery takes about 3 to 7 business days in the United States, 5 to 10 in Canada, and 4 to 9 in the European Union, which puts the total from order to doorstep at roughly 4 to 10 business days in the US, 6 to 13 in Canada and 5 to 12 in the EU. Orders to the United Kingdom take about 5 to 11 business days in total. We ship with carriers such as USPS, FedEx, DHL, DPD and Royal Mail, and orders with several items can be split and sent from different production partners so everything reaches you as fast as possible.
+            Production takes 1 to 3 business days. After that, delivery takes about 3 to 7 business days in the United States, 5 to 10 in Canada, and 4 to 9 in the European Union, which puts the total from order to doorstep at roughly 4 to 10 business days in the US, 6 to 13 in Canada and 5 to 12 in the EU. Orders to Germany and the Czech Republic are typically the quickest, often arriving within 3 to 7 business days in total thanks to direct local production. Orders to the United Kingdom take about 5 to 11 business days in total. We ship with carriers such as USPS, FedEx, DHL, DPD and Royal Mail, and orders with several items can be split and sent from different production partners so everything reaches you as fast as possible.
           </p>
 
           <p>
