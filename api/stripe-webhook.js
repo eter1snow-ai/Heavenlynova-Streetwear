@@ -751,6 +751,51 @@ const PRINTIFY_PRODUCT_MAP = {
       },
     },
   },
+
+  // ─── INFINITY LOVE DRAGON ───────────────────────────────────────────────────
+  // US Edition (Shaka Wear) / EU Edition (Build Your Brand)
+  // SKU-urile vor fi completate imediat ce sunt trimise din Printify
+  'infinity-love-dragon': {
+    us: {
+      product_id: 'TODO_INFINITY_LOVE_DRAGON_US_PRODUCT_ID',
+      skus: {
+        S:     'TODO',
+        M:     'TODO',
+        L:     'TODO',
+        XL:    'TODO',
+        '2XL': 'TODO',
+        '3XL': 'TODO',
+      },
+      variants: {
+        S: 0,
+        M: 0,
+        L: 0,
+        XL: 0,
+        '2XL': 0,
+        '3XL': 0,
+      },
+    },
+    eu: {
+      product_id: 'TODO_INFINITY_LOVE_DRAGON_EU_PRODUCT_ID',
+      skus: {
+        S:     'TODO',
+        M:     'TODO',
+        L:     'TODO',
+        XL:    'TODO',
+        XXL:   'TODO',
+        '2XL': 'TODO',
+        '3XL': 'TODO',
+      },
+      variants: {
+        S: 0,
+        M: 0,
+        L: 0,
+        XL: 0,
+        '2XL': 0,
+        '3XL': 0,
+      },
+    },
+  },
 }
 
 // ─── Țări UE (non-US routing) ─────────────────────────────────────────────────

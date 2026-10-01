@@ -30,7 +30,14 @@ export default function ProductCard({ product, showPrice = false, className }: P
       if (/black/.test(file)) return { label: 'black', hex: '#0b0b0b', text: '#ffffff' }
       return { label: 'var', hex: '#888888', text: '#ffffff' }
     }
-    return product.images.slice(0, 2).map((p, i) => ({ index: i, src: p, ...mapColor(p) }))
+    const byLabel: Record<string, { index: number; src: string; label: string; hex: string; text: string; border?: string }> = {}
+    product.images.forEach((p, i) => {
+      const c = mapColor(p)
+      if (c.label !== 'var' && !byLabel[c.label]) {
+        byLabel[c.label] = { index: i, src: p, ...c }
+      }
+    })
+    return Object.values(byLabel)
   }, [product.images])
   return (
     <Link to={`/product/${product.id}`} className={className ? className : 'w-full max-w-[400px]'}>
@@ -103,39 +110,41 @@ export default function ProductCard({ product, showPrice = false, className }: P
             <>
               <p className="text-sm font-semibold tracking-wide text-white mt-2">{formatPrice(product.priceUsd)}</p>
               <p className="text-xs opacity-70 mt-1">{t('product.shipping_included', 'Worldwide shipping included')}</p>
-              <div className="mt-3 flex items-center gap-2">
-                {variants.filter(v => v.label !== 'var').map((v) => (
-                  <button
-                    key={v.index}
-                    aria-label={v.label}
-                    aria-pressed={variantIndex === v.index}
-                    onClick={(e) => {
-                      e.preventDefault()
-                      setVariantIndex(v.index)
-                      console.log('✅ Variant selected', v.label)
-                    }}
-                    className="border transition-transform"
-                    style={{
-                      borderRadius: '9999px',
-                      backgroundColor: v.hex,
-                      color: v.text,
-                      borderColor:
-                        (variantIndex === v.index ? '#ffffff' : (v.border || 'rgba(255,255,255,0.6)')),
-                      transform: variantIndex === v.index ? 'scale(1.02)' : 'scale(1)',
-                      fontWeight: 500,
-                      letterSpacing: '0.02em',
-                      minWidth: '84px',
-                      height: '28px',
-                      padding: '0 12px',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    {v.label}
-                  </button>
-                ))}
-              </div>
+              {variants.filter(v => v.label !== 'var').length > 1 && (
+                <div className="mt-3 flex items-center gap-2">
+                  {variants.filter(v => v.label !== 'var').map((v) => (
+                    <button
+                      key={v.label}
+                      aria-label={v.label}
+                      aria-pressed={variantIndex === v.index}
+                      onClick={(e) => {
+                        e.preventDefault()
+                        setVariantIndex(v.index)
+                        console.log('✅ Variant selected', v.label)
+                      }}
+                      className="border transition-transform"
+                      style={{
+                        borderRadius: '9999px',
+                        backgroundColor: v.hex,
+                        color: v.text,
+                        borderColor:
+                          (variantIndex === v.index ? '#ffffff' : (v.border || 'rgba(255,255,255,0.6)')),
+                        transform: variantIndex === v.index ? 'scale(1.02)' : 'scale(1)',
+                        fontWeight: 500,
+                        letterSpacing: '0.02em',
+                        minWidth: '84px',
+                        height: '28px',
+                        padding: '0 12px',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}
+                    >
+                      {v.label}
+                    </button>
+                  ))}
+                </div>
+              )}
             </>
           ) : (
             <p className="mt-2 text-xs text-neutral-400 leading-relaxed">{localized.tagline || product.tagline}</p>

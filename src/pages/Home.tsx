@@ -16,6 +16,15 @@ export default function Home() {
   const heritage = products.filter((p) => p.category === 'individuals')
   const essentials = products.filter((p) => p.category === 'essentials')
   const seraphim = products.filter((p) => p.category === 'flagship')
+
+  // The Pillars — Cele 4 piese iconice curatoriate static
+  const pillarIds = [
+    'transcend-ego-black',
+    'infinity-love-dragon',
+    'soulfull-white',
+    'intergalactic-love-white',
+  ]
+  const pillars = pillarIds.map((id) => products.find((p) => p.id === id)).filter(Boolean) as typeof products
   const [nlEmail, setNlEmail] = useState('')
   const [nlSent, setNlSent] = useState(false)
   const [nlLoading, setNlLoading] = useState(false)
@@ -79,6 +88,30 @@ export default function Home() {
             >
               {c.essentials.link}
             </Link>
+          </div>
+        </div>
+      </section>
+
+      <div className="border-t border-white/5" />
+
+      {/* 3. ICONIC EDITIONS (The Pillars - 4 Column Editorial Grid) */}
+      <section id="iconic-editions" className="bg-black text-white py-16 sm:py-24 lg:py-32">
+        <div className="mx-auto w-full max-w-[1300px] px-6 lg:px-12">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.9 }}>
+            <p style={{ fontSize: '0.65rem', letterSpacing: '0.45em', color: '#888888', lineHeight: 1.6 }} className="uppercase mb-3">
+              ICONIC EDITIONS
+            </p>
+            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 3.2rem)', fontWeight: 500, letterSpacing: '0.08em', lineHeight: 1.2, color: '#E6E6E6' }} className="uppercase mb-3">
+              The Pillars
+            </h2>
+            <p style={{ fontSize: '0.82rem', letterSpacing: '0.15em', lineHeight: 1.8, color: '#A8A8A8', maxWidth: '600px' }} className="mb-10 sm:mb-14">
+              Four monumental identity pieces defining the HeavenlyNova aesthetic. Heavyweight architectural cotton engineered for quiet presence.
+            </p>
+          </motion.div>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 w-full">
+            {pillars.map((p) => (
+              <ProductCard key={p.id} product={p} showPrice={true} className="w-full" />
+            ))}
           </div>
         </div>
       </section>

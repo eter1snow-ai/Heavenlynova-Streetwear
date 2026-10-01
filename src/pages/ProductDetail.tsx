@@ -68,6 +68,10 @@ const PRODUCT_SEO_OVERRIDES: Record<string, { title: string; description: string
     title: 'TRANSCEND EGO — Deep Black Heavyweight Tee | HeavenlyNova',
     description: 'Statement 004 — Beyond the boundary of ego lies the architecture of the infinite. 255 GSM heavyweight combed cotton by HeavenlyNova.',
   },
+  'infinity-love-dragon': {
+    title: 'INFINITY LOVE // DRAGON — Deep Black Heavyweight Tee | HeavenlyNova',
+    description: 'Statement 005 — Eternal cycles bound by celestial devotion. 255 GSM heavyweight combed cotton showstopper by HeavenlyNova.',
+  },
 }
 
 
@@ -194,7 +198,8 @@ export default function ProductDetail() {
       product?.id?.startsWith('broken') ||
       product?.id === 'embrace-your-shadow' ||
       product?.id?.startsWith('intergalactic') ||
-      product?.id?.startsWith('transcend')
+      product?.id?.startsWith('transcend') ||
+      product?.id?.startsWith('infinity')
     ) {
       return images.filter((s) => !isNeck(s))
     }
@@ -303,8 +308,8 @@ export default function ProductDetail() {
                       key={i}
                       src={getOptimizedImageUrl(img, 1200)}
                       alt={product.name}
-                      className={`w-full ${(product.id.startsWith('soulfull') || product.id === 'the-origin' || product.id.startsWith('broken') || product.id === 'embrace-your-shadow' || product.id.startsWith('intergalactic') || product.id.startsWith('transcend')) ? 'object-cover' : 'object-contain'} ${(product.id.startsWith('soulfull') || product.id === 'the-origin' || product.id.startsWith('broken') || product.id === 'embrace-your-shadow' || product.id.startsWith('intergalactic') || product.id.startsWith('transcend')) ? '' : 'aspect-[3/4]'} ${i === 1 ? 'object-top' : 'object-center'}`}
-                      style={{ borderRadius: 0, backgroundColor: 'transparent', mixBlendMode: 'normal', aspectRatio: (product.id === 'embrace-your-shadow' || product.id.startsWith('intergalactic') || product.id.startsWith('transcend')) ? '1/1' : (product.id.startsWith('soulfull') || product.id === 'the-origin' || product.id.startsWith('broken')) ? '2044/2000' : undefined }}
+                      className={`w-full ${(product.id.startsWith('soulfull') || product.id === 'the-origin' || product.id.startsWith('broken') || product.id === 'embrace-your-shadow' || product.id.startsWith('intergalactic') || product.id.startsWith('transcend') || product.id.startsWith('infinity')) ? 'object-cover' : 'object-contain'} ${(product.id.startsWith('soulfull') || product.id === 'the-origin' || product.id.startsWith('broken') || product.id === 'embrace-your-shadow' || product.id.startsWith('intergalactic') || product.id.startsWith('transcend') || product.id.startsWith('infinity')) ? '' : 'aspect-[3/4]'} ${i === 1 ? 'object-top' : 'object-center'}`}
+                      style={{ borderRadius: 0, backgroundColor: 'transparent', mixBlendMode: 'normal', aspectRatio: (product.id === 'embrace-your-shadow' || product.id.startsWith('intergalactic') || product.id.startsWith('transcend') || product.id.startsWith('infinity')) ? '1/1' : (product.id.startsWith('soulfull') || product.id === 'the-origin' || product.id.startsWith('broken')) ? '2044/2000' : undefined }}
                       loading={i === 0 ? "eager" : "lazy"}
                       fetchPriority={i === 0 ? "high" : "low"}
                       decoding="async"

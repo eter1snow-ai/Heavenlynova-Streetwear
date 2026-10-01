@@ -313,6 +313,39 @@ A cinematic dark-luxury statement forged into heavy 7.5 oz American cotton. The 
       '/Assets/Images/Preview/TRANSCEND-EGO/TRANSCEND-EGO-BLACK/Neck-Label-Black.webp',
     ],
   },
+  // ─── INFINITY LOVE DRAGON ───────────────────────────────────────────────────
+  {
+    id: 'infinity-love-dragon',
+    category: 'individuals' as Category,
+    productType: 'tee' as ProductType,
+    name: 'INFINITY LOVE // DRAGON',
+    tagline: 'Statement 005 — Deep Black. An intricate ceramic mosaic dragon bound by celestial devotion.',
+    description: `✦ HEAVENLYNOVA // STATEMENT SERIES: INFINITY LOVE
+· ARCHITECTURAL BOXY SILHOUETTE
+· DESIGNED FOR MONUMENTAL CALM, NOT ATTENTION
+
+STATEMENT SERIES // PIECE 005
+
+"Eternal cycles bound by celestial devotion."
+
+Our signature showstopper piece. The Infinity Love edition merges raw oriental mythology with modern brutalist streetwear culture. Featuring an intricate, high-definition ceramic mosaic dragon coiled across the upper back, interwoven with our signature dove motifs and bold typography in vibrant contrasting tones.
+
+Crafted on ultra-heavyweight 7.5 oz American cotton with an engineered boxy drape: wide dropped shoulders, structured silhouette, and a thick retro collar designed to hold its architecture indefinitely.
+
+• 245–255 GSM (7.5 oz/yd²) Heavyweight Streetwear Jersey
+• 100% Combed Ring-Spun USA Cotton (Rigid structural hand-feel)
+• Architectural boxy fit with authentic dropped shoulders
+• High-density tactile print — subtle chest insignia & full-scale mosaic dragon back piece
+• Reinforced 1" double-needle collar with shoulder-to-shoulder interior taping
+• Part of the Statement Series — engineered for daily rituals`,
+    price: '$59.99',
+    priceUsd: 59.99,
+    images: [
+      '/Assets/Images/Preview/INFINITY-LOVE/INFINITY-LOVE-BLACK/INFINITY-LOVE-Back-Black.webp',
+      '/Assets/Images/Preview/INFINITY-LOVE/INFINITY-LOVE-BLACK/Original-Essentials-Black-Front.webp',
+      '/Assets/Images/Preview/INFINITY-LOVE/INFINITY-LOVE-BLACK/Neck-Label-Black.webp',
+    ],
+  },
 ]
 
 // Produsele active afișate pe site (produsele cu hidden: true sunt omise din catalog și pagini)
@@ -420,6 +453,14 @@ export const SPREADCONNECT_VARIANTS: Record<string, Record<string, number>> = {
     '3XL': 0,
   },
   'transcend-ego-black': {
+    S:   0,   // TODO: completează cu ID-ul real din Spreadconnect
+    M:   0,
+    L:   0,
+    XL:  0,
+    '2XL': 0,
+    '3XL': 0,
+  },
+  'infinity-love-dragon': {
     S:   0,   // TODO: completează cu ID-ul real din Spreadconnect
     M:   0,
     L:   0,
