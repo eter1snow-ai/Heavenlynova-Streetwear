@@ -124,22 +124,25 @@ public/
 - [ ] Spec bullets complete (6 puncte standard de mai sus)
 - [ ] Zero termeni interziși (Artifact, Archival ca substantiv, Introspection, citate generice)
 
-### 🔧 Backend / Cod
-- [ ] Produs adăugat în `src/data/drops.ts` (id, category, productType, name, tagline, description, price, priceUsd, images)
-- [ ] `category: 'individuals'` pentru Heritage, `'flagship'` pentru Drops principale
-- [ ] SKU-uri US adăugate în `api/stripe-webhook.js` → `PRINTIFY_PRODUCT_MAP`
-- [ ] `product_id` Printify completat (din URL-ul produsului în Printify Dashboard)
-- [ ] EU edition marcat `TODO` dacă nu e creat încă
-- [ ] Intrare adăugată în `SPREADCONNECT_VARIANTS` din `drops.ts`
-- [ ] SEO override adăugat în `PRODUCT_SEO_OVERRIDES` din `ProductDetail.tsx`
-- [ ] `npm run build` — zero erori TypeScript
+### 🔧 Backend / Cod (CRITIC: Erori la plată dacă lipsește vreun pas!)
+- [ ] **Catalog Produse:** Produs adăugat în `src/data/drops.ts` (`id`, `category`, `productType`, `name`, `tagline`, `description`, `price`, `priceUsd`, `images`)
+- [ ] **Stripe Checkout Whitelist (FIX CRITIC):** ID-ul produsului adăugat obligatoriu în `api/create-checkout-session.js` → `AUTHORIZED_PRICES` cu prețul autorizat în cenți (ex: `'transcend-ego-black': 5999`). *Fără această linie, Stripe Checkout dă instant eroare 400 "Unknown product" la plata cu cardul!*
+- [ ] **Stripe Delivery Estimate:** Verificat ca `delivery_estimate` din `api/create-checkout-session.js` să fie setat la 4–12 business days (aliniat 1:1 cu Shipping Policy).
+- [ ] **Printify Product IDs (US & EU):** Ambele ID-uri reale din URL-ul Printify Dashboard (`product_id: '6ab...'`) completate în `api/stripe-webhook.js` la `PRINTIFY_PRODUCT_MAP`.
+- [ ] **Printify SKUs (US & EU):** Toate codurile SKU unice (S–3XL) mapate pentru atelierul US (Shaka Wear) și atelierul EU (Build Your Brand / Stanley Stella).
+- [ ] **Galerie & Aspect Ratio:** ID-ul adăugat în `src/pages/ProductDetail.tsx` la `filteredVariantImages` și la verificarea de aspect ratio `1/1` (pentru imaginile 2000×2000).
+- [ ] **SEO Meta Tags:** Override dedicat adăugat în `PRODUCT_SEO_OVERRIDES` din `src/pages/ProductDetail.tsx`.
+- [ ] **Spreadconnect Variant Placeholder:** Adăugată intrare în `SPREADCONNECT_VARIANTS` din `drops.ts`.
+- [ ] **Build Check:** Rulat `npm run build` — zero erori TypeScript (`tsc -b && vite build`).
 
-### 🚀 Deploy
+### 🚀 Verificare Pre-Launch & Deploy
 - [ ] `git add -A` + `git commit` cu mesaj descriptiv
 - [ ] `git push origin main`
-- [ ] Verificat live pe `heavenlynova.com` după deploy Vercel (~2 min)
-- [ ] Confirmat că Design Focus (back preview mare) apare pe PDP
-- [ ] Confirmat că neck label zoom apare corect
+- [ ] Testat navigarea la `/product/[id]` pe `heavenlynova.com`
+- [ ] Confirmat că Design Focus (preview-ul mare de back) apare la baza paginii
+- [ ] Confirmat că zoom-ul pe neck label funcționează
+- [ ] Confirmat că nu există butoane de culori duplicate pe card (`ProductCard`)
+- [ ] **Test Checkout:** Adăugat în coș și apăsat pe Checkout — confirmat că redirecționează către pagina oficială Stripe fără eroare de „Unknown product”.
 
 ---
 
