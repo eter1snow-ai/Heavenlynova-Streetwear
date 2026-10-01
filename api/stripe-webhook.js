@@ -643,7 +643,7 @@ const PRINTIFY_PRODUCT_MAP = {
       },
     },
     eu: {
-      product_id: 'TODO_INTERGALACTIC_LOVE_EU_PRODUCT_ID',
+      product_id: '6abba97bfe369b7a49073d03', // INTERGALACTIC LOVE Black White[EU Edition] (Build Your Brand)
       skus: {
         S:     '45443918284235039113',
         M:     '70021962844323721077',
@@ -685,7 +685,7 @@ const PRINTIFY_PRODUCT_MAP = {
       },
     },
     eu: {
-      product_id: 'TODO_INTERGALACTIC_LOVE_EU_PRODUCT_ID',
+      product_id: '6abba97bfe369b7a49073d03', // INTERGALACTIC LOVE Black White[EU Edition] (Build Your Brand)
       skus: {
         S:     '10329914721256182339',
         M:     '15231050275018458710',
