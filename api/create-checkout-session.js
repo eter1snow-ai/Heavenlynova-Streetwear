@@ -153,7 +153,7 @@ export default async function handler(req, res) {
             display_name: 'Free Standard Shipping',
             delivery_estimate: {
               minimum: { unit: 'business_day', value: 4 },
-              maximum: { unit: 'business_day', value: 12 },
+              maximum: { unit: 'business_day', value: 14 },
             },
           },
         },
