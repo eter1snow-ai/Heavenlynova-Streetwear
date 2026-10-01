@@ -175,4 +175,4 @@ HeavenlyNova se poziționează alături de:
 | Embrace Your Shadow | `embrace-your-shadow` | ✅ | ✅ |
 | Intergalactic Love Black | `intergalactic-love-black` | ✅ | ⏳ TODO |
 | Intergalactic Love White | `intergalactic-love-white` | ✅ | ⏳ TODO |
-| Transcend Ego Black | `transcend-ego-black` | ⏳ TODO | ⏳ TODO |
+| Transcend Ego Black | `transcend-ego-black` | ✅ | ⏳ TODO |

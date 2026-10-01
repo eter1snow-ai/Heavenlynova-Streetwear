@@ -714,12 +714,12 @@ const PRINTIFY_PRODUCT_MAP = {
     us: {
       product_id: 'TODO_TRANSCEND_EGO_US_PRODUCT_ID',
       skus: {
-        S:     'TODO',
-        M:     'TODO',
-        L:     'TODO',
-        XL:    'TODO',
-        '2XL': 'TODO',
-        '3XL': 'TODO',
+        S:     '52180367318336124317',
+        M:     '87179340944004982745',
+        L:     '10951852095682399112',
+        XL:    '11089091529774287634',
+        '2XL': '61486817104991997964',
+        '3XL': '16040374130040730495',
       },
       variants: {
         S: 0,
