@@ -643,16 +643,15 @@ const PRINTIFY_PRODUCT_MAP = {
       },
     },
     eu: {
-      // TODO: Creează EU Edition (Build Your Brand BY102 / Stanley Stella) în Printify
-      // și completează product_id + skus/variants mai jos
       product_id: 'TODO_INTERGALACTIC_LOVE_EU_PRODUCT_ID',
       skus: {
-        S:     'TODO',
-        M:     'TODO',
-        L:     'TODO',
-        XL:    'TODO',
-        '2XL': 'TODO',
-        '3XL': 'TODO',
+        S:     '45443918284235039113',
+        M:     '70021962844323721077',
+        L:     '69201845645811856769',
+        XL:    '22354653840571139090',
+        XXL:   '18704951652488284729',
+        '2XL': '18704951652488284729',
+        '3XL': '14904510786305908468',
       },
       variants: {
         S: 0,
@@ -686,15 +685,15 @@ const PRINTIFY_PRODUCT_MAP = {
       },
     },
     eu: {
-      // TODO: Creează EU Edition în Printify și completează mai jos
       product_id: 'TODO_INTERGALACTIC_LOVE_EU_PRODUCT_ID',
       skus: {
-        S:     'TODO',
-        M:     'TODO',
-        L:     'TODO',
-        XL:    'TODO',
-        '2XL': 'TODO',
-        '3XL': 'TODO',
+        S:     '10329914721256182339',
+        M:     '15231050275018458710',
+        L:     '19002954385557657473',
+        XL:    '12612250139384766078',
+        XXL:   '84560725559173087831',
+        '2XL': '84560725559173087831',
+        '3XL': '30317242526391537500',
       },
       variants: {
         S: 0,

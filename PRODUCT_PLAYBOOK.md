@@ -173,7 +173,7 @@ HeavenlyNova se poziționează alături de:
 | Broken 001 | `broken-001` | ✅ | ✅ |
 | Broken Hoodie | `broken-hoodie` | ✅ | ✅ |
 | Embrace Your Shadow | `embrace-your-shadow` | ✅ | ✅ |
-| Intergalactic Love Black | `intergalactic-love-black` | ✅ | ⏳ TODO |
-| Intergalactic Love White | `intergalactic-love-white` | ✅ | ⏳ TODO |
+| Intergalactic Love Black | `intergalactic-love-black` | ✅ | ✅ |
+| Intergalactic Love White | `intergalactic-love-white` | ✅ | ✅ |
 | Transcend Ego Black | `transcend-ego-black` | ✅ | ✅ |
 | Infinity Love Dragon | `infinity-love-dragon` | ✅ | ✅ |
