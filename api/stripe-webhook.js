@@ -706,6 +706,50 @@ const PRINTIFY_PRODUCT_MAP = {
       },
     },
   },
+
+  // ─── TRANSCEND EGO ───────────────────────────────────────────────────────────
+  // US Edition: Shaka Wear Max Heavyweight (7.5 oz / 255 GSM)
+  // SKU-urile și product_id vor fi adăugate imediat după obținerea lor din Printify
+  'transcend-ego-black': {
+    us: {
+      product_id: 'TODO_TRANSCEND_EGO_US_PRODUCT_ID',
+      skus: {
+        S:     'TODO',
+        M:     'TODO',
+        L:     'TODO',
+        XL:    'TODO',
+        '2XL': 'TODO',
+        '3XL': 'TODO',
+      },
+      variants: {
+        S: 0,
+        M: 0,
+        L: 0,
+        XL: 0,
+        '2XL': 0,
+        '3XL': 0,
+      },
+    },
+    eu: {
+      product_id: 'TODO_TRANSCEND_EGO_EU_PRODUCT_ID',
+      skus: {
+        S:     'TODO',
+        M:     'TODO',
+        L:     'TODO',
+        XL:    'TODO',
+        '2XL': 'TODO',
+        '3XL': 'TODO',
+      },
+      variants: {
+        S: 0,
+        M: 0,
+        L: 0,
+        XL: 0,
+        '2XL': 0,
+        '3XL': 0,
+      },
+    },
+  },
 }
 
 // ─── Țări UE (non-US routing) ─────────────────────────────────────────────────

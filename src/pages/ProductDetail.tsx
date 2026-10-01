@@ -56,6 +56,18 @@ const PRODUCT_SEO_OVERRIDES: Record<string, { title: string; description: string
     title: 'Embrace Your Shadow — Heritage Artifact 002 | HeavenlyNova',
     description: 'Embrace Your Shadow Tee — Artifact 002. Exploring psychological duality and the unseen self. 255 GSM heavyweight combed cotton by HeavenlyNova.',
   },
+  'intergalactic-love-black': {
+    title: 'INTERGALACTIC LOVE — Deep Black Heavyweight Tee | HeavenlyNova',
+    description: 'Statement 003 — Deep Black. An expansive orbital dialogue rendered in high-density stark ink. 255 GSM heavyweight cotton by HeavenlyNova.',
+  },
+  'intergalactic-love-white': {
+    title: 'INTERGALACTIC LOVE — Chalk White Heavyweight Tee | HeavenlyNova',
+    description: 'Statement 003 — Chalk White. Celestial geometry and calm monumental presence. 255 GSM heavyweight cotton by HeavenlyNova.',
+  },
+  'transcend-ego-black': {
+    title: 'TRANSCEND EGO — Deep Black Heavyweight Tee | HeavenlyNova',
+    description: 'Statement 004 — Beyond the boundary of ego lies the architecture of the infinite. 255 GSM heavyweight combed cotton by HeavenlyNova.',
+  },
 }
 
 
@@ -176,7 +188,14 @@ export default function ProductDetail() {
     return file.includes(color)
   }
   const filteredVariantImages = useMemo(() => {
-    if (product?.id === 'the-origin' || product?.id === 'soulfull-hoodie' || product?.id?.startsWith('broken') || product?.id === 'embrace-your-shadow') {
+    if (
+      product?.id === 'the-origin' ||
+      product?.id === 'soulfull-hoodie' ||
+      product?.id?.startsWith('broken') ||
+      product?.id === 'embrace-your-shadow' ||
+      product?.id?.startsWith('intergalactic') ||
+      product?.id?.startsWith('transcend')
+    ) {
       return images.filter((s) => !isNeck(s))
     }
     if (!selectedColor || selectedColor === 'var') {
@@ -284,8 +303,8 @@ export default function ProductDetail() {
                       key={i}
                       src={getOptimizedImageUrl(img, 1200)}
                       alt={product.name}
-                      className={`w-full ${(product.id.startsWith('soulfull') || product.id === 'the-origin' || product.id.startsWith('broken') || product.id === 'embrace-your-shadow') ? 'object-cover' : 'object-contain'} ${(product.id.startsWith('soulfull') || product.id === 'the-origin' || product.id.startsWith('broken') || product.id === 'embrace-your-shadow') ? '' : 'aspect-[3/4]'} ${i === 1 ? 'object-top' : 'object-center'}`}
-                      style={{ borderRadius: 0, backgroundColor: 'transparent', mixBlendMode: 'normal', aspectRatio: product.id === 'embrace-your-shadow' ? '1/1' : (product.id.startsWith('soulfull') || product.id === 'the-origin' || product.id.startsWith('broken')) ? '2044/2000' : undefined }}
+                      className={`w-full ${(product.id.startsWith('soulfull') || product.id === 'the-origin' || product.id.startsWith('broken') || product.id === 'embrace-your-shadow' || product.id.startsWith('intergalactic') || product.id.startsWith('transcend')) ? 'object-cover' : 'object-contain'} ${(product.id.startsWith('soulfull') || product.id === 'the-origin' || product.id.startsWith('broken') || product.id === 'embrace-your-shadow' || product.id.startsWith('intergalactic') || product.id.startsWith('transcend')) ? '' : 'aspect-[3/4]'} ${i === 1 ? 'object-top' : 'object-center'}`}
+                      style={{ borderRadius: 0, backgroundColor: 'transparent', mixBlendMode: 'normal', aspectRatio: (product.id === 'embrace-your-shadow' || product.id.startsWith('intergalactic') || product.id.startsWith('transcend')) ? '1/1' : (product.id.startsWith('soulfull') || product.id === 'the-origin' || product.id.startsWith('broken')) ? '2044/2000' : undefined }}
                       loading={i === 0 ? "eager" : "lazy"}
                       fetchPriority={i === 0 ? "high" : "low"}
                       decoding="async"

@@ -282,6 +282,37 @@ A celestial dialogue forged into heavyweight cotton. The Intergalactic Love edit
       '/Assets/Images/Preview/INTERGALACTIC-LOVE/INTERGALACTIC-LOVE-WHITE/Neck-Label-White.webp',
     ],
   },
+  // ─── TRANSCEND EGO ───────────────────────────────────────────────────────────
+  {
+    id: 'transcend-ego-black',
+    category: 'individuals' as Category,
+    productType: 'tee' as ProductType,
+    name: 'TRANSCEND EGO — BLACK',
+    tagline: 'Statement 004 — Deep Black. An architectural shadow-blend portrait exploring the infinite.',
+    description: `✦ HEAVENLYNOVA // STATEMENT SERIES: TRANSCEND EGO
+· ARCHITECTURAL BOXY SILHOUETTE
+· DESIGNED FOR MONUMENTAL CALM, NOT ATTENTION
+
+STATEMENT SERIES // PIECE 004
+
+"Beyond the boundary of ego lies the architecture of the infinite."
+
+A cinematic dark-luxury statement forged into heavy 7.5 oz American cotton. The Transcend edition explores the tension between identity and the infinite—featuring an engineered shadow-blend portrait that dissolves directly into the deep black textile, contrasted by bold brutalist typography and a striking crimson hand-styled accent.
+
+• 245–255 GSM (7.5 oz/yd²) Heavyweight Streetwear Jersey
+• 100% Combed Ring-Spun USA Cotton (Rigid structural hand-feel)
+• Architectural boxy fit with authentic dropped shoulders
+• High-density tactile print — subtle chest insignia & full-scale architectural back piece
+• Reinforced 1" double-needle collar with shoulder-to-shoulder interior taping
+• Part of the Statement Series — engineered for daily rituals`,
+    price: '$59.99',
+    priceUsd: 59.99,
+    images: [
+      '/Assets/Images/Preview/TRANSCEND-EGO/TRANSCEND-EGO-BLACK/TRANSCEND-EGO-Back-Black.webp',
+      '/Assets/Images/Preview/TRANSCEND-EGO/TRANSCEND-EGO-BLACK/Original-Essentials-Black-Front.webp',
+      '/Assets/Images/Preview/TRANSCEND-EGO/TRANSCEND-EGO-BLACK/Neck-Label-Black.webp',
+    ],
+  },
 ]
 
 // Produsele active afișate pe site (produsele cu hidden: true sunt omise din catalog și pagini)
@@ -381,6 +412,14 @@ export const SPREADCONNECT_VARIANTS: Record<string, Record<string, number>> = {
     '3XL': 0,
   },
   'intergalactic-love-white': {
+    S:   0,   // TODO: completează cu ID-ul real din Spreadconnect
+    M:   0,
+    L:   0,
+    XL:  0,
+    '2XL': 0,
+    '3XL': 0,
+  },
+  'transcend-ego-black': {
     S:   0,   // TODO: completează cu ID-ul real din Spreadconnect
     M:   0,
     L:   0,
