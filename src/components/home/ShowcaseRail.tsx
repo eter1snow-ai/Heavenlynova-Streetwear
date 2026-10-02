@@ -25,7 +25,7 @@ export default function ShowcaseRail({ products }: Props) {
 
     const step = () => {
       if (!isPaused && !isInteractingRef.current && container) {
-        container.scrollLeft += 0.75
+        container.scrollLeft += 0.35
 
         // Când am parcurs prima jumătate a listei duplicate, resetăm insesizabil la început
         const halfWidth = container.scrollWidth / 2
