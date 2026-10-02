@@ -15,6 +15,7 @@
 | `HIGH-DENSITY MONOCHROME` | Descrierea tehnicii de print |
 | `ARCHITECTURAL BOXY SILHOUETTE` | Descrierea croielii |
 | `MONUMENTAL CALM` | Tonul emoțional al piesei |
+| `INTROSPECTION` | Dimensiunea emoțională și reflexivă a pieselor Heritage (Soulfull, Embrace Your Shadow) |
 | `STATEMENT SERIES // PIECE 00X` | Sub-header pe PDP (Product Detail Page) |
 | `Deep Black` / `Chalk White` | Denumirile de culori (nu "black" sau "white" generic) |
 | `245–255 GSM` | Specificația greutății textilei |
@@ -24,7 +25,6 @@
 |-----------------|---------|
 | `Artifact` | Sună a relicvă arheologică sau fierărie, nu modă celestă |
 | `Archival` (ca substantiv principal) | Clișeu de modă suprasaturat |
-| `Introspection` | Prea vag, adolescentin |
 | `Heritage Collection` (ca unic tag) | Înlocuit cu `Statement Series` |
 | Citate cu "connections", "universe", "feel" | Ton adolescentin — rupt de direcția brutalist-monumentală |
 | Orice citat generic motivațional | Brand-ul nu predică, brand-ul construiește |
@@ -121,8 +121,7 @@ public/
 - [ ] Sub-header `STATEMENT SERIES // PIECE 00X` prezent
 - [ ] Citatul oficial aprobat (max 10 cuvinte, nu clichee)
 - [ ] Body text diferențiat per culoare (Black ≠ White ca editorial)
-- [ ] Spec bullets complete (6 puncte standard de mai sus)
-- [ ] Zero termeni interziși (Artifact, Archival ca substantiv, Introspection, citate generice)
+- [ ] Zero termeni interziși (Artifact, Archival ca substantiv, citate generice)
 
 ### 🔧 Backend / Cod (CRITIC: Erori la plată dacă lipsește vreun pas!)
 - [ ] **Catalog Produse:** Produs adăugat în `src/data/drops.ts` (`id`, `category`, `productType`, `name`, `tagline`, `description`, `price`, `priceUsd`, `images`)

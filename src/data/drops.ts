@@ -76,7 +76,7 @@ export const allProducts: Product[] = [
     productType: 'tee' as ProductType,
     name: 'SOULFULL — BLACK',
     tagline: 'Not everything needs to be loud to be felt. Soulfull is a quiet statement — for those who carry more than they show.',
-    description: '· EMOTIONAL IDENTITY PIECE\n· PART OF THE HERITAGE LINE\n· DESIGNED FOR PRESENCE, NOT ATTENTION\n\nBuilt for those who don\'t need to explain what they feel.\nPart of the HeavenlyNova universe.\n\nSoulfull is the original piece that started it all — the foundation of the HVN universe, calm in presence, strong in identity.\n\nIt exists between what is seen and what is felt, holding attention rather than seeking it.\n\nHeavyweight oversized boxy fit at 7.5oz cotton, drop shoulder construction, premium long-lasting print.\n\nPart of the Heritage Collection — the origin layer of HeavenlyNova, where everything begins.',
+    description: '· EMOTIONAL IDENTITY PIECE\n· PART OF THE HERITAGE LINE\n· DESIGNED FOR INTROSPECTION, NOT ATTENTION\n\nBuilt for those who don\'t need to explain what they feel.\nPart of the HeavenlyNova universe.\n\nSoulfull is the original piece that started it all — the foundation of the HVN universe, calm in presence, strong in identity.\n\nIt exists between what is seen and what is felt, holding attention rather than seeking it.\n\nHeavyweight oversized boxy fit at 7.5oz cotton, drop shoulder construction, premium long-lasting print.\n\nPart of the Heritage Collection — the origin layer of HeavenlyNova, where everything begins.',
     price: '$59.99',
     priceUsd: 59.99,
     images: [
@@ -91,7 +91,7 @@ export const allProducts: Product[] = [
     productType: 'tee' as ProductType,
     name: 'SOULFULL — WHITE',
     tagline: 'Archival Angel Wings in Light. The quiet statement, illuminated.',
-    description: '· EMOTIONAL IDENTITY PIECE\n· PART OF THE HERITAGE LINE\n· DESIGNED FOR PRESENCE, NOT ATTENTION\n\nBuilt for those who don\'t need to explain what they feel.\nPart of the HeavenlyNova universe.\n\nSoulfull in pure white — the reverse angel wings drawn in high-density archival ink, paired with a minimal chest logo.\n\nHeavyweight oversized boxy fit at 7.5oz cotton, drop shoulder construction, premium long-lasting print.\n\nPart of the Heritage Collection — the origin layer of HeavenlyNova.',
+    description: '· EMOTIONAL IDENTITY PIECE\n· PART OF THE HERITAGE LINE\n· DESIGNED FOR INTROSPECTION, NOT ATTENTION\n\nBuilt for those who don\'t need to explain what they feel.\nPart of the HeavenlyNova universe.\n\nSoulfull in pure white — the reverse angel wings drawn in high-density archival ink, paired with a minimal chest logo.\n\nHeavyweight oversized boxy fit at 7.5oz cotton, drop shoulder construction, premium long-lasting print.\n\nPart of the Heritage Collection — the origin layer of HeavenlyNova.',
     price: '$59.99',
     priceUsd: 59.99,
     images: [
@@ -109,7 +109,7 @@ export const allProducts: Product[] = [
     description: `✦ HEAVENLYNOVA // ARTIFACT 002: EMBRACE YOUR SHADOW
 · PART OF THE HERITAGE LINE
 · ARCHITECTURAL STREETWEAR SILHOUETTE
-· DESIGNED FOR DEPTH, NOT ATTENTION
+· DESIGNED FOR INTROSPECTION, NOT ATTENTION
 
 "There are parts of us we rarely face. Healing begins the moment we stop running from them."
 
