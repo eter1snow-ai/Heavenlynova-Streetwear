@@ -303,26 +303,63 @@ export default function ProductDetail() {
             {images.length ? (
               <div className="space-y-4">
                 <div className="grid gap-4 md:grid-cols-2">
-                  {filteredVariantImages.map((img, i) => (
-                    <motion.img
-                      key={i}
-                      src={getOptimizedImageUrl(img, 1200)}
-                      alt={product.name}
-                      className={`w-full ${(product.id.startsWith('soulfull') || product.id === 'the-origin' || product.id.startsWith('broken') || product.id === 'embrace-your-shadow' || product.id.startsWith('intergalactic') || product.id.startsWith('transcend') || product.id.startsWith('infinity')) ? 'object-cover' : 'object-contain'} ${(product.id.startsWith('soulfull') || product.id === 'the-origin' || product.id.startsWith('broken') || product.id === 'embrace-your-shadow' || product.id.startsWith('intergalactic') || product.id.startsWith('transcend') || product.id.startsWith('infinity')) ? '' : 'aspect-[3/4]'} ${i === 1 ? 'object-top' : 'object-center'}`}
-                      style={{ borderRadius: 0, backgroundColor: 'transparent', mixBlendMode: 'normal', aspectRatio: (product.id === 'embrace-your-shadow' || product.id.startsWith('intergalactic') || product.id.startsWith('transcend') || product.id.startsWith('infinity')) ? '1/1' : (product.id.startsWith('soulfull') || product.id === 'the-origin' || product.id.startsWith('broken')) ? '2044/2000' : undefined }}
-                      loading={i === 0 ? "eager" : "lazy"}
-                      fetchPriority={i === 0 ? "high" : "low"}
-                      decoding="async"
-                      onLoad={() => console.log('✅ Variant loaded', img)}
-                      onError={(e) => {
-                        console.log('❌ Variant fallback', img)
-                        e.currentTarget.src = '/Assets/Images/placeholder.svg'
-                      }}
-                      initial={{ scale: i === 1 ? 1.18 : 1 }}
-                      whileHover={{ scale: i === 1 ? 1.24 : 1 }}
-                      transition={{ duration: 0.5, ease: 'easeInOut' }}
-                    />
-                  ))}
+                  {filteredVariantImages.map((img, i) => {
+                    const isLookbook =
+                      img.toLowerCase().includes('lookbook') ||
+                      img.toLowerCase().includes('diptych') ||
+                      img.toLowerCase().includes('chatgpt')
+
+                    const isSquareSeries =
+                      product.id === 'embrace-your-shadow' ||
+                      product.id.startsWith('intergalactic') ||
+                      product.id.startsWith('transcend') ||
+                      product.id.startsWith('infinity')
+
+                    const isBoxySeries =
+                      product.id.startsWith('soulfull') ||
+                      product.id === 'the-origin' ||
+                      product.id.startsWith('broken')
+
+                    const computedAspectRatio = isLookbook
+                      ? 'auto'
+                      : isSquareSeries
+                      ? '1/1'
+                      : isBoxySeries
+                      ? '2044/2000'
+                      : undefined
+
+                    const computedObjectFit = isLookbook
+                      ? 'object-contain'
+                      : (isBoxySeries || isSquareSeries)
+                      ? 'object-cover'
+                      : 'object-contain'
+
+                    return (
+                      <motion.img
+                        key={i}
+                        src={getOptimizedImageUrl(img, 1200)}
+                        alt={product.name}
+                        className={`w-full ${isLookbook ? 'md:col-span-2' : ''} ${computedObjectFit} ${(!isLookbook && !(isBoxySeries || isSquareSeries)) ? 'aspect-[3/4]' : ''} ${(i === 1 && !isLookbook) ? 'object-top' : 'object-center'}`}
+                        style={{
+                          borderRadius: 0,
+                          backgroundColor: 'transparent',
+                          mixBlendMode: 'normal',
+                          aspectRatio: computedAspectRatio,
+                        }}
+                        loading={i === 0 ? "eager" : "lazy"}
+                        fetchPriority={i === 0 ? "high" : "low"}
+                        decoding="async"
+                        onLoad={() => console.log('✅ Variant loaded', img)}
+                        onError={(e) => {
+                          console.log('❌ Variant fallback', img)
+                          e.currentTarget.src = '/Assets/Images/placeholder.svg'
+                        }}
+                        initial={{ scale: (i === 1 && !isLookbook) ? 1.18 : 1 }}
+                        whileHover={{ scale: (i === 1 && !isLookbook) ? 1.24 : 1 }}
+                        transition={{ duration: 0.5, ease: 'easeInOut' }}
+                      />
+                    )
+                  })}
                 </div>
                 {neckSelected && (
                   <div className="relative max-w-md mx-auto mt-8">

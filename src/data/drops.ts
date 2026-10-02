@@ -42,9 +42,10 @@ export const allProducts: Product[] = [
     price: '$59.99',
     priceUsd: 59.99,
     images: [
-      '/Assets/Images/Preview/Seraphim_Broken 001/Broken Original Black Back.webp',
-      '/Assets/Images/Preview/Seraphim_Broken 001/V3C Original Black Front.jpg',
-      '/Assets/Images/Preview/Seraphim_Broken 001/Neck Label Black.webp',
+      '/Assets/Images/Preview/Broken_TShirt/Broken Original Black Back.webp',
+      '/Assets/Images/Preview/Broken_TShirt/V3C Original Black Front.jpg',
+      '/Assets/Images/Preview/Broken_TShirt/ChatGPT Image Oct 2, 2026, 09_28_56 AM.webp',
+      '/Assets/Images/Preview/Broken_TShirt/Neck Label Black.webp',
     ],
   },
   {
@@ -65,9 +66,10 @@ export const allProducts: Product[] = [
     price: '$94.99',
     priceUsd: 94.99,
     images: [
-      '/Assets/Images/Preview/Design Hoodies/Broken Hoodie/Broken Hoodie Back.webp',
-      '/Assets/Images/Preview/Design Hoodies/Broken Hoodie/Hoodie On black Original Front.webp',
-      '/Assets/Images/Preview/Design Hoodies/Broken Hoodie/Detailed black hoodie close-up.webp',
+      '/Assets/Images/Preview/Broken_Hoodie/Broken Hoodie Back.webp',
+      '/Assets/Images/Preview/Broken_Hoodie/Hoodie On black Original Front.webp',
+      '/Assets/Images/Preview/Broken_Hoodie/ChatGPT Image Oct 2, 2026, 09_34_44 AM.webp',
+      '/Assets/Images/Preview/Broken_Hoodie/Detailed black hoodie close-up.webp',
     ],
   },
   {
@@ -343,6 +345,7 @@ Crafted on ultra-heavyweight 7.5 oz American cotton with an engineered boxy drap
     images: [
       '/Assets/Images/Preview/INFINITY-LOVE/INFINITY-LOVE-BLACK/INFINITY-LOVE-Back-Black.webp',
       '/Assets/Images/Preview/INFINITY-LOVE/INFINITY-LOVE-BLACK/Original-Essentials-Black-Front.webp',
+      '/Assets/Images/Preview/INFINITY-LOVE/INFINITY-LOVE-BLACK/NOVA Heavenly Infinity Lookbook.webp',
       '/Assets/Images/Preview/INFINITY-LOVE/INFINITY-LOVE-BLACK/Neck-Label-Black.webp',
     ],
   },
