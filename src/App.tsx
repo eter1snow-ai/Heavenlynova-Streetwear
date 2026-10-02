@@ -23,7 +23,7 @@ import Footer from './components/layout/Footer'
 import EmailCapture from './components/shared/EmailCapture'
 import CookieBanner from './components/shared/CookieBanner'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { applySEO } from './hooks/useSEO'
 import { Analytics } from '@vercel/analytics/react'
@@ -131,6 +131,7 @@ function MotionPage({ children }: { children: React.ReactNode }) {
 
 function AnimatedRoutes() {
   const location = useLocation()
+  const isFirstRender = useRef(true)
 
   useEffect(() => {
     // Delay scroll to allow page render
@@ -143,13 +144,18 @@ function AnimatedRoutes() {
   // Inject canonical + title + meta per-rută (rute statice)
   // Paginile de produs (/product/:id) gestionează SEO intern via useSEO.ts
   useEffect(() => {
-    // Meta Pixel PageView on SPA route change
-    if (typeof window !== 'undefined' && (window as any).fbq) {
-      ;(window as any).fbq('track', 'PageView')
+    // La primul render, pixelii Meta și Pinterest au fost deja declanșați
+    // de scripturile inline din index.html. Saltăm pentru a evita dublura.
+    if (isFirstRender.current) {
+      isFirstRender.current = false
+    } else {
+      // Meta Pixel PageView on SPA route change
+      if (typeof window !== 'undefined' && (window as any).fbq) {
+        ;(window as any).fbq('track', 'PageView')
+      }
+      // Pinterest Tag page tracking on SPA route change
+      trackPinterestPageView()
     }
-
-    // Pinterest Tag page tracking on SPA route change
-    trackPinterestPageView()
 
     const isProductRoute = location.pathname.startsWith('/product/')
     if (!isProductRoute) {

@@ -122,7 +122,7 @@ export default function OrderSuccess() {
           <br />
           A confirmation email will arrive shortly.
           <br />
-          Estimated delivery: 3–7 business days.
+          Estimated delivery: 5–13 business days.
         </p>
 
         {/* Session ID pentru referință */}

@@ -1005,33 +1005,30 @@ export default async function handler(req, res) {
   }
 
   // ─── Verificare semnătură Stripe ───────────────────────────────────────────
+  // 🔒 SECURITY: Orice request fără semnătură Stripe validă este respins cu 400.
+  //    Nu există fallback — un POST fals nu poate declanșa comenzi reale Printify.
   const signature = req.headers['stripe-signature']
-  const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET || 'whsec_placeholder'
+  const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET
+
+  if (!signature) {
+    console.error('[stripe-webhook] ❌ Missing stripe-signature header')
+    return res.status(400).json({ error: 'Missing stripe-signature header' })
+  }
+
+  if (!webhookSecret) {
+    console.error('[stripe-webhook] ❌ STRIPE_WEBHOOK_SECRET env var not set')
+    return res.status(500).json({ error: 'Webhook secret not configured' })
+  }
 
   let event
-  let rawBodyBuffer = null
+  let rawBodyBuffer
 
   try {
     rawBodyBuffer = await getRawBody(req)
-    if (signature && webhookSecret && !webhookSecret.includes('placeholder')) {
-      event = stripe.webhooks.constructEvent(rawBodyBuffer, signature, webhookSecret)
-    } else {
-      event = JSON.parse(rawBodyBuffer.toString('utf8'))
-    }
+    event = stripe.webhooks.constructEvent(rawBodyBuffer, signature, webhookSecret)
   } catch (err) {
-    console.warn('[stripe-webhook] ⚠️ Signature check failed:', err.message)
-    // Fallback: dacă req.body a fost deja parsat sau payload-ul e JSON valid
-    if (req.body && req.body.type) {
-      event = req.body
-    } else if (rawBodyBuffer && rawBodyBuffer.length > 0) {
-      try {
-        event = JSON.parse(rawBodyBuffer.toString('utf8'))
-      } catch (parseErr) {
-        return res.status(400).json({ error: `Webhook Error: ${err.message}` })
-      }
-    } else {
-      return res.status(400).json({ error: `Webhook Error: ${err.message}` })
-    }
+    console.error('[stripe-webhook] ❌ Signature verification failed:', err.message)
+    return res.status(400).json({ error: `Webhook signature verification failed: ${err.message}` })
   }
 
   console.log(`[stripe-webhook] Event: ${event.type}`)
