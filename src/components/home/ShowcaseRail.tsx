@@ -22,16 +22,22 @@ export default function ShowcaseRail({ products }: Props) {
     if (!container) return
 
     let animationFrameId: number
+    let scrollPos = container.scrollLeft
+    const speed = 0.55
 
     const step = () => {
       if (!isPaused && !isInteractingRef.current && container) {
-        container.scrollLeft += 0.35
+        scrollPos += speed
 
         // Când am parcurs prima jumătate a listei duplicate, resetăm insesizabil la început
         const halfWidth = container.scrollWidth / 2
-        if (container.scrollLeft >= halfWidth) {
-          container.scrollLeft -= halfWidth
+        if (scrollPos >= halfWidth) {
+          scrollPos -= halfWidth
         }
+        container.scrollLeft = scrollPos
+      } else if (container) {
+        // Sincronizăm poziția când utilizatorul dă scroll manual sau pauză
+        scrollPos = container.scrollLeft
       }
       animationFrameId = requestAnimationFrame(step)
     }
