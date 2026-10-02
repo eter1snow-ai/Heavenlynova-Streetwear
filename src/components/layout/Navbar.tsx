@@ -72,7 +72,7 @@ export default function Navbar() {
 
           <div className="flex items-center gap-4 md:gap-8">
             <div className="hidden md:flex items-center gap-8">
-              <ul className="flex gap-8 list-none items-center">
+              <ul className="flex gap-6 lg:gap-8 list-none items-center">
               <li>
                 <span className={linkClass} onClick={() => handleDropsFilter()}>{t('nav.drops')}</span>
               </li>
@@ -81,6 +81,9 @@ export default function Navbar() {
               </li>
               <li>
                 <span className={linkClass} onClick={() => { setOpen(false); navigate('/essentials') }}>{t('nav.essentials')}</span>
+              </li>
+              <li>
+                <span className={linkClass} onClick={() => { setOpen(false); navigate('/seraphim') }}>{t('nav.seraphim')}</span>
               </li>
 
               {/* Collections Dropdown */}
@@ -184,10 +187,10 @@ export default function Navbar() {
           <div className="md:hidden border-t border-neutral-800">
             <ul className="space-y-2 px-6 py-4 list-none">
               {[
-                { label: 'Drops', action: () => handleDropsFilter() },
-                { label: 'Heritage', action: () => { setOpen(false); navigate('/heritage') } },
-                { label: 'Essentials', action: () => { setOpen(false); navigate('/essentials') } },
-                { label: 'Seraphim', action: () => { setOpen(false); navigate('/seraphim') } },
+                { label: t('nav.drops', 'Drops'), action: () => handleDropsFilter() },
+                { label: t('nav.heritage', 'Heritage'), action: () => { setOpen(false); navigate('/heritage') } },
+                { label: t('nav.essentials', 'Essentials'), action: () => { setOpen(false); navigate('/essentials') } },
+                { label: t('nav.seraphim', 'Seraphim'), action: () => { setOpen(false); navigate('/seraphim') } },
               ].map((item) => (
                 <li key={item.label}>
                   <span
