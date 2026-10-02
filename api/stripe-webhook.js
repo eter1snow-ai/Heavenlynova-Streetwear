@@ -1057,6 +1057,29 @@ export default async function handler(req, res) {
       return res.status(200).json({ received: true, action: 'error_no_items' })
     }
 
+    // ─── Idempotență: Evită comenzi duplicate dacă Stripe retrimite webhook-ul ──
+    try {
+      const { data: existingOrder } = await supabase
+        .from('orders')
+        .select('id, printify_order_id, status')
+        .eq('stripe_session_id', session.id)
+        .maybeSingle()
+
+      if (existingOrder && existingOrder.status === 'fulfilled' && existingOrder.printify_order_id) {
+        console.log(
+          `[stripe-webhook] ⚠️ Session ${session.id} already fulfilled. ` +
+          `Printify Order ID: ${existingOrder.printify_order_id}. Skipping duplicate.`
+        )
+        return res.status(200).json({
+          received: true,
+          action: 'already_fulfilled',
+          printifyOrderId: existingOrder.printify_order_id,
+        })
+      }
+    } catch (dbErr) {
+      console.warn('[stripe-webhook] ⚠️ Idempotency check failed (proceeding):', dbErr.message)
+    }
+
     // ─── Plasare comandă Printify ─────────────────────────────────────────────
     let printifyResult = null
     let fulfillmentError = null
