@@ -126,7 +126,9 @@ public/
 ### 🔧 Backend / Cod (CRITIC: Erori la plată dacă lipsește vreun pas!)
 - [ ] **Catalog Produse:** Produs adăugat în `src/data/drops.ts` (`id`, `category`, `productType`, `name`, `tagline`, `description`, `price`, `priceUsd`, `images`)
 - [ ] **Stripe Checkout Whitelist (FIX CRITIC):** ID-ul produsului adăugat obligatoriu în `api/create-checkout-session.js` → `AUTHORIZED_PRICES` cu prețul autorizat în cenți (ex: `'transcend-ego-black': 5999`). *Fără această linie, Stripe Checkout dă instant eroare 400 "Unknown product" la plata cu cardul!*
-- [ ] **Stripe Delivery Estimate:** Verificat ca `delivery_estimate` din `api/create-checkout-session.js` să fie setat la 4–12 business days (aliniat 1:1 cu Shipping Policy).
+- [ ] **Stripe Delivery Estimate:** Verificat ca `delivery_estimate` din `api/create-checkout-session.js` să fie setat la 4–13 business days (aliniat 1:1 cu Shipping Policy).
+- [ ] **Stripe Webhook Security — Zero Fallback (CRITIC SECURITATE):** După orice fază de testare/development, verificat OBLIGATORIU ca `api/stripe-webhook.js` să respingă strict cu `400` orice request fără `stripe-signature` valid. Nu se lasă niciodată în producție fallback-uri care să accepte JSON brut nesemnat (previne atacuri cu comenzi gratuite declanșate la Printify).
+- [ ] **Stripe Webhook Idempotență:** Verificat ca webhook-ul să caute `stripe_session_id` în Supabase înainte de plasarea comenzii, refuzând dublurile dacă Stripe retrimite apelul.
 - [ ] **Printify Product IDs (US & EU):** Ambele ID-uri reale din URL-ul Printify Dashboard (`product_id: '6ab...'`) completate în `api/stripe-webhook.js` la `PRINTIFY_PRODUCT_MAP`.
 - [ ] **Printify SKUs (US & EU):** Toate codurile SKU unice (S–3XL) mapate pentru atelierul US (Shaka Wear) și atelierul EU (Build Your Brand / Stanley Stella).
 - [ ] **Galerie & Aspect Ratio:** ID-ul adăugat în `src/pages/ProductDetail.tsx` la `filteredVariantImages` și la verificarea de aspect ratio `1/1` (pentru imaginile 2000×2000).
