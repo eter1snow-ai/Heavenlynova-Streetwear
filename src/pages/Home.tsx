@@ -13,9 +13,30 @@ export default function Home() {
   const { language } = useLanguage()
   const c = (COLLECTION_TRANSLATIONS[language] || COLLECTION_TRANSLATIONS.en).home
 
-  const heritage = products.filter((p) => p.category === 'individuals')
   const essentials = products.filter((p) => p.category === 'essentials')
   const seraphim = products.filter((p) => p.category === 'flagship')
+
+  // Ordinea curatoriată a vitrinei (Showcase Rail):
+  // 1. Broken Hoodie (primul)
+  // 2. Broken // 001 (al doilea)
+  // 3. Infinity Love Dragon (al treilea)
+  // 4. Transcend Ego Black (al patrulea)
+  const showcaseIds = [
+    'broken-hoodie',
+    'broken-001',
+    'infinity-love-dragon',
+    'transcend-ego-black',
+    'embrace-your-shadow',
+    'soulfull-black',
+    'soulfull-white',
+    'intergalactic-love-black',
+    'soulfull-hoodie',
+    'intergalactic-love-white',
+    'the-origin',
+  ]
+  const showcaseProducts = showcaseIds
+    .map((id) => products.find((p) => p.id === id))
+    .filter(Boolean) as typeof products
 
   // The Pillars — Cele 4 piese iconice curatoriate static
   const pillarIds = [
@@ -58,7 +79,7 @@ export default function Home() {
       <Hero />
 
       {/* 1. STATEMENT SERIES // CURATED SHOWCASE (Horizontal Rail) */}
-      <ShowcaseRail products={heritage} />
+      <ShowcaseRail products={showcaseProducts} />
 
       <div className="border-t border-white/5" />
 
