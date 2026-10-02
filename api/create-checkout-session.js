@@ -145,7 +145,7 @@ export default async function handler(req, res) {
       },
 
       // Opțiuni livrare afișate clientului (livrare gratuită conform politicii)
-      // Timpi aliniaţi cu Shipping Policy: US 4-10 zile, EU/CA 5-13 zile → 5-13 acoperă tot
+      // Timpi aliniaţi cu Shipping Policy: intervalul total 4–13 zile (US min: 4zile, CA max: 13zile)
       shipping_options: [
         {
           shipping_rate_data: {
@@ -153,7 +153,7 @@ export default async function handler(req, res) {
             fixed_amount: { amount: 0, currency: requestedCurrency },
             display_name: 'Free Standard Shipping',
             delivery_estimate: {
-              minimum: { unit: 'business_day', value: 5 },
+              minimum: { unit: 'business_day', value: 4 },
               maximum: { unit: 'business_day', value: 13 },
             },
           },
