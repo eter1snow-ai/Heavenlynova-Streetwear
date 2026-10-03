@@ -86,7 +86,27 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4" style={{ borderTop: '1px solid #2A2A2A', marginTop: '80px', paddingTop: '40px', paddingBottom: '20px' }}>
+        {/* Luxury Global Atelier & Complimentary Shipping Strip */}
+        <div className="mt-16 pt-8 border-t border-white/[0.08] flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-[9.5px] uppercase tracking-[0.22em] text-neutral-400">
+            <span className="flex items-center gap-2 text-white">
+              <span className="w-1.5 h-1.5 bg-emerald-400/80 rounded-full animate-pulse" />
+              {t('footer.atelier_dispatch', 'Direct Atelier Dispatch')}
+            </span>
+            <span className="text-neutral-700 hidden sm:inline">•</span>
+            <span>{t('footer.shipping_territories', 'Complimentary Shipping: US, Canada & European Union')}</span>
+            <span className="text-neutral-700 hidden sm:inline">•</span>
+            <span className="text-neutral-500">{t('footer.shipping_estimate', 'Tracked 3–7 Business Days')}</span>
+          </div>
+          <Link
+            to="/shipping-policy"
+            className="font-mono text-[9px] uppercase tracking-[0.22em] text-neutral-400 hover:text-white transition-colors underline decoration-white/20 underline-offset-4"
+          >
+            {t('footer.shipping', 'Shipping Policy')} →
+          </Link>
+        </div>
+
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4" style={{ borderTop: '1px solid #2A2A2A', marginTop: '40px', paddingTop: '32px', paddingBottom: '20px' }}>
           <span style={{ fontSize: '0.72rem', letterSpacing: '0.2em', lineHeight: 1.6, color: '#888888' }} className="uppercase text-center md:text-left">
             2026 HEAVENLYNOVA - {t('footer.rights').toUpperCase()} | 
             <Link to="/privacy-policy" style={{ color: '#888888', textDecoration: 'none', margin: '0 0.5rem', fontSize: '0.72rem', letterSpacing: '0.2em', lineHeight: 1.6 }} className="uppercase hover:text-white transition-colors">{t('footer.privacy')}</Link> |
