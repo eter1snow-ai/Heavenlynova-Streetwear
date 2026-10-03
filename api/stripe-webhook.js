@@ -888,19 +888,19 @@ const PRINTIFY_PRODUCT_MAP = {
   },
 
   // ─── INTERGALACTIC HOODIE ───────────────────────────────────────────────────
+  // US Edition: INTERGALACTIC HOODIE — Black US (Heavyweight 3-End Fleece 10 oz)
   // EU Edition: INTERGALACTIC HOODIE — Black EU (Heavyweight 3-End Fleece 10 oz)
   'intergalactic-hoodie': {
     us: {
-      // Fallback la listingul Printify pana la crearea listingului dedicat US
-      product_id: '6ac115022778b01ef005344b',
+      product_id: '6ac117f0e3388757040c0ab1', // INTERGALACTIC HOODIE — Black US
       skus: {
-        S:     '15869728418098729780',
-        M:     '10273946225213327237',
-        L:     '19239888273309872088',
-        XL:    '69026970363280003393',
-        XXL:   '12825526257920996050',
-        '2XL': '12825526257920996050',
-        '3XL': '34451033750053473523',
+        S:     '32416671415808896390',
+        M:     '27690583399203348984',
+        L:     '40981105301815991933',
+        XL:    '37733348597827993354',
+        XXL:   '10178568922706322277',
+        '2XL': '10178568922706322277',
+        '3XL': '19944790733944700096',
       },
       variants: {
         S: 0,
@@ -934,15 +934,15 @@ const PRINTIFY_PRODUCT_MAP = {
   },
   'intergalactic-love-hoodie': {
     us: {
-      product_id: '6ac115022778b01ef005344b',
+      product_id: '6ac117f0e3388757040c0ab1', // INTERGALACTIC HOODIE — Black US
       skus: {
-        S:     '15869728418098729780',
-        M:     '10273946225213327237',
-        L:     '19239888273309872088',
-        XL:    '69026970363280003393',
-        XXL:   '12825526257920996050',
-        '2XL': '12825526257920996050',
-        '3XL': '34451033750053473523',
+        S:     '32416671415808896390',
+        M:     '27690583399203348984',
+        L:     '40981105301815991933',
+        XL:    '37733348597827993354',
+        XXL:   '10178568922706322277',
+        '2XL': '10178568922706322277',
+        '3XL': '19944790733944700096',
       },
       variants: {
         S: 0,
