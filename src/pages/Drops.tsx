@@ -61,10 +61,12 @@ export default function Drops() {
             <div className="flex flex-wrap gap-2 items-center">
               <span className="text-[10px] uppercase tracking-widest text-neutral-500 mr-1">{t('drops.type', 'Type')}</span>
               {(['all', 'tee', 'hoodie'] as TypeFilter[]).map((tVal) => (
-                <button key={tVal} onClick={() => {
-                  setTypeFilter(tVal)
-                  if (tVal !== 'all') setCollectionFilter('all')
-                }} className={filterBtn(typeFilter === tVal)} style={{ borderRadius: 0 }}>
+                <button
+                  key={tVal}
+                  onClick={() => setTypeFilter(tVal)}
+                  className={filterBtn(typeFilter === tVal)}
+                  style={{ borderRadius: 0 }}
+                >
                   {tVal === 'all' ? t('drops.all', 'All') : tVal === 'tee' ? t('drops.tees', 'Tees') : t('drops.hoodies', 'Hoodies')}
                 </button>
               ))}
@@ -72,10 +74,12 @@ export default function Drops() {
             <div className="flex flex-wrap gap-2 items-center">
               <span className="text-[10px] uppercase tracking-widest text-neutral-500 mr-1">{t('drops.collection', 'Collection')}</span>
               {(['all', 'flagship', 'individuals', 'essentials'] as CollectionFilter[]).map((c) => (
-                <button key={c} onClick={() => {
-                  setCollectionFilter(c)
-                  if (c !== 'all') setTypeFilter('all')
-                }} className={filterBtn(collectionFilter === c)} style={{ borderRadius: 0 }}>
+                <button
+                  key={c}
+                  onClick={() => setCollectionFilter(c)}
+                  className={filterBtn(collectionFilter === c)}
+                  style={{ borderRadius: 0 }}
+                >
                   {c === 'all' ? t('drops.all', 'All') : collectionLabels[c]}
                 </button>
               ))}

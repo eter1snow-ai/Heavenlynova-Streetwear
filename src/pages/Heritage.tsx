@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { products } from '../data/drops'
 import ProductCard from '../components/shared/ProductCard'
@@ -7,14 +7,17 @@ import { useLanguage } from '../context/LanguageContext'
 import { COLLECTION_TRANSLATIONS } from '../data/collectionTranslations'
 
 export default function Heritage() {
-  const { language } = useLanguage()
+  const { language, t } = useLanguage()
   const h = (COLLECTION_TRANSLATIONS[language] || COLLECTION_TRANSLATIONS.en).heritage
+  const [typeFilter, setTypeFilter] = useState<'all' | 'tee' | 'hoodie'>('all')
 
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
 
-  const heritageProducts = products.filter((p) => p.category === 'individuals')
+  const heritageProducts = products.filter(
+    (p) => p.category === 'individuals' && (typeFilter === 'all' || p.productType === typeFilter)
+  )
 
   return (
     <main className="bg-black text-white">
@@ -116,6 +119,25 @@ export default function Heritage() {
               {h.firstPieces}
             </h2>
           </motion.div>
+
+          {/* Type Filter Buttons */}
+          <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
+            {(['all', 'tee', 'hoodie'] as const).map((tVal) => (
+              <button
+                key={tVal}
+                onClick={() => setTypeFilter(tVal)}
+                className={`px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] border transition-colors ${
+                  typeFilter === tVal
+                    ? 'bg-white text-black border-white'
+                    : 'bg-transparent text-white/60 border-white/20 hover:border-white/60 hover:text-white'
+                }`}
+                style={{ borderRadius: 0 }}
+              >
+                {tVal === 'all' ? t('drops.all', 'All') : tVal === 'tee' ? t('drops.tees', 'Tees') : t('drops.hoodies', 'Hoodies')}
+              </button>
+            ))}
+          </div>
+
           <div className="flex flex-wrap justify-center gap-8">
             {heritageProducts.map((p) => (
               <ProductCard key={p.id} product={p} />

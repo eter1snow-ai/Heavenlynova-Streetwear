@@ -26,6 +26,7 @@ export default function Home() {
     'broken-001',
     'infinity-love-dragon',
     'transcend-ego-black',
+    'transcend-hoodie',
     'embrace-your-shadow',
     'soulfull-black',
     'soulfull-white',
