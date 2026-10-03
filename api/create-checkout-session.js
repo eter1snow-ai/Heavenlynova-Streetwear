@@ -29,6 +29,10 @@ const AUTHORIZED_PRICES = {
   'intergalactic-love-black': 5999, // $59.99
   'intergalactic-love-white': 5999, // $59.99
   'transcend-ego-black':  5999,   // $59.99
+  'transcend-hoodie':     9499,   // $94.99
+  'dragon-hoodie':        9499,   // $94.99
+  'intergalactic-hoodie': 9499,   // $94.99
+  'intergalactic-love-hoodie': 9499, // $94.99
   'infinity-love-dragon': 5999,   // $59.99
 }
 
@@ -41,7 +45,7 @@ const TIER1_SHIPPING_COUNTRIES = [
   'DE', 'FR', 'IT', 'ES', 'NL', 'BE', // Europa de Vest
   'AT', 'CH', 'IE', 'LU', 'PT',       // Europa Centrală / Vest
   'SE', 'DK', 'NO', 'FI',             // Scandinavia
-  'PL', 'CZ', 'GR',                   // Europa Centrală / Sud
+  'PL', 'CZ', 'SK', 'SI', 'HU', 'GR', // Europa Centrală / Sud
 ]
 
 export default async function handler(req, res) {
