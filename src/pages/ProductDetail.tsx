@@ -307,7 +307,8 @@ export default function ProductDetail() {
                     const isLookbook =
                       img.toLowerCase().includes('lookbook') ||
                       img.toLowerCase().includes('diptych') ||
-                      img.toLowerCase().includes('chatgpt')
+                      img.toLowerCase().includes('chatgpt') ||
+                      img.toLowerCase().includes('model')
 
                     const isSquareSeries =
                       product.id === 'embrace-your-shadow' ||

@@ -218,9 +218,10 @@ Calm in presence, resolute in form.
     price: '$94.99',
     priceUsd: 94.99,
     images: [
-      '/Assets/Images/Preview/Design Hoodies/Soulfull Hoodie/Soulfull Hoodie Back.webp',
-      '/Assets/Images/Preview/Design Hoodies/Soulfull Hoodie/Hoodie On black Original Front.webp',
-      '/Assets/Images/Preview/Design Hoodies/Soulfull Hoodie/Detailed black hoodie close-up.webp',
+      '/Assets/Images/Preview/HOODIES/Soulfull Hoodie/Soulfull Hoodie Back.webp',
+      '/Assets/Images/Preview/HOODIES/Soulfull Hoodie/Hoodie On black Original Front.webp',
+      '/Assets/Images/Preview/HOODIES/Soulfull Hoodie/Model1.webp',
+      '/Assets/Images/Preview/HOODIES/Soulfull Hoodie/Detailed black hoodie close-up.webp',
     ],
   },
   // ─── INTERGALACTIC LOVE ───────────────────────────────────────────────────────
