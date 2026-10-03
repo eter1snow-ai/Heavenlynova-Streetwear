@@ -22,7 +22,7 @@ export const LANGUAGES: { code: Language; label: string; flag: string }[] = [
 export const TRANSLATIONS: Record<Language, Record<string, string>> = {
   en: {
     // Nav
-    'nav.announcement': 'Complimentary Worldwide Shipping on All Orders',
+    'nav.announcement': 'Complimentary Shipping — USA, Canada, UK & Europe',
     'nav.drops': 'Drops',
     'nav.heritage': 'Heritage',
     'nav.essentials': 'Essentials',
@@ -42,7 +42,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'product.size': 'Size',
     'product.universe': 'Part of the HeavenlyNova universe.',
     'product.curated_sizing': 'True to size for oversized drape — size down for a closer fit.',
-    'product.shipping_included': 'Worldwide shipping included',
+    'product.shipping_included': 'Shipping to US, CA, UK & Europe included',
     'size_guide.chest': 'Chest Width',
     'size_guide.length': 'Length',
     'size_guide.sleeve': 'Sleeve',
@@ -92,7 +92,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
 
   ro: {
     // Nav
-    'nav.announcement': 'Livrare Internațională Inclusă pentru Toate Comenzile',
+    'nav.announcement': 'Livrare Gratuită — SUA, Canada, UK & Europa',
     'nav.drops': 'Drops',
     'nav.heritage': 'Heritage',
     'nav.essentials': 'Essentials',
@@ -112,7 +112,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'product.size': 'Mărime',
     'product.universe': 'Parte din universul HeavenlyNova.',
     'product.curated_sizing': 'Mărime standard pentru croială oversized lejeră — alege o mărime mai mică pentru o potrivire clasică.',
-    'product.shipping_included': 'Livrare internațională inclusă',
+    'product.shipping_included': 'Livrare gratuită inclusă: SUA, CA, UK & Europa',
     'size_guide.chest': 'Lățime Piept',
     'size_guide.length': 'Lungime',
     'size_guide.sleeve': 'Mânecă',
@@ -162,7 +162,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
 
   es: {
     // Nav
-    'nav.announcement': 'Envío Internacional Gratuito en Todos los Pedidos',
+    'nav.announcement': 'Envío Gratuito — EE.UU., Canadá, UK y Europa',
     'nav.drops': 'Drops',
     'nav.heritage': 'Heritage',
     'nav.essentials': 'Essentials',
@@ -182,7 +182,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'product.size': 'Talla',
     'product.universe': 'Parte del universo HeavenlyNova.',
     'product.curated_sizing': 'Corte boxy oversized — elige una talla menos si prefieres un ajuste clásico.',
-    'product.shipping_included': 'Envío mundial incluido',
+    'product.shipping_included': 'Envío gratuito incluido: EE.UU., CA, UK y Europa',
     'size_guide.chest': 'Ancho Pecho',
     'size_guide.length': 'Largo',
     'size_guide.sleeve': 'Manga',
@@ -232,7 +232,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
 
   de: {
     // Nav
-    'nav.announcement': 'Kostenloser Weltweiter Versand für Alle Bestellungen',
+    'nav.announcement': 'Kostenloser Versand — USA, Kanada, UK & Europa',
     'nav.drops': 'Drops',
     'nav.heritage': 'Heritage',
     'nav.essentials': 'Essentials',
@@ -252,7 +252,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'product.size': 'Größe',
     'product.universe': 'Teil des HeavenlyNova Universums.',
     'product.curated_sizing': 'Fällt oversized aus — für reguläre Passform eine Größe kleiner wählen.',
-    'product.shipping_included': 'Weltweiter Versand inklusive',
+    'product.shipping_included': 'Kostenloser Versand: USA, CA, UK & Europa inklusive',
     'size_guide.chest': 'Brustweite',
     'size_guide.length': 'Länge',
     'size_guide.sleeve': 'Ärmellänge',
@@ -302,7 +302,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
 
   fr: {
     // Nav
-    'nav.announcement': 'Livraison Internationale Gratuite sur Toutes les Commandes',
+    'nav.announcement': 'Livraison Offerte — États-Unis, Canada, UK & Europe',
     'nav.drops': 'Drops',
     'nav.heritage': 'Heritage',
     'nav.essentials': 'Essentials',
@@ -322,7 +322,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'product.size': 'Taille',
     'product.universe': "Fait partie de l'univers HeavenlyNova.",
     'product.curated_sizing': 'Coupe oversize streetwear — prenez une taille en dessous pour une coupe classique.',
-    'product.shipping_included': 'Livraison mondiale incluse',
+    'product.shipping_included': 'Livraison offerte : États-Unis, CA, UK & Europe',
     'size_guide.chest': 'Largeur Poitrine',
     'size_guide.length': 'Longueur',
     'size_guide.sleeve': 'Manche',
@@ -372,7 +372,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
 
   it: {
     // Nav
-    'nav.announcement': 'Spedizione Internazionale Gratuita su Tutti gli Ordini',
+    'nav.announcement': 'Spedizione Gratuita — USA, Canada, UK ed Europa',
     'nav.drops': 'Drops',
     'nav.heritage': 'Heritage',
     'nav.essentials': 'Essentials',
@@ -392,7 +392,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'product.size': 'Taglia',
     'product.universe': "Parte dell'universo HeavenlyNova.",
     'product.curated_sizing': 'Vestibilità oversize — scegli una taglia in meno per un fit classico.',
-    'product.shipping_included': 'Spedizione mondiale inclusa',
+    'product.shipping_included': 'Spedizione gratuita inclusa: USA, CA, UK ed Europa',
     'size_guide.chest': 'Larghezza Torace',
     'size_guide.length': 'Lunghezza',
     'size_guide.sleeve': 'Manica',
@@ -442,7 +442,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
 
   sv: {
     // Nav
-    'nav.announcement': 'Kostnadsfri Världsomspännande Frakt på Alla Beställningar',
+    'nav.announcement': 'Fri Frakt — USA, Kanada, Storbritannien & Europa',
     'nav.drops': 'Drops',
     'nav.heritage': 'Heritage',
     'nav.essentials': 'Essentials',
@@ -462,7 +462,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'product.size': 'Storlek',
     'product.universe': 'En del av HeavenlyNova universumet.',
     'product.curated_sizing': 'Oversized passform — välj en storlek mindre för klassisk passform.',
-    'product.shipping_included': 'Världsomspännande frakt ingår',
+    'product.shipping_included': 'Fri frakt ingår: USA, CA, UK och Europa',
     'size_guide.chest': 'Bröstbredd',
     'size_guide.length': 'Längd',
     'size_guide.sleeve': 'Ärmlängd',
