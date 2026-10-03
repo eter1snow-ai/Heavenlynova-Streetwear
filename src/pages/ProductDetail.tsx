@@ -68,6 +68,10 @@ const PRODUCT_SEO_OVERRIDES: Record<string, { title: string; description: string
     title: 'TRANSCEND EGO — Deep Black Heavyweight Tee | HeavenlyNova',
     description: 'Statement 004 — Beyond the boundary of ego lies the architecture of the infinite. 255 GSM heavyweight combed cotton by HeavenlyNova.',
   },
+  'transcend-hoodie': {
+    title: 'TRANSCEND Hoodie — Heavyweight Streetwear (10 oz) | HeavenlyNova',
+    description: 'Statement 004 — Beyond the boundary of ego lies the architecture of the infinite. 340 GSM heavyweight 3-end fleece by HeavenlyNova.',
+  },
   'infinity-love-dragon': {
     title: 'INFINITY LOVE // DRAGON — Deep Black Heavyweight Tee | HeavenlyNova',
     description: 'Statement 005 — Eternal cycles bound by celestial devotion. 255 GSM heavyweight combed cotton showstopper by HeavenlyNova.',
@@ -306,6 +310,7 @@ export default function ProductDetail() {
                   {filteredVariantImages.map((img, i) => {
                     const isLookbook =
                       img.toLowerCase().includes('lookbook') ||
+                      img.toLowerCase().includes('lookbok') ||
                       img.toLowerCase().includes('diptych') ||
                       img.toLowerCase().includes('chatgpt') ||
                       img.toLowerCase().includes('model')
@@ -313,13 +318,14 @@ export default function ProductDetail() {
                     const isSquareSeries =
                       product.id === 'embrace-your-shadow' ||
                       product.id.startsWith('intergalactic') ||
-                      product.id.startsWith('transcend') ||
+                      product.id === 'transcend-ego-black' ||
                       product.id.startsWith('infinity')
 
                     const isBoxySeries =
                       product.id.startsWith('soulfull') ||
                       product.id === 'the-origin' ||
-                      product.id.startsWith('broken')
+                      product.id.startsWith('broken') ||
+                      product.id === 'transcend-hoodie'
 
                     const computedAspectRatio = isLookbook
                       ? 'auto'

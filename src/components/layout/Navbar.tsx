@@ -63,6 +63,18 @@ export default function Navbar() {
 
 
       <header className={`fixed top-0 left-0 right-0 z-50 ${isJoinPage ? 'bg-transparent border-transparent' : `border-b border-neutral-800 ${scrolled ? 'bg-black/90 backdrop-blur-md' : 'bg-black/70 backdrop-blur-sm'}`}`}>
+        {!isJoinPage && (
+          <aside
+            aria-label="Announcement"
+            className="w-full border-b border-white/[0.08] bg-[#070707]/95 px-4 py-1.5 text-center select-none"
+          >
+            <p className="font-mono text-[9.5px] sm:text-[10.5px] uppercase tracking-[0.22em] text-neutral-400">
+              <span className="text-white/40 mr-2">✦</span>
+              <span className="text-neutral-300 font-medium">{t('nav.announcement')}</span>
+              <span className="text-white/40 ml-2">✦</span>
+            </p>
+          </aside>
+        )}
         <nav className="mx-auto flex max-w-[1300px] items-center justify-between px-6 py-4 lg:px-12">
           <Link to="/" className="font-display text-xs font-medium uppercase tracking-widest text-white transition-soft hover:text-white/70">
             HEAVENLYNOVA

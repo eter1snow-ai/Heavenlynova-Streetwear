@@ -751,6 +751,51 @@ const PRINTIFY_PRODUCT_MAP = {
     },
   },
 
+  // ─── TRANSCEND HOODIE ────────────────────────────────────────────────────────
+  // US Edition: TRANSCEND HOODIE — Black US (Heavyweight 3-End Fleece 10 oz)
+  'transcend-hoodie': {
+    us: {
+      product_id: '6ab36d0813b1a2af0004a90b', // TRANSCEND HOODIE — Black US
+      skus: {
+        S:     '30538787110468001558',
+        M:     '30995494672600306753',
+        L:     '19970027891152443049',
+        XL:    '20387135977118957320',
+        XXL:   '17991858178154000161',
+        '2XL': '17991858178154000161',
+        '3XL': '39230757160163214810',
+      },
+      variants: {
+        S: 0,
+        M: 0,
+        L: 0,
+        XL: 0,
+        '2XL': 0,
+        '3XL': 0,
+      },
+    },
+    eu: {
+      product_id: '6ac1054e352fbf9bce0e01ff', // TRANSCEND HOODIE — Black EU
+      skus: {
+        S:     '20318178454746940297',
+        M:     '15273696036153044183',
+        L:     '14739586503494997110',
+        XL:    '19787000029282323674',
+        XXL:   '15855656221493552655',
+        '2XL': '15855656221493552655',
+        '3XL': '25696815573750992654',
+      },
+      variants: {
+        S: 0,
+        M: 0,
+        L: 0,
+        XL: 0,
+        '2XL': 0,
+        '3XL': 0,
+      },
+    },
+  },
+
   // ─── INFINITY LOVE DRAGON ───────────────────────────────────────────────────
   // US Edition (Shaka Wear) / EU Edition (Build Your Brand)
   // SKU-urile vor fi completate imediat ce sunt trimise din Printify

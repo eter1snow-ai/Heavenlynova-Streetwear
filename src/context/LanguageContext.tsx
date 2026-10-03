@@ -22,6 +22,7 @@ export const LANGUAGES: { code: Language; label: string; flag: string }[] = [
 export const TRANSLATIONS: Record<Language, Record<string, string>> = {
   en: {
     // Nav
+    'nav.announcement': 'Complimentary Worldwide Shipping on All Orders',
     'nav.drops': 'Drops',
     'nav.heritage': 'Heritage',
     'nav.essentials': 'Essentials',
@@ -88,6 +89,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
 
   ro: {
     // Nav
+    'nav.announcement': 'Livrare Internațională Inclusă pentru Toate Comenzile',
     'nav.drops': 'Drops',
     'nav.heritage': 'Heritage',
     'nav.essentials': 'Essentials',
@@ -154,6 +156,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
 
   es: {
     // Nav
+    'nav.announcement': 'Envío Internacional Gratuito en Todos los Pedidos',
     'nav.drops': 'Drops',
     'nav.heritage': 'Heritage',
     'nav.essentials': 'Essentials',
@@ -220,6 +223,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
 
   de: {
     // Nav
+    'nav.announcement': 'Kostenloser Weltweiter Versand für Alle Bestellungen',
     'nav.drops': 'Drops',
     'nav.heritage': 'Heritage',
     'nav.essentials': 'Essentials',
@@ -286,6 +290,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
 
   fr: {
     // Nav
+    'nav.announcement': 'Livraison Internationale Gratuite sur Toutes les Commandes',
     'nav.drops': 'Drops',
     'nav.heritage': 'Heritage',
     'nav.essentials': 'Essentials',
@@ -352,6 +357,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
 
   it: {
     // Nav
+    'nav.announcement': 'Spedizione Internazionale Gratuita su Tutti gli Ordini',
     'nav.drops': 'Drops',
     'nav.heritage': 'Heritage',
     'nav.essentials': 'Essentials',
@@ -418,6 +424,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
 
   sv: {
     // Nav
+    'nav.announcement': 'Kostnadsfri Världsomspännande Frakt på Alla Beställningar',
     'nav.drops': 'Drops',
     'nav.heritage': 'Heritage',
     'nav.essentials': 'Essentials',
