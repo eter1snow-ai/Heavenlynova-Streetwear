@@ -349,6 +349,39 @@ A cinematic dark-luxury heavyweight fleece. The Transcend edition explores the t
       '/Assets/Images/Preview/TRANSCEND HOODIE/Detailed black hoodie close-up.webp',
     ],
   },
+  // ─── DRAGON HOODIE ───────────────────────────────────────────────────────────
+  {
+    id: 'dragon-hoodie',
+    category: 'individuals' as Category,
+    productType: 'hoodie' as ProductType,
+    name: 'DRAGON HOODIE',
+    tagline: '10 oz / 340 GSM Heavyweight 3-End Fleece // Statement 005',
+    description: `✦ HEAVENLYNOVA // STATEMENT SERIES: DRAGON HOODIE
+· 10 OZ / 340 GSM HEAVYWEIGHT 3-END FLEECE
+· DESIGNED FOR MONUMENTAL CALM, NOT ATTENTION
+
+STATEMENT SERIES // ARCHIVAL HOODIE 005
+
+"Eternal cycles bound by celestial devotion."
+
+Our signature showstopper forged in heavyweight luxury fleece. The Dragon Hoodie merges raw oriental mythology with modern brutalist streetwear culture. Featuring an intricate, high-definition ceramic mosaic dragon coiled across the upper back, balanced by minimal chest insignia and pure structural drape.
+
+· 10 oz / 340 GSM Heavyweight 3-End Fleece
+· Solids: 70% Combed Cotton / 30% Recycled Polyester
+· 100% Combed Cotton exterior face engineered for high-density DTG print
+· Full-scale reverse Dragon artwork & subtle chest insignia
+· Three-panel structured hood with fleece lining
+· Reinforced double-needle construction and metal hardware
+· Enduring oversized streetwear drape with drop-shoulder fit`,
+    price: '$94.99',
+    priceUsd: 94.99,
+    images: [
+      '/Assets/Images/Preview/DRAGON HOODIE/DRAGON HOODIE.webp',
+      '/Assets/Images/Preview/DRAGON HOODIE/Hoodie On black Original Front.webp',
+      '/Assets/Images/Preview/DRAGON HOODIE/DRAGON HOODIE Lookbook.webp',
+      '/Assets/Images/Preview/DRAGON HOODIE/Detailed black hoodie close-up.webp',
+    ],
+  },
   // ─── INFINITY LOVE DRAGON ───────────────────────────────────────────────────
   {
     id: 'infinity-love-dragon',

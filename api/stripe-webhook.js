@@ -840,6 +840,51 @@ const PRINTIFY_PRODUCT_MAP = {
       },
     },
   },
+
+  // ─── DRAGON HOODIE ───────────────────────────────────────────────────────────
+  // EU Edition: DRAGON HOODIE — Black EU (Heavyweight 3-End Fleece 10 oz)
+  'dragon-hoodie': {
+    us: {
+      product_id: '6ac1093e791acaa90f0d7f98', // Fallback direct la listingul Printify pana la setarea unui US separat
+      skus: {
+        S:     '21606624951517679347',
+        M:     '63762004634703795833',
+        L:     '24764988755951284423',
+        XL:    '11663900927343384869',
+        XXL:   '24344098187371521370',
+        '2XL': '24344098187371521370',
+        '3XL': '28036345418189098626',
+      },
+      variants: {
+        S: 0,
+        M: 0,
+        L: 0,
+        XL: 0,
+        '2XL': 0,
+        '3XL': 0,
+      },
+    },
+    eu: {
+      product_id: '6ac1093e791acaa90f0d7f98', // DRAGON HOODIE — Black EU
+      skus: {
+        S:     '21606624951517679347',
+        M:     '63762004634703795833',
+        L:     '24764988755951284423',
+        XL:    '11663900927343384869',
+        XXL:   '24344098187371521370',
+        '2XL': '24344098187371521370',
+        '3XL': '28036345418189098626',
+      },
+      variants: {
+        S: 0,
+        M: 0,
+        L: 0,
+        XL: 0,
+        '2XL': 0,
+        '3XL': 0,
+      },
+    },
+  },
 }
 
 // ─── Țări UE (non-US routing) ─────────────────────────────────────────────────

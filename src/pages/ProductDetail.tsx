@@ -72,6 +72,10 @@ const PRODUCT_SEO_OVERRIDES: Record<string, { title: string; description: string
     title: 'TRANSCEND Hoodie — Heavyweight Streetwear (10 oz) | HeavenlyNova',
     description: 'Statement 004 — Beyond the boundary of ego lies the architecture of the infinite. 340 GSM heavyweight 3-end fleece by HeavenlyNova.',
   },
+  'dragon-hoodie': {
+    title: 'DRAGON Hoodie — Heavyweight Streetwear (10 oz) | HeavenlyNova',
+    description: 'Statement 005 — Eternal cycles bound by celestial devotion. 340 GSM heavyweight 3-end fleece showstopper by HeavenlyNova.',
+  },
   'infinity-love-dragon': {
     title: 'INFINITY LOVE // DRAGON — Deep Black Heavyweight Tee | HeavenlyNova',
     description: 'Statement 005 — Eternal cycles bound by celestial devotion. 255 GSM heavyweight combed cotton showstopper by HeavenlyNova.',
@@ -203,7 +207,8 @@ export default function ProductDetail() {
       product?.id === 'embrace-your-shadow' ||
       product?.id?.startsWith('intergalactic') ||
       product?.id?.startsWith('transcend') ||
-      product?.id?.startsWith('infinity')
+      product?.id?.startsWith('infinity') ||
+      product?.id?.startsWith('dragon')
     ) {
       return images.filter((s) => !isNeck(s))
     }
