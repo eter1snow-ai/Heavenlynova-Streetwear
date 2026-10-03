@@ -28,6 +28,7 @@ export default function Home() {
     'transcend-ego-black',
     'transcend-hoodie',
     'dragon-hoodie',
+    'intergalactic-hoodie',
     'embrace-your-shadow',
     'soulfull-black',
     'soulfull-white',

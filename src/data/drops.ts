@@ -285,6 +285,39 @@ A celestial dialogue forged into heavyweight cotton. The Intergalactic Love edit
       '/Assets/Images/Preview/INTERGALACTIC-LOVE/INTERGALACTIC-LOVE-WHITE/Neck-Label-White.webp',
     ],
   },
+  // ─── INTERGALACTIC HOODIE ───────────────────────────────────────────────────
+  {
+    id: 'intergalactic-hoodie',
+    category: 'individuals' as Category,
+    productType: 'hoodie' as ProductType,
+    name: 'INTERGALACTIC HOODIE',
+    tagline: '10 oz / 340 GSM Heavyweight 3-End Fleece // Statement 003',
+    description: `✦ HEAVENLYNOVA // STATEMENT SERIES: INTERGALACTIC HOODIE
+· 10 OZ / 340 GSM HEAVYWEIGHT 3-END FLEECE
+· DESIGNED FOR MONUMENTAL CALM, NOT ATTENTION
+
+STATEMENT SERIES // ARCHIVAL HOODIE 003
+
+"Love is not between us. It moves through us."
+
+Deep obsidian fleece carrying raw celestial light. The Intergalactic Hoodie contrasts high-density stark typography and orbital architecture against dense heavyweight 3-end fleece. Architectural drop-shoulder construction holding a clean, rigid silhouette that moves without clinging.
+
+· 10 oz / 340 GSM Heavyweight 3-End Fleece
+· Solids: 70% Combed Cotton / 30% Recycled Polyester
+· 100% Combed Cotton exterior face engineered for high-density DTG print
+· Full-scale reverse Intergalactic artwork & subtle chest insignia
+· Three-panel structured hood with fleece lining
+· Reinforced double-needle construction and metal hardware
+· Enduring oversized streetwear drape with drop-shoulder fit`,
+    price: '$94.99',
+    priceUsd: 94.99,
+    images: [
+      '/Assets/Images/Preview/INTERGALACTIC HOODIE/INTERGALACTIC LOVE-HOODIE.webp',
+      '/Assets/Images/Preview/INTERGALACTIC HOODIE/Hoodie On black Original Front.webp',
+      '/Assets/Images/Preview/INTERGALACTIC HOODIE/INTERGALACTIC HOODIE Lookbook.webp',
+      '/Assets/Images/Preview/INTERGALACTIC HOODIE/Detailed black hoodie close-up.webp',
+    ],
+  },
   // ─── TRANSCEND EGO ───────────────────────────────────────────────────────────
   {
     id: 'transcend-ego-black',

@@ -64,6 +64,10 @@ const PRODUCT_SEO_OVERRIDES: Record<string, { title: string; description: string
     title: 'INTERGALACTIC LOVE — Chalk White Heavyweight Tee | HeavenlyNova',
     description: 'Statement 003 — Chalk White. Celestial geometry and calm monumental presence. 255 GSM heavyweight cotton by HeavenlyNova.',
   },
+  'intergalactic-hoodie': {
+    title: 'INTERGALACTIC Hoodie — Heavyweight Streetwear (10 oz) | HeavenlyNova',
+    description: 'Statement 003 — An expansive orbital dialogue rendered in heavyweight 340 GSM 3-end fleece by HeavenlyNova.',
+  },
   'transcend-ego-black': {
     title: 'TRANSCEND EGO — Deep Black Heavyweight Tee | HeavenlyNova',
     description: 'Statement 004 — Beyond the boundary of ego lies the architecture of the infinite. 255 GSM heavyweight combed cotton by HeavenlyNova.',
