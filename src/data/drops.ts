@@ -68,7 +68,7 @@ export const allProducts: Product[] = [
     images: [
       '/Assets/Images/Preview/Broken_Hoodie/Broken Hoodie Back.webp',
       '/Assets/Images/Preview/Broken_Hoodie/Hoodie On black Original Front.webp',
-      '/Assets/Images/Preview/Broken_Hoodie/ChatGPT Image Oct 2, 2026, 09_34_44 AM.webp',
+      '/Assets/Images/Preview/Broken_Hoodie/NOVA Heavenly T-Shirt Lookbook.webp',
       '/Assets/Images/Preview/Broken_Hoodie/Detailed black hoodie close-up.webp',
     ],
   },
