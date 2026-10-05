@@ -161,3 +161,19 @@ Adăugați obiectul de produs în array-ul `products`:
   npx vercel --prod --yes
   ```
 - [ ] Test vizual pe `https://heavenlynova.com/product/<id>` cu Hard Refresh (`Ctrl + F5`).
+
+---
+
+## 7. Reguli de Copywriting, Ad Naming & Delimitatoare Vizuale
+
+Pentru titluri de produse, campanii Pinterest Ads, meta tags și descrieri:
+
+* **FĂRĂ linia lungă/em dash („—” sau „–”):** Evitați caracterele lungi de tip em-dash deoarece în unele sisteme/exporturi se pot afișa greșit sau strică lizibilitatea.
+* **DELIMITATOARE OFICIALE:**
+  1. **Bara verticală (`|`):** Recomandată pentru separatoare principale, ad names și titluri scurte.
+     * *Exemplu:* `Consideration Ad | SERAPHIM Chapter /001 | Broken Angel Wings`
+     * *Exemplu:* `INTERGALACTIC Hoodie | Heavyweight Streetwear (10 oz) | HeavenlyNova`
+  2. **Dublu slash (`//`):** Semnătura industrial-gotică a brandului HeavenlyNova.
+     * *Exemplu:* `SERAPHIM Chapter /001 // Broken Angel Wings Hoodie & Tee`
+     * *Exemplu:* `10 oz / 340 GSM Heavyweight 3-End Fleece // Statement 003`
+* **Fără caractere speciale instabile:** Nu folosiți emoji-uri sau pictograme (`✦`, `🪽`) în Ad Name-urile din platformele de reclame (pentru a evita pătrățelele `[]` în rapoarte).
