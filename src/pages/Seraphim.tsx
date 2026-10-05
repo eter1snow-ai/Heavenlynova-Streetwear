@@ -49,6 +49,13 @@ export default function Seraphim() {
           <p style={{ fontSize: '0.82rem', letterSpacing: '0.18em', lineHeight: 1.8, color: '#A0A0A0', maxWidth: '440px', marginTop: '16px' }} className="drop-shadow-sm">
             {s.tagline}
           </p>
+          <button
+            onClick={() => document.getElementById('collection')?.scrollIntoView({ behavior: 'smooth' })}
+            className="border border-white/30 bg-transparent text-white uppercase transition-colors hover:bg-white hover:text-black"
+            style={{ borderRadius: 0, marginTop: '8px', padding: '14px 36px', fontSize: '0.68rem', letterSpacing: '0.35em' }}
+          >
+            {({ en: 'Shop the collection', ro: 'Descoperă colecția', es: 'Ver la colección', de: 'Zur Kollektion', fr: 'Voir la collection', it: 'Scopri la collezione', sv: 'Se kollektionen' } as Record<string, string>)[language] || 'Shop the collection'} ↓
+          </button>
         </motion.div>
       </section>
 
@@ -91,7 +98,7 @@ export default function Seraphim() {
       <div style={{ borderTop: '1px solid #111111' }} />
 
       {/* 4. PRODUCT SHOWCASE */}
-      <section style={{ paddingTop: '100px', paddingBottom: '100px' }}>
+      <section id="collection" style={{ paddingTop: '100px', paddingBottom: '100px' }}>
         <div className="mx-auto px-6 lg:px-12" style={{ maxWidth: '1300px' }}>
           <motion.div {...fade} className="text-center mb-16">
             <p style={{ fontSize: '0.62rem', letterSpacing: '0.5em', color: '#555555', lineHeight: 1.6 }} className="uppercase">
