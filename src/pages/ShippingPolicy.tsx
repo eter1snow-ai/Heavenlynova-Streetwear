@@ -55,7 +55,7 @@ export default function ShippingPolicy() {
             <a href="mailto:support@heavenlynova.com" style={{ color: '#ffffff', textDecoration: 'underline' }}>
               support@heavenlynova.com
             </a>
-            , Monday to Friday, 09:00 to 18:00 EET. HeavenlyNova is operated by Sabie Tudor PFA.
+            , Monday to Friday, 09:00 to 18:00 EET.
           </p>
         </div>
 
