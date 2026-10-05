@@ -23,11 +23,7 @@ export default function ShippingPolicy() {
           </p>
 
           <p>
-            As soon as your parcel is scanned by the carrier, you&apos;ll get an email with your tracking number and a direct link, and you can also follow it on our{' '}
-            <Link to="/track-order" style={{ color: '#ffffff', textDecoration: 'underline' }}>
-              Track Order Portal
-            </Link>
-            . Please allow 24 to 48 hours after the label is created for the first scan to appear.
+            As soon as your parcel is scanned by the carrier, you&apos;ll receive an email with your official tracking number and direct tracking link to follow your delivery in real time. Please allow 24 to 48 hours after the label is created for the first carrier scan to appear.
           </p>
 
           <p>
