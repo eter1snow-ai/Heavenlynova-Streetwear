@@ -173,15 +173,7 @@ export default async function handler(req, res) {
         hvn_source: 'heavenlynova.com',
       },
 
-      // Mesaje și link-uri către politicile oficiale HeavenlyNova (Shipping & Terms)
-      custom_text: {
-        shipping_address: {
-          message: 'Orders are made to order and dispatched with tracked delivery (4–13 business days). Review our [Shipping Policy](https://heavenlynova.com/shipping-policy).',
-        },
-        terms_of_service_acceptance: {
-          message: 'By confirming your order, you agree to HeavenlyNova [Terms of Service](https://heavenlynova.com/terms-of-service) and [Refund Policy](https://heavenlynova.com/refund-policy).',
-        },
-      },
+
 
       // URL-uri redirect post-checkout
       success_url: `${process.env.SITE_URL || 'https://heavenlynova.com'}/order-success?session_id={CHECKOUT_SESSION_ID}`,
