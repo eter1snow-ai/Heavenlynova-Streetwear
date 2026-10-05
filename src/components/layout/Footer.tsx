@@ -92,12 +92,12 @@ export default function Footer() {
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-[9.5px] uppercase tracking-[0.22em] text-neutral-400">
             <span className="flex items-center gap-2 text-white">
               <span className="w-1.5 h-1.5 bg-emerald-400/80 rounded-full animate-pulse" />
-              {t('footer.atelier_dispatch', 'Direct Atelier Dispatch')}
+              {t('footer.atelier_dispatch', 'Made to Order')}
             </span>
             <span className="text-neutral-700 hidden sm:inline">•</span>
-            <span>{t('footer.shipping_territories', 'Complimentary Shipping: US, Canada & European Union')}</span>
+            <span>{t('footer.shipping_territories', 'Free Shipping: USA, Canada, UK & Europe')}</span>
             <span className="text-neutral-700 hidden sm:inline">•</span>
-            <span className="text-neutral-500">{t('footer.shipping_estimate', 'Tracked 3–7 Business Days')}</span>
+            <span className="text-neutral-500">{t('footer.shipping_estimate', 'Tracked 4–13 Business Days')}</span>
           </div>
           <Link
             to="/shipping-policy"

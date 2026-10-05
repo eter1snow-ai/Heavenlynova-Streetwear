@@ -22,7 +22,7 @@ export const LANGUAGES: { code: Language; label: string; flag: string }[] = [
 export const TRANSLATIONS: Record<Language, Record<string, string>> = {
   en: {
     // Nav
-    'nav.announcement': 'Complimentary Shipping — USA, Canada, UK & Europe',
+    'nav.announcement': 'FREE SHIPPING | USA, CANADA, UK & EUROPE',
     'nav.drops': 'Drops',
     'nav.heritage': 'Heritage',
     'nav.essentials': 'Essentials',
@@ -81,9 +81,9 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'footer.track': 'Track Order',
     'footer.contact': 'Contact Atelier',
     'footer.origin': '— THE ORIGIN —',
-    'footer.atelier_dispatch': 'Direct Atelier Dispatch',
-    'footer.shipping_territories': 'Complimentary Shipping: US, Canada & European Union',
-    'footer.shipping_estimate': 'Tracked 3–7 Business Days',
+    'footer.atelier_dispatch': 'Made to Order',
+    'footer.shipping_territories': 'Free Shipping: USA, Canada, UK & Europe',
+    'footer.shipping_estimate': 'Tracked 4–13 Business Days',
     
     // Hero & Home
     'hero.enter': 'Enter The Archive',
@@ -92,7 +92,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
 
   ro: {
     // Nav
-    'nav.announcement': 'Livrare Gratuită — SUA, Canada, UK & Europa',
+    'nav.announcement': 'LIVRARE GRATUITĂ | SUA, CANADA, UK & EUROPA',
     'nav.drops': 'Drops',
     'nav.heritage': 'Heritage',
     'nav.essentials': 'Essentials',
@@ -151,9 +151,9 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'footer.track': 'Urmărește Comanda',
     'footer.contact': 'Contact Atelier',
     'footer.origin': '— ORIGINEA —',
-    'footer.atelier_dispatch': 'Expediere Directă din Atelier',
-    'footer.shipping_territories': 'Livrare Gratuită: SUA, Canada și Uniunea Europeană',
-    'footer.shipping_estimate': 'Livrare Monitorizată 3–7 Zile Lucrătoare',
+    'footer.atelier_dispatch': 'Creat la Comandă',
+    'footer.shipping_territories': 'Livrare Gratuită: SUA, Canada, UK & Europa',
+    'footer.shipping_estimate': 'Livrare Monitorizată 4–13 Zile Lucrătoare',
     
     // Hero & Home
     'hero.enter': 'Intră în Arhivă',
@@ -162,7 +162,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
 
   es: {
     // Nav
-    'nav.announcement': 'Envío Gratuito — EE.UU., Canadá, UK y Europa',
+    'nav.announcement': 'ENVÍO GRATUITO | EE.UU., CANADÁ, UK Y EUROPA',
     'nav.drops': 'Drops',
     'nav.heritage': 'Heritage',
     'nav.essentials': 'Essentials',
@@ -221,9 +221,9 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'footer.track': 'Seguir Pedido',
     'footer.contact': 'Contactar Atelier',
     'footer.origin': '— EL ORIGEN —',
-    'footer.atelier_dispatch': 'Despacho Directo de Atelier',
-    'footer.shipping_territories': 'Envío Gratuito: EE.UU., Canadá y Unión Europea',
-    'footer.shipping_estimate': 'Seguimiento en 3–7 Días Hábiles',
+    'footer.atelier_dispatch': 'Hecho por Encargo',
+    'footer.shipping_territories': 'Envío Gratuito: EE.UU., Canadá, UK y Europa',
+    'footer.shipping_estimate': 'Seguimiento en 4–13 Días Hábiles',
     
     // Hero & Home
     'hero.enter': 'Entrar al Archivo',
@@ -232,7 +232,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
 
   de: {
     // Nav
-    'nav.announcement': 'Kostenloser Versand — USA, Kanada, UK & Europa',
+    'nav.announcement': 'KOSTENLOSER VERSAND | USA, KANADA, UK & EUROPA',
     'nav.drops': 'Drops',
     'nav.heritage': 'Heritage',
     'nav.essentials': 'Essentials',
@@ -291,9 +291,9 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'footer.track': 'Bestellung verfolgen',
     'footer.contact': 'Atelier kontaktieren',
     'footer.origin': '— DER URSPRUNG —',
-    'footer.atelier_dispatch': 'Direkter Atelier-Versand',
-    'footer.shipping_territories': 'Kostenloser Versand: USA, Kanada & Europäische Union',
-    'footer.shipping_estimate': 'Mit Sendungsverfolgung 3–7 Werktage',
+    'footer.atelier_dispatch': 'Auf Bestellung Gefertigt',
+    'footer.shipping_territories': 'Kostenloser Versand: USA, Kanada, UK & Europa',
+    'footer.shipping_estimate': 'Mit Sendungsverfolgung 4–13 Werktage',
     
     // Hero & Home
     'hero.enter': 'Archiv betreten',
@@ -302,7 +302,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
 
   fr: {
     // Nav
-    'nav.announcement': 'Livraison Offerte — États-Unis, Canada, UK & Europe',
+    'nav.announcement': 'LIVRAISON GRATUITE | ÉTATS-UNIS, CANADA, UK & EUROPE',
     'nav.drops': 'Drops',
     'nav.heritage': 'Heritage',
     'nav.essentials': 'Essentials',
@@ -322,7 +322,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'product.size': 'Taille',
     'product.universe': "Fait partie de l'univers HeavenlyNova.",
     'product.curated_sizing': 'Coupe oversize streetwear — prenez une taille en dessous pour une coupe classique.',
-    'product.shipping_included': 'Livraison offerte : États-Unis, CA, UK & Europe',
+    'product.shipping_included': 'Livraison gratuite incluse : États-Unis, CA, UK & Europe',
     'size_guide.chest': 'Largeur Poitrine',
     'size_guide.length': 'Longueur',
     'size_guide.sleeve': 'Manche',
@@ -361,9 +361,9 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'footer.track': 'Suivre ma Commande',
     'footer.contact': 'Contacter l’Atelier',
     'footer.origin': '— L’ORIGINE —',
-    'footer.atelier_dispatch': 'Expédition Directe de l’Atelier',
-    'footer.shipping_territories': 'Livraison Offerte : États-Unis, Canada & Union Européenne',
-    'footer.shipping_estimate': 'Suivi en 3–7 Jours Ouvrés',
+    'footer.atelier_dispatch': 'Fabriqué à la Commande',
+    'footer.shipping_territories': 'Livraison Gratuite : États-Unis, Canada, UK & Europe',
+    'footer.shipping_estimate': 'Suivi en 4–13 Jours Ouvrés',
     
     // Hero & Home
     'hero.enter': 'Entrer dans l’Archive',
@@ -372,7 +372,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
 
   it: {
     // Nav
-    'nav.announcement': 'Spedizione Gratuita — USA, Canada, UK ed Europa',
+    'nav.announcement': 'SPEDIZIONE GRATUITA | USA, CANADA, UK ED EUROPA',
     'nav.drops': 'Drops',
     'nav.heritage': 'Heritage',
     'nav.essentials': 'Essentials',
@@ -431,9 +431,9 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'footer.track': 'Traccia Ordine',
     'footer.contact': 'Contatta Atelier',
     'footer.origin': '— L’ORIGINE —',
-    'footer.atelier_dispatch': 'Spedizione Diretta dall’Atelier',
-    'footer.shipping_territories': 'Spedizione Gratuita: USA, Canada e Unione Europea',
-    'footer.shipping_estimate': 'Tracciato in 3–7 Giorni Lavorativi',
+    'footer.atelier_dispatch': 'Fatto su Ordinazione',
+    'footer.shipping_territories': 'Spedizione Gratuita: USA, Canada, UK ed Europa',
+    'footer.shipping_estimate': 'Tracciato in 4–13 Giorni Lavorativi',
     
     // Hero & Home
     'hero.enter': 'Accedi all’Archivio',
@@ -442,7 +442,7 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
 
   sv: {
     // Nav
-    'nav.announcement': 'Fri Frakt — USA, Kanada, Storbritannien & Europa',
+    'nav.announcement': 'FRI FRAKT | USA, KANADA, UK OCH EUROPA',
     'nav.drops': 'Drops',
     'nav.heritage': 'Heritage',
     'nav.essentials': 'Essentials',
@@ -501,9 +501,9 @@ export const TRANSLATIONS: Record<Language, Record<string, string>> = {
     'footer.track': 'Spåra Beställning',
     'footer.contact': 'Kontakta Ateljén',
     'footer.origin': '— URSPRUNGET —',
-    'footer.atelier_dispatch': 'Direkt Ateljéleverans',
-    'footer.shipping_territories': 'Fri Frakt: USA, Kanada och Europeiska Unionen',
-    'footer.shipping_estimate': 'Spårbart 3–7 Arbetsdagar',
+    'footer.atelier_dispatch': 'Tillverkas på Beställning',
+    'footer.shipping_territories': 'Fri Frakt: USA, Kanada, UK och Europa',
+    'footer.shipping_estimate': 'Spårbart 4–13 Arbetsdagar',
     
     // Hero & Home
     'hero.enter': 'Gå till Arkivet',
