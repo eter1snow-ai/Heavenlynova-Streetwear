@@ -14,7 +14,6 @@ export default function Story() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    console.log('✅ THE ORIGIN PIECE section ready');
   }, []);
 
   return (
@@ -58,11 +57,12 @@ export default function Story() {
       {/* Hairline Separator */}
       <div className="border-t border-white/10"></div>
 
+      {/* The Origin Narrative */}
       <section className="mx-auto max-w-[1300px] px-6 lg:px-12 py-24 sm:py-32">
         <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:gap-24">
           <div className="hidden lg:block">
             <div className="sticky top-24">
-               <p className="text-xs uppercase tracking-[0.3em] text-neutral-500">
+              <p className="text-xs uppercase tracking-[0.3em] text-neutral-500">
                 {s.originLabel}
               </p>
             </div>
@@ -79,11 +79,15 @@ export default function Story() {
               {s.introQuote}
             </p>
 
-            <div className="space-y-6 text-white leading-relaxed text-base sm:text-lg">
-              <p>{s.para1}</p>
-              <p>{s.para2}</p>
-              <p>{s.para3}</p>
+            <div className="space-y-6 text-neutral-200 leading-relaxed text-base sm:text-lg">
+              {s.paragraphs.map((para, idx) => (
+                <p key={idx}>{para}</p>
+              ))}
             </div>
+
+            <p className="text-xs sm:text-sm uppercase tracking-[0.3em] text-neutral-400 font-medium pt-4">
+              {s.closingMantra}
+            </p>
 
             <div className="pt-12">
               <div className="relative overflow-hidden border border-neutral-800/80 bg-neutral-950">
@@ -107,59 +111,27 @@ export default function Story() {
         </div>
       </section>
 
-      {/* ─── Chapter /000 — Origin Protocol ──────────────────────────────────── */}
-      {/*
-        This section is distinct from /product/the-origin.
-        /story is the editorial origin narrative of HeavenlyNova as a brand.
-        /product/the-origin is the product page for the physical tee.
-        Google indexes them separately with different canonical URLs.
-      */}
-      <motion.section
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 1, ease: 'easeOut' }}
-        className="border-t border-white/10 bg-black"
-      >
-        <div className="mx-auto max-w-[1300px] px-6 lg:px-12 py-24 sm:py-32">
-          <p className="text-xs uppercase tracking-[0.45em] text-neutral-600 mb-12">
-            {s.chapterTitle}
-          </p>
-          <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:gap-24">
-            <div className="space-y-8 text-neutral-300 leading-relaxed text-base sm:text-lg">
-              <p>{s.chapterPara1}</p>
-              <p>{s.chapterPara2}</p>
-              <p>{s.chapterPara3}</p>
-              <p>{s.chapterPara4}</p>
-            </div>
-            <div className="space-y-4 text-neutral-500 text-sm leading-relaxed">
-              <p className="text-xs uppercase tracking-[0.35em] text-neutral-700 mb-6">
-                {s.signalLabel}
-              </p>
-              <p>{s.signalPara1}</p>
-              <p>{s.signalPara2}</p>
-              <p>{s.signalPara3}</p>
-              <p className="text-xs uppercase tracking-[0.3em] text-neutral-700 pt-6 border-t border-white/5">
-                {s.signalFooter}
-              </p>
-            </div>
-          </div>
-        </div>
-      </motion.section>
-
+      {/* ─── Chapter /000 — The Origin Piece ─────────────────────────────────── */}
       <motion.section
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.4 }}
+        viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.9, ease: 'easeOut' }}
         className="border-t border-white/10 bg-black"
       >
-        <div className="mx-auto max-w-[1300px] px-6 lg:px-12 py-16 sm:py-24">
-          <div className="mb-10">
-            <p className="text-xs sm:text-sm leading-relaxed text-neutral-400 opacity-50 tracking-widest">
-              {s.exclusiveSymbol}
+        <div className="mx-auto max-w-[1300px] px-6 lg:px-12 py-20 sm:py-32">
+          <div className="mb-12">
+            <p className="text-xs uppercase tracking-[0.45em] text-neutral-500 mb-4">
+              {s.chapterTitle}
+            </p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-light uppercase tracking-tight text-white">
+              {s.signalLabel}
+            </h2>
+            <p className="mt-4 text-xs sm:text-sm uppercase tracking-[0.25em] text-neutral-400">
+              {s.exclusiveSeek}
             </p>
           </div>
+
           <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] items-stretch">
             <div 
               className="relative overflow-hidden border border-neutral-800 bg-neutral-950 cursor-pointer group"
@@ -182,17 +154,15 @@ export default function Story() {
                 />
               </div>
             </div>
+
             <div className="flex flex-col justify-between space-y-6">
               <div className="space-y-4">
                 <p className="text-xs uppercase tracking-[0.3em] text-neutral-500">
                   {s.exclusiveLabel}
                 </p>
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif tracking-tight uppercase text-white">
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif tracking-tight uppercase text-white">
                   {s.exclusivePieceTitle}
-                </h2>
-                <p className="text-xs uppercase tracking-[0.25em] text-neutral-400">
-                  {s.exclusiveSeek}
-                </p>
+                </h3>
                 <p className="mt-4 text-sm sm:text-base leading-relaxed text-neutral-300 max-w-md">
                   {s.exclusiveDesc}
                 </p>
@@ -200,7 +170,7 @@ export default function Story() {
               <div>
                 <button
                   onClick={() => navigate('/product/the-origin')}
-                  className="inline-flex items-center border border-white/40 bg-transparent px-6 py-3 text-xs font-semibold uppercase tracking-[0.24em] text-white transition-soft hover:border-white hover:bg-white hover:text-black"
+                  className="inline-flex items-center border border-white/40 bg-transparent px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.24em] text-white transition-soft hover:border-white hover:bg-white hover:text-black"
                   style={{ borderRadius: 0 }}
                 >
                   {s.claimBtn}
