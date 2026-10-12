@@ -6,6 +6,7 @@ export default function EmailCapture() {
   const [email, setEmail] = useState('')
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [copied, setCopied] = useState(false)
 
   useEffect(() => {
     // Check if user already subscribed or dismissed
@@ -100,7 +101,7 @@ export default function EmailCapture() {
                     className="uppercase mb-3 font-mono text-neutral-400"
                     style={{ fontSize: '0.65rem', letterSpacing: '0.35em', lineHeight: 1.5 }}
                   >
-                    MEMBERS ONLY
+                    MEMBERS ONLY // 10% PRIVILEGE
                   </p>
                   <h2
                     className="uppercase mb-4 font-display font-semibold"
@@ -112,7 +113,7 @@ export default function EmailCapture() {
                     className="text-xs sm:text-sm leading-relaxed max-w-[92%] mx-auto"
                     style={{ color: '#A3A3A3' }}
                   >
-                    Receive private transmissions, archival drop notifications, and priority access prior to every public release.
+                    Receive <strong className="text-white font-medium">10% off your first order</strong>, private transmissions, and priority access prior to every public archival drop.
                   </p>
                 </div>
 
@@ -133,7 +134,7 @@ export default function EmailCapture() {
                     className={`w-full bg-white text-black text-xs tracking-[0.2em] px-6 py-3.5 uppercase font-semibold hover:bg-neutral-200 transition-colors ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
                     style={{ borderRadius: 0 }}
                   >
-                    {isSubmitting ? 'INITIATING...' : 'REQUEST ACCESS'}
+                    {isSubmitting ? 'INITIATING...' : 'CLAIM 10% OFF'}
                   </button>
                 </form>
 
@@ -142,39 +143,59 @@ export default function EmailCapture() {
                 </p>
               </>
             ) : (
-              <div className="text-center py-4">
+              <div className="text-center py-2">
                 <p
-                  className="uppercase mb-3"
+                  className="uppercase mb-2"
                   style={{ fontSize: '0.65rem', letterSpacing: '0.5em', lineHeight: 1.6, color: '#aaaaaa' }}
                 >
                   Initiation Complete
                 </p>
                 <h2
-                  className="uppercase mb-6 font-display"
-                  style={{ fontSize: '1.9rem', fontWeight: 500, letterSpacing: '0.12em', lineHeight: 1.3, color: '#E6E6E6' }}
+                  className="uppercase mb-5 font-display"
+                  style={{ fontSize: '1.85rem', fontWeight: 500, letterSpacing: '0.12em', lineHeight: 1.3, color: '#E6E6E6' }}
                 >
                   ACCESS GRANTED
                 </h2>
 
-                <div className="border border-white/20 bg-white/[0.03] p-5 mb-6">
-                  <p className="text-[10px] uppercase tracking-[0.25em] text-neutral-400 mb-2">Priority Allocation</p>
-                  <p className="text-xs uppercase tracking-[0.18em] text-white font-mono">
-                    CONFIRMED // MEMBER REGISTERED
+                {/* Discount Code Box */}
+                <div className="border border-white/30 bg-white/[0.04] p-5 mb-5 text-center">
+                  <p className="text-[10px] uppercase tracking-[0.28em] text-neutral-400 mb-2">
+                    Your 10% Welcome Code
+                  </p>
+                  <div className="flex items-center justify-center gap-3 my-2">
+                    <span className="text-xl md:text-2xl font-mono font-bold tracking-[0.25em] text-white select-all">
+                      NOVA10
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        navigator.clipboard.writeText('NOVA10')
+                        setCopied(true)
+                        setTimeout(() => setCopied(false), 2500)
+                      }}
+                      className="px-3.5 py-1.5 text-[10px] uppercase tracking-[0.2em] font-mono border border-white/50 text-white hover:bg-white hover:text-black transition-colors"
+                      style={{ borderRadius: 0 }}
+                    >
+                      {copied ? 'COPIED ✓' : 'COPY CODE'}
+                    </button>
+                  </div>
+                  <p className="text-[10px] text-neutral-400 uppercase tracking-widest mt-2">
+                    Enter code NOVA10 at checkout to apply 10% off
                   </p>
                 </div>
 
                 {/* Subtext */}
                 <p
-                  className="uppercase mb-8"
-                  style={{ fontSize: '0.75rem', letterSpacing: '0.2em', lineHeight: 1.8, color: '#888888' }}
+                  className="uppercase mb-6"
+                  style={{ fontSize: '0.72rem', letterSpacing: '0.18em', lineHeight: 1.7, color: '#888888' }}
                 >
-                  You are now on the private allocation list. You will receive direct transmissions prior to every public release.
+                  Allocation registered. You will also receive private archival transmissions prior to public drops.
                 </p>
 
                 <button
                   type="button"
                   onClick={handleClose}
-                  className="w-full bg-white text-black text-xs tracking-[0.2em] px-6 py-3 uppercase font-semibold hover:bg-neutral-200 transition-colors"
+                  className="w-full bg-white text-black text-xs tracking-[0.2em] px-6 py-3.5 uppercase font-semibold hover:bg-neutral-200 transition-colors"
                   style={{ borderRadius: 0 }}
                 >
                   Enter Collection

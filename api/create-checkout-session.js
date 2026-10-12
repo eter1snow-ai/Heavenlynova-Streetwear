@@ -143,6 +143,9 @@ export default async function handler(req, res) {
       payment_method_types: ['card'],
       line_items: lineItems,
 
+      // Activare coduri de reducere (ex: NOVA10)
+      allow_promotion_codes: true,
+
       // Colectare adresă de livrare de la client (Piețe Tier 1)
       shipping_address_collection: {
         allowed_countries: TIER1_SHIPPING_COUNTRIES,
